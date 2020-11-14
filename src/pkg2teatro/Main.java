@@ -11,6 +11,15 @@ public class Main {
 
     public static void main(String[] args) {
         
+        //He creado un objeto de clase Usuario
+        Usuario alex = new Usuario();
+        alex.setNombre("Alex");
+        alex.setApellidos("Perez Garcia");
+        alex.setNIF("72269647J");
+        
+        //Imprimo los datos del objeto anterior usando los getters
+        System.out.println(alex.getNombre() + alex.getApellidos());
+        
         Scanner u1 = new Scanner(System.in);
         
         System.out.println("Introduce tu nombre");
