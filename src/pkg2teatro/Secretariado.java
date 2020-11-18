@@ -5,19 +5,21 @@
  */
 package pkg2teatro;
 
-public class EmpleadoDeTeatro extends Empleado {
+/**
+ *
+ * @author DarkB
+ */
+public class Secretariado extends EmpleadoDeOficina{
     
-    protected char categoria;
-   
-    public EmpleadoDeTeatro(){
+    public Secretariado(){    
     }
 
-    public char getCategoria() {
-        return categoria;
+    public int getAñosenplantilla() {
+        return añosenplantilla;
     }
 
-    public void setCategoria(char categoria) {
-        this.categoria = categoria;
+    public void setAñosenplantilla(int añosenplantilla) {
+        this.añosenplantilla = añosenplantilla;
     }
 
     public long getId() {
@@ -67,5 +69,6 @@ public class EmpleadoDeTeatro extends Empleado {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
     
 }

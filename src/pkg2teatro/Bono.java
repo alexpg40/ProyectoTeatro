@@ -40,6 +40,4 @@ public class Bono {
     public void setTipo(char tipo) {
         this.tipo = tipo;
     }
-    
-    
 }

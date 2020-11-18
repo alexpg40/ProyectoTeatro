@@ -11,6 +11,8 @@ package pkg2teatro;
  */
 public class Direccion extends EmpleadoDeOficina{
     
+    private int añosenelcargo;
+    
     public Direccion(){
         
     }
@@ -71,5 +73,11 @@ public class Direccion extends EmpleadoDeOficina{
         this.telefono = telefono;
     }
     
-    
+    public int getAñosenelcargo(){
+        return añosenelcargo;
+    }
+
+    public void setAñosenelcargo(int añosenelcargo){
+        this.añosenelcargo = añosenelcargo;
+    }
 }
