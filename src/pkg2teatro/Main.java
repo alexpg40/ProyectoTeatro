@@ -42,7 +42,6 @@ public class Main {
         
         String email = u1.nextLine();
         
-        System.out.println("Hola " + nombre + ", ¿quieres comprar un bono?");
-    }
-    
+        System.out.println("Hola " + nombre + ", ¿quieres comprar un bono?");    
 }
+    }
