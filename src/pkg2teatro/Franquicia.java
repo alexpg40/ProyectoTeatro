@@ -9,7 +9,7 @@ package pkg2teatro;
  *
  * @author DarkB
  */
-import java.util.Date;
+import java.sql.Date;
 public class Franquicia {
     
     private long id;

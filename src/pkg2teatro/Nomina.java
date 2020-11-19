@@ -5,7 +5,7 @@
  */
 package pkg2teatro;
 
-import java.util.Date;
+import java.sql.Date;
 public class Nomina {
     
     private long id;
