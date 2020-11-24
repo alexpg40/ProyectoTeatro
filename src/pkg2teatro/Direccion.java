@@ -13,8 +13,9 @@ public class Direccion extends EmpleadoDeOficina{
     
     private int añosenelcargo;
     
-    public Direccion(){
-        
+    public Direccion(long id, String nombre, String apellidos, int añosenplantilla, int añosenelcargo){
+        super(id, nombre, apellidos, añosenplantilla);
+        this.añosenelcargo = añosenelcargo;
     }
 
     public int getAñosenplantilla() {

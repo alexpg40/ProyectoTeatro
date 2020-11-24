@@ -5,10 +5,7 @@
  */
 package pkg2teatro;
 
-/**
- *
- * @author DarkB
- */
+import java.util.ArrayList;
 public class Usuario {
     
     private long ID;
@@ -17,6 +14,7 @@ public class Usuario {
     private String NIF;
     private String telefono;
     private String email;
+    private ArrayList<Bono> bono = new ArrayList <Bono>();
     
     public Usuario(){
 }
@@ -71,6 +69,8 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
+    public String toString(){
+            String mensaje = "El usuario"+ " " + nombre + " " + apellidos + " " + "con DNI" + " " + NIF;
+        return mensaje;
+        }   
 }

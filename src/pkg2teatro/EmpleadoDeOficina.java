@@ -69,6 +69,8 @@ public class EmpleadoDeOficina extends Empleado{
         this.telefono = telefono;
     }
     
-    
-    
+    public EmpleadoDeOficina(long id, String nombre, String apellidos, int añosenplantilla){
+        super();
+        this.añosenplantilla = añosenplantilla;
+    } 
 }

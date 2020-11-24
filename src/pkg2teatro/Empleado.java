@@ -70,4 +70,9 @@ public class Empleado {
         
     }
     
+    public Empleado(long id, String nombre, String apellidos){
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
 }

@@ -11,7 +11,8 @@ package pkg2teatro;
  */
 public class Secretariado extends EmpleadoDeOficina{
     
-    public Secretariado(){    
+    public Secretariado(long id, String nombre, String apellidos, int añosenplantilla){
+        super(id, nombre, apellidos, añosenplantilla);
     }
 
     public int getAñosenplantilla() {

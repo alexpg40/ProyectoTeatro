@@ -5,10 +5,7 @@
  */
 package pkg2teatro;
 
-/**
- *
- * @author DarkB
- */
+import java.util.ArrayList;
 public class Bono {
     
     public long ID;
@@ -40,4 +37,10 @@ public class Bono {
     public void setTipo(char tipo) {
         this.tipo = tipo;
     }
+    
+    public String toString(){
+        String mensaje = "Este el bono con ID = " + ID;
+        return mensaje;
+    }
+    
 }
