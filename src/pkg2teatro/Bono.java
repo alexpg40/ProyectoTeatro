@@ -5,7 +5,6 @@
  */
 package pkg2teatro;
 
-import java.util.ArrayList;
 public class Bono {
     
     public long ID;

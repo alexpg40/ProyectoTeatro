@@ -70,7 +70,25 @@ public class Usuario {
         this.email = email;
     }
     public String toString(){
-            String mensaje = "El usuario"+ " " + nombre + " " + apellidos + " " + "con DNI" + " " + NIF;
-        return mensaje;
-        }   
+        return "El usuario" + " " + nombre + " " + apellidos + " " +"con DNI" + " " + NIF;
+        }
+    //Getter del arraylist
+    public ArrayList<Bono> getBono() {
+        return bono;
+    }
+    //Setter del arraylist
+    public void setBono(ArrayList<Bono> bono) {
+        this.bono = bono;
+    }
+    
+    public Usuario(Usuario u){
+        this.ID = u.ID;
+        this.NIF = u.NIF;
+        this.apellidos = u.apellidos;
+        this.bono = u.bono;
+        this.email = u.email;
+        this.nombre = u.nombre;
+        this.telefono = u.telefono;
+    }
+    
 }
