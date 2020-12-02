@@ -24,5 +24,8 @@ public class Taquillero extends EmpleadoDeTeatro{
         this.telefono = telefono;
         this.categoria = categoria;
    }
-    
+    @Override
+    public String toString() {
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
+    }
 }

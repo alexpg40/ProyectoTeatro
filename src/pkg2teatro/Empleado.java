@@ -86,4 +86,11 @@ public class Empleado {
         this.nif = e.nif;
         this.direccion = e.direccion;
     }
+
+    @Override
+    public String toString() {
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+    }
+    
+    
 }
