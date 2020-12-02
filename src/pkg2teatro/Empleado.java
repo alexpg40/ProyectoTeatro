@@ -70,9 +70,20 @@ public class Empleado {
         
     }
     
-    public Empleado(long id, String nombre, String apellidos){
+    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono){
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.nif = nif;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+    
+    public Empleado(Empleado e){
+        this.id = e.id;
+        this.nombre = e.nombre;
+        this.apellidos = e.apellidos;
+        this.nif = e.nif;
+        this.direccion = e.direccion;
     }
 }
