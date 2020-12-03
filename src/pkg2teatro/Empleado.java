@@ -17,6 +17,7 @@ public class Empleado {
     protected String nif;
     protected String direccion;
     protected String telefono;
+    protected Franquicia franquicia;
 
     public long getId() {
         return id;
@@ -64,6 +65,14 @@ public class Empleado {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+    
+    public Franquicia getFranquicia(){
+        return franquicia;
+    }
+    
+    public void setFranquicia(Franquicia franquicia){
+        this.franquicia = franquicia;
     }
     
     public Empleado(){
