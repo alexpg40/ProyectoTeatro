@@ -26,8 +26,7 @@ public class Acomodador extends EmpleadoDeTeatro{
     }
     
     public Acomodador (Empleado e, char categoria){
-        super(e);
-        this.categoria = categoria;
+        super(e, categoria);
     }
 
     @Override

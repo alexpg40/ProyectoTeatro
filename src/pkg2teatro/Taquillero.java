@@ -26,8 +26,7 @@ public class Taquillero extends EmpleadoDeTeatro{
    }
    
    public Taquillero(Empleado e, char categoria){
-       super(e);
-       this.categoria = categoria;
+       super(e, categoria);
    }
    
     @Override
