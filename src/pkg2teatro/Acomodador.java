@@ -24,6 +24,11 @@ public class Acomodador extends EmpleadoDeTeatro{
         this.telefono = telefono;
         this.categoria = categoria;
     }
+    
+    public Acomodador (Empleado e, char categoria){
+        super(e);
+        this.categoria = categoria;
+    }
 
     @Override
     public String toString() {
