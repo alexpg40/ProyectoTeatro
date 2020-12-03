@@ -52,7 +52,7 @@ public class Nomina {
     }
 
     public void setMesyaño(Date mesyano) {
-        this.mesyano = mesyaño;
+        this.mesyano = mesyano;
     }
 
     public void setCoste(Coste coste) {
