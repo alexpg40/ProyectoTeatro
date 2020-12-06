@@ -13,7 +13,7 @@ public class Usuario {
     private long id;
     private String nombre;
     private String apellidos;
-    private String NIF;
+    private String nif;
     private String telefono;
     private String email;    
     
@@ -26,7 +26,7 @@ public class Usuario {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.NIF = NIF;
+        this.nif = nif;
         this.telefono = telefono;
         this.email = email;
     }
@@ -55,12 +55,12 @@ public class Usuario {
         this.apellidos = apellidos;
     }
     
-    public String getNIF () {
-        return NIF;
+    public String getNif () {
+        return nif;
     }
     
-    public void setNIF (String NIF) {
-        this.NIF = NIF;
+    public void setNif (String nif) {
+        this.nif = nif;
     }
     
     public String getTelefono () {
@@ -77,5 +77,10 @@ public class Usuario {
     
     public void setEmail (String email) {
         this.email = email;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", telefono=" + telefono + ", email=" + email + '}';
+    }
 }

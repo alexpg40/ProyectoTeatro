@@ -3,7 +3,7 @@ package pkg2teatro;
 import java.util.ArrayList;
 
 public class GTrabajo {
-    protected long id;
+    private long id;
     private long semana;
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<EmpleadoDeTeatro>();
     private Franquicia franquicia;

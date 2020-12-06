@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Informe {
-    protected long id;
+    private long id;
     private Date mesyano;
     private double balance;
     private Franquicia franquicia;

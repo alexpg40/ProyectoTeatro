@@ -11,8 +11,23 @@ package pkg2teatro;
  */
 public class Secretariado extends EmpleadoDeOficina {
     
+    
+    public Secretariado (long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nif = nif;
+        this.direccion = direccion;
+        this.telefono = telefono;
+   }
+       
+       
     public Secretariado (){
         super();
     }
     
-}
+    @Override
+    public String toString() {
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+    }
+} 

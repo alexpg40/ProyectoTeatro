@@ -3,7 +3,7 @@ package pkg2teatro;
 import java.util.Date;
 
 public class Nomina {
-    protected long id;
+    private long id;
     private Date mesyano;
     private Coste coste;
     private Direccion direccion;

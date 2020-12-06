@@ -47,4 +47,9 @@ public class Bono {
     public void setMes (int mes) {
         this.mes = mes;
     }
+    
+     @Override
+    public String toString() {
+        return "Bono{" + "id=" + id + ", tipo=" + tipo + ", mes=" + mes + '}';
+    }
 }

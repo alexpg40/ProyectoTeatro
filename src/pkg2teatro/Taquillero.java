@@ -16,7 +16,7 @@ public class Taquillero extends EmpleadoDeTeatro{
    }
    
    public Taquillero(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
-       this.id = id;
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nif = nif;

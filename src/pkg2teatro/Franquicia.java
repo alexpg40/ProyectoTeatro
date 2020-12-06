@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Franquicia {
-    protected long ID;
+    private long ID;
     private Date fecha_creacion;
     private String ubicacion;
     private boolean accesibilidad_reducida;

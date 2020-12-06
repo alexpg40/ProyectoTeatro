@@ -3,7 +3,7 @@ package pkg2teatro;
 import java.util.Date;
 
 public class Coste {
-    protected long id;
+    private long id;
     private Date fecha;
     private double importe;
     private Acomodador acomodador;
