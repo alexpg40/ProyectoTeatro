@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class GTrabajo {
     private long id;
     private long semana;
-    private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<EmpleadoDeTeatro>();
+    private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
     private Franquicia franquicia;
     
     public GTrabajo(){};

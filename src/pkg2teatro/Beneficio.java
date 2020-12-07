@@ -15,7 +15,8 @@ public class Beneficio {
     private long id;
     private Date fecha;
     private double importe;
-    private double reporte;    
+    private double reporte;
+    private Taquillero taquillero;
     
     
     public Beneficio () {
@@ -60,4 +61,9 @@ public class Beneficio {
     public void setReporte (double reporte) {
         this.reporte = reporte;
     }  
+    
+      @Override
+    public String toString() {
+        return "Beneficio{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", reporte=" + reporte + ", taquillero=" + taquillero + '}';
+    }
 }

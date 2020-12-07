@@ -5,6 +5,8 @@
  */
 package pkg2teatro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandr
@@ -12,7 +14,9 @@ package pkg2teatro;
 public class Bono {
     private long id;
     private char tipo;
-    private int mes;    
+    private int mes;
+    private Usuario usuario;
+    
     
     public Bono () {
         
@@ -48,8 +52,15 @@ public class Bono {
         this.mes = mes;
     }
     
+    public Usuario getUsuario () {
+        return usuario;
+    }
+    
+    public void setUsuario (Usuario usuario){
+        this.usuario = usuario;
+    }
      @Override
     public String toString() {
-        return "Bono{" + "id=" + id + ", tipo=" + tipo + ", mes=" + mes + '}';
+        return "Bono{" + "id=" + id + ", tipo=" + tipo + ", mes=" + mes + ", usuario=" + usuario + '}';
     }
 }

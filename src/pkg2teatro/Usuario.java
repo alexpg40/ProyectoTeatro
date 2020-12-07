@@ -5,6 +5,8 @@
  */
 package pkg2teatro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandr
@@ -15,14 +17,16 @@ public class Usuario {
     private String apellidos;
     private String nif;
     private String telefono;
-    private String email;    
+    private String email;   
+    //Los usuarios pueden tener muchos bonos
+    private ArrayList<Bono> bonos = new ArrayList<>();
     
     
     public Usuario () {
         
     }
     
-    public Usuario (long id, String nombre, String apellidos, String NIF, String telefono, String email) {
+    public Usuario (long id, String nombre, String apellidos, String nif, String telefono, String email) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;

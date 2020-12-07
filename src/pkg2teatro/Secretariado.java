@@ -5,12 +5,16 @@
  */
 package pkg2teatro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandr
  */
 public class Secretariado extends EmpleadoDeOficina {
     
+    //El secretariado elabora distintas nóminas
+    private ArrayList<Nomina> nominas = new ArrayList<>();
     
     public Secretariado (long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
         this.id = id;
