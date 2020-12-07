@@ -30,6 +30,13 @@ public class Beneficio {
         this.reporte = reporte;
     }
     
+     public Beneficio (Beneficio bn){
+        this.id = bn.id;
+        this.fecha = bn.fecha;
+        this.importe = bn.importe;
+        this.reporte = bn.reporte;
+    }
+     
     public long getId () {
         return id;
     }

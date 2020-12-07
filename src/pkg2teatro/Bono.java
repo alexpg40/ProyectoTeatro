@@ -28,6 +28,12 @@ public class Bono {
         this.mes = mes;
     }
     
+     public Bono (Bono bono){
+        this.id = bono.id;
+        this.tipo = bono.tipo;
+        this.mes = bono.mes;
+    }
+    
     public long getId () {
         return id;
     }

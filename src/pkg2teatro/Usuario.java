@@ -35,6 +35,15 @@ public class Usuario {
         this.email = email;
     }
     
+     public Usuario (Usuario usu){
+        this.id = usu.id;
+        this.nombre = usu.nombre;
+        this.apellidos = usu.apellidos;
+        this.nif = usu.nif;
+        this.telefono = usu.telefono;
+        this.email = usu.email;
+    }
+    
     public long getId () {
         return id;
     }
