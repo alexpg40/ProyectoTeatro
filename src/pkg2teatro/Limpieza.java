@@ -5,11 +5,16 @@
  */
 package pkg2teatro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DarkB
  */
 public class Limpieza extends EmpleadoDeTeatro {
+    
+    //Los empleados generan un coste que reportan y se guardan en el arraylist
+    private ArrayList<Coste> costes = new ArrayList<Coste>();
     
     public Limpieza(){
         super();
@@ -34,4 +39,11 @@ public class Limpieza extends EmpleadoDeTeatro {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
     }
 
+    public ArrayList<Coste> getBeneficios() {
+        return costes;
+    }
+
+    public void setBeneficios(ArrayList<Coste> beneficios) {
+        this.costes = beneficios;
+    }
 }

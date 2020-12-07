@@ -8,6 +8,8 @@ package pkg2teatro;
 public class EmpleadoDeTeatro extends Empleado {
     
     protected char categoria;
+    //Cada empleado de teatro tiene una nomina que es calculada por secretario y revisada por direccion
+    private Nomina nomina;
    
     public EmpleadoDeTeatro(){
         super();
@@ -19,6 +21,14 @@ public class EmpleadoDeTeatro extends Empleado {
 
     public void setCategoria(char categoria) {
         this.categoria = categoria;
+    }
+
+    public Nomina getNomina() {
+        return nomina;
+    }
+
+    public void setNomina(Nomina nomina) {
+        this.nomina = nomina;
     }
 
     public EmpleadoDeTeatro(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){

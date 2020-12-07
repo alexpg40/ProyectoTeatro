@@ -5,11 +5,16 @@
  */
 package pkg2teatro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DarkB
  */
 public class Taquillero extends EmpleadoDeTeatro{
+    
+    //Los taquilleros generan unos beneficios de la venta de entrada
+    private ArrayList<Beneficio> beneficio = new ArrayList<Beneficio>();
     
    public Taquillero(){
        super();
@@ -33,4 +38,12 @@ public class Taquillero extends EmpleadoDeTeatro{
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
     }
+
+    public ArrayList<Beneficio> getBeneficio() {
+        return beneficio;
+    }
+
+    public void setBeneficio(ArrayList<Beneficio> beneficio) {
+        this.beneficio = beneficio;
+    } 
 }

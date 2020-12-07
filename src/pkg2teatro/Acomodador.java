@@ -5,11 +5,16 @@
  */
 package pkg2teatro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DarkB
  */
 public class Acomodador extends EmpleadoDeTeatro{
+    
+    //Los acomodadores reportan varios costes que se guardaran en un arraylist
+    private ArrayList<Coste> costes = new ArrayList<Coste>();
     
     public Acomodador(){
         super();
@@ -32,5 +37,13 @@ public class Acomodador extends EmpleadoDeTeatro{
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
+    }
+
+    public ArrayList<Coste> getBeneficios() {
+        return costes;
+    }
+
+    public void setBeneficios(ArrayList<Coste> beneficios) {
+        this.costes = beneficios;
     }
 }
