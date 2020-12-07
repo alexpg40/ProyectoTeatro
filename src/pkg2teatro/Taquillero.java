@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Taquillero extends EmpleadoDeTeatro{
     
     //Los taquilleros generan unos beneficios de la venta de entrada
-    private ArrayList<Beneficio> beneficio = new ArrayList<Beneficio>();
+    private ArrayList<Beneficio> beneficio = new ArrayList<>();
     
    public Taquillero(){
        super();

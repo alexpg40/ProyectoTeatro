@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Acomodador extends EmpleadoDeTeatro{
     
     //Los acomodadores reportan varios costes que se guardaran en un arraylist
-    private ArrayList<Coste> costes = new ArrayList<Coste>();
+    private ArrayList<Coste> costes = new ArrayList<>();
     
     public Acomodador(){
         super();

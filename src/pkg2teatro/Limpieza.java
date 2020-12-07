@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Limpieza extends EmpleadoDeTeatro {
     
     //Los empleados generan un coste que reportan y se guardan en el arraylist
-    private ArrayList<Coste> costes = new ArrayList<Coste>();
+    private ArrayList<Coste> costes = new ArrayList<>();
     
     public Limpieza(){
         super();
