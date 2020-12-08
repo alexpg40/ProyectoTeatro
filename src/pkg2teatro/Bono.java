@@ -5,8 +5,6 @@
  */
 package pkg2teatro;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Sandr
@@ -15,6 +13,7 @@ public class Bono {
     private long id;
     private char tipo;
     private int mes;
+    // Se va a guardar el usuario que compra el bono
     private Usuario usuario;
     
     

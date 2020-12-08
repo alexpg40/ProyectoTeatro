@@ -16,6 +16,7 @@ public class Beneficio {
     private Date fecha;
     private double importe;
     private double reporte;
+    // Se va a guardar el taquillero que genera el beneficio
     private Taquillero taquillero;
     
     
