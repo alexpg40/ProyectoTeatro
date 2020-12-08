@@ -1,4 +1,5 @@
 package pkg2teatro;
+//Guillermo Illera Vinatea
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,8 +9,11 @@ public class Franquicia {
     private Date fecha_creacion;
     private String ubicacion;
     private boolean accesibilidad_reducida;
+    // Se guarda el Grupo de trabajo que está trabajando en la franquicia
     private GTrabajo grupotrabajo;
+    // Se guarda una lista de los empleados de la franquicia
     private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+    // Se guarda el informe mensual de la franquicia
     private Informe informe;
 
     public Franquicia(){};

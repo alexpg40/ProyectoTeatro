@@ -1,4 +1,5 @@
 package pkg2teatro;
+//Guillermo Illera Vinatea
 
 import java.util.Date;
 
@@ -6,9 +7,14 @@ public class Coste {
     private long id;
     private Date fecha;
     private double importe;
+    
+    // Se guarda el acomododador que reporta el coste
     private Acomodador acomodador;
+    // Se guarda el limpiador que reporta el coste
     private Limpieza limpieza;
+    // Se guarda la nómina que genera el coste
     private Nomina nomina;
+    // Se guarda el informe en el que va el coste
     private Informe informe;
     
     public Coste (){};

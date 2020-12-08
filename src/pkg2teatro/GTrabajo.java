@@ -1,11 +1,16 @@
 package pkg2teatro;
-
+// Guillermo Illera Vinatea
 import java.util.ArrayList;
+ 
 
 public class GTrabajo {
     private long id;
     private long semana;
+    
+    // Se guarda una lista de los trabajadores que forman parte de grupo de trabajo
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
+    
+    // Se guarda la franquicia donde está el grupo de trabajo
     private Franquicia franquicia;
     
     public GTrabajo(){};

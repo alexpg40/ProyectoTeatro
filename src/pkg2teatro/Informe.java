@@ -1,4 +1,5 @@
 package pkg2teatro;
+//Guillermo Illera Vinatea
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,9 +8,11 @@ public class Informe {
     private long id;
     private Date mesyano;
     private double balance;
-    private Franquicia franquicia;
+    // Se guarda el Secretario que realiza el informe
     private Secretariado secretario;
+    // Se guarda una lista de los beneficios
     private ArrayList<Beneficio> beneficios = new ArrayList<Beneficio>();
+    // Se guarda una lista de los costes
     private ArrayList<Coste> costes = new ArrayList<Coste>();
     
     public Informe (){};
@@ -18,16 +21,14 @@ public class Informe {
         this.id = infor.id;
         this.mesyano = infor.mesyano;
         this.balance = infor.balance;
-        this.franquicia = infor.franquicia;
         this.secretario = infor.secretario;
         this.beneficios = infor.beneficios;
     };
 
-    public Informe(long id, Date mesyano, double balance, Franquicia franquicia, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes) {
+    public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes) {
         this.id = id;
         this.mesyano = mesyano;
         this.balance = balance;
-        this.franquicia = franquicia;
         this.secretario = secretario;
         this.beneficios = beneficios;
         this.costes = costes;
@@ -44,11 +45,7 @@ public class Informe {
     public double getBalance() {
         return balance;
     }
-
-    public Franquicia getFranquicia() {
-        return franquicia;
-    }
-
+    
     public Secretariado getSecretario() {
         return secretario;
     }
@@ -73,10 +70,6 @@ public class Informe {
         this.balance = balance;
     }
 
-    public void setFranquicia(Franquicia franquicia) {
-        this.franquicia = franquicia;
-    }
-
     public void setSecretario(Secretariado secretario) {
         this.secretario = secretario;
     }
@@ -91,7 +84,7 @@ public class Informe {
 
     @Override
     public String toString() {
-        return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", franquicia=" + franquicia + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';
+        return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';
     }
     
     
