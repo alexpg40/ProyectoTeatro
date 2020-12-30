@@ -30,8 +30,8 @@ public class Limpieza extends EmpleadoDeTeatro {
         this.categoria = categoria;
     }
     
-    public Limpieza(Empleado e, char categoria){
-        super(e, categoria);
+    public Limpieza(Empleado e, char categoria, Nomina nomina){
+        super(e, categoria, nomina);
     }
     
     @Override
