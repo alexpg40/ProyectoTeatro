@@ -31,7 +31,7 @@ public class EmpleadoDeTeatro extends Empleado {
         this.nomina = nomina;
     }
 
-    public EmpleadoDeTeatro(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
+    public EmpleadoDeTeatro(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria, Nomina nomina){
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -39,10 +39,12 @@ public class EmpleadoDeTeatro extends Empleado {
         this.direccion = direccion;
         this.telefono = telefono;
         this.categoria = categoria;
+        this.nomina = nomina;
     }
-    public EmpleadoDeTeatro(Empleado e, char categoria){
+    public EmpleadoDeTeatro(Empleado e, char categoria, Nomina nomina){
         super(e);
         this.categoria = categoria;
+        this.nomina = nomina;
     }
     
     @Override
