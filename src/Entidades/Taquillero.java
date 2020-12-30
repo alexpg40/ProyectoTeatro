@@ -30,8 +30,8 @@ public class Taquillero extends EmpleadoDeTeatro{
         this.categoria = categoria;
    }
    
-   public Taquillero(Empleado e, char categoria){
-       super(e, categoria);
+   public Taquillero(Empleado e, char categoria, Nomina nomina){
+       super(e, categoria, nomina);
    }
    
     @Override
