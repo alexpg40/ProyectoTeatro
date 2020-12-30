@@ -1,7 +1,6 @@
 package Entidades;
 // Guillermo Illera Vinatea
 import java.util.ArrayList;
- 
 
 public class GTrabajo {
     private long id;
