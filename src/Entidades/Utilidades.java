@@ -11,6 +11,7 @@ package Entidades;
  */
 public class Utilidades {
 
+    //He declarado la Franquicia para que no me de error
     static Franquicia Franquicia;
     //long id String nombre String apellidos String nif String direccion String telefono Franquicia Franquicia
     public static final Empleado EMPLEADOS[] = {
