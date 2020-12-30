@@ -79,13 +79,14 @@ public class Empleado {
         
     }
     
-    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono){
+    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia){
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nif = nif;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.franquicia = franquicia;
     }
     
     public Empleado(Empleado e){
@@ -94,6 +95,7 @@ public class Empleado {
         this.apellidos = e.apellidos;
         this.nif = e.nif;
         this.direccion = e.direccion;
+        this.franquicia = e.franquicia;
     }
 
     @Override
