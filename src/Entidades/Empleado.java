@@ -98,6 +98,41 @@ public class Empleado {
         this.franquicia = e.franquicia;
     }
 
+    public void comprobarId(long id){
+        if (id <= 0) {
+            System.out.println("La Id tiene que ser mayor estrictamente que 0");
+        } else{
+            if (id % 1 !=0) {
+                System.out.println("La id tiene que ser un número entero");
+            } else{
+                for (Empleado Empleado : Utilidades.EMPLEADOS) {
+                    if (id == Empleado.getId()) {
+                        System.out.println("No se puede repetir la id");
+                    } else{
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    
+    public void comprobarNombre(String nombre){
+        if (nombre.equals(" ")) {
+            System.out.println("No puede estar vacio");
+            return;
+        } else{
+            if (nombre.equals(null)) {
+                System.out.println("No puede ser nulo");
+                return;
+            } else{
+                //EN PROCESO NO FUNCIONA!
+                if (nombre.contains(CharSequence.class.cast('1'))) {
+                    System.out.println("No puede tener números");
+                }
+            }
+        }
+    }
+    
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
