@@ -47,6 +47,12 @@ public class EmpleadoDeTeatro extends Empleado {
         this.nomina = nomina;
     }
     
+    public void comprobarCategoria(char categoria){
+        if (categoria != 'A' && categoria !='B' && categoria !='C' && categoria !='D') {
+            System.out.println("La categoria solo puede ser A, B, C o D");
+        }
+    }
+    
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
