@@ -61,6 +61,28 @@ public class GTrabajo {
         this.franquicia = franquicia;
     }
 
+    public void comprobarId(long id){
+        if (id <= 0) {
+            System.out.println("La Id tiene que ser mayor estrictamente que 0");
+        } else if (id % 1 != 0) {
+            System.out.println("La id tiene que ser un número entero");
+        } else {
+            for (GTrabajo gt : Utilidades.GTRABAJO) {
+                if (id == gt.getId()) {
+                    System.out.println("No se puede repetir la id");
+                } else {
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void comprobarSemana(long id){
+        if (!(id >= 1 && id <=6)) {
+            System.out.println("Solo puede estar entre la semana 1 y la 6");
+        }
+    }
+    
     @Override
     public String toString() {
         return "GTrabajo{" + "id=" + id + ", semana=" + semana + ", EmpleadosTeatro=" + EmpleadosTeatro + ", franquicia=" + franquicia + '}';
