@@ -9,7 +9,7 @@ package Entidades;
  *
  * @author Sandr
  */
-class EmpleadoDeOficina extends Empleado{
+public class EmpleadoDeOficina extends Empleado{
    protected int añosPlantilla;
     
     
@@ -29,6 +29,20 @@ class EmpleadoDeOficina extends Empleado{
         super.nif = nif;
         super.direccion = direccion;
         super.telefono = telefono;
+    }
+
+    public int getAñosPlantilla() {
+        return añosPlantilla;
+    }
+
+    public void setAñosPlantilla(int añosPlantilla) {
+        this.añosPlantilla = añosPlantilla;
+    }
+    
+    public void comprobarAñosplantilla(int añosPlantilla){
+        if (!(añosPlantilla >= 0 && añosPlantilla <80)) {
+            System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
+        }
     }
     
     @Override
