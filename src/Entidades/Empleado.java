@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DarkB
@@ -101,12 +103,15 @@ public class Empleado {
     public void comprobarId(long id) {
         if (id <= 0) {
             System.out.println("La Id tiene que ser mayor estrictamente que 0");
+            return;
         } else if (id % 1 != 0) {
             System.out.println("La id tiene que ser un número entero");
+            return;
         } else {
             for (Empleado Empleado : Utilidades.EMPLEADOS) {
                 if (id == Empleado.getId()) {
                     System.out.println("No se puede repetir la id");
+                    return;
                 } else {
                     return;
                 }
@@ -136,7 +141,7 @@ public class Empleado {
                 if ((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z')) {
                 } else {
                     System.out.println("Solo se permiten letras");
-                    return;
+                    return; 
                 }
             }
         }
@@ -175,6 +180,31 @@ public class Empleado {
             }
         }
     }
+    
+    public Empleado nuevoEmpleado(){
+        Empleado e = new Empleado();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce el id");
+        long co = in.nextLong();
+        e.comprobarId(co);
+        e.setId(co);
+        System.out.println("Introduce el nombre");
+        String us = in.nextLine();
+        e.comprobarNombre(us);
+        e.setNombre(us);
+        System.out.println("Introduce los apellidos");
+        String ap = in.nextLine();
+        e.comprobarApellidos(ap);
+        e.setApellidos(ap);
+        System.out.println("Introduce el NIF");
+        String n = in.nextLine();
+        e.comprobarNif(n);
+        e.setNif(n);
+        System.out.println("Introduce el telefono");
+        String t = in.nextLine();
+        e.comprobarTelefono(t);
+        e.setTelefono(t);
+    return e;}
 
     @Override
     public String toString() {
