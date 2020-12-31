@@ -10,7 +10,7 @@ package Entidades;
  * @author DarkB
  */
 public class Empleado {
-    
+
     protected long id;
     protected String nombre;
     protected String apellidos;
@@ -66,20 +66,20 @@ public class Empleado {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    public Franquicia getFranquicia(){
+
+    public Franquicia getFranquicia() {
         return franquicia;
     }
-    
-    public void setFranquicia(Franquicia franquicia){
+
+    public void setFranquicia(Franquicia franquicia) {
         this.franquicia = franquicia;
     }
-    
-    public Empleado(){
-        
+
+    public Empleado() {
+
     }
-    
-    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia){
+
+    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -88,8 +88,8 @@ public class Empleado {
         this.telefono = telefono;
         this.franquicia = franquicia;
     }
-    
-    public Empleado(Empleado e){
+
+    public Empleado(Empleado e) {
         this.id = e.id;
         this.nombre = e.nombre;
         this.apellidos = e.apellidos;
@@ -98,45 +98,87 @@ public class Empleado {
         this.franquicia = e.franquicia;
     }
 
-    public void comprobarId(long id){
+    public void comprobarId(long id) {
         if (id <= 0) {
             System.out.println("La Id tiene que ser mayor estrictamente que 0");
+        } else if (id % 1 != 0) {
+            System.out.println("La id tiene que ser un número entero");
+        } else {
+            for (Empleado Empleado : Utilidades.EMPLEADOS) {
+                if (id == Empleado.getId()) {
+                    System.out.println("No se puede repetir la id");
+                } else {
+                    return;
+                }
+            }
+        }
+    }
+
+    public void comprobarNombre(String nombre) {
+        if (nombre.isEmpty()) {
+            System.out.println("No puede estar vacio");
+        } else {
+            for (int i = 0; i < nombre.length(); i++) {
+                if ((nombre.charAt(i) >= 'a' && nombre.charAt(i) <= 'z') || (nombre.charAt(i) >= 'A' && nombre.charAt(i) <= 'Z')) {
+                } else {
+                    System.out.println("Solo se permiten letras");
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void comprobarApellidos(String apellidos){
+        if (apellidos.isEmpty()) {
+            System.out.println("No puede estar vacio");
+        } else {
+            for (int i = 0; i < apellidos.length(); i++) {
+                if ((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z')) {
+                } else {
+                    System.out.println("Solo se permiten letras");
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void comprobarNif(String nif){
+        if (nif.length() != 9) {
+            System.out.println("El nif debeser de 9 digitos");
         } else{
-            if (id % 1 !=0) {
-                System.out.println("La id tiene que ser un número entero");
+            if (!((nif.charAt(8) >= 'a' && nif.charAt(8) <= 'z' ) || (nif.charAt(8) >= 'A' && nif.charAt(8) <= 'Z'))) {
+                System.out.println("Debe finalizar con una letra");
             } else{
-                for (Empleado Empleado : Utilidades.EMPLEADOS) {
-                    if (id == Empleado.getId()) {
-                        System.out.println("No se puede repetir la id");
-                    } else{
-                        return;
+                for (int i = 0; i < 7; i++) {
+                    if (!(nif.charAt(i) >= '0' && nif.charAt(i) <= '9')) {
+                        System.out.println("Los primeros 8 digitos deben ser numeros");
                     }
                 }
             }
         }
     }
     
-    public void comprobarNombre(String nombre){
-        if (nombre.equals(" ")) {
-            System.out.println("No puede estar vacio");
-            return;
+    public void comprobarDireccion(String direccion){
+        if (direccion.isEmpty()) {
+            System.out.println("La direccion no puede estar vacia");
+        }
+    }
+    
+    public void comprobarTelefono(String telefono){
+        if (telefono.length() != 9) {
+            System.out.println("Debe tener nueve numeros");
         } else{
-            if (nombre.equals(null)) {
-                System.out.println("No puede ser nulo");
-                return;
-            } else{
-                //EN PROCESO NO FUNCIONA!
-                if (nombre.contains(CharSequence.class.cast('1'))) {
-                    System.out.println("No puede tener números");
+            for (int i = 0; i < telefono.length(); i++) {
+                if (!(telefono.charAt(i) >= '0' && telefono.charAt(i) <='9')) {
+                    System.out.println("Solo se permiten números");
                 }
             }
         }
     }
-    
+
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
-    
-    
+
 }
