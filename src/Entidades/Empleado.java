@@ -126,6 +126,7 @@ public class Empleado {
         boolean cond = false;
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
+            return;
         } else {
             for (int i = 0; i < nombre.length(); i++) {
                 if (((nombre.charAt(i) >= '0' && nombre.charAt(i) <= '9'))) {
@@ -174,6 +175,7 @@ public class Empleado {
             return;
         } else if (!((nif.charAt(8) >= 'a' && nif.charAt(8) <= 'z') || (nif.charAt(8) >= 'A' && nif.charAt(8) <= 'Z'))) {
             System.out.println("Debe finalizar con una letra");
+            return;
         } else {
             for (int i = 0; i < 7; i++) {
                 if (!(nif.charAt(i) >= '0' && nif.charAt(i) <= '9')) {
