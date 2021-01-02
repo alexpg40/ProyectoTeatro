@@ -17,15 +17,15 @@ public class Utilidades {
     static Franquicia Franquicia;
     //long id String nombre String apellidos String nif String direccion String telefono Franquicia Franquicia
     public static final Empleado EMPLEADOS[] = {
-        new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293 932 238", Franquicia),
-        new Empleado(2, "Jose Juan", "Garcia", "23456789S", "Cantabria, Soto", "123 431 314", Franquicia),
-        new Empleado(3, "Pepe", "Perez", "34567891A", "Alicante", "134 123 764", Franquicia),
-        new Empleado(4, "Aitor", "Mendizabal", "54348943C", "Murcia", "345 501 459", Franquicia),
-        new Empleado(5, "Josito", "Fernandez", "83774591A", "Galicia, Vigo", "123 459 230", Franquicia),
-        new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124 451 123", Franquicia),
-        new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459 213 459", Franquicia),
-        new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864 344 459", Franquicia),
-        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495 459 348", Franquicia)
+        new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293932238", Franquicia),
+        new Empleado(2, "Jose Juan", "Garcia", "23456789S", "Cantabria, Soto", "123431314", Franquicia),
+        new Empleado(3, "Pepe", "Perez", "34567891A", "Alicante", "134123764", Franquicia),
+        new Empleado(4, "Aitor", "Mendizabal", "54348943C", "Murcia", "345501459", Franquicia),
+        new Empleado(5, "Josito", "Fernandez", "83774591A", "Galicia, Vigo", "123459230", Franquicia),
+        new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124451123", Franquicia),
+        new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459213459", Franquicia),
+        new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864344459", Franquicia),
+        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", Franquicia)
 
     };
 
