@@ -44,6 +44,8 @@ public class EmpleadoDeOficina extends Empleado{
     public void comprobarAñosplantilla(int añosPlantilla){
         if (!(añosPlantilla >= 0 && añosPlantilla <80)) {
             System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
+        } else{
+            this.añosPlantilla = añosPlantilla;
         }
     }
     
