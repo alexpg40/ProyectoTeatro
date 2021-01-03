@@ -104,6 +104,7 @@ public class EmpleadoDeTeatro extends Empleado {
         System.out.println("Introcude la categoria");
         char c = 0;
         do {
+            c = 0;
             sc = new Scanner(System.in);
             c = sc.next().charAt(c);
             e.comprobarCategoria((char) c);
