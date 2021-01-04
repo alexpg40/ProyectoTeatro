@@ -5,10 +5,14 @@ import java.util.Date;
 
 public class Coste {
     private long id;
+    // Valores válidos: Números > 0 | Valores inválidos: Números <=0 | Otras restricciones: No puede repetirse, solo puede ser entero. 
     private Date fecha;
-    private double importe;
-    
+    // Valores válidos: dd/mm/yyyy, todos
+    // Números enteros, dd entre 1 y 31, dependiendo el mes 30 dias, mm entre 1 y 12, yyyy > 1000 y yyyy < 3000 
+    // Valores inválidos: Números negativos y reales, y dd = 0 y > 31, mm > 12 o mm = 0, y yyyy < 1000 o yyyy > 3000. | Valor por defecto: Fecha actual.
     // Se guarda el acomododador que reporta el coste
+    private double importe;
+    // Valores válidos: Cualquier número > 0 | Valores inválidos: Numero <=0, cualquier carácter distinto, vacío y null.
     private Acomodador acomodador;
     // Se guarda el limpiador que reporta el coste
     private Limpieza limpieza;
