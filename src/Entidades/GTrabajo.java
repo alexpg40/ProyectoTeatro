@@ -1,7 +1,7 @@
-package pkg2teatro;
+package Entidades;
 // Guillermo Illera Vinatea
 import java.util.ArrayList;
- 
+import java.util.Scanner;
 
 public class GTrabajo {
     private long id;
@@ -62,6 +62,56 @@ public class GTrabajo {
         this.franquicia = franquicia;
     }
 
+    public void comprobarId(long id) {
+        boolean cond = false;
+        if (id < 0 || id == 0) {
+            System.out.println("La id tiene que mayor estrictamente que cero");
+        } else {
+            cond = false;
+            for (GTrabajo Empleado : Utilidades.GTRABAJO) {
+                if (id == Empleado.getId()) {
+                    cond = true;
+                    break;
+                } else {
+                    cond = false;
+                }
+            }
+            if (cond) {
+                System.out.println("La id coincide con alguna ya guardada en la base");
+            } else {
+                this.id = id;
+            }
+        }
+    }
+    
+    public void comprobarSemana(long semana){
+        if (!(semana >= 1 && semana <=6)) {
+            System.out.println("Solo puede estar entre la semana 1 y la 6");
+        } else{
+            this.semana = semana;
+        }
+    }
+    
+    public GTrabajo nuevoGTrabajo(){
+        GTrabajo gt = new GTrabajo();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce la id");
+        long id;
+        do {
+            sc = new Scanner(System.in);
+            id = sc.nextLong();
+            gt.comprobarId(id);
+        } while (gt.getId() != id || id == 0);
+        System.out.println("Introduce la semana");
+        long semana;
+        do {
+            semana =-1;
+            sc = new Scanner(System.in);
+            semana = sc.nextLong();
+            gt.comprobarSemana(semana);
+        } while (gt.getSemana() != semana || semana <= 0 || semana > 6);
+    return gt;}
+    
     @Override
     public String toString() {
         return "GTrabajo{" + "id=" + id + ", semana=" + semana + ", EmpleadosTeatro=" + EmpleadosTeatro + ", franquicia=" + franquicia + '}';

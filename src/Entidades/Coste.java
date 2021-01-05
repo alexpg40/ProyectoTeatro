@@ -1,4 +1,4 @@
-package pkg2teatro;
+package Entidades;
 //Guillermo Illera Vinatea
 
 import java.util.Date;

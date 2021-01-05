@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg2teatro;
+package Entidades;
 
+import Entidades.Bono;
 import java.util.ArrayList;
 
 /**
