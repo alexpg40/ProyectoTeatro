@@ -1,7 +1,7 @@
 package Entidades;
-//Guillermo Illera Vinatea
 
-import java.util.Date;
+import java.sql.Date;
+
 
 public class Coste {
     private long id;
@@ -42,7 +42,25 @@ public class Coste {
         this.nomina = nomina;
         this.informe = informe;
     }
+    
+    public Coste(long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe) {
+        this.id = id;
+        this.fecha = fecha;
+        this.importe = importe;
+        this.acomodador = acomodador;
+        this.nomina = nomina;
+        this.informe = informe;
+    }
 
+    public Coste(long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina, Informe informe) {
+        this.id = id;
+        this.fecha = fecha;
+        this.importe = importe;
+        this.limpieza = limpieza;
+        this.nomina = nomina;
+        this.informe = informe;
+    }
+    
     public long getId() {
         return id;
     }
@@ -98,7 +116,44 @@ public class Coste {
     public void setInforme(Informe informe) {
         this.informe = informe;
     }
-
+    
+    public void comprobarId(long id){
+        boolean condicion = false;
+        // Establecemos la variable booleana "condicion como falsa"
+        // Establecemos que si la ID es menor estricto O igual a cero, se 
+        // muestre un mensaje en pantalla. Sin embargo, si no lo es, haremos que
+        // el programa recorra el array Costes en la clase Utilidades, para
+        // comprobar si el ID está repetido. Si está repetida, la condicion será true y se saldrá del if, siendo verdadera,
+        // llegará al if y sacará por pantalla que la ID ya está registrada.
+        // Si no encuentra ninguna ID repetida, la condicion será falsa y caera
+        // en el else, el cual por fin establecerá la ID que hayamos metido como
+        // la ID de el coste, en este caso.
+        if (id < 0 || id == 0) {
+            System.out.println("La ID debe de ser mayor estricto de 0.");
+        } else {
+            for (Coste Coste : Utilidades.COSTES){
+                if (id == Coste.getId()){
+                    condicion = true;
+                    break;
+                } else {
+                    condicion = false;
+                }
+            }
+        if (condicion) {
+            System.out.println("La ID ya está registrada.");
+        } else {
+            this.id = id;
+        }
+        }
+    }
+    
+    public void comprobarNombre (String nombre){
+        boolean condicion = false;
+        if (nombre.isEmpty()){
+            System.out.println("No debe de estar vacío.");
+            }
+    }
+    
     @Override
     public String toString() {
         return "Coste{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", acomodador=" + acomodador + ", limpieza=" + limpieza + ", nomina=" + nomina + ", informe=" + informe + '}';
