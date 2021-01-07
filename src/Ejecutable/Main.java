@@ -5,10 +5,7 @@
  */
 package Ejecutable;
 
-import Entidades.Empleado;
-import Entidades.EmpleadoDeTeatro;
-import Entidades.GTrabajo;
-import Entidades.EmpleadoDeOficina;
+import Entidades.*;
 
 public class Main {
 
@@ -26,5 +23,9 @@ public class Main {
 
         EmpleadoDeOficina ef = new EmpleadoDeOficina();
         ef.nuevoEmpleadoDeOficina();
+        
+        Coste c = new Coste();
+        c.nuevoCoste();
+        
     }
 }

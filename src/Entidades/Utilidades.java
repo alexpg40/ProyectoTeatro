@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entidades;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author alex
- */
 public class Utilidades {
 
+    
     //He declarado la Franquicia para que no me de error
     static Franquicia Franquicia;
     //long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia Franquicia
