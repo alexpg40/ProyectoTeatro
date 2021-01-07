@@ -23,11 +23,12 @@ public class Beneficio {
         
     }
     
-    public Beneficio (long id, Date fecha, double importe, double reporte) {
+    public Beneficio (long id, Date fecha, double importe, double reporte, Taquillero taquillero) {
         this.id = id;
         this.fecha = fecha;
         this.importe = importe;
         this.reporte = reporte;
+        this.taquillero = taquillero;
     }
     
      public Beneficio (Beneficio bn){

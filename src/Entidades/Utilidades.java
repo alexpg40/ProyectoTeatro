@@ -92,4 +92,48 @@ public class Utilidades {
         new Usuario(1," Mireya ", "Bustos ", "65160165T ","981985321","guillermo.illera97@gmail.com"),
         new Usuario(1," Elver ", "Galarga ", "91871326F ","648919849","guillermo.illera97@gmail.com")
     };
+    
+    
+    
+    // He declarado Informe, empleados y GTrabajo para que no diese error
+    static Informe Informe;
+    static Empleado empleados;
+    static GTrabajo GTrabajo;
+    // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
+    public static final Franquicia FRANQUICIAS[] = {
+        new Franquicia (1,, "Barcelona, Llissá de Munt", T, Informe, empleados, GTrabajo)
+        new Franquicia (2,, "Madrid, Zofío", F, Informe, empleados, GTrabajo)
+        new Franquicia (3,, "Cantabria, Santander", T, Informe, empleados, GTrabajo)
+        new Franquicia (4,, "Galicia, Vigo", F, Informe, empleados, GTrabajo)
+        new Franquicia (5,, "Almería, Níjar", T, Informe, empleados, GTrabajo)
+        new Franquicia (6,"Alicante, Benidorm", T, Informe, empleados, GTrabajo)
+    } 
+
+
+    // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
+    public static final Direccion DIRECCIONES[] = {
+        new Direccion (1, "Mario", "Martin", "72207652K", "Barcelona, Llissá de Munt", "654608343", 4)
+    }
+    
+    // He declarado un arraylist para que no me diese error
+    static ArrayList<Beneficio> beneficios = new ArrayList<>();
+    // static ArrayList<Coste> costes = new ArrayList<>();
+    // long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes
+    public static final Informe INFORMES[] = {
+        new Informe (1, "", 300.4, Secretariado, beneficios, costes)
+        new Informe (2, "", 400,3, Secretariado, beneficios, costes)
+        new Informe (3, "", 282.7, Secretariado, beneficios, costes)
+        new Informe (4, "", 274.4, Secretariado, beneficios, costes)
+        new Informe (5, "", 182.9, Secretariado, beneficios, costes)
+        new Informe (6, "", 455.3, Secretariado, beneficios, costes)
+        new Informe (7, "", 964.6, Secretariado, beneficios, costes)
+        new Informe (8, "", 412.01, Secretariado, beneficios, costes)
+        new Informe (9, "", 202.1, Secretariado, beneficios, costes)
+    }
+
+    // long id, Date fecha, double importe, double reporte, Taquillero taquillero
+    public static final Beneficio BENEFICIOS[] = {
+        new Beneficio (1, "", 27.04, 300.3, Taquillero)
+        new Beneficio (2, "", 20.18, 300.6, Taquillero)
+    }
 }
