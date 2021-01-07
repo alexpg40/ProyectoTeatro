@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg2teatro;
+package Entidades;
 
 import java.sql.Date;
 
@@ -16,7 +16,6 @@ public class Beneficio {
     private Date fecha;
     private double importe;
     private double reporte;
-    // Se va a guardar el taquillero que genera el beneficio
     private Taquillero taquillero;
     
     
@@ -24,11 +23,12 @@ public class Beneficio {
         
     }
     
-    public Beneficio (long id, Date fecha, double importe, double reporte) {
+    public Beneficio (long id, Date fecha, double importe, double reporte, Taquillero taquillero) {
         this.id = id;
         this.fecha = fecha;
         this.importe = importe;
         this.reporte = reporte;
+        this.taquillero = taquillero;
     }
     
      public Beneficio (Beneficio bn){

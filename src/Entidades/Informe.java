@@ -1,4 +1,4 @@
-package pkg2teatro;
+package Entidades;
 //Guillermo Illera Vinatea
 
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ public class Informe {
     // Se guarda el Secretario que realiza el informe
     private Secretariado secretario;
     // Se guarda una lista de los beneficios
-    private ArrayList<Beneficio> beneficios = new ArrayList<Beneficio>();
+    private ArrayList<Beneficio> beneficios = new ArrayList<>();
     // Se guarda una lista de los costes
-    private ArrayList<Coste> costes = new ArrayList<Coste>();
+    private ArrayList<Coste> costes = new ArrayList<>();
     
     public Informe (){};
     
@@ -25,7 +25,7 @@ public class Informe {
         this.beneficios = infor.beneficios;
     };
 
-    public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes) {
+        public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes) {
         this.id = id;
         this.mesyano = mesyano;
         this.balance = balance;

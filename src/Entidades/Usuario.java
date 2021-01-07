@@ -1,25 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package pkg2teatro;
+package Entidades;
 
+import Entidades.Bono;
 import java.util.ArrayList;
-
-/**
- *
- * @author Sandr
- */
 public class Usuario {
     private long id;
+    // Valores válidos: Números > 0 | Valores invalidos: <=0 | Otras restricciones: No se puede repetir y solo puede ser entero.
     private String nombre;
+    // Valores validos: cualquier letra | Valores invalidos: números, vakir vacío y null.
     private String apellidos;
+    // Valores validos: cualquier letra | Valores invalidos: números, vakir vacío y null.
     private String nif;
+    // Valores válidos: Tiene que haber 8 números y una letra | Valores inválidos: Vacío o null.
     private String telefono;
+    // Valores válidos: Cualquier numero entero | Valores inválidos: | Otras restricciones: No puede repetirse y solo pueden haber números enteros.
     private String email;   
-    //Los usuarios pueden tener muchos bonos
+    // Valores válidos: Cualquier carácter | Valores inválidos: Carácteres especiales exceptuando la arroba (@) | Otras restricciones: Tiene que contener una arroba(@).
+    // Los usuarios pueden tener muchos bonos
     private ArrayList<Bono> bonos = new ArrayList<>();
+    
     
     
     public Usuario () {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg2teatro;
+package Entidades;
 
 import java.util.ArrayList;
 
@@ -30,8 +30,8 @@ public class Acomodador extends EmpleadoDeTeatro{
         this.categoria = categoria;
     }
     
-    public Acomodador (Empleado e, char categoria){
-        super(e, categoria);
+    public Acomodador (Empleado e, char categoria, Nomina nomina){
+        super(e, categoria, nomina);
     }
 
     @Override
