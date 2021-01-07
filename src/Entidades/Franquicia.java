@@ -3,6 +3,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.scene.input.KeyCode;
 
 public class Franquicia {
     private long ID;
@@ -36,6 +37,10 @@ public class Franquicia {
         this.informe = informe;
         this.grupotrabajo = grupotrabajo;
         this.empleados = empleados;
+    }
+
+    Franquicia(int i, Date fecha12, String barcelona_Llissá_de_Munt, KeyCode keyCode, Informe Informe, Empleado empleados, GTrabajo GTrabajo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public long getID() {

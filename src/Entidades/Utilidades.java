@@ -1,11 +1,39 @@
 package Entidades;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import static javafx.scene.input.KeyCode.F;
+import static javafx.scene.input.KeyCode.T;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 
 public class Utilidades {
-
     
+    static final Date fecha1 = new Date(2010, 11, 28);
+    static final Date fecha2 = new Date(2016, 5, 10);
+    static final Date fecha3 = new Date(2014, 2, 21);
+    static final Date fecha4 = new Date(2019, 12, 12);
+    static final Date fecha5 = new Date(2020, 5, 24);
+    static final Date fecha6 = new Date(2005, 1, 29);
+    static final Date fecha7 = new Date(2002, 5, 28);
+    static final Date fecha8 = new Date(1997, 7, 17);
+    static final Date fecha9 = new Date(2010, 2, 13);
+    static final Date fecha10 = new Date(2010, 9, 12);
+    static final Date fecha11 = new Date(2015, 8, 30);
+    static final Date fecha12 = new Date(2012, 7, 20);
+    static final Date fecha13 = new Date(2013, 3, 15);
+    static final Date fecha14 = new Date(2019, 8, 13);
+    static final Date fecha15 = new Date(2017, 1, 18);
+    static final Date fecha16 = new Date(2016, 2, 11);
+    static final Date fecha17 = new Date(2014, 1, 10);
+    static final Date fecha18 = new Date(2012, 10, 19);
+    static final Date fecha19 = new Date(2011, 12, 17);
+    static final Date fecha20 = new Date(2019, 12, 15);
+      
+    
+          
     //He declarado la Franquicia para que no me de error
     static Franquicia Franquicia;
     //long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia Franquicia
@@ -18,7 +46,7 @@ public class Utilidades {
         new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124451123", Franquicia),
         new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459213459", Franquicia),
         new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864344459", Franquicia),
-        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", Franquicia)
+        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", Franquicia),
 
     };
 
@@ -36,15 +64,15 @@ public class Utilidades {
     // long id, Date mesyano, otra vez ni puta idea de poner la fecha.
     
     public static final Nomina NOMINAS[] = {
-        new Nomina(1,""),
-        new Nomina(2,""),
-        new Nomina(3,""),
-        new Nomina(4,""),
-        new Nomina(5,""),
-        new Nomina(6,""),
-        new Nomina(7,""),
-        new Nomina(8,""),
-        new Nomina(9,""),
+        new Nomina(1,fecha1),
+        new Nomina(2,fecha2),
+        new Nomina(3,fecha3),
+        new Nomina(4,fecha4),
+        new Nomina(5,fecha5),
+        new Nomina(6,fecha6),
+        new Nomina(7,fecha7),
+        new Nomina(8,fecha8),
+        new Nomina(9,fecha9),
     };
     
     //char categoria, Nomina nomina
@@ -69,9 +97,13 @@ public class Utilidades {
     // long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina, Informe informe
     // Dan error porque no tengo ni puñetera idea de poner la fecha.
     
+    static Acomodador acomodador;
+    static Limpieza limpieza;
+    static Informe informe;
+    
     public static final Coste COSTES[] = {
-        new Coste(1,"", 23, 800.90, acomodador, limpieza, 1, informe),
-        new Coste(2,"", 800, limpieza, 2, informe)
+        new Coste(1,fecha10, 23, 800.90, acomodador, limpieza, 1, informe),
+        new Coste(2,fecha11, 800, limpieza, 2, informe)
     };
     
     // long id, char tipo, int mes
@@ -100,40 +132,47 @@ public class Utilidades {
     static Empleado empleados;
     static GTrabajo GTrabajo;
     // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
+
+    /**
+     *
+     */
     public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia (1,, "Barcelona, Llissá de Munt", T, Informe, empleados, GTrabajo)
-        new Franquicia (2,, "Madrid, Zofío", F, Informe, empleados, GTrabajo)
-        new Franquicia (3,, "Cantabria, Santander", T, Informe, empleados, GTrabajo)
-        new Franquicia (4,, "Galicia, Vigo", F, Informe, empleados, GTrabajo)
-        new Franquicia (5,, "Almería, Níjar", T, Informe, empleados, GTrabajo)
-        new Franquicia (6,"Alicante, Benidorm", T, Informe, empleados, GTrabajo)
-    } 
+        new Franquicia (1,fecha12, "Barcelona, Llissá de Munt", T, Informe, empleados, GTrabajo),
+        new Franquicia (2,fecha13, "Madrid, Zofío", F, Informe, empleados, GTrabajo),
+        new Franquicia (3,fecha14, "Cantabria, Santander", T, Informe, empleados, GTrabajo),
+        new Franquicia (4,fecha15, "Galicia, Vigo", F, Informe, empleados, GTrabajo),
+        new Franquicia (5,fecha17, "Almería, Níjar", T, Informe, empleados, GTrabajo),
+        new Franquicia (6,fecha18,"Alicante, Benidorm", T, Informe, empleados, GTrabajo)
+    }; 
 
 
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
     public static final Direccion DIRECCIONES[] = {
         new Direccion (1, "Mario", "Martin", "72207652K", "Barcelona, Llissá de Munt", "654608343", 4)
-    }
+    };
     
     // He declarado un arraylist para que no me diese error
     static ArrayList<Beneficio> beneficios = new ArrayList<>();
     // static ArrayList<Coste> costes = new ArrayList<>();
     // long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes
+    static Secretariado secretariado;
+    static Coste costes;
     public static final Informe INFORMES[] = {
-        new Informe (1, "", 300.4, Secretariado, beneficios, costes)
-        new Informe (2, "", 400,3, Secretariado, beneficios, costes)
-        new Informe (3, "", 282.7, Secretariado, beneficios, costes)
-        new Informe (4, "", 274.4, Secretariado, beneficios, costes)
-        new Informe (5, "", 182.9, Secretariado, beneficios, costes)
-        new Informe (6, "", 455.3, Secretariado, beneficios, costes)
-        new Informe (7, "", 964.6, Secretariado, beneficios, costes)
-        new Informe (8, "", 412.01, Secretariado, beneficios, costes)
-        new Informe (9, "", 202.1, Secretariado, beneficios, costes)
-    }
+        new Informe (1, fecha10, 300.4, secretariado, beneficios, costes),
+        new Informe (2, fecha11, 400.3, secretariado, beneficios, costes),
+        new Informe (3, fecha12, 282.7, secretariado, beneficios, costes),
+        new Informe (4, fecha13, 274.4, secretariado, beneficios, costes),
+        new Informe (5, fecha14, 182.9, secretariado, beneficios, costes),
+        new Informe (6, fecha15, 455.3, secretariado, beneficios, costes),
+        new Informe (7, fecha16, 964.6, secretariado, beneficios, costes),
+        new Informe (8, fecha17, 412.01, secretariado, beneficios, costes),
+        new Informe (9, fecha18, 202.1, secretariado, beneficios, costes)
+    };
 
     // long id, Date fecha, double importe, double reporte, Taquillero taquillero
+    static Taquillero taquillero;
     public static final Beneficio BENEFICIOS[] = {
-        new Beneficio (1, "", 27.04, 300.3, Taquillero)
-        new Beneficio (2, "", 20.18, 300.6, Taquillero)
-    }
+        new Beneficio (1, fecha19, 27.04, 300.3, taquillero),
+        new Beneficio (2, fecha20, 20.18, 300.6, taquillero)
+    };
 }

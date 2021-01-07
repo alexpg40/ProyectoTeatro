@@ -16,6 +16,7 @@ public class Coste {
     private double importe;
     // Valores válidos: Cualquier número > 0 | Valores inválidos: Numero <=0, cualquier carácter distinto, vacío y null.
     private Acomodador acomodador;
+   
     // Se guarda el limpiador que reporta el coste
     private Limpieza limpieza;
     // Se guarda la nómina que genera el coste
@@ -61,6 +62,18 @@ public class Coste {
         this.limpieza = limpieza;
         this.nomina = nomina;
         this.informe = informe;
+    }
+
+    Coste(int i, LocalDate now, int i0, double d, Acomodador acomodador, Limpieza limpieza, int i1, Informe informe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Coste(int i, java.util.Date fecha10, int i0, double d, Acomodador acomodador, Limpieza limpieza, int i1, Informe informe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Coste(int i, java.util.Date fecha11, int i0, Limpieza limpieza, int i1, Informe informe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public long getId() {
@@ -181,7 +194,7 @@ public class Coste {
             in = new Scanner(System.in);
             imp = in.nextLong();
             c.comprobarImporte(imp);
-        } while (c.getImporte() != imp || imp <=0);
+        } while (c.getImporte() != imp || imp <0);
         return c;
     };
     

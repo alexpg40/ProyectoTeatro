@@ -34,6 +34,10 @@ public class Informe {
         this.costes = costes;
     }
 
+    Informe(int i, Date fecha10, double d, Secretariado secretariado, ArrayList<Beneficio> beneficios, Coste costes) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public long getId() {
         return id;
     }
