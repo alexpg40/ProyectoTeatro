@@ -6,10 +6,28 @@ import java.util.Date;
 
 public class Franquicia {
     private long ID;
+    /*  
+        valores válidos: números > 0
+        valores inválidos: números < 0
+        otras restricciones: No puede repetirse, solo puede ser entero.
+    */
     private Date fecha_creacion;
+    /*
+        Valores válidos: dd/mm/yyyy, todos números enteros, dd entre 1 y 31, dependiendo el mes 30 dias, mm entre 1 y 12, yyyy > 1000 y yyyy < 3000 
+        Valores inválidos: Números negativos y reales, y dd = 0 y > 31, mm > 12 o mm = 0, y yyyy < 1000 o yyyy > 3000. 
+        Valor por defecto: Fecha actual. 
+    */
     private String ubicacion;
+    /*
+        valores válidos: Letras, números enteros.
+        valores inválidos: Valor “ “ (vacio) o null.
+    */
     private boolean accesibilidad_reducida;
     // Se guarda el Grupo de trabajo que está trabajando en la franquicia
+    /*
+        valores válidos: true/false
+        valores inválidos: null
+    */
     private GTrabajo grupotrabajo;
     // Se guarda una lista de los empleados de la franquicia
     private ArrayList<Empleado> empleados = new ArrayList<Empleado>();

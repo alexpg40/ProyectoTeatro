@@ -109,12 +109,12 @@ public class Utilidades {
     static GTrabajo GTrabajo;
     // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
     public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia (1,, "Barcelona, Llissá de Munt", T, Informe, empleados, GTrabajo)
-        new Franquicia (2,, "Madrid, Zofío", F, Informe, empleados, GTrabajo)
-        new Franquicia (3,, "Cantabria, Santander", T, Informe, empleados, GTrabajo)
-        new Franquicia (4,, "Galicia, Vigo", F, Informe, empleados, GTrabajo)
-        new Franquicia (5,, "Almería, Níjar", T, Informe, empleados, GTrabajo)
-        new Franquicia (6,"Alicante, Benidorm", T, Informe, empleados, GTrabajo)
+        new Franquicia (1,, "Barcelona, Llissá de Munt", true, Informe, empleados, GTrabajo)
+        new Franquicia (2,, "Madrid, Zofío", false, Informe, empleados, GTrabajo)
+        new Franquicia (3,, "Cantabria, Santander", true, Informe, empleados, GTrabajo)
+        new Franquicia (4,, "Galicia, Vigo", false, Informe, empleados, GTrabajo)
+        new Franquicia (5,, "Almería, Níjar", true, Informe, empleados, GTrabajo)
+        new Franquicia (6,"Alicante, Benidorm", true, Informe, empleados, GTrabajo)
     } 
 
 

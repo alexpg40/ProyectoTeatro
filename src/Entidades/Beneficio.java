@@ -13,9 +13,27 @@ import java.sql.Date;
  */
 public class Beneficio {
     private long id;
+    /*
+        valores válidos: número > 0
+        valores inválidos: número < 0
+        otras restricciones: no puede repetirse, solo puede ser entero
+    */ 
     private Date fecha;
+    /*
+        valores válidos: dd/mm/yyyy, todos números enteros, dd entre 1 y 31, dependiendo el mes 30 dias, mm entre 1 y 12, yyyy > 1000 y yyyy < 3000 
+        valores inválidos: Números negativos y reales, y dd = 0 y > 31, mm > 12 o mm = 0, y yyyy < 1000 o yyyy > 3000. 
+        Valor por defecto: Fecha actual. 
+    */
     private double importe;
+    /*
+        valores válidos: Cualquier número > 0
+        valores inválidos: Numero <= 0, cualquier carácter distinto, vacío y null.
+    */
     private double reporte;
+    /*
+        valores válidos: cualquier número
+        valores inválidos: cualquier carácter distinto a un número
+    */
     private Taquillero taquillero;
     
     

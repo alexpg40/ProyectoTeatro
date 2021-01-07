@@ -11,6 +11,10 @@ package Entidades;
  */
 public class Direccion extends EmpleadoDeOficina {
     private int añosPlantillaD;
+    /*
+        valores válidos: entero > 0
+        valores inválidos: entero < 0, cualquier carácter que no sea entero, null y vacío.
+    */
     
     
     public int getAñosPlantillaD () {

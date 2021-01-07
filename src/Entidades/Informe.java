@@ -6,9 +6,24 @@ import java.util.Date;
 
 public class Informe {
     private long id;
+    /*
+        valores válidos: números > 0
+        valores inválidos: números < 0
+        otras restricciones: No puede repetirse, solo puede ser entero.
+    
+    */
     private Date mesyano;
+    /*
+        valores válidos: dd/mm/yyyy, todos números enteros, dd entre 1 y 31, dependiendo el mes 30 dias, mm entre 1 y 12, yyyy > 1000 y yyyy < 3000 
+        valores inválidos: Números negativos y reales, y dd = 0 y > 31, mm > 12 o mm = 0, y yyyy < 1000 o yyyy > 3000. 
+        valor por defecto: Fecha actual. 
+    */
     private double balance;
     // Se guarda el Secretario que realiza el informe
+    /*
+        valores válidos: cualquier número
+        valores inválidos: cualquier carácter diferente a un número, vacío y null.
+    */
     private Secretariado secretario;
     // Se guarda una lista de los beneficios
     private ArrayList<Beneficio> beneficios = new ArrayList<>();
