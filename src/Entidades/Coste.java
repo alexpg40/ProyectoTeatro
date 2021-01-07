@@ -1,6 +1,8 @@
 package Entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Scanner;
 
 
 public class Coste {
@@ -147,12 +149,41 @@ public class Coste {
         }
     }
     
-    public void comprobarNombre (String nombre){
-        boolean condicion = false;
-        if (nombre.isEmpty()){
-            System.out.println("No debe de estar vacío.");
-            }
-    }
+    
+    public void comprobarImporte (double importe){
+                
+        if (importe < 0) {
+            System.out.println("No puede ser menor que 0.");
+        } else {
+            this.importe = importe;
+        }
+        
+    };
+    
+    public Coste nuevoCoste(){
+        Coste c = new Coste();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduzca el ID: ");
+        long ident;
+        
+        do {
+            ident = -1;
+            in = new Scanner(System.in);
+            ident = in.nextLong();
+            c.comprobarId(ident);
+        } while(c.getId() != ident || ident == 0);
+        
+        System.out.println("Introduzca ahora el importe: ");
+        
+        long imp;
+        do {
+            imp = -1;
+            in = new Scanner(System.in);
+            imp = in.nextLong();
+            c.comprobarImporte(imp);
+        } while (c.getImporte() != imp || imp <=0);
+        return c;
+    };
     
     @Override
     public String toString() {
