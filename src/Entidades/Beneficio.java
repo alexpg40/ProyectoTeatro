@@ -92,6 +92,29 @@ public class Beneficio {
         this.reporte = reporte;
     }  
     
+    
+    public void comprobarId(long id){
+        boolean cond = false;
+
+        if (id < 0 || id == 0) {
+            System.out.println("La ID debe ser mayor estricto de 0.");
+        } else {
+            for (Beneficio Beneficio : Utilidades.BENEFICIOS){
+                if (id == Beneficio.getId()){
+                    cond = true;
+                    break;
+                } else {
+                    cond = false;
+                }
+            }
+        if (cond) {
+            System.out.println("La ID ya está registrada.");
+        } else {
+            this.id = id;
+        }
+        }
+    }
+    
       @Override
     public String toString() {
         return "Beneficio{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", reporte=" + reporte + ", taquillero=" + taquillero + '}';
