@@ -144,13 +144,6 @@ public class Utilidades {
         new Franquicia (5,fecha17, "Almería, Níjar", T, Informe, empleados, GTrabajo),
         new Franquicia (6,fecha18,"Alicante, Benidorm", T, Informe, empleados, GTrabajo)
     }; 
-        new Franquicia (1,, "Barcelona, Llissá de Munt", true, Informe, empleados, GTrabajo)
-        new Franquicia (2,, "Madrid, Zofío", false, Informe, empleados, GTrabajo)
-        new Franquicia (3,, "Cantabria, Santander", true, Informe, empleados, GTrabajo)
-        new Franquicia (4,, "Galicia, Vigo", false, Informe, empleados, GTrabajo)
-        new Franquicia (5,, "Almería, Níjar", true, Informe, empleados, GTrabajo)
-        new Franquicia (6,"Alicante, Benidorm", true, Informe, empleados, GTrabajo)
-    } 
 
 
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
