@@ -37,13 +37,7 @@ public class Nomina {
         this.mesyano = mesyano;
     }
 
-
-    @Override
-    public String toString() {
-        return "Nomina{" + "id=" + id + ", mesya\u00f1o=" + mesyano + '}';
-    }
-    
-     public void comprobarId(long id){
+    public void comprobarId(long id){
          
         boolean condicion = false;
         
@@ -66,4 +60,16 @@ public class Nomina {
         }
     }
     
+    public static Nomina nuevaNomina (){
+        Nomina n = new Nomina();
+        
+        
+        
+        return n;
+    };
+    
+    @Override
+    public String toString() {
+        return "Nomina{" + "id=" + id + ", mesya\u00f1o=" + mesyano + '}';
+    }    
 }

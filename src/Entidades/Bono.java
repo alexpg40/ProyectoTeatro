@@ -6,9 +6,9 @@ public class Bono {
     private long id;
     // Valores válidos: Números > 0| Valores inválidos: Números <=0 | Otras restricciones: No puede repetirse, solo enteros.
     private char tipo;
-    // Valores válidos: Número entero entre 1 y 12.| Valores inválidos: Cualquier número o carácter distinto que no esté comprendido entre 1 y 12, null y vacío.
-    private int mes;
     // Valores válidos: "P" y "C" | Valores inválidos: Caracter diferente, null o vacío.| Otras restricciones: Parcial solo sirve para el fin de semana. (Los cojones voy a saber hacer yo esto)
+    private int mes;
+    // Valores válidos: Número entero entre 1 y 12.| Valores inválidos: Cualquier número o carácter distinto que no esté comprendido entre 1 y 12, null y vacío.
     private Usuario usuario;
     
     
@@ -59,6 +59,41 @@ public class Bono {
     public void setUsuario (Usuario usuario){
         this.usuario = usuario;
     }
+    
+    public void comprobarId(long id){
+        boolean condicion = false;
+        if (id < 0 || id == 0) {
+            System.out.println("La ID debe de ser mayor estricto de 0.");
+        } else {
+            for (Coste Coste : Utilidades.COSTES){
+                if (id == Coste.getId()){
+                    condicion = true;
+                    break;
+                } else {
+                    condicion = false;
+                }
+            }
+        if (condicion) {
+            System.out.println("La ID ya está registrada.");
+        } else {
+            this.id = id;
+        }
+        }
+    }
+    
+    public void comprobarTipo (char tipo){
+        
+    };
+    
+    public void comprobarMes (int mes) {
+        
+    };
+    
+    public static Bono nuevoBono() {
+        Bono b = new Bono();
+        
+        return b;
+    };
      @Override
     public String toString() {
         return "Bono{" + "id=" + id + ", tipo=" + tipo + ", mes=" + mes + ", usuario=" + usuario + '}';

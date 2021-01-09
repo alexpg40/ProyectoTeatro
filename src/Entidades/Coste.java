@@ -134,16 +134,7 @@ public class Coste {
     
     public void comprobarId(long id){
         boolean condicion = false;
-        // Establecemos la variable booleana "condicion como falsa"
-        // Establecemos que si la ID es menor estricto O igual a cero, se 
-        // muestre un mensaje en pantalla. Sin embargo, si no lo es, haremos que
-        // el programa recorra el array Costes en la clase Utilidades, para
-        // comprobar si el ID está repetido. Si está repetida, la condicion será true y se saldrá del if, siendo verdadera,
-        // llegará al if y sacará por pantalla que la ID ya está registrada.
-        // Si no encuentra ninguna ID repetida, la condicion será falsa y caera
-        // en el else, el cual por fin establecerá la ID que hayamos metido como
-        // la ID de el coste, en este caso.
-        if (id < 0 || id == 0) {
+            if (id < 0 || id == 0) {
             System.out.println("La ID debe de ser mayor estricto de 0.");
         } else {
             for (Coste Coste : Utilidades.COSTES){
