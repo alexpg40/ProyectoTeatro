@@ -111,7 +111,7 @@ public class Empleado {
             return;
         } else {
             for (int i = 0; i < nombre.length(); i++) {
-                if (((nombre.charAt(i) >= '0' && nombre.charAt(i) <= '9'))) {
+                if (!((nombre.charAt(i) >= 'a' && nombre.charAt(i) <= 'z') || (nombre.charAt(i) >= 'A' && nombre.charAt(i) <= 'Z'))) {
                     cond = true;
                     break;
                 } else {
@@ -121,7 +121,7 @@ public class Empleado {
 
         }
         if (cond) {
-            System.out.println("No puede tener números");
+            System.out.println("Solo se permiten letras");
         } else {
             this.nombre = nombre;
         }
@@ -134,7 +134,7 @@ public class Empleado {
             return;
         } else {
             for (int i = 0; i < apellidos.length(); i++) {
-                if (((apellidos.charAt(i) >= '0' && apellidos.charAt(i) <= '9'))) {
+                if (!((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z'))) {
                     cond = true;
                     break;
                 } else {
@@ -144,7 +144,7 @@ public class Empleado {
 
         }
         if (cond) {
-            System.out.println("No puede tener números");
+            System.out.println("Solo se permiten letras");
         } else {
             this.apellidos = apellidos;
         }
