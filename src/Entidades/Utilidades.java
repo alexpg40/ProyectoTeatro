@@ -1,12 +1,8 @@
 package Entidades;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import static javafx.scene.input.KeyCode.F;
 import static javafx.scene.input.KeyCode.T;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 
 public class Utilidades {
@@ -102,8 +98,8 @@ public class Utilidades {
     static Informe informe;
     
     public static final Coste COSTES[] = {
-        new Coste(1,fecha10, 23, 800.90, acomodador, limpieza, 1, informe),
-        new Coste(2,fecha11, 800, limpieza, 2, informe)
+        new Coste(1,fecha10, 23, acomodador, limpieza, NOMINAS[0] ,informe),
+        new Coste(2,fecha11, 800, limpieza, NOMINAS[1] ,informe),
     };
     
     // long id, char tipo, int mes
@@ -129,20 +125,20 @@ public class Utilidades {
     
     // He declarado Informe, empleados y GTrabajo para que no diese error
     static Informe Informe;
-    static Empleado empleados;
     static GTrabajo GTrabajo;
+    static ArrayList<Empleado> Empleados = new ArrayList();
     // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
 
     /**
      *
      */
     public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia (1,fecha12, "Barcelona, Llissá de Munt", T, Informe, empleados, GTrabajo),
-        new Franquicia (2,fecha13, "Madrid, Zofío", F, Informe, empleados, GTrabajo),
-        new Franquicia (3,fecha14, "Cantabria, Santander", T, Informe, empleados, GTrabajo),
-        new Franquicia (4,fecha15, "Galicia, Vigo", F, Informe, empleados, GTrabajo),
-        new Franquicia (5,fecha17, "Almería, Níjar", T, Informe, empleados, GTrabajo),
-        new Franquicia (6,fecha18,"Alicante, Benidorm", T, Informe, empleados, GTrabajo)
+        new Franquicia (1,fecha12, "Barcelona, Llissá de Munt", true, Informe, Empleados, GTrabajo),
+        new Franquicia (2,fecha13, "Madrid, Zofío", false, Informe, Empleados, GTrabajo),
+        new Franquicia (3,fecha14, "Cantabria, Santander", true, Informe, Empleados, GTrabajo),
+        new Franquicia (4,fecha15, "Galicia, Vigo", false, Informe, Empleados, GTrabajo),
+        new Franquicia (5,fecha17, "Almería, Níjar", true, Informe, Empleados, GTrabajo),
+        new Franquicia (6,fecha18,"Alicante, Benidorm", false, Informe, Empleados, GTrabajo)
     }; 
 
 
@@ -156,17 +152,17 @@ public class Utilidades {
     // static ArrayList<Coste> costes = new ArrayList<>();
     // long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes
     static Secretariado secretariado;
-    static Coste costes;
+    static ArrayList<Coste> Costes = new ArrayList<>();
     public static final Informe INFORMES[] = {
-        new Informe (1, fecha10, 300.4, secretariado, beneficios, costes),
-        new Informe (2, fecha11, 400.3, secretariado, beneficios, costes),
-        new Informe (3, fecha12, 282.7, secretariado, beneficios, costes),
-        new Informe (4, fecha13, 274.4, secretariado, beneficios, costes),
-        new Informe (5, fecha14, 182.9, secretariado, beneficios, costes),
-        new Informe (6, fecha15, 455.3, secretariado, beneficios, costes),
-        new Informe (7, fecha16, 964.6, secretariado, beneficios, costes),
-        new Informe (8, fecha17, 412.01, secretariado, beneficios, costes),
-        new Informe (9, fecha18, 202.1, secretariado, beneficios, costes)
+        new Informe (1, fecha10, 300.4, secretariado, beneficios, Costes),
+        new Informe (2, fecha11, 400.3, secretariado, beneficios, Costes),
+        new Informe (3, fecha12, 282.7, secretariado, beneficios, Costes),
+        new Informe (4, fecha13, 274.4, secretariado, beneficios, Costes),
+        new Informe (5, fecha14, 182.9, secretariado, beneficios, Costes),
+        new Informe (6, fecha15, 455.3, secretariado, beneficios, Costes),
+        new Informe (7, fecha16, 964.6, secretariado, beneficios, Costes),
+        new Informe (8, fecha17, 412.01, secretariado, beneficios, Costes),
+        new Informe (9, fecha18, 202.1, secretariado, beneficios, Costes)
     };
 
     // long id, Date fecha, double importe, double reporte, Taquillero taquillero

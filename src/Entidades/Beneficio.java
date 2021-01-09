@@ -5,7 +5,7 @@
  */
 package Entidades;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -54,10 +54,6 @@ public class Beneficio {
         this.fecha = bn.fecha;
         this.importe = bn.importe;
         this.reporte = bn.reporte;
-    }
-
-    Beneficio(int i, java.util.Date fecha19, double d, double d0, Taquillero taquillero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      
     public long getId () {
