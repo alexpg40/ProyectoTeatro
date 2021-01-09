@@ -27,5 +27,7 @@ public class Main {
         Coste c = new Coste();
         c.nuevoCoste();
         
+        Usuario u = new Usuario();
+        u.nuevoUsuario();
     }
 }

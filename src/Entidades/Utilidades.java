@@ -113,11 +113,11 @@ public class Utilidades {
 
     // long id, String nombre, String apellidos, String nif, int telefono, String email
     public static final Usuario USUARIOS[] = {
-        new Usuario(1," Guillermo ", "Illera ", "21141255T ",648937009,"guillermo.illera97@gmail.com"),
-        new Usuario(1," Bernat ", "Cid ", "16874298G ",648941259,"guillermo.illera97@gmail.com"),
-        new Usuario(1," Candido ", "Cuellar ", "65100987H ",612684941,"guillermo.illera97@gmail.com"),
-        new Usuario(1," Mireya ", "Bustos ", "65160165T ",981985321,"guillermo.illera97@gmail.com"),
-        new Usuario(1," Elver ", "Galarga ", "91871326F ",648919849,"guillermo.illera97@gmail.com")
+        new Usuario(1," Guillermo ", "Illera ", "21141255T ","648937009","guillermo.illera97@gmail.com"),
+        new Usuario(1," Bernat ", "Cid ", "16874298G ","648941259","guillermo.illera97@gmail.com"),
+        new Usuario(1," Candido ", "Cuellar ", "65100987H","612684941","guillermo.illera97@gmail.com"),
+        new Usuario(1," Mireya ", "Bustos ", "65160165T ","981985321","guillermo.illera97@gmail.com"),
+        new Usuario(1," Elver ", "Galarga ", "91871326F ","648919849","guillermo.illera97@gmail.com")
     };
     
     

@@ -60,25 +60,8 @@ public class Bono {
         this.usuario = usuario;
     }
     
-    public void comprobarId(long id){
-        boolean condicion = false;
-        if (id < 0 || id == 0) {
-            System.out.println("La ID debe de ser mayor estricto de 0.");
-        } else {
-            for (Coste Coste : Utilidades.COSTES){
-                if (id == Coste.getId()){
-                    condicion = true;
-                    break;
-                } else {
-                    condicion = false;
-                }
-            }
-        if (condicion) {
-            System.out.println("La ID ya está registrada.");
-        } else {
-            this.id = id;
-        }
-        }
+    public void generarId(){
+       this.id = Utilidades.BONOS.length + 1;
     }
     
     public void comprobarTipo (char tipo){
