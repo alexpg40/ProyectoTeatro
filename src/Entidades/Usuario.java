@@ -11,7 +11,7 @@ public class Usuario {
     // Valores validos: cualquier letra | Valores invalidos: números, vakir vacío y null.
     private String nif;
     // Valores válidos: Tiene que haber 8 números y una letra | Valores inválidos: Vacío o null.
-    private String telefono;
+    private int telefono;
     // Valores válidos: Cualquier numero entero | Valores inválidos: | Otras restricciones: No puede repetirse y solo pueden haber números enteros.
     private String email;   
     // Valores válidos: Cualquier carácter | Valores inválidos: Carácteres especiales exceptuando la arroba (@) | Otras restricciones: Tiene que contener una arroba(@).
@@ -24,7 +24,7 @@ public class Usuario {
         
     }
     
-    public Usuario (long id, String nombre, String apellidos, String nif, String telefono, String email) {
+    public Usuario (long id, String nombre, String apellidos, String nif, int telefono, String email) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -74,11 +74,11 @@ public class Usuario {
         this.nif = nif;
     }
     
-    public String getTelefono () {
+    public int getTelefono () {
         return telefono;
     }
     
-    public void setTelefono (String telefono) {
+    public void setTelefono (int telefono) {
         this.telefono = telefono;
     }
     
@@ -89,7 +89,53 @@ public class Usuario {
     public void setEmail (String email) {
         this.email = email;
     }
+    
+    public void comprobarId(long id){
+        boolean condicion = false;
+        if (id < 0 || id == 0) {
+            System.out.println("La ID debe de ser mayor estricto de 0.");
+        } else {
+            for (Coste Coste : Utilidades.COSTES){
+                if (id == Coste.getId()){
+                    condicion = true;
+                    break;
+                } else {
+                    condicion = false;
+                }
+            }
+        if (condicion) {
+            System.out.println("La ID ya está registrada.");
+        } else {
+            this.id = id;
+        }
+        }
+    }
+    
+    public void comprobarNombre(String nombre){
+        
+    };
+    
+    public void comprobarApellido(String apellido){
+        
+    };
+    
+    public void comprobarNif(String nif){
+        
+    };
+    
+    public void comprobarTelefono(int telefono){
+        
+    };
 
+    public void comprobarEmail(String email){
+        
+    };
+    
+    public static Usuario nuevoUsuario(){
+        Usuario u = new Usuario();
+        
+        return u;
+    };
     @Override
     public String toString() {
         return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", telefono=" + telefono + ", email=" + email + '}';
