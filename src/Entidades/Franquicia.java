@@ -6,7 +6,7 @@ import java.util.Date;
 import javafx.scene.input.KeyCode;
 
 public class Franquicia {
-    private long ID;
+    private long id;
     /*  
         valores válidos: números > 0
         valores inválidos: números < 0
@@ -31,14 +31,14 @@ public class Franquicia {
     */
     private GTrabajo grupotrabajo;
     // Se guarda una lista de los empleados de la franquicia
-    private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+    private ArrayList<Empleado> empleados = new ArrayList<>();
     // Se guarda el informe mensual de la franquicia
     private Informe informe;
 
     public Franquicia(){};
     
     public Franquicia (Franquicia f){
-        this.ID = f.ID;
+        this.id = f.id;
         this.fecha_creacion = f.fecha_creacion;
         this.ubicacion = f.ubicacion;
         this.accesibilidad_reducida = f.accesibilidad_reducida;
@@ -47,8 +47,8 @@ public class Franquicia {
         this.grupotrabajo = f.grupotrabajo;
     };
     
-    public Franquicia(long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo) {
-        this.ID = ID;
+    public Franquicia(long id, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo) {
+        this.id = id;
         this.fecha_creacion = fecha_creacion;
         this.ubicacion = ubicacion;
         this.accesibilidad_reducida = accesibilidad_reducida;
@@ -61,8 +61,8 @@ public class Franquicia {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
     public Date getFecha_creacion() {
@@ -90,8 +90,8 @@ public class Franquicia {
         return informe;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setID(long id) {
+        this.id = id;
     }
 
     public void setFecha_creacion(Date fecha_creacion) {
@@ -111,7 +111,6 @@ public class Franquicia {
     }
 
     
-
     public void setEmpleados(ArrayList<Empleado> empleados) {
         this.empleados = empleados;
     }
@@ -120,9 +119,42 @@ public class Franquicia {
         this.informe = informe;
     }
 
+    public void comprobarId(long id){
+        boolean cond = false;
+
+        if (id < 0 || id == 0) {
+            System.out.println("La ID debe ser mayor estricto de 0.");
+        } else {
+            for (Franquicia Franquicia : Utilidades.FRANQUICIAS){
+                if (id == Franquicia.getId()){
+                    cond = true;
+                    break;
+                } else {
+                    cond = false;
+                }
+            }
+        if (cond) {
+            System.out.println("La ID ya está registrada.");
+        } else {
+            this.id = id;
+        }
+        }
+    };       
+    
+    public void comprobarUbicacion(String ubicacion) {
+        if (ubicacion.isEmpty()) {
+            System.out.println("La ubicación no puede estar vacia");
+        } else {
+            this.ubicacion = ubicacion;
+        }
+    }
+    
+    
+    
+    
     @Override
     public String toString() {
-        return "Franquicia{" + "ID=" + ID + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidad_reducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
+        return "Franquicia{" + "id=" + id + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidad_reducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
     }
 
    

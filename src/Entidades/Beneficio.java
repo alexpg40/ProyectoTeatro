@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -109,7 +110,58 @@ public class Beneficio {
             this.id = id;
         }
         }
-    }
+    };
+    
+    public void comprobarImporte (double importe){
+                
+        if (importe < 0) {
+            System.out.println("No puede ser menor que 0.");
+        } else {
+            this.importe = importe;
+        }
+        
+    };
+        
+    
+    public void comprobarReporte (double reporte){
+        boolean cond = false;
+        if (cond) {
+            System.out.println("No puede estar vacío.");
+        } else {
+            this.reporte = reporte;
+        }
+        
+    };
+    
+    
+    public Beneficio nuevoBeneficio(){
+        Beneficio b = new Beneficio();
+        Scanner sc = new Scanner(System.in);
+        b.getId();
+        System.out.println("Introduce el id");
+        long id;
+        do {
+            sc = new Scanner(System.in);
+            id = sc.nextLong();
+            b.comprobarId(id);
+        } while (b.getId() != id);
+        System.out.println("Introduce el importe");
+        double imp;
+        do {
+            sc = new Scanner(System.in);
+            imp = sc.nextDouble();
+            b.comprobarImporte(imp);
+        } while (b.getImporte() != imp);
+        System.out.println("Introduce el reporte");
+        double rep;
+        do {
+            sc = new Scanner(System.in);
+            rep = sc.nextDouble();
+            b.comprobarReporte(rep);
+        } while (b.getReporte() != rep);
+        return b;
+    }    
+        
     
       @Override
     public String toString() {

@@ -43,6 +43,16 @@ public class Direccion extends EmpleadoDeOficina {
         super(e, añosPlantilla);
     }
     
+    
+    public void comprobarAñosplantillaD(int añosPlantillaD){
+        if (!(añosPlantillaD >= 0 && añosPlantillaD <80)) {
+            System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
+        } else{
+            this.añosPlantillaD = añosPlantillaD;
+        }
+    }
+    
+    
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", años en plantilla" + añosPlantillaD +'}';

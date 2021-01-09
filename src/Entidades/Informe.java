@@ -101,6 +101,40 @@ public class Informe {
         this.costes = costes;
     }
 
+    
+    public void comprobarId(long id){
+        boolean cond = false;
+
+        if (id < 0 || id == 0) {
+            System.out.println("La ID debe ser mayor estricto de 0.");
+        } else {
+            for (Informe Informe : Utilidades.INFORMES){
+                if (id == Informe.getId()){
+                    cond = true;
+                    break;
+                } else {
+                    cond = false;
+                }
+            }
+        if (cond) {
+            System.out.println("La ID ya está registrada.");
+        } else {
+            this.id = id;
+        }
+        }
+    };  
+    
+    public void comprobarBalance (double balance){
+        boolean cond = false;
+        if (cond) {
+            System.out.println("No puede estar vacío.");
+        } else {
+            this.balance = balance;
+        }
+        
+    };
+    
+    
     @Override
     public String toString() {
         return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';
