@@ -134,11 +134,11 @@ public class Empleado {
             return;
         } else {
             for (int i = 0; i < apellidos.length(); i++) {
-                if (!((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z'))) {
+                if (((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z'))) {
+                    cond = false;                 
+                } else if(apellidos.charAt(i) != ' '){
                     cond = true;
                     break;
-                } else {
-                    cond = false;
                 }
             }
 
