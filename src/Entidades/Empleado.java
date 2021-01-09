@@ -100,26 +100,8 @@ public class Empleado {
         this.franquicia = e.franquicia;
     }
 
-    public void comprobarId(long id) {
-        boolean cond = false;
-        if (id < 0 || id == 0) {
-            System.out.println("La id tiene que mayor estrictamente que cero");
-        } else {
-            cond = false;
-            for (Empleado Empleado : Utilidades.EMPLEADOS) {
-                if (id == Empleado.getId()) {
-                    cond = true;
-                    break;
-                } else {
-                    cond = false;
-                }
-            }
-            if (cond) {
-                System.out.println("La id coincide con alguna ya guardada en la base");
-            } else {
-                this.id = id;
-            }
-        }
+    public void comprobarId() {
+        this.id = Utilidades.EMPLEADOS.length + 1;
     }
 
     public void comprobarNombre(String nombre) {
@@ -238,14 +220,7 @@ public class Empleado {
     public Empleado nuevoEmpleado() {
         Empleado e = new Empleado();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduce el id");
-        long co;
-        do {
-            co = -1;
-            in = new Scanner(System.in);
-            co = in.nextLong();
-            e.comprobarId(co);
-        } while (e.getId() != co || co == 0);
+        e.comprobarId();
         System.out.println("Introduce el nombre");
         String us;
         do {

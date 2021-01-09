@@ -52,13 +52,7 @@ public class EmpleadoDeOficina extends Empleado{
     public EmpleadoDeOficina nuevoEmpleadoDeOficina(){
         EmpleadoDeOficina e = new EmpleadoDeOficina();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce la id");
-        long id;
-        do {
-            sc = new Scanner(System.in);
-            id = sc.nextLong();
-            e.comprobarId(id);
-        } while (e.getId() != id || id == 0);
+        e.comprobarId();
         System.out.println("Introduce el nombre");
         String nomb;
         do {
