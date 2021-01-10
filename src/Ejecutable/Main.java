@@ -29,5 +29,14 @@ public class Main {
         
         Usuario u = new Usuario();
         u.nuevoUsuario();
+        
+        Beneficio b = new Beneficio();
+        b.nuevoBeneficio();
+        
+        Franquicia f = new Franquicia();
+        f.nuevaFranquicia();
+    
+        Informe inf = new Informe();
+        // inf.nuevoInforme();
     }
 }

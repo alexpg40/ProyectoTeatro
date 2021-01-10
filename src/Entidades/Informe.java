@@ -33,15 +33,15 @@ public class Informe {
     
     public Informe (){};
     
-    public Informe (Informe infor){
-        this.id = infor.id;
-        this.mesyano = infor.mesyano;
-        this.balance = infor.balance;
-        this.secretario = infor.secretario;
-        this.beneficios = infor.beneficios;
+    public Informe (Informe inf){
+        this.id = inf.id;
+        this.mesyano = inf.mesyano;
+        this.balance = inf.balance;
+        this.secretario = inf.secretario;
+        this.beneficios = inf.beneficios;
     };
 
-        public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes) {
+    public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes) {
         this.id = id;
         this.mesyano = mesyano;
         this.balance = balance;
@@ -136,7 +136,7 @@ public class Informe {
     };
     
     
-     public Informe newInforme(){
+    public Informe newInforme(){
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
         inf.getId();
