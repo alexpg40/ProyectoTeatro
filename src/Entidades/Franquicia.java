@@ -91,7 +91,7 @@ public class Franquicia {
         return informe;
     }
 
-    public void setID(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -120,27 +120,9 @@ public class Franquicia {
         this.informe = informe;
     }
 
-    public void comprobarId(long id){
-        boolean cond = false;
-
-        if (id < 0 || id == 0) {
-            System.out.println("La ID debe ser mayor estricto de 0.");
-        } else {
-            for (Franquicia Franquicia : Utilidades.FRANQUICIAS){
-                if (id == Franquicia.getId()){
-                    cond = true;
-                    break;
-                } else {
-                    cond = false;
-                }
-            }
-        if (cond) {
-            System.out.println("La ID ya está registrada.");
-        } else {
-            this.id = id;
-        }
-        }
-    };       
+     public void generarId(){
+       this.id = Utilidades.FRANQUICIAS.length + 1;
+    }   
     
     public void comprobarUbicacion(String ubicacion) {
         if (ubicacion.isEmpty()) {
@@ -160,7 +142,7 @@ public class Franquicia {
         do {
             sc = new Scanner(System.in);
             id = sc.nextLong();
-            f.comprobarId(id);
+            f.setId(id);
         } while (f.getId() != id);
         System.out.println("Introduce la ubicación");
         String ubi;

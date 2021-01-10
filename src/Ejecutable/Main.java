@@ -40,7 +40,7 @@ public class Main {
         f.nuevaFranquicia();
     
         Informe inf = new Informe();
-        // inf.nuevoInforme();
+        inf.nuevoInforme();
         
         Bono bo = new Bono();
         bo.nuevoBono();

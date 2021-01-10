@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Sandr
@@ -52,7 +54,21 @@ public class Direccion extends EmpleadoDeOficina {
         }
     }
     
-    
+     public Direccion nuevaDireccion(){
+        Direccion direc = new Direccion();
+        Scanner sc = new Scanner(System.in);
+        direc.getId();
+        System.out.println("Introduce el id");
+        long id;
+        do {
+            sc = new Scanner(System.in);
+            id = sc.nextLong();
+            direc.setId(id);
+        } while (direc.getId() != id);
+        return direc;
+     }
+     
+     
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", años en plantilla" + añosPlantillaD +'}';

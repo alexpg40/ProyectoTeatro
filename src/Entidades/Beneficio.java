@@ -90,27 +90,9 @@ public class Beneficio {
     }  
     
     
-    public void comprobarId(long id){
-        boolean cond = false;
-
-        if (id < 0 || id == 0) {
-            System.out.println("La ID debe ser mayor estricto de 0.");
-        } else {
-            for (Beneficio Beneficio : Utilidades.BENEFICIOS){
-                if (id == Beneficio.getId()){
-                    cond = true;
-                    break;
-                } else {
-                    cond = false;
-                }
-            }
-        if (cond) {
-            System.out.println("La ID ya está registrada.");
-        } else {
-            this.id = id;
-        }
-        }
-    };
+    public void generarId(){
+       this.id = Utilidades.BENEFICIOS.length + 1;
+    }
     
     public void comprobarImporte (double importe){
                 
@@ -121,18 +103,7 @@ public class Beneficio {
         }
         
     };
-        
-    
-    public void comprobarReporte (double reporte){
-        boolean cond = false;
-        if (cond) {
-            System.out.println("No puede estar vacío.");
-        } else {
-            this.reporte = reporte;
-        }
-        
-    };
-    
+
     
     public Beneficio nuevoBeneficio(){
         Beneficio b = new Beneficio();
@@ -143,7 +114,7 @@ public class Beneficio {
         do {
             sc = new Scanner(System.in);
             id = sc.nextLong();
-            b.comprobarId(id);
+            b.setId(id);
         } while (b.getId() != id);
         System.out.println("Introduce el importe");
         double imp;
@@ -157,7 +128,7 @@ public class Beneficio {
         do {
             sc = new Scanner(System.in);
             rep = sc.nextDouble();
-            b.comprobarReporte(rep);
+            b.setReporte(rep);
         } while (b.getReporte() != rep);
         return b;
     }    

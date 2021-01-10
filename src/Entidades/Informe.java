@@ -102,41 +102,12 @@ public class Informe {
         this.costes = costes;
     }
 
-    
-    public void comprobarId(long id){
-        boolean cond = false;
-
-        if (id < 0 || id == 0) {
-            System.out.println("La ID debe ser mayor estricto de 0.");
-        } else {
-            for (Informe Informe : Utilidades.INFORMES){
-                if (id == Informe.getId()){
-                    cond = true;
-                    break;
-                } else {
-                    cond = false;
-                }
-            }
-        if (cond) {
-            System.out.println("La ID ya está registrada.");
-        } else {
-            this.id = id;
-        }
-        }
-    };  
-    
-    public void comprobarBalance (double balance){
-        boolean cond = false;
-        if (cond) {
-            System.out.println("No puede estar vacío.");
-        } else {
-            this.balance = balance;
-        }
-        
-    };
-    
-    
-    public Informe newInforme(){
+   
+     public void generarId(){
+       this.id = Utilidades.INFORMES.length + 1;
+    }     
+   
+    public Informe nuevoInforme(){
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
         inf.getId();
@@ -145,14 +116,14 @@ public class Informe {
         do {
             sc = new Scanner(System.in);
             id = sc.nextLong();
-            inf.comprobarId(id);
+            inf.setId(id);
         } while (inf.getId() != id);
         System.out.println("Introduce el balance");
         double bal;
         do {
             sc = new Scanner(System.in);
             bal = sc.nextDouble();
-            inf.comprobarBalance(bal);
+            inf.setBalance(bal);
         } while (inf.getBalance() != bal);
         return inf;
     }    
