@@ -11,6 +11,9 @@ public class Main {
 
     //main
     public static void main(String[] args) {
+        
+        Acomodador a = new Acomodador();
+        a.nuevoEmpleadoDeTeatro();
 
         Empleado e = new Empleado();
         e.nuevoEmpleado();
