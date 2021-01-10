@@ -46,7 +46,7 @@ public class Direccion extends EmpleadoDeOficina {
     }
     
     
-    public void comprobarAñosplantillaD(int añosPlantillaD){
+    public void comprobarAñosPlantillaD(int añosPlantillaD){
         if (!(añosPlantillaD >= 0 && añosPlantillaD <80)) {
             System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
         } else{
@@ -65,6 +65,48 @@ public class Direccion extends EmpleadoDeOficina {
             id = sc.nextLong();
             direc.setId(id);
         } while (direc.getId() != id);
+        System.out.println("Introduce el nombre");
+        String nomb;
+        do {
+            sc = new Scanner(System.in);
+            nomb = sc.nextLine();
+            direc.comprobarNombre(nomb);
+        } while (direc.getNombre() != nomb);
+        System.out.println("Introduce los apellidos");
+        String ap;
+        do {
+            sc = new Scanner(System.in);
+            ap = sc.nextLine();
+            direc.comprobarApellidos(ap);
+        } while (direc.getApellidos() != ap);
+        System.out.println("Introduce el NIF");
+        String nif;
+        do {
+            sc = new Scanner(System.in);
+            nif = sc.nextLine();
+            direc.comprobarNif(nif);
+        } while (direc.getNif() != nif);
+        System.out.println("Introduce el telefono");
+        String tl;
+        do {
+            sc = new Scanner(System.in);
+            tl = sc.nextLine();
+            direc.comprobarTelefono(tl);
+        } while (direc.getTelefono() != tl);
+        System.out.println("Introduce la dirección");
+        String d;
+        do {
+            sc = new Scanner(System.in);
+            d = sc.nextLine();
+            direc.comprobarDireccion(d);
+        } while (direc.getDireccion() != d);
+        System.out.println("Introduce los años en plantilla");
+        int pln;
+        do {
+            sc = new Scanner(System.in);
+            pln = sc.nextInt();
+            direc.comprobarAñosPlantillaD(pln);
+        } while (direc.getAñosPlantillaD() != pln);
         return direc;
      }
      

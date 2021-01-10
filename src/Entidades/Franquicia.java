@@ -132,6 +132,14 @@ public class Franquicia {
         }
     }
     
+    public void comprobarAccesibilidad (boolean accesibilidad) {
+        if (true){
+            System.out.println("Hay ayudas para la accesibilidad reducida");
+        } else {
+            System.out.println("No hay ayudas en la accesibilidad reducida");
+        }
+    }
+    
     
      public Franquicia nuevaFranquicia(){
         Franquicia f = new Franquicia();
