@@ -3,6 +3,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Informe {
     private long id;
@@ -134,6 +135,27 @@ public class Informe {
         
     };
     
+    
+     public Informe newInforme(){
+        Informe inf = new Informe();
+        Scanner sc = new Scanner(System.in);
+        inf.getId();
+        System.out.println("Introduce el id");
+        long id;
+        do {
+            sc = new Scanner(System.in);
+            id = sc.nextLong();
+            inf.comprobarId(id);
+        } while (inf.getId() != id);
+        System.out.println("Introduce el balance");
+        double bal;
+        do {
+            sc = new Scanner(System.in);
+            bal = sc.nextDouble();
+            inf.comprobarBalance(bal);
+        } while (inf.getBalance() != bal);
+        return inf;
+    }    
     
     @Override
     public String toString() {

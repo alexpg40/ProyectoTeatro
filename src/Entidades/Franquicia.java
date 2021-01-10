@@ -3,6 +3,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import javafx.scene.input.KeyCode;
 
 public class Franquicia {
@@ -150,7 +151,26 @@ public class Franquicia {
     }
     
     
-    
+     public Franquicia nuevaFranquicia(){
+        Franquicia f = new Franquicia();
+        Scanner sc = new Scanner(System.in);
+        f.getId();
+        System.out.println("Introduce el id");
+        long id;
+        do {
+            sc = new Scanner(System.in);
+            id = sc.nextLong();
+            f.comprobarId(id);
+        } while (f.getId() != id);
+        System.out.println("Introduce la ubicación");
+        String ubi;
+        do {
+            sc = new Scanner(System.in);
+            ubi = sc.nextLine();
+            f.comprobarUbicacion(ubi);
+        } while (f.getUbicacion() != ubi);
+        return f;
+    }    
     
     @Override
     public String toString() {
