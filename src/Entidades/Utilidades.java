@@ -141,7 +141,9 @@ public class Utilidades {
 
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
     public static final Direccion DIRECCIONES[] = {
-        new Direccion(1, "Mario", "Martin", "72207652K", "Barcelona, Llissá de Munt", "654608343", 4)
+        new Direccion(EMPLEADOS[13], 4),
+        new Direccion(EMPLEADOS[14], 10),
+        new Direccion(EMPLEADOS[15],1)
     };
 
     // He declarado un arraylist para que no me diese error
