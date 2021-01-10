@@ -24,7 +24,7 @@ public class Franquicia {
         valores válidos: Letras, números enteros.
         valores inválidos: Valor “ “ (vacio) o null.
     */
-    private boolean accesibilidad_reducida;
+    private boolean accesibilidadreducida;
     // Se guarda el Grupo de trabajo que está trabajando en la franquicia
     /*
         valores válidos: true/false
@@ -42,17 +42,17 @@ public class Franquicia {
         this.id = f.id;
         this.fecha_creacion = f.fecha_creacion;
         this.ubicacion = f.ubicacion;
-        this.accesibilidad_reducida = f.accesibilidad_reducida;
+        this.accesibilidadreducida = f.accesibilidadreducida;
         this.informe = f.informe;
         this.empleados = f.empleados;
         this.grupotrabajo = f.grupotrabajo;
     };
     
-    public Franquicia(long id, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo) {
+    public Franquicia(long id, Date fecha_creacion, String ubicacion, boolean accesibilidadreducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo) {
         this.id = id;
         this.fecha_creacion = fecha_creacion;
         this.ubicacion = ubicacion;
-        this.accesibilidad_reducida = accesibilidad_reducida;
+        this.accesibilidadreducida = accesibilidadreducida;
         this.informe = informe;
         this.grupotrabajo = grupotrabajo;
         this.empleados = empleados;
@@ -74,8 +74,8 @@ public class Franquicia {
         return ubicacion;
     }
 
-    public boolean isAccesibilidad_reducida() {
-        return accesibilidad_reducida;
+    public boolean getAccesibilidadReducida() {
+        return accesibilidadreducida;
     }
 
     public GTrabajo getGrupotrabajo() {
@@ -103,8 +103,8 @@ public class Franquicia {
         this.ubicacion = ubicacion;
     }
 
-    public void setAccesibilidad_reducida(boolean accesibilidad_reducida) {
-        this.accesibilidad_reducida = accesibilidad_reducida;
+    public void setAccesibilidadReducida(boolean accesibilidadreducida) {
+        this.accesibilidadreducida = accesibilidadreducida;
     }
 
     public void setGrupotrabajo(GTrabajo grupotrabajo) {
@@ -159,15 +159,20 @@ public class Franquicia {
             ubi = sc.nextLine();
             f.comprobarUbicacion(ubi);
         } while (f.getUbicacion() != ubi);
+        System.out.println("Introduce accesibilidad");
+        boolean ac;
+        do {
+            sc = new Scanner(System.in);
+            ac = sc.nextBoolean();
+            f.setAccesibilidadReducida(accesibilidadreducida);
+        } while (f.getAccesibilidadReducida()); 
         return f;
     }    
     
+     
     @Override
     public String toString() {
-        return "Franquicia{" + "id=" + id + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidad_reducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
+        return "Franquicia{" + "id=" + id + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidadreducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
     }
-
-   
-    
     
 }
