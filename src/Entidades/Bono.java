@@ -1,6 +1,7 @@
 package Entidades;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Bono {
     private long id;
@@ -65,16 +66,44 @@ public class Bono {
     }
     
     public void comprobarTipo (char tipo){
-        
+            if (tipo != 'C' && tipo !='P') {
+            System.out.println("La categoria solo puede C (Completo) o P (Parcial)");
+        } else{
+            this.tipo = tipo;
+        }
     };
     
     public void comprobarMes (int mes) {
-        
+        if (mes < 1){
+            System.out.println("No puede ser menor de 1.");
+            nuevoBono();
+        } else if (mes > 12) {
+            System.out.println("No puede ser mayor de 12.");
+        } else {
+            this.mes = mes;
+        };
     };
     
-    public static Bono nuevoBono() {
+    public Bono nuevoBono() {
         Bono b = new Bono();
-        
+        Scanner in = new Scanner(System.in);
+            System.out.println("Introcude la categoria");
+        char tipo = 0;
+        do {
+            tipo = 0;
+            in = new Scanner(System.in);
+            tipo = in.next().charAt(tipo);
+            b.comprobarTipo((char) tipo);
+        } while (b.getTipo() != tipo);
+            
+        int m;
+        do {
+            
+            in = new Scanner (System.in);
+            m = in.nextInt();
+            b.comprobarMes(mes);
+            
+        } while (b.getMes() != mes);
         return b;
     };
      @Override

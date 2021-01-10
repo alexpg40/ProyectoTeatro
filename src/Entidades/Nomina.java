@@ -43,8 +43,8 @@ public class Nomina {
     
     public static Nomina nuevaNomina (){
         Nomina n = new Nomina();
-        
-        
+        n.generarId();
+        System.out.println("Se ha generado la ID: " + n.getId());
         
         return n;
     };

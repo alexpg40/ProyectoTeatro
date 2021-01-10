@@ -95,7 +95,7 @@ public class EmpleadoDeTeatro extends Empleado {
             d = sc.nextLine();
             e.comprobarDireccion(d);
         } while (e.getDireccion() != d);
-        System.out.println("Introcude la categoria");
+        System.out.println("Introduce la categoria");
         char c = 0;
         do {
             c = 0;

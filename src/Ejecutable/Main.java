@@ -38,5 +38,11 @@ public class Main {
     
         Informe inf = new Informe();
         // inf.nuevoInforme();
+        
+        Bono bo = new Bono();
+        bo.nuevoBono();
+        
+        Nomina n = new Nomina();
+        n.nuevaNomina();
     }
 }
