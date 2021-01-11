@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 /**
@@ -103,7 +104,19 @@ public class Beneficio {
         }
         
     };
-
+    
+     /*public static Date dameFecha() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Dame el año:");
+        int year = in.nextInt();
+        System.out.println("Dame el mes:");
+        int month = in.nextInt();
+        System.out.println("Dame el día:");
+        int day = in.nextInt();
+        Date date = new GregorianCalendar(year, month, day).getTime();
+        System.out.println("La fecha introducida es:" + date);
+        return Date;
+    }; */
     
     public Beneficio nuevoBeneficio(){
         Beneficio b = new Beneficio();
