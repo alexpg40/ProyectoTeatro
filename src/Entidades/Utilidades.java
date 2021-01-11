@@ -126,17 +126,47 @@ public class Utilidades {
     static GTrabajo GTrabajo;
     static ArrayList<Empleado> Empleados = new ArrayList();
     // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
-
-    /**
-     *
-     */
+    
+ //Empleado e, char categoria, Nomina nomina
+    public static final Taquillero TAQUILLEROS[] = {
+        new Taquillero(EMPLEADOS[6], 'A', NOMINAS[6]),
+        new Taquillero(EMPLEADOS[7], 'B', NOMINAS[7]),
+        new Taquillero(EMPLEADOS[8], 'C', NOMINAS[8])
+    };
+    
+    // long id, Date fecha, double importe, double reporte, Taquillero taquillero
+    public static final Beneficio BENEFICIOS[] = {
+        new Beneficio(1, fecha19, 27.04, 300.3, TAQUILLEROS[0]),
+        new Beneficio(2, fecha20, 20.18, 300.6, TAQUILLEROS[1])
+    };
+    
+    public static final Secretariado SECRETARIOS[] = {
+        new Secretariado(EMPLEADOS[9], 1),
+        new Secretariado(EMPLEADOS[10], 2),
+        new Secretariado(EMPLEADOS[11], 3)
+    };
+    // He declarado un arraylist para que no me diese error
+    static ArrayList<Beneficio> beneficios = new ArrayList<>();
+    static ArrayList<Coste> Costes = new ArrayList<>();
+    // long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes
+    public static final Informe INFORMES[] = {
+        new Informe(1, fecha10, 300.4, SECRETARIOS[0], beneficios, Costes),
+        new Informe(2, fecha11, 400.3, SECRETARIOS[1], beneficios, Costes),
+        new Informe(3, fecha12, 282.7, SECRETARIOS[2], beneficios, Costes),
+        new Informe(4, fecha13, 274.4, SECRETARIOS[0], beneficios, Costes),
+        new Informe(5, fecha14, 182.9, SECRETARIOS[1], beneficios, Costes),
+        new Informe(6, fecha15, 455.3, SECRETARIOS[2], beneficios, Costes),
+        new Informe(7, fecha16, 964.6, SECRETARIOS[0], beneficios, Costes),
+        new Informe(8, fecha17, 412.01, SECRETARIOS[1], beneficios, Costes),
+        new Informe(9, fecha18, 202.1, SECRETARIOS[2], beneficios, Costes)
+    };
     public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia(1, fecha12, "Barcelona, Llissá de Munt", true, Informe, Empleados, GTrabajo),
-        new Franquicia(2, fecha13, "Madrid, Zofío", false, Informe, Empleados, GTrabajo),
-        new Franquicia(3, fecha14, "Cantabria, Santander", true, Informe, Empleados, GTrabajo),
-        new Franquicia(4, fecha15, "Galicia, Vigo", false, Informe, Empleados, GTrabajo),
-        new Franquicia(5, fecha17, "Almería, Níjar", true, Informe, Empleados, GTrabajo),
-        new Franquicia(6, fecha18, "Alicante, Benidorm", false, Informe, Empleados, GTrabajo)
+        new Franquicia(1, fecha12, "Barcelona, Llissá de Munt", true, INFORMES[0], Empleados, GTRABAJO[0]),
+        new Franquicia(2, fecha13, "Madrid, Zofío", false, INFORMES[1], Empleados, GTRABAJO[1]),
+        new Franquicia(3, fecha14, "Cantabria, Santander", true, INFORMES[2], Empleados, GTRABAJO[2]),
+        new Franquicia(4, fecha15, "Galicia, Vigo", false, INFORMES[3], Empleados, GTRABAJO[3]),
+        new Franquicia(5, fecha17, "Almería, Níjar", true, INFORMES[4], Empleados, GTRABAJO[4]),
+        new Franquicia(6, fecha18, "Alicante, Benidorm", false, INFORMES[5], Empleados, GTRABAJO[5])
     };
 
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
@@ -144,31 +174,6 @@ public class Utilidades {
         new Direccion(EMPLEADOS[13], 4),
         new Direccion(EMPLEADOS[14], 10),
         new Direccion(EMPLEADOS[15],1)
-    };
-
-    // He declarado un arraylist para que no me diese error
-    static ArrayList<Beneficio> beneficios = new ArrayList<>();
-    // static ArrayList<Coste> costes = new ArrayList<>();
-    // long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes
-    static Secretariado secretariado;
-    static ArrayList<Coste> Costes = new ArrayList<>();
-    public static final Informe INFORMES[] = {
-        new Informe(1, fecha10, 300.4, secretariado, beneficios, Costes),
-        new Informe(2, fecha11, 400.3, secretariado, beneficios, Costes),
-        new Informe(3, fecha12, 282.7, secretariado, beneficios, Costes),
-        new Informe(4, fecha13, 274.4, secretariado, beneficios, Costes),
-        new Informe(5, fecha14, 182.9, secretariado, beneficios, Costes),
-        new Informe(6, fecha15, 455.3, secretariado, beneficios, Costes),
-        new Informe(7, fecha16, 964.6, secretariado, beneficios, Costes),
-        new Informe(8, fecha17, 412.01, secretariado, beneficios, Costes),
-        new Informe(9, fecha18, 202.1, secretariado, beneficios, Costes)
-    };
-
-    // long id, Date fecha, double importe, double reporte, Taquillero taquillero
-    static Taquillero taquillero;
-    public static final Beneficio BENEFICIOS[] = {
-        new Beneficio(1, fecha19, 27.04, 300.3, taquillero),
-        new Beneficio(2, fecha20, 20.18, 300.6, taquillero)
     };
 
     //Empleado e, char categoria, Nomina nomina
@@ -183,17 +188,4 @@ public class Utilidades {
         new Acomodador(EMPLEADOS[4], 'A', NOMINAS[4]),
         new Acomodador(EMPLEADOS[5], 'C', NOMINAS[5])
     };
-    //Empleado e, char categoria, Nomina nomina
-    public static final Taquillero TAQUELLEROS[] = {
-        new Taquillero(EMPLEADOS[6], 'A', NOMINAS[6]),
-        new Taquillero(EMPLEADOS[7], 'B', NOMINAS[7]),
-        new Taquillero(EMPLEADOS[8], 'C', NOMINAS[8])
-    };
-
-    public static final Secretariado SECRETARIOS[] = {
-        new Secretariado(EMPLEADOS[9], 1),
-        new Secretariado(EMPLEADOS[10], 2),
-        new Secretariado(EMPLEADOS[11], 3)
-    };
-
 }
