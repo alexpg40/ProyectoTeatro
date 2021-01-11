@@ -62,26 +62,8 @@ public class GTrabajo {
         this.franquicia = franquicia;
     }
 
-    public void comprobarId(long id) {
-        boolean cond = false;
-        if (id < 0 || id == 0) {
-            System.out.println("La id tiene que mayor estrictamente que cero");
-        } else {
-            cond = false;
-            for (GTrabajo Empleado : Utilidades.GTRABAJO) {
-                if (id == Empleado.getId()) {
-                    cond = true;
-                    break;
-                } else {
-                    cond = false;
-                }
-            }
-            if (cond) {
-                System.out.println("La id coincide con alguna ya guardada en la base");
-            } else {
-                this.id = id;
-            }
-        }
+    public void generarId() {
+        this.id = Utilidades.GTRABAJO.length +1;
     }
     
     public void comprobarSemana(long semana){
@@ -95,13 +77,7 @@ public class GTrabajo {
     public static GTrabajo nuevoGTrabajo(){
         GTrabajo gt = new GTrabajo();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce la id");
-        long id;
-        do {
-            sc = new Scanner(System.in);
-            id = sc.nextLong();
-            gt.comprobarId(id);
-        } while (gt.getId() != id || id == 0);
+        gt.generarId();
         System.out.println("Introduce la semana");
         long semana;
         do {

@@ -88,7 +88,7 @@ public class Bono {
 
     ;
     
-    public static Bono nuevoBono() {
+    public Bono nuevoBono() {
         Bono b = new Bono();
         Scanner in = new Scanner(System.in);
         System.out.println("Introcude la categoria");

@@ -113,7 +113,7 @@ public class Informe {
         this.id = Utilidades.INFORMES.length + 1;
     }
 
-    public static Date dameFecha() {
+    public Date dameFecha() {
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
         int year = in.nextInt();
@@ -129,22 +129,16 @@ public class Informe {
     ;
      
      
-    public static Informe nuevoInforme() {
+    public Informe nuevoInforme() {
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
-        inf.getId();
-        System.out.println("Introduce el id");
-        long id;
-        do {
-            sc = new Scanner(System.in);
-            id = sc.nextLong();
-            inf.setId(id);
-        } while (inf.getId() != id);
+        inf.generarId();
         System.out.println("Introduce el balance");
         double bal;
         sc = new Scanner(System.in);
         bal = sc.nextDouble();
         inf.setBalance(bal);
+        inf.dameFecha();
         return inf;
     }
 

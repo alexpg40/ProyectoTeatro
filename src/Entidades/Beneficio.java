@@ -106,7 +106,7 @@ public class Beneficio {
 
     ;
     
-     public static Date dameFecha() {
+     public Date dameFecha(Date dt) {
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
         int year = in.nextInt();
@@ -121,17 +121,10 @@ public class Beneficio {
 
     ;
     
-    public static Beneficio nuevoBeneficio() {
+    public Beneficio nuevoBeneficio() {
         Beneficio b = new Beneficio();
         Scanner sc = new Scanner(System.in);
-        b.getId();
-        System.out.println("Introduce el id");
-        long id;
-        do {
-            sc = new Scanner(System.in);
-            id = sc.nextLong();
-            b.setId(id);
-        } while (b.getId() != id);
+        b.generarId();
         System.out.println("Introduce el importe");
         double imp;
         do {
@@ -144,6 +137,9 @@ public class Beneficio {
         sc = new Scanner(System.in);
         rep = sc.nextDouble();
         b.setReporte(rep);
+        Date date = new GregorianCalendar().getTime();
+        sc = new Scanner(System.in);
+        b.dameFecha(date);
         return b;
     }
 

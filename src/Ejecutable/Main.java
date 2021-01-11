@@ -12,20 +12,23 @@ public class Main {
     //main
     public static void main(String[] args) {
         
+        Beneficio bn = new Beneficio();
+        //bn.nuevoBeneficio();
+        
         Acomodador a = new Acomodador();
-        a.nuevoEmpleadoDeTeatro();
+        //a.nuevoEmpleadoDeTeatro();
 
         Empleado e = new Empleado();
-        e.nuevoEmpleado();
+        //e.nuevoEmpleado();
 
         GTrabajo g = new GTrabajo();
-        g.nuevoGTrabajo();
+        //g.nuevoGTrabajo();
 
         EmpleadoDeTeatro et = new EmpleadoDeTeatro();
-        et.nuevoEmpleadoDeTeatro();
+        //et.nuevoEmpleadoDeTeatro();
 
         EmpleadoDeOficina ef = new EmpleadoDeOficina();
-        ef.nuevoEmpleadoDeOficina();
+        //ef.nuevoEmpleadoDeOficina();
         
         Coste c = new Coste();
         c.nuevoCoste();

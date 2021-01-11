@@ -65,10 +65,6 @@ public class Franquicia {
         this.empleados = empleados;
     }
 
-    Franquicia(int i, Date fecha12, String barcelona_Llissá_de_Munt, KeyCode keyCode, Informe Informe, Empleado empleados, GTrabajo GTrabajo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public long getId() {
         return id;
     }
@@ -145,7 +141,7 @@ public class Franquicia {
         }
     }
 
-    public static Date dameFecha() {
+    public Date dameFecha() {
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
         int year = in.nextInt();
@@ -160,7 +156,7 @@ public class Franquicia {
 
     ;
     
-     public static Franquicia nuevaFranquicia() {
+     public Franquicia nuevaFranquicia() {
         Franquicia f = new Franquicia();
         Scanner sc = new Scanner(System.in);
         f.getId();

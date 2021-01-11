@@ -41,11 +41,10 @@ public class Nomina {
        this.id = Utilidades.NOMINAS.length + 1;
     }
     
-    public static Nomina nuevaNomina (){
+    public Nomina nuevaNomina (){
         Nomina n = new Nomina();
         n.generarId();
         System.out.println("Se ha generado la ID: " + n.getId());
-        
         return n;
     };
     

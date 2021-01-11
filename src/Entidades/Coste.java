@@ -135,7 +135,7 @@ public class Coste {
         
     };
     
-    public static Coste nuevoCoste(){
+    public Coste nuevoCoste(){
         Coste c = new Coste();
         Scanner in = new Scanner(System.in);
         c.generarId();

@@ -160,13 +160,16 @@ public class Utilidades {
         new Informe(8, fecha17, 412.01, SECRETARIOS[1], beneficios, Costes),
         new Informe(9, fecha18, 202.1, SECRETARIOS[2], beneficios, Costes)
     };
+    
+    static GTrabajo Gtrabajo;
+    
     public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia(1, fecha12, "Barcelona, Llissá de Munt", true, INFORMES[0], Empleados, GTRABAJO[0]),
-        new Franquicia(2, fecha13, "Madrid, Zofío", false, INFORMES[1], Empleados, GTRABAJO[1]),
-        new Franquicia(3, fecha14, "Cantabria, Santander", true, INFORMES[2], Empleados, GTRABAJO[2]),
-        new Franquicia(4, fecha15, "Galicia, Vigo", false, INFORMES[3], Empleados, GTRABAJO[3]),
-        new Franquicia(5, fecha17, "Almería, Níjar", true, INFORMES[4], Empleados, GTRABAJO[4]),
-        new Franquicia(6, fecha18, "Alicante, Benidorm", false, INFORMES[5], Empleados, GTRABAJO[5])
+        new Franquicia(1, fecha12, "Barcelona, Llissá de Munt", true, informe, Empleados, Gtrabajo),
+        new Franquicia(2, fecha13, "Madrid, Zofío", false, informe, Empleados, Gtrabajo),
+        new Franquicia(3, fecha14, "Cantabria, Santander", true, informe, Empleados, Gtrabajo),
+        new Franquicia(4, fecha15, "Galicia, Vigo", false, informe, Empleados, Gtrabajo),
+        new Franquicia(5, fecha17, "Almería, Níjar", true, informe, Empleados, Gtrabajo),
+        new Franquicia(6, fecha18, "Alicante, Benidorm", false, informe, Empleados, Gtrabajo)
     };
 
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
