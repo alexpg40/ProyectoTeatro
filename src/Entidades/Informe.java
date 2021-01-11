@@ -3,6 +3,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Informe {
@@ -108,7 +109,7 @@ public class Informe {
     }     
    
      
-      /*public static Date dameFecha() {
+      public static Date dameFecha() {
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
         int year = in.nextInt();
@@ -118,8 +119,8 @@ public class Informe {
         int day = in.nextInt();
         Date date = new GregorianCalendar(year, month, day).getTime();
         System.out.println("La fecha introducida es:" + date);
-        return Date;
-    }; */
+        return date;
+    };
      
      
     public Informe nuevoInforme(){
