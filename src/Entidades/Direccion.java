@@ -54,7 +54,7 @@ public class Direccion extends EmpleadoDeOficina {
         }
     }
     
-     public Direccion nuevaDireccion(){
+     public static Direccion nuevaDireccion(){
         Direccion direc = new Direccion();
         Scanner sc = new Scanner(System.in);
         direc.getId();

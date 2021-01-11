@@ -49,7 +49,7 @@ public class EmpleadoDeOficina extends Empleado{
         }
     }
     
-    public EmpleadoDeOficina nuevoEmpleadoDeOficina(){
+    public static EmpleadoDeOficina nuevoEmpleadoDeOficina(){
         EmpleadoDeOficina e = new EmpleadoDeOficina();
         Scanner sc = new Scanner(System.in);
         e.comprobarId();

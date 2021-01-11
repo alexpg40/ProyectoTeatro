@@ -56,7 +56,7 @@ public class EmpleadoDeTeatro extends Empleado {
             this.categoria = categoria;
         }
     }
-    public EmpleadoDeTeatro nuevoEmpleadoDeTeatro(){
+    public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(){
         EmpleadoDeTeatro e = new EmpleadoDeTeatro();
         Scanner sc = new Scanner(System.in);
         e.comprobarId();

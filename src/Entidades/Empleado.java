@@ -217,7 +217,7 @@ public class Empleado {
         }
     }
 
-    public Empleado nuevoEmpleado() {
+    public static Empleado nuevoEmpleado() {
         Empleado e = new Empleado();
         Scanner in = new Scanner(System.in);
         e.comprobarId();

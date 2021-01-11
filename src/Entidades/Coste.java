@@ -63,18 +63,6 @@ public class Coste {
         this.nomina = nomina;
         this.informe = informe;
     }
-
-    Coste(int i, LocalDate now, int i0, double d, Acomodador acomodador, Limpieza limpieza, int i1, Informe informe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Coste(int i, java.util.Date fecha10, int i0, double d, Acomodador acomodador, Limpieza limpieza, int i1, Informe informe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Coste(int i, java.util.Date fecha11, int i0, Limpieza limpieza, int i1, Informe informe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public long getId() {
         return id;
@@ -147,7 +135,7 @@ public class Coste {
         
     };
     
-    public Coste nuevoCoste(){
+    public static Coste nuevoCoste(){
         Coste c = new Coste();
         Scanner in = new Scanner(System.in);
         c.generarId();

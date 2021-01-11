@@ -92,7 +92,7 @@ public class GTrabajo {
         }
     }
     
-    public GTrabajo nuevoGTrabajo(){
+    public static GTrabajo nuevoGTrabajo(){
         GTrabajo gt = new GTrabajo();
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la id");
