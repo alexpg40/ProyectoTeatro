@@ -121,7 +121,7 @@ public class Informe {
         int month = in.nextInt();
         System.out.println("Dame el día:");
         int day = in.nextInt();
-        Date date = new GregorianCalendar(year, month, day).getTime();
+        java.sql.Date dt = new GregorianCalendar (year,month,day).getTime();
         System.out.println("La fecha introducida es:" + date);
         return date;
     }

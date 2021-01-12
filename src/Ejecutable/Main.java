@@ -9,9 +9,9 @@ import Entidades.*;
 
 public class Main {
 
-    //main
+    //main 
     public static void main(String[] args) {
-        
+        /*
         Beneficio bn = new Beneficio();
         bn.nuevoBeneficio();
         
@@ -50,5 +50,9 @@ public class Main {
         
         Nomina n = new Nomina();
         n.nuevaNomina();
-    }
+ */
+        
+        Informe i = new Informe();
+        i.dameFecha();
+}
 }
