@@ -1,31 +1,11 @@
 package Entidades;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 public class Utilidades {
 
-    static final Date fecha1 = new Date(2010, 11, 28);
-    static final Date fecha2 = new Date(2016, 5, 10);
-    static final Date fecha3 = new Date(2014, 2, 21);
-    static final Date fecha4 = new Date(2019, 12, 12);
-    static final Date fecha5 = new Date(2020, 5, 24);
-    static final Date fecha6 = new Date(2005, 1, 29);
-    static final Date fecha7 = new Date(2002, 5, 28);
-    static final Date fecha8 = new Date(1997, 7, 17);
-    static final Date fecha9 = new Date(2010, 2, 13);
-    static final Date fecha10 = new Date(2010, 9, 12);
-    static final Date fecha11 = new Date(2015, 8, 30);
-    static final Date fecha12 = new Date(2012, 7, 20);
-    static final Date fecha13 = new Date(2013, 3, 15);
-    static final Date fecha14 = new Date(2019, 8, 13);
-    static final Date fecha15 = new Date(2017, 1, 18);
-    static final Date fecha16 = new Date(2016, 2, 11);
-    static final Date fecha17 = new Date(2014, 1, 10);
-    static final Date fecha18 = new Date(2012, 10, 19);
-    static final Date fecha19 = new Date(2011, 12, 17);
-    static final Date fecha20 = new Date(2019, 12, 15);
-
+    
     //He declarado la Franquicia para que no me de error
     static Franquicia Franquicia;
     //long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia Franquicia
@@ -61,15 +41,15 @@ public class Utilidades {
 
     // long id, Date mesyano, otra vez ni puta idea de poner la fecha.
     public static final Nomina NOMINAS[] = {
-        new Nomina(1, fecha1),
-        new Nomina(2, fecha2),
-        new Nomina(3, fecha3),
-        new Nomina(4, fecha4),
-        new Nomina(5, fecha5),
-        new Nomina(6, fecha6),
-        new Nomina(7, fecha7),
-        new Nomina(8, fecha8),
-        new Nomina(9, fecha9),};
+        new Nomina(1, new Date (2010, 11, 28)),
+        new Nomina(2, new Date(2016, 5, 10)),
+        new Nomina(3, new Date(2014, 2, 21)),
+        new Nomina(4, new Date(2019, 12, 12)),
+        new Nomina(5, new Date(2010, 2, 31)),
+        new Nomina(6, new Date(2009, 12, 5)),
+        new Nomina(7, new Date(2019, 12, 12)),
+        new Nomina(8, new Date(2019, 12, 12)),
+        new Nomina(9, new Date(2019, 12, 12)),};
 
     //char categoria, Nomina nomina
     public static final EmpleadoDeTeatro EMPLEADOSDETEATRO[] = {
@@ -100,8 +80,8 @@ public class Utilidades {
     static Informe informe;
 
     public static final Coste COSTES[] = {
-        new Coste(1, fecha10, 23, acomodador, limpieza, NOMINAS[0], informe),
-        new Coste(2, fecha11, 800, limpieza, NOMINAS[1], informe),};
+        new Coste(1, new Date (2010, 11, 28), 23, acomodador, limpieza, NOMINAS[0], informe),
+        new Coste(2, new Date (2010, 11, 28), 800, limpieza, NOMINAS[1], informe),};
 
     // long id, char tipo, int mes
     public static final Bono BONOS[] = {
@@ -136,8 +116,8 @@ public class Utilidades {
     
     // long id, Date fecha, double importe, double reporte, Taquillero taquillero
     public static final Beneficio BENEFICIOS[] = {
-        new Beneficio(1, fecha19, 27.04, 300.3, TAQUILLEROS[0]),
-        new Beneficio(2, fecha20, 20.18, 300.6, TAQUILLEROS[1])
+        new Beneficio(1, new java.sql.Date(2019, 12, 12), 27.04, 300.3, TAQUILLEROS[0]),
+        new Beneficio(2, new java.sql.Date(2019, 12, 12), 20.18, 300.6, TAQUILLEROS[1])
     };
     
     public static final Secretariado SECRETARIOS[] = {
@@ -150,26 +130,26 @@ public class Utilidades {
     static ArrayList<Coste> Costes = new ArrayList<>();
     // long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios,  ArrayList<Coste> costes
     public static final Informe INFORMES[] = {
-        new Informe(1, fecha10, 300.4, SECRETARIOS[0], beneficios, Costes),
-        new Informe(2, fecha11, 400.3, SECRETARIOS[1], beneficios, Costes),
-        new Informe(3, fecha12, 282.7, SECRETARIOS[2], beneficios, Costes),
-        new Informe(4, fecha13, 274.4, SECRETARIOS[0], beneficios, Costes),
-        new Informe(5, fecha14, 182.9, SECRETARIOS[1], beneficios, Costes),
-        new Informe(6, fecha15, 455.3, SECRETARIOS[2], beneficios, Costes),
-        new Informe(7, fecha16, 964.6, SECRETARIOS[0], beneficios, Costes),
-        new Informe(8, fecha17, 412.01, SECRETARIOS[1], beneficios, Costes),
-        new Informe(9, fecha18, 202.1, SECRETARIOS[2], beneficios, Costes)
+        new Informe(1, new Date(2019, 12, 12), 300.4, SECRETARIOS[0], beneficios, Costes),
+        new Informe(2, new Date(2019, 12, 12), 400.3, SECRETARIOS[1], beneficios, Costes),
+        new Informe(3, new Date(2019, 12, 12), 282.7, SECRETARIOS[2], beneficios, Costes),
+        new Informe(4, new Date(2019, 12, 12), 274.4, SECRETARIOS[0], beneficios, Costes),
+        new Informe(5, new Date(2019, 12, 12), 182.9, SECRETARIOS[1], beneficios, Costes),
+        new Informe(6, new Date(2019, 12, 12), 455.3, SECRETARIOS[2], beneficios, Costes),
+        new Informe(7, new Date(2019, 12, 12), 964.6, SECRETARIOS[0], beneficios, Costes),
+        new Informe(8, new Date(2019, 12, 12), 412.01, SECRETARIOS[1], beneficios, Costes),
+        new Informe(9, new Date(2019, 12, 12), 202.1, SECRETARIOS[2], beneficios, Costes)
     };
     
     static GTrabajo Gtrabajo;
     
     public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia(1, fecha12, "Barcelona, Llissá de Munt", true, informe, Empleados, Gtrabajo),
-        new Franquicia(2, fecha13, "Madrid, Zofío", false, informe, Empleados, Gtrabajo),
-        new Franquicia(3, fecha14, "Cantabria, Santander", true, informe, Empleados, Gtrabajo),
-        new Franquicia(4, fecha15, "Galicia, Vigo", false, informe, Empleados, Gtrabajo),
-        new Franquicia(5, fecha17, "Almería, Níjar", true, informe, Empleados, Gtrabajo),
-        new Franquicia(6, fecha18, "Alicante, Benidorm", false, informe, Empleados, Gtrabajo)
+        new Franquicia(1, new Date(2019, 12, 12), "Barcelona, Llissá de Munt", true, informe, Empleados, Gtrabajo),
+        new Franquicia(2, new Date(2019, 12, 12), "Madrid, Zofío", false, informe, Empleados, Gtrabajo),
+        new Franquicia(3, new Date(2019, 12, 12), "Cantabria, Santander", true, informe, Empleados, Gtrabajo),
+        new Franquicia(4, new Date(2019, 12, 12), "Galicia, Vigo", false, informe, Empleados, Gtrabajo),
+        new Franquicia(5, new Date(2019, 12, 12), "Almería, Níjar", true, informe, Empleados, Gtrabajo),
+        new Franquicia(6, new Date(2019, 12, 12), "Alicante, Benidorm", false, informe, Empleados, Gtrabajo)
     };
 
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD

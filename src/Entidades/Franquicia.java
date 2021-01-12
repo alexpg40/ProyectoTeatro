@@ -2,7 +2,7 @@ package Entidades;
 //Guillermo Illera Vinatea
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import javafx.scene.input.KeyCode;
@@ -149,7 +149,7 @@ public class Franquicia {
         int month = in.nextInt();
         System.out.println("Dame el día:");
         int day = in.nextInt();
-        Date date = new GregorianCalendar(year, month, day).getTime();
+        Date date = (Date) new GregorianCalendar(year, month, day).getTime();
         System.out.println("La fecha introducida es:" + date);
         return date;
     }

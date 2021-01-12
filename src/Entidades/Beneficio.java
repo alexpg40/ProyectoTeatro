@@ -5,7 +5,7 @@
  */
 package Entidades;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -114,7 +114,7 @@ public class Beneficio {
         int month = in.nextInt();
         System.out.println("Dame el día:");
         int day = in.nextInt();
-        Date date = new GregorianCalendar(year, month, day).getTime();
+        Date date = (Date) new GregorianCalendar(year, month, day).getTime();
         System.out.println("La fecha introducida es:" + date);
         return date;
     }
@@ -137,7 +137,7 @@ public class Beneficio {
         sc = new Scanner(System.in);
         rep = sc.nextDouble();
         b.setReporte(rep);
-        Date date = new GregorianCalendar().getTime();
+        Date date = (Date) new GregorianCalendar().getTime();
         sc = new Scanner(System.in);
         b.dameFecha(date);
         return b;
