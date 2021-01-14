@@ -207,7 +207,7 @@ public class Usuario {
     public void introducirEmail(){
         
         Scanner in = new Scanner(System.in);
-        in = new Scanner(System.in);
+        
         System.out.println("Introduce tu email: ");
         email = in.nextLine();
         

@@ -12,15 +12,15 @@ import java.util.ArrayList;
  * @author DarkB
  */
 public class Limpieza extends EmpleadoDeTeatro {
-    
+
     //Los empleados generan un coste que reportan y se guardan en el arraylist
     private ArrayList<Coste> costes = new ArrayList<>();
-    
-    public Limpieza(){
+
+    public Limpieza() {
         super();
     }
 
-    public Limpieza(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
+    public Limpieza(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -29,14 +29,14 @@ public class Limpieza extends EmpleadoDeTeatro {
         this.telefono = telefono;
         this.categoria = categoria;
     }
-    
-    public Limpieza(Empleado e, char categoria, Nomina nomina){
+
+    public Limpieza(Empleado e, char categoria, Nomina nomina) {
         super(e, categoria, nomina);
     }
-    
+
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + '}';
     }
 
     public ArrayList<Coste> getBeneficios() {
