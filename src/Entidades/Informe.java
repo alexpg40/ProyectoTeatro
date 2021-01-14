@@ -114,6 +114,8 @@ public class Informe {
     }
 
     public Date dameFecha() {
+        Date Fecha = new Date (year,month,day);
+        Date date = new Date(year,month,day);
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
         int year = in.nextInt();
@@ -121,7 +123,7 @@ public class Informe {
         int month = in.nextInt();
         System.out.println("Dame el día:");
         int day = in.nextInt();
-        java.sql.Date dt = new GregorianCalendar (year,month,day).getTime();
+        
         System.out.println("La fecha introducida es:" + date);
         return date;
     }
