@@ -114,15 +114,16 @@ public class Informe {
     }
 
     public Date dameFecha() {
-        Date Fecha = new Date (year,month,day);
-        Date date = new Date(year,month,day);
+          
         Scanner in = new Scanner(System.in);
+        
         System.out.println("Dame el año:");
         int year = in.nextInt();
         System.out.println("Dame el mes:");
         int month = in.nextInt();
         System.out.println("Dame el día:");
         int day = in.nextInt();
+        Date date = new Date(year,month,day);
         
         System.out.println("La fecha introducida es:" + date);
         return date;
