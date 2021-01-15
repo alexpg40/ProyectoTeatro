@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class EmpleadoDeTeatro extends Empleado {
     
+    //VALORES VALIDOS: A, B, C, y D && VALORES INVALIDOS: CUALQUIER CARACTER DIFERENTE A A,B,C y D 
     protected char categoria;
     //Cada empleado de teatro tiene una nomina que es calculada por secretario y revisada por direccion
     private Nomina nomina;

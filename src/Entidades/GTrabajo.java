@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GTrabajo {
+    
+    //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
     private long id;
+    //VALORES VALIDOS: NUMEROS ENTEROS => 1 y <=6 && VALORES INVALIDOS: CUALQUIER CARACTER O NUMERO DIFERENTE
     private long semana;
     
     // Se guarda una lista de los trabajadores que forman parte de grupo de trabajo

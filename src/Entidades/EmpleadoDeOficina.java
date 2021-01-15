@@ -12,6 +12,8 @@ import java.util.Scanner;
  * @author Sandr
  */
 public class EmpleadoDeOficina extends Empleado{
+    
+    //VALORES VALIDOS: ENTERO => 0 Y ENTERO <= 80 && VALORES INVALIDOS: ENTEROS > 80 o < 0, CUALQUIER CARACTER DIFERENTE A UN NUMERO 
    protected int añosPlantilla;
     
     
