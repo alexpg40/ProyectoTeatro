@@ -59,7 +59,7 @@ public class EmpleadoDeTeatro extends Empleado {
     public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(){
         EmpleadoDeTeatro e = new EmpleadoDeTeatro();
         Scanner sc = new Scanner(System.in);
-        e.comprobarId();
+        e.setId(e.generarId());
         System.out.println("Introduce el nombre");
         String nomb;
         do {

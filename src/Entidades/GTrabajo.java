@@ -62,9 +62,14 @@ public class GTrabajo {
         this.franquicia = franquicia;
     }
 
-    public void generarId() {
-        this.id = Utilidades.GTRABAJO.length +1;
-    }
+    public long generarId() {
+        long id = 0;
+        for (GTrabajo gt : Utilidades.GTRABAJO) {
+            if (id < gt.id) {
+                id = gt.id;
+            }
+        }
+    return id+1;}
     
     public void comprobarSemana(long semana){
         if (!(semana >= 1 && semana <=6)) {
@@ -77,7 +82,7 @@ public class GTrabajo {
     public static GTrabajo nuevoGTrabajo(){
         GTrabajo gt = new GTrabajo();
         Scanner sc = new Scanner(System.in);
-        gt.generarId();
+        gt.setId(gt.generarId());
         System.out.println("Introduce la semana");
         long semana;
         do {

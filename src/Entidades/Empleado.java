@@ -100,9 +100,14 @@ public class Empleado {
         this.franquicia = e.franquicia;
     }
 
-    public void comprobarId() {
-        this.id = Utilidades.EMPLEADOS.length + 1;
-    }
+    public long generarId() {
+        long id = 0;
+        for (Empleado e : Utilidades.EMPLEADOS) {
+            if (id < e.id) {
+                id = e.id;
+            }
+        }
+    return id +1;}
 
     public void comprobarNombre(String nombre) {
         boolean cond = false;
@@ -220,7 +225,7 @@ public class Empleado {
     public Empleado nuevoEmpleado() {
         Empleado e = new Empleado();
         Scanner in = new Scanner(System.in);
-        e.comprobarId();
+        e.setId(e.generarId());
         System.out.println("Introduce el nombre");
         String us;
         do {
