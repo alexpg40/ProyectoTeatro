@@ -259,6 +259,16 @@ public class Usuario {
     };
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", telefono=" + telefono + ", email=" + email + '}';
+        String ret = "Los datos del Usuario son: " + " \nid del usuario: " + id + "\nnombre: " + nombre + "\napellidos: " + apellidos + "\nel DNI es" + nif + "\nteléfono: " + telefono + "\nel correo es " + email + " los bonos asociados a este usuario son: "+'}';
+            for (Bono b : bonos){
+                ret += "La ID del bono" + b.getId();
+                ret += "" + b.getMes();
+                ret += "" + b.getTipo();
+                ret += "" + b.getUsuario();
+            }
+               
+    ret += '}';
+    return ret;
+
     }
 }
