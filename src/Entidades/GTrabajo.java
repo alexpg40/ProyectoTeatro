@@ -98,8 +98,17 @@ public class GTrabajo {
     
     @Override
     public String toString() {
-        return "GTrabajo{" + "id=" + id + ", semana=" + semana + ", EmpleadosTeatro=" + EmpleadosTeatro + ", franquicia=" + franquicia + '}';
-    }
+        String ret;
+        ret = "GTrabajo{" + "id=" + id + ", semana=" + semana + ", EmpleadosTeatro=" + EmpleadosTeatro + ", franquicia=" + franquicia + '}';
+            for(EmpleadoDeTeatro e : EmpleadosTeatro){
+                ret += "Id del empleado= " + e.getId() + "/n";
+                ret += "Nombre del empleado= " + e.getNombre() + "/n";
+                ret += "Apellidos del empleado= " +e.getApellidos() + "/n";
+                ret += "Nif del empleado= " + e.getNif() + "/n";
+                ret += "Telefono del empleado" + e.getTelefono() + "/n";
+                ret += "Direccion del empleado" + e.getDireccion() + "/n";
+            }
+    return ret + "/n";}
     
     
 }
