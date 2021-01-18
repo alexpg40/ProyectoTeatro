@@ -11,7 +11,7 @@ public class Informe {
     private long id;
     /*
         valores válidos: números > 0
-        valores inválidos: números < 0
+        valores inválidos: números <= 0
         otras restricciones: No puede repetirse, solo puede ser entero.
     
      */
@@ -25,7 +25,6 @@ public class Informe {
     // Se guarda el Secretario que realiza el informe
     /*
         valores válidos: cualquier número
-        valores inválidos: cualquier carácter diferente a un número, vacío y null.
      */
     private Secretariado secretario;
     // Se guarda una lista de los beneficios
@@ -36,7 +35,6 @@ public class Informe {
     public Informe() {
     }
 
-    ;
     
     public Informe(Informe inf) {
         this.id = inf.id;
@@ -44,9 +42,9 @@ public class Informe {
         this.balance = inf.balance;
         this.secretario = inf.secretario;
         this.beneficios = inf.beneficios;
+        this.costes = inf.costes;
     }
 
-    ;
 
     public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios, ArrayList<Coste> costes) {
         this.id = id;
@@ -57,9 +55,6 @@ public class Informe {
         this.costes = costes;
     }
 
-    Informe(int i, Date fecha10, double d, Secretariado secretariado, ArrayList<Beneficio> beneficios, Coste costes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public long getId() {
         return id;
