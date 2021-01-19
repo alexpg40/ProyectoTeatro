@@ -64,9 +64,9 @@ public class EmpleadoDeTeatro extends Empleado {
     public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(){
         Empleado e = Empleado.nuevoEmpleado();
         EmpleadoDeTeatro et = new EmpleadoDeTeatro(e);
-        Scanner sc = new Scanner(System.in);
+        Scanner sc;
         System.out.println("Introduce la categoria");
-        char c = 0;
+        char c;
         do {
             c = 0;
             sc = new Scanner(System.in);

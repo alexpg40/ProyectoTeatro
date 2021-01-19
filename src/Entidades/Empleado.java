@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -230,7 +231,7 @@ public class Empleado {
 
     public static Empleado nuevoEmpleado() {
         Empleado e = new Empleado();
-        Scanner in = new Scanner(System.in);
+        Scanner in;
         e.setId(e.generarId());
         System.out.println("Introduce el nombre");
         String us;
@@ -271,6 +272,61 @@ public class Empleado {
         return e;
     }
 
+    public Empleado getEmpleadobyID(long id){
+        Empleado e = new Empleado();
+        for (Empleado emp : Utilidades.EMPLEADOS) {
+            if (id == emp.id) {
+                e = emp;
+            }
+        }
+        
+    return e;}
+    
+    public Empleado getEmpleadobyNIF(String nif){
+        Empleado e = new Empleado();
+        for (Empleado emp : Utilidades.EMPLEADOS) {
+            if (nif.equals(emp.nif)) {
+                e = emp;
+            }
+        }
+    return e;}
+
+    public ArrayList<Empleado> getEmpleadobyNombre(String nombre){
+        ArrayList<Empleado> array = new ArrayList<>();
+        for (int i = 0; i < Utilidades.EMPLEADOS.length; i++) {
+            if (nombre.equals(Utilidades.EMPLEADOS[i].nombre)) {
+                array.add(Utilidades.EMPLEADOS[i]);
+            }
+        }
+    return array;}
+    
+    public Empleado getEmpleadobyTelefono(String telefono){
+        Empleado e  = new Empleado();
+        for (Empleado emp : Utilidades.EMPLEADOS) {
+            if (telefono.equals(emp.telefono)) {
+                e = emp;
+            }
+        }
+    return e;}
+    
+    public ArrayList<Empleado> getEmpleadobyApellidos(String apellidos){
+        ArrayList<Empleado> array = new ArrayList<>();
+        for (int i = 0; i < Utilidades.EMPLEADOS.length; i++) {
+            if (apellidos.equals(Utilidades.EMPLEADOS[i].apellidos)) {
+                array.add(Utilidades.EMPLEADOS[i]);
+            }
+        }
+    return array;}
+    
+    public ArrayList<Empleado> getEmpleadobyDireccion(String direccion){
+        ArrayList<Empleado> array = new ArrayList<>();
+        for (Empleado e : Utilidades.EMPLEADOS) {
+            if (direccion.equals(e.direccion)) {
+                array.add(e);
+            }
+        }
+    return array;}
+    
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';

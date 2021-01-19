@@ -54,7 +54,7 @@ public class EmpleadoDeOficina extends Empleado{
     }
     
     public static EmpleadoDeOficina nuevoEmpleadoDeOficina(){
-        Scanner sc = new Scanner(System.in);
+        Scanner sc;
         Empleado e = Empleado.nuevoEmpleado();
         EmpleadoDeOficina ef = new EmpleadoDeOficina(e);
         System.out.println("Introcude los años en plantilla");
