@@ -86,7 +86,7 @@ public class Empleado {
     public Empleado() {
 
     }
-
+  
     public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia) {
         this.id = id;
         this.nombre = nombre;
@@ -204,7 +204,6 @@ public class Empleado {
         boolean cond = false;
         if (telefono.contains(CharSequence.class.cast(" "))) {
             System.out.println("No puede haber espacios");
-            return;
         } else {
             if (telefono.length() != 9) {
                 System.out.println("Debe tener nueve numeros");
@@ -228,7 +227,7 @@ public class Empleado {
         }
     }
 
-    public Empleado nuevoEmpleado() {
+    public static Empleado nuevoEmpleado() {
         Empleado e = new Empleado();
         Scanner in = new Scanner(System.in);
         e.setId(e.generarId());

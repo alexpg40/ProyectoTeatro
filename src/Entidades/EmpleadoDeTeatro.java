@@ -18,6 +18,10 @@ public class EmpleadoDeTeatro extends Empleado {
         super();
     }
 
+    public EmpleadoDeTeatro(Empleado e){
+        super(e);
+    }
+    
     public char getCategoria() {
         return categoria;
     }
@@ -58,53 +62,18 @@ public class EmpleadoDeTeatro extends Empleado {
         }
     }
     public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(){
-        EmpleadoDeTeatro e = new EmpleadoDeTeatro();
+        Empleado e = Empleado.nuevoEmpleado();
+        EmpleadoDeTeatro et = new EmpleadoDeTeatro(e);
         Scanner sc = new Scanner(System.in);
-        e.setId(e.generarId());
-        System.out.println("Introduce el nombre");
-        String nomb;
-        do {
-            sc = new Scanner(System.in);
-            nomb = sc.nextLine();
-            e.comprobarNombre(nomb);
-        } while (e.getNombre() != nomb);
-        System.out.println("Introduce los apellidos");
-        String ap;
-        do {
-            sc = new Scanner(System.in);
-            ap = sc.nextLine();
-            e.comprobarApellidos(ap);
-        } while (e.getApellidos() != ap);
-        System.out.println("Introduce el NIF");
-        String nif;
-        do {
-            sc = new Scanner(System.in);
-            nif = sc.nextLine();
-            e.comprobarNif(nif);
-        } while (e.getNif() != nif);
-        System.out.println("Introduce el telefono");
-        String tl;
-        do {
-            sc = new Scanner(System.in);
-            tl = sc.nextLine();
-            e.comprobarTelefono(tl);
-        } while (e.getTelefono() != tl);
-        System.out.println("Introduce la dirección");
-        String d;
-        do {
-            sc = new Scanner(System.in);
-            d = sc.nextLine();
-            e.comprobarDireccion(d);
-        } while (e.getDireccion() != d);
         System.out.println("Introduce la categoria");
         char c = 0;
         do {
             c = 0;
             sc = new Scanner(System.in);
             c = sc.next().charAt(c);
-            e.comprobarCategoria((char) c);
-        } while (e.getCategoria() != c);
-    return e;}
+            et.comprobarCategoria((char) c);
+        } while (et.getCategoria() != c);
+    return et;}
     
     @Override
     public String toString() {
