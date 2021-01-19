@@ -56,6 +56,7 @@ public class Beneficio {
         this.fecha = bn.fecha;
         this.importe = bn.importe;
         this.reporte = bn.reporte;
+        this.taquillero = bn.taquillero;
     }
 
     public long getId() {
@@ -89,11 +90,17 @@ public class Beneficio {
     public void setReporte(double reporte) {
         this.reporte = reporte;
     }
-
-    public void generarId() {
-        this.id = Utilidades.BENEFICIOS.length + 1;
+    
+    
+    public long nextIdBeneficio() {
+        long idBen = 0;
+        for (int i = 0; i< Utilidades.BENEFICIOS.length; i++){
+            if(Utilidades.BENEFICIOS[i].id > idBen)
+                idBen = Utilidades.BENEFICIOS[i].id;
+        }
+        return idBen +1;
     }
-
+            
     public void comprobarImporte(double importe) {
 
         if (importe < 0) {
@@ -124,7 +131,7 @@ public class Beneficio {
     public Beneficio nuevoBeneficio() {
         Beneficio b = new Beneficio();
         Scanner sc = new Scanner(System.in);
-        b.generarId();
+        b.setId(nextIdBeneficio());
         System.out.println("Introduce el importe");
         double imp;
         do {

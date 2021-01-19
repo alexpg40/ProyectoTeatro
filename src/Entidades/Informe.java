@@ -104,9 +104,6 @@ public class Informe {
         this.costes = costes;
     }
 
-    public void generarId() {
-        this.id = Utilidades.INFORMES.length + 1;
-    }
 
     public Date dameFecha() {
           
@@ -122,15 +119,13 @@ public class Informe {
         
         System.out.println("La fecha introducida es:" + date);
         return date;
-    }
-
-    ;
+    };
      
      
     public Informe nuevoInforme() {
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
-        inf.generarId();
+        inf.setId(nextIdInforme());
         System.out.println("Introduce el balance");
         double bal;
         sc = new Scanner(System.in);
@@ -140,6 +135,17 @@ public class Informe {
         return inf;
     }
 
+    
+        public long nextIdInforme() {
+        long idInf = 0;
+        for (int i = 0; i< Utilidades.INFORMES.length; i++){
+            if(Utilidades.INFORMES[i].id > idInf)
+                idInf = Utilidades.INFORMES[i].id;
+        }
+        return idInf +1;
+    }
+        
+        
     @Override
     public String toString() {
         return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';

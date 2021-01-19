@@ -121,8 +121,13 @@ public class Franquicia {
         this.informe = informe;
     }
 
-    public void generarId() {
-        this.id = Utilidades.FRANQUICIAS.length + 1;
+    public long nextIdFranquicia() {
+        long idFra = 0;
+        for (int i = 0; i< Utilidades.FRANQUICIAS.length; i++){
+            if(Utilidades.FRANQUICIAS[i].id > idFra)
+                idFra = Utilidades.FRANQUICIAS[i].id;
+        }
+        return idFra +1;
     }
 
     public void comprobarUbicacion(String ubicacion) {
@@ -159,7 +164,7 @@ public class Franquicia {
      public Franquicia nuevaFranquicia() {
         Franquicia f = new Franquicia();
         Scanner sc = new Scanner(System.in);
-        f.getId();
+        f.setId(nextIdFranquicia());
         System.out.println("Introduce el id");
         long id;
         do {
