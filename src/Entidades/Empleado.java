@@ -103,6 +103,7 @@ public class Empleado {
         this.apellidos = e.apellidos;
         this.nif = e.nif;
         this.direccion = e.direccion;
+        this.telefono = e.telefono;
         this.franquicia = e.franquicia;
     }
 
