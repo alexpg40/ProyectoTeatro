@@ -5,53 +5,40 @@
  */
 package Ejecutable;
 
-import Entidades.*;
+import java.util.Scanner;
 
 public class Main {
 
     //main 
     public static void main(String[] args) {
         
-        Beneficio bn = new Beneficio();
-        bn.nuevoBeneficio();
+        int opcion = -1;
+        do {
+            MostrarMenu();
+            Scanner in = new Scanner(System.in);
+            opcion = in.nextInt();
+                if (opcion < 0 || opcion > 3) {
+                    System.out.println("Error. Vuelva a introducir la opción");
+            }
+                switch(opcion){
+                    case 1: //Gestión de Franquicias
+                        break;
+                    case 2: //Gestión de Empleados
+                        break;
+                    case 3: //Gestión de Informes
+                        break;
+                    default: //Salir
+                        continue;
+                }
+            opcion = -1;    
+        } while (opcion < 0 || opcion > 3);
         
-        Acomodador a = new Acomodador();
-        a.nuevoEmpleadoDeTeatro();
-
-        Empleado e = new Empleado();
-        e.nuevoEmpleado();
-
-        GTrabajo g = new GTrabajo();
-        g.nuevoGTrabajo();
-
-        EmpleadoDeTeatro et = new EmpleadoDeTeatro();
-        et.nuevoEmpleadoDeTeatro();
-
-        EmpleadoDeOficina ef = new EmpleadoDeOficina();
-        ef.nuevoEmpleadoDeOficina();
-        
-        Coste c = new Coste();
-        c.nuevoCoste();
-        
-        Usuario u = new Usuario();
-        u.nuevoUsuario();
-        
-        Beneficio b = new Beneficio();
-        b.nuevoBeneficio();
-        
-        Franquicia f = new Franquicia();
-        f.nuevaFranquicia();
-    
-        Informe inf = new Informe();
-        inf.nuevoInforme();
-        
-        Bono bo = new Bono();
-        bo.nuevoBono();
-        
-        Nomina n = new Nomina();
-        n.nuevaNomina();
-        
-        Informe i = new Informe();
-        i.dameFecha();
 }
+
+    private static void MostrarMenu() {
+        System.out.println("Pulsa 1 para entrar en Gestión de Franquicias.");
+        System.out.println("Pulsa 2 para entrar en Gestión de Empleados.");
+        System.out.println("Pulsa 3 para entrar en Gestión de Informes.");
+        System.out.println("Pulsa 0 para salir.");
+    }
 }
