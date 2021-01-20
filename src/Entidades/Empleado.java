@@ -272,6 +272,11 @@ public class Empleado {
         return e;
     }
 
+    /**
+     * Busca la id introduciza y devuelve un objeto de la BD con la misma id 
+     * @param id guarla la id a buscar
+     * @return devuelve el objeto con la misma id
+     */
     public Empleado getEmpleadobyID(long id){
         Empleado e = new Empleado();
         for (Empleado emp : Utilidades.EMPLEADOS) {
@@ -282,6 +287,11 @@ public class Empleado {
         
     return e;}
     
+    /**
+     * Busca empleado en la BD por nif
+     * @param nif guarda el nif a buscar
+     * @return un objeto empleado con el mismo nif
+     */
     public Empleado getEmpleadobyNIF(String nif){
         Empleado e = new Empleado();
         for (Empleado emp : Utilidades.EMPLEADOS) {
@@ -291,6 +301,11 @@ public class Empleado {
         }
     return e;}
 
+    /**
+     * Busca empleados con el nombre
+     * @param nombre guarda el nombre a buscar
+     * @return un array con los empleados que coincide con el nombre
+     */
     public ArrayList<Empleado> getEmpleadobyNombre(String nombre){
         ArrayList<Empleado> array = new ArrayList<>();
         for (int i = 0; i < Utilidades.EMPLEADOS.length; i++) {
@@ -300,6 +315,11 @@ public class Empleado {
         }
     return array;}
     
+    /**
+     * Busca empleados que coincide con el telefono
+     * @param telefono guarda el telefono a buscar
+     * @return devuelve el objeto con el mismo telefono
+     */
     public Empleado getEmpleadobyTelefono(String telefono){
         Empleado e  = new Empleado();
         for (Empleado emp : Utilidades.EMPLEADOS) {
@@ -309,6 +329,11 @@ public class Empleado {
         }
     return e;}
     
+    /**
+     * Busca los objetos que coincide con los apellidos
+     * @param apellidos guarda los apellidos a buscar
+     * @return ArrayList con los empleados que los apellidos
+     */
     public ArrayList<Empleado> getEmpleadobyApellidos(String apellidos){
         ArrayList<Empleado> array = new ArrayList<>();
         for (int i = 0; i < Utilidades.EMPLEADOS.length; i++) {
@@ -318,6 +343,11 @@ public class Empleado {
         }
     return array;}
     
+    /**
+     * Busca empleados en una direccion
+     * @param direccion guarda la direccion a buscar
+     * @return ArrayList de empleados que vuelve los objetos empleados con esa direccion
+     */
     public ArrayList<Empleado> getEmpleadobyDireccion(String direccion){
         ArrayList<Empleado> array = new ArrayList<>();
         for (Empleado e : Utilidades.EMPLEADOS) {
