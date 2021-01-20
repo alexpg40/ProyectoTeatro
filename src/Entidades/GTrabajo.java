@@ -101,14 +101,43 @@ public class GTrabajo {
         String ret;
         ret = "GTrabajo{" + "id=" + id + ", semana=" + semana + ", EmpleadosTeatro=" + EmpleadosTeatro + ", franquicia=" + franquicia + '}';
             for(EmpleadoDeTeatro e : EmpleadosTeatro){
-                ret += "Id del empleado= " + e.getId() + "/n";
-                ret += "Nombre del empleado= " + e.getNombre() + "/n";
-                ret += "Apellidos del empleado= " +e.getApellidos() + "/n";
-                ret += "Nif del empleado= " + e.getNif() + "/n";
-                ret += "Telefono del empleado" + e.getTelefono() + "/n";
-                ret += "Direccion del empleado" + e.getDireccion() + "/n";
+                ret += "Id del empleado= " + e.getId() + "\n";
+                ret += "Nombre del empleado= " + e.getNombre() + "\n";
+                ret += "Apellidos del empleado= " +e.getApellidos() + "\n";
+                ret += "Nif del empleado= " + e.getNif() + "\n";
+                ret += "Telefono del empleado" + e.getTelefono() + "\n";
+                ret += "Direccion del empleado" + e.getDireccion() + "\n";
             }
-    return ret + "/n";}
+    return ret + "\n";}
     
+    /**
+     * Busca en la BD un objeto con la misma id y la devuelve
+     * @param id donde se guarda la id a buscar
+     * @return Objeto con la id que coincide
+     */
+    public GTrabajo getGTrabajobyID(long id){
+        GTrabajo gt = new GTrabajo();
+        for (GTrabajo g : Utilidades.GTRABAJO) {
+            if (g.id == id) {
+                gt = g;
+                break;
+            }
+        }
+        
+    return gt;}
+    
+    /**
+     * Metodo que busca un objeto en la BD con la misma semana
+     * @param semana variable donde se guarda la semana que quieres buscar
+     * @return array con los objetos que coincide con la semana
+     */
+    public ArrayList<GTrabajo> getGTrabajobySemana(long semana){
+        ArrayList<GTrabajo> array = new ArrayList<>();
+        for (GTrabajo g : Utilidades.GTRABAJO) {
+            if (g.semana == semana) {
+                array.add(g);
+            }
+        }
+    return array;}
     
 }
