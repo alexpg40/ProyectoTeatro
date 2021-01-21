@@ -200,6 +200,7 @@ public class Franquicia {
         sc = new Scanner(System.in);
         ac = sc.nextBoolean();
         f.setAccesibilidadReducida(ac);
+        f.dameFecha();
         return f;
     }
      /**
