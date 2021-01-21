@@ -13,11 +13,14 @@ public class Main {
     //main 
     public static void main(String[] args) {
         
-        //Convertirmos el array de empleados de la BS a ArrayList para poder trabajar con el
+        //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Empleado> empleados = Empleado.convertirEmpleado(Utilidades.EMPLEADOS);
-        
+        //Convertimos el array de franquicias de la BS a ArrayList para poder trabajar con el
         ArrayList <Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
-        
+        //Convertimos el array de informes de la BS a ArrayList para poder trabajar con el
+        ArrayList<Informe> informes = Informe.convertirInforme(Utilidades.INFORMES);
+                
+                
         int opcion = -1;
         do {
             MostrarMenu();

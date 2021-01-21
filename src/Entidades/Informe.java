@@ -169,10 +169,11 @@ public class Informe {
      * @param array
      * @return Arraylist<Informe>
      */
-    private ArrayList<Informe> convertirInformes(Informe[] array) {
-        ArrayList<Informe> ret = new ArrayList<Informe>();
+    
+    public static ArrayList<Informe> convertirInforme(Informe[] array) {
+        ArrayList<Informe> ret = new ArrayList<>();
         for (Informe inf : array) {
-            ret.add((Informe) inf);
+            ret.add((Informe)inf);
         }
         return ret;
     }
