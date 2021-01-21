@@ -16,6 +16,8 @@ public class Main {
         //Convertirmos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Empleado> empleados = Empleado.convertirEmpleado(Utilidades.EMPLEADOS);
         
+        ArrayList <Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
+        
         int opcion = -1;
         do {
             MostrarMenu();
@@ -26,6 +28,26 @@ public class Main {
             }
             switch (opcion) {
                 case 1: //Gestión de Franquicias
+                    System.out.println("Has entrado en la Gestión de Franquicias.");
+                    int opcionFran = -1;
+                    do {
+                        MostrarMenuFranquicias();
+                        opcionFran = in.nextInt();
+                        if (opcionFran < 0 || opcionFran > 3){
+                            System.out.println("Opción equivocada. Vuelva a introducir la opción.");
+                            continue;
+                        }
+                        switch (opcionFran){
+                            case 1: // Ver Franquicias
+                                Franquicia.verFranquicias(franquicias);
+                                break;
+                            case 2: // Crear Franquicia
+                                break;
+                            case 3: // Buscar Franquicias
+                                break;
+                            default: 
+                        }
+                    } while(opcionFran < 0 || opcionFran > 3);
                     break;
                 case 2: //Gestión de Empleados
                     System.out.println("Has entrado en la Gestión de Empleados!");
@@ -69,4 +91,11 @@ public class Main {
         System.out.println("Pulsa 3 para busca empleado.");
         System.out.println("Pulsa 0 para salir");
     } 
+    private static void MostrarMenuFranquicias(){
+        System.out.println("Pulsa 1 para ver franquicias.");
+        System.out.println("Pulsa 2 para crear franquicias.");
+        System.out.println("Pulsa 3 para buscar franquicias.");
+        System.out.println("Pulsa 0 para salir del menú franquicias.");
+        
+    }
 }
