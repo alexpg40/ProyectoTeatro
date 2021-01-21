@@ -65,7 +65,10 @@ public class Main {
                                 break;
                             case 3: //Buscar empleados
                                 break;
+                            default:
+                                continue;
                         }
+                        opcionemp = -1;
                     } while (opcionemp < 0 || opcionemp > 3);
                     break;
                 case 3: //Gestión de Informes
