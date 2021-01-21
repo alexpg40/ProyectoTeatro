@@ -94,8 +94,16 @@ public class Usuario {
         this.email = email;
     }
     
-    public void generarId(){
-       this.id = Utilidades.USUARIOS.length + 1;
+    public long generarId(){
+       long idUsuario = 0;
+       for (int i = 0; i < Utilidades.USUARIOS.length; i++){
+           if (Utilidades.USUARIOS[i].id > idUsuario)
+           {
+               idUsuario = Utilidades.USUARIOS[i].id;
+           }
+       }
+       
+       return idUsuario +1;
     }
     
     @SuppressWarnings("empty-statement")
@@ -146,7 +154,7 @@ public class Usuario {
     public void comprobarNif(String nif){
         boolean cond = false;
         if (nif.length() != 9) {
-            System.out.println("El nif debeser de 9 digitos");
+            System.out.println("El nif debe ser de 9 digitos");
             return;
         } else if (!((nif.charAt(8) >= 'a' && nif.charAt(8) <= 'z') || (nif.charAt(8) >= 'A' && nif.charAt(8) <= 'Z'))) {
             System.out.println("Debe finalizar con una letra");
