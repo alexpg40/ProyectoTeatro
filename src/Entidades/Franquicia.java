@@ -205,7 +205,7 @@ public class Franquicia {
       * Funcion que lo que hace es covertir un Array de franquicia que se pasa en el parametro
       * y la convierte en un ArrayList de Franquicia tambien.
       * @param array
-      * @return 
+      * @return ArrayList<Franquicia>
       */
       public static ArrayList<Franquicia> convertirFranquicia(Franquicia[] array){
         ArrayList<Franquicia> ret = new ArrayList<>();

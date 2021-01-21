@@ -146,22 +146,34 @@ public class Informe {
     @Override
     public String toString() {
         String ret = "Informe{\n" + "id=" + id + "\nmesyano=" + mesyano + "\nbalance=" + balance + "\nsecretario=" + secretario + "\nbeneficios=";
-            for (Beneficio ben: beneficios){
-                ret += "Importe:" + ben.getImporte() + "\n";
-                ret += "Reporte:" + ben.getReporte() + "\n";
-            }
-    //      + "\ncostes=";
-            for (Coste cos: costes){
-                ret += "Importe:" + cos.getImporte();
-            }    
-                ret += '}';
-                return ret;
+        for (Beneficio ben : beneficios) {
+            ret += "Importe:" + ben.getImporte() + "\n";
+            ret += "Reporte:" + ben.getReporte() + "\n";
+        }
+        //      + "\ncostes=";
+        for (Coste cos : costes) {
+            ret += "Importe:" + cos.getImporte();
+        }
+        ret += '}';
+        return ret;
     }
 
-    public static void verInformes (ArrayList <Informe> array) {
-          for (int i = 0; i < array.size(); i++) {
-              System.out.println(array.get(i).toString());
-          }
-      }
-
+    public static void verInformes(ArrayList<Informe> array) {
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i).toString());
+        }
+    }
+    /**
+     * Función que convierte un array de Informes en un ArrayList de Informes
+     * con los mismos elementos.
+     * @param array
+     * @return Arraylist<Informe>
+     */
+    private ArrayList<Informe> convertirInformes(Informe[] array) {
+        ArrayList<Informe> ret = new ArrayList<Informe>();
+        for (Informe inf : array) {
+            ret.add((Informe) inf);
+        }
+        return ret;
+    }
 }
