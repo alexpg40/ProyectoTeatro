@@ -41,7 +41,6 @@ public class Franquicia {
     public Franquicia() {
     }
 
-    ;
     
     public Franquicia(Franquicia f) {
         this.id = f.id;
@@ -53,7 +52,6 @@ public class Franquicia {
         this.grupotrabajo = f.grupotrabajo;
     }
 
-    ;
     
     public Franquicia(long id, Date fecha_creacion, String ubicacion, boolean accesibilidadreducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo) {
         this.id = id;
