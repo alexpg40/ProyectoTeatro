@@ -130,7 +130,12 @@ public class Franquicia {
         return idFra +1;
     }
 
-    public void comprobarUbicacion(String ubicacion) {
+    
+    /**
+     * Función que comprueba si la ubicación introducida está vacía.
+     * @param ubicacion 
+     */
+    public void validarUbicacion(String ubicacion) {
         if (ubicacion.isEmpty()) {
             System.out.println("La ubicación no puede estar vacia");
         } else {
@@ -138,14 +143,22 @@ public class Franquicia {
         }
     }
 
-    public void comprobarAccesibilidad(boolean accesibilidad) {
+    
+    /**
+     * Funcion que comprueba si la franquicia tiene ayudas para la accesibilidad reducida.
+     * @param accesibilidad 
+     */
+    public void validarAccesibilidad(boolean accesibilidad) {
         if (true) {
             System.out.println("Hay ayudas para la accesibilidad reducida");
         } else {
             System.out.println("No hay ayudas en la accesibilidad reducida");
         }
     }
-
+    /**
+     * Función que devuelve una fecha metida por el usuario.
+     * @return 
+     */
     public Date dameFecha() {
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
@@ -159,7 +172,10 @@ public class Franquicia {
         return date;
     }
 
-    ;
+    /**
+     * Función que devuelve un objeto de Franquicia entero.
+     * @return 
+     */
     
      public Franquicia nuevaFranquicia() {
         Franquicia f = new Franquicia();
@@ -177,7 +193,7 @@ public class Franquicia {
         do {
             sc = new Scanner(System.in);
             ubi = sc.nextLine();
-            f.comprobarUbicacion(ubi);
+            f.validarUbicacion(ubi);
         } while (f.getUbicacion() != ubi);
         System.out.println("Introduce accesibilidad");
         boolean ac;
@@ -186,7 +202,30 @@ public class Franquicia {
         f.setAccesibilidadReducida(ac);
         return f;
     }
-
+     /**
+      * Funcion que lo que hace es covertir un Array de franquicia que se pasa en el parametro
+      * y la convierte en un ArrayList de Franquicia tambien.
+      * @param array
+      * @return 
+      */
+      public static ArrayList<Franquicia> convertirFranquicia(Franquicia[] array){
+        ArrayList<Franquicia> ret = new ArrayList<>();
+        for (Franquicia f : array) {
+            ret.add(f);
+        }
+        return ret;
+      }
+      /**
+       * Función que devuelve una lista de todas las franquicias en el ArrayList de tipo Franquicia.
+       * @param array 
+       */
+      public static void verFranquicias (ArrayList <Franquicia> array) {
+          for (int i = 0; i < array.size(); i++) {
+              System.out.println(array.get(i));
+              
+          }
+      }
+     
     @Override
     public String toString() {
         return "Franquicia{" + "id=" + id + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidadreducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
