@@ -224,7 +224,17 @@ public class Franquicia {
               
           }
       }
-     
+      
+        public Franquicia buscarFranquicia(long id) {
+            Franquicia f = new Franquicia();
+                for (Franquicia fran : Utilidades.FRANQUICIAS) {
+                    if (id == fran.id) {
+                        f = fran;
+                    }
+                }
+            return f;
+        };
+             
     @Override
     public String toString() {
         return "Franquicia{" + "id=" + id + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidadreducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
