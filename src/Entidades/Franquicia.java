@@ -225,14 +225,17 @@ public class Franquicia {
           }
       }
       
-        public Franquicia buscarFranquicia(long id) {
+        public static Franquicia buscarFranquicia(long id) {
+            
             Franquicia f = new Franquicia();
                 for (Franquicia fran : Utilidades.FRANQUICIAS) {
                     if (id == fran.id) {
                         f = fran;
                     }
                 }
+            System.out.println(f);
             return f;
+            
         };
              
     @Override
