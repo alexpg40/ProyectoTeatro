@@ -362,4 +362,17 @@ public class Empleado {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
 
+    public static ArrayList<Empleado> convertirEmpleado(Empleado[] array){
+        ArrayList<Empleado> ret = new ArrayList<>();
+        for (Empleado e : array) {
+            ret.add(e);
+        }
+    return ret;}
+    
+    public static void mostrarEmpleados(ArrayList<Empleado> array){
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i));
+        }
+    }
+    
 }
