@@ -46,7 +46,10 @@ public class Main {
                                 break;
                             case 2: // Crear Franquicia
                                 break;
-                            case 3: // Buscar Franquicias
+                            case 3: 
+                                System.out.println("Introduzca la ID de la Franquicia que quiera buscar.");
+                                int opcionId = in.nextInt();
+                                Franquicia.buscarFranquicia(opcionId);
                                 
                                 break;
                             default: 
