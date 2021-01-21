@@ -46,7 +46,7 @@ public class Direccion extends EmpleadoDeOficina {
     }
     
     
-    public void comprobarAñosPlantillaD(int añosPlantillaD){
+    public void validarAñosPlantillaD(int añosPlantillaD){
         if (!(añosPlantillaD >= 0 && añosPlantillaD <80)) {
             System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
         } else{
@@ -105,7 +105,7 @@ public class Direccion extends EmpleadoDeOficina {
         do {
             sc = new Scanner(System.in);
             pln = sc.nextInt();
-            direc.comprobarAñosPlantillaD(pln);
+            direc.setAñosPlantillaD(pln);
         } while (direc.getAñosPlantillaD() != pln);
         return direc;
      }

@@ -101,7 +101,7 @@ public class Beneficio {
         return idBen +1;
     }
             
-    public void comprobarImporte(double importe) {
+    public void validarImporte(double importe) {
 
         if (importe < 0) {
             System.out.println("No puede ser menor que 0.");
@@ -109,9 +109,7 @@ public class Beneficio {
             this.importe = importe;
         }
 
-    }
-
-    ;
+    };
     
      public Date dameFecha(Date dt) {
         Scanner in = new Scanner(System.in);
@@ -124,9 +122,7 @@ public class Beneficio {
         Date date = (Date) new GregorianCalendar(year, month, day).getTime();
         System.out.println("La fecha introducida es:" + date);
         return date;
-    }
-
-    ;
+    };
     
     public Beneficio nuevoBeneficio() {
         Beneficio b = new Beneficio();
@@ -137,7 +133,7 @@ public class Beneficio {
         do {
             sc = new Scanner(System.in);
             imp = sc.nextDouble();
-            b.comprobarImporte(imp);
+            b.setImporte(imp);
         } while (b.getImporte() != imp);
         System.out.println("Introduce el reporte");
         double rep;

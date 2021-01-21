@@ -35,7 +35,6 @@ public class Informe {
     public Informe() {
     }
 
-    
     public Informe(Informe inf) {
         this.id = inf.id;
         this.mesyano = inf.mesyano;
@@ -45,7 +44,6 @@ public class Informe {
         this.costes = inf.costes;
     }
 
-
     public Informe(long id, Date mesyano, double balance, Secretariado secretario, ArrayList<Beneficio> beneficios, ArrayList<Coste> costes) {
         this.id = id;
         this.mesyano = mesyano;
@@ -54,7 +52,6 @@ public class Informe {
         this.beneficios = beneficios;
         this.costes = costes;
     }
-
 
     public long getId() {
         return id;
@@ -104,22 +101,23 @@ public class Informe {
         this.costes = costes;
     }
 
-
     public Date dameFecha() {
-          
+
         Scanner in = new Scanner(System.in);
-        
+
         System.out.println("Dame el año:");
         int year = in.nextInt();
         System.out.println("Dame el mes:");
         int month = in.nextInt();
         System.out.println("Dame el día:");
         int day = in.nextInt();
-        Date date = new Date(year,month,day);
-        
+        Date date = new Date(year, month, day);
+
         System.out.println("La fecha introducida es:" + date);
         return date;
-    };
+    }
+
+    ;
      
      
     public Informe nuevoInforme() {
@@ -135,17 +133,16 @@ public class Informe {
         return inf;
     }
 
-    
-        public long nextIdInforme() {
+    public long nextIdInforme() {
         long idInf = 0;
-        for (int i = 0; i< Utilidades.INFORMES.length; i++){
-            if(Utilidades.INFORMES[i].id > idInf)
+        for (int i = 0; i < Utilidades.INFORMES.length; i++) {
+            if (Utilidades.INFORMES[i].id > idInf) {
                 idInf = Utilidades.INFORMES[i].id;
+            }
         }
-        return idInf +1;
+        return idInf + 1;
     }
-        
-        
+
     @Override
     public String toString() {
         return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';
