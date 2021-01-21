@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Taquillero extends EmpleadoDeTeatro{
     
     //Los taquilleros generan unos beneficios de la venta de entrada
-    private ArrayList<Beneficio> beneficio = new ArrayList<>();
+    private ArrayList<Beneficio> beneficios = new ArrayList<>();
     
    public Taquillero(){
        super();
@@ -36,14 +36,19 @@ public class Taquillero extends EmpleadoDeTeatro{
    
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
+        String ret = "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + "beneficios=";
+           for (Beneficio ben: beneficios){
+                ret += "Importe:" + ben.getImporte();
+                ret += "Reporte:" + ben.getReporte();
+            }
+           ret += '}';
+           return ret;
     }
-
     public ArrayList<Beneficio> getBeneficio() {
-        return beneficio;
+        return beneficios;
     }
 
-    public void setBeneficio(ArrayList<Beneficio> beneficio) {
-        this.beneficio = beneficio;
+    public void setBeneficio(ArrayList<Beneficio> beneficios) {
+        this.beneficios = beneficios;
     } 
 }

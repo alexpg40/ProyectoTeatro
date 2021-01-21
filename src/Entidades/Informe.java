@@ -145,13 +145,22 @@ public class Informe {
 
     @Override
     public String toString() {
-        return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';
+        String ret = "Informe{\n" + "id=" + id + "\nmesyano=" + mesyano + "\nbalance=" + balance + "\nsecretario=" + secretario + "\nbeneficios=";
+            for (Beneficio ben: beneficios){
+                ret += "Importe:" + ben.getImporte();
+                ret += "Reporte:" + ben.getReporte();
+            }
+    //      + "\ncostes=";
+            for (Coste cos: costes){
+                ret += "Importe:" + cos.getImporte();
+            }    
+                ret += '}';
+                return ret;
     }
 
     public static void verInformes (ArrayList <Informe> array) {
           for (int i = 0; i < array.size(); i++) {
               System.out.println(array.get(i).toString());
-              
           }
       }
 
