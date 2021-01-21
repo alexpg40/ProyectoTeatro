@@ -117,7 +117,7 @@ public class Empleado {
         }
     return id +1;}
 
-    public void comprobarNombre(String nombre) {
+    public void validarNombre(String nombre) {
         boolean cond = false;
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
@@ -140,7 +140,7 @@ public class Empleado {
         }
     }
 
-    public void comprobarApellidos(String apellidos) {
+    public void validarApellidos(String apellidos) {
         boolean cond = false;
         if (apellidos.isEmpty()) {
             System.out.println("No puede estar vacio");
@@ -163,7 +163,7 @@ public class Empleado {
         }
     }
 
-    public void comprobarNif(String nif) {
+    public void validarNIF(String nif) {
         boolean cond = false;
         if (nif.length() != 9) {
             System.out.println("El nif debeser de 9 digitos");
@@ -194,7 +194,7 @@ public class Empleado {
         }
     }
 
-    public void comprobarDireccion(String direccion) {
+    public void validarDireccion(String direccion) {
         if (direccion.isEmpty()) {
             System.out.println("La direccion no puede estar vacia");
         } else {
@@ -202,7 +202,7 @@ public class Empleado {
         }
     }
 
-    public void comprobarTelefono(String telefono) {
+    public void validarTelefono(String telefono) {
         boolean cond = false;
         if (telefono.contains(CharSequence.class.cast(" "))) {
             System.out.println("No puede haber espacios");
@@ -238,35 +238,35 @@ public class Empleado {
         do {
             in = new Scanner(System.in);
             us = in.nextLine();
-            e.comprobarNombre(us);
+            e.validarNombre(us);
         } while (e.getNombre() != us);
         System.out.println("Introduce los apellidos");
         String ap;
         do {
             in = new Scanner(System.in);
             ap = in.nextLine();
-            e.comprobarApellidos(ap);
+            e.validarApellidos(ap);
         } while (e.getApellidos() != ap);
         System.out.println("Introduce el NIF");
         String n;
         do {
             in = new Scanner(System.in);
             n = in.nextLine();
-            e.comprobarNif(n);
+            e.validarNIF(n);
         } while (e.getNif() != n);
         System.out.println("Introduce el telefono");
         String t;
         do {
             in = new Scanner(System.in);
             t = in.nextLine();
-            e.comprobarTelefono(t);
+            e.validarTelefono(t);
         } while (e.getTelefono() != t);
         System.out.println("Introduce tu direccion");
         String d;
         do {
             in = new Scanner(System.in);
             d = in.nextLine();
-            e.comprobarDireccion(d);
+            e.validarDireccion(d);
         } while (e.getDireccion() != d);
 
         return e;
@@ -361,7 +361,12 @@ public class Empleado {
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
-
+    
+    /**
+     * Convierte un array de empleados en un array list de empleados
+     * @param array 
+     * @return ararylist 
+     */
     public static ArrayList<Empleado> convertirEmpleado(Empleado[] array){
         ArrayList<Empleado> ret = new ArrayList<>();
         for (Empleado e : array) {
@@ -369,9 +374,13 @@ public class Empleado {
         }
     return ret;}
     
+    /**
+     * Recorre todos el array e imprime los objetos usandro el toString
+     * @param array 
+     */
     public static void mostrarEmpleados(ArrayList<Empleado> array){
         for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i));
+            System.out.println(array.get(i).toString());
         }
     }
     

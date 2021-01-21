@@ -74,7 +74,7 @@ public class GTrabajo {
         }
     return id+1;}
     
-    public void comprobarSemana(long semana){
+    public void validarSemana(long semana){
         if (!(semana >= 1 && semana <=6)) {
             System.out.println("Solo puede estar entre la semana 1 y la 6");
         } else{
@@ -92,7 +92,7 @@ public class GTrabajo {
             semana =-1;
             sc = new Scanner(System.in);
             semana = sc.nextLong();
-            gt.comprobarSemana(semana);
+            gt.validarSemana(semana);
         } while (gt.getSemana() != semana || semana <= 0 || semana > 6);
     return gt;}
     
