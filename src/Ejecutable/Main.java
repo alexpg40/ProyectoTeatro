@@ -17,7 +17,7 @@ public class Main {
         ArrayList<Empleado> empleados = Empleado.convertirEmpleado(Utilidades.EMPLEADOS);
         //Convertimos el array de franquicias de la BS a ArrayList para poder trabajar con el
         ArrayList <Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
-        //Convertimos el array de informes de la BS a ArrayList para poder trabajar con el
+        //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Informe> informes = Informe.convertirInforme(Utilidades.INFORMES);
                 
                 
@@ -75,7 +75,24 @@ public class Main {
                     } while (opcionemp < 0 || opcionemp > 3);
                     break;
                 case 3: //Gestión de Informes
-                    break;
+                    System.out.println("Has entrado en la Gestión de Informes.");
+                    int opcioninf = -1;
+                    do{
+                        MostrarMenuInformes();
+                        opcioninf = in.nextInt();
+                        if (opcioninf < 0 || opcioninf > 2) {
+                            System.out.println("Error.Vuelva a introducir la opción.");
+                    }
+                    switch (opcioninf) {
+                        case 1: //Ver informes
+                            break;
+                        case 2: // Nuevo informe 
+                            break;
+                        default:
+                    }
+                    opcioninf = -1;
+                    } while (opcioninf < 0 || opcioninf > 2);
+                break;
                 default: //Salir
                     continue;
             }
@@ -104,4 +121,10 @@ public class Main {
         System.out.println("Pulsa 0 para salir del menú franquicias.");
         
     }
+    
+    private static void MostrarMenuInformes() {
+        System.out.println("Pulsa 1 para ver informes.");
+        System.out.println("Pulsa 2 para crear un nuevo informe.");
+    }
+
 }
