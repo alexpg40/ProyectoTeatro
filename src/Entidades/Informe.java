@@ -147,8 +147,8 @@ public class Informe {
     public String toString() {
         String ret = "Informe{\n" + "id=" + id + "\nmesyano=" + mesyano + "\nbalance=" + balance + "\nsecretario=" + secretario + "\nbeneficios=";
             for (Beneficio ben: beneficios){
-                ret += "Importe:" + ben.getImporte();
-                ret += "Reporte:" + ben.getReporte();
+                ret += "Importe:" + ben.getImporte() + "\n";
+                ret += "Reporte:" + ben.getReporte() + "\n";
             }
     //      + "\ncostes=";
             for (Coste cos: costes){

@@ -11,16 +11,16 @@ import java.util.ArrayList;
  *
  * @author DarkB
  */
-public class Acomodador extends EmpleadoDeTeatro{
-    
+public class Acomodador extends EmpleadoDeTeatro {
+
     //Los acomodadores reportan varios costes que se guardaran en un arraylist
     private ArrayList<Coste> costes = new ArrayList<>();
-    
-    public Acomodador(){
+
+    public Acomodador() {
         super();
     }
-    
-    public Acomodador(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
+
+    public Acomodador(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -29,21 +29,26 @@ public class Acomodador extends EmpleadoDeTeatro{
         this.telefono = telefono;
         this.categoria = categoria;
     }
-    
-    public Acomodador (Empleado e, char categoria, Nomina nomina){
+
+    public Acomodador(Empleado e, char categoria, Nomina nomina) {
         super(e, categoria, nomina);
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria +'}';
+        String ret = "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + ", costes";
+        for (Coste cos : costes) {
+            ret += "Importe:" + cos.getImporte() + "\n";
+        }
+        ret += '}';
+        return ret;
     }
 
-    public ArrayList<Coste> getBeneficios() {
+    public ArrayList<Coste> getCostes() {
         return costes;
     }
 
-    public void setBeneficios(ArrayList<Coste> beneficios) {
-        this.costes = beneficios;
+    public void setBeneficios(ArrayList<Coste> costes) {
+        this.costes = costes;
     }
 }

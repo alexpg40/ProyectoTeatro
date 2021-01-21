@@ -38,8 +38,8 @@ public class Taquillero extends EmpleadoDeTeatro{
     public String toString() {
         String ret = "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + "beneficios=";
            for (Beneficio ben: beneficios){
-                ret += "Importe:" + ben.getImporte();
-                ret += "Reporte:" + ben.getReporte();
+                ret += "Importe:" + ben.getImporte() + "\n";
+                ret += "Reporte:" + ben.getReporte() + "\n";
             }
            ret += '}';
            return ret;
