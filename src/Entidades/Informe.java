@@ -148,4 +148,11 @@ public class Informe {
         return "Informe{" + "id=" + id + ", mesyano=" + mesyano + ", balance=" + balance + ", secretario=" + secretario + ", beneficios=" + beneficios + ", costes=" + costes + '}';
     }
 
+    public static void verInformes (ArrayList <Informe> array) {
+          for (int i = 0; i < array.size(); i++) {
+              System.out.println(array.get(i).toString());
+              
+          }
+      }
+
 }
