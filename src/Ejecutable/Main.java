@@ -67,10 +67,41 @@ public class Main {
                         }
                         switch (opcionemp){
                             case 1: //Ver Empleados
+                                Empleado.mostrarEmpleados(empleados);
                                 break;
                             case 2: //Nuevo Empleado
+                                empleados.add(Empleado.nuevoEmpleado());
                                 break;
                             case 3: //Buscar empleados
+                                int opcionbusemp = -1;
+                                do {
+                                    MostrarMenuBuscarEmpleados();
+                                    opcionbusemp = in.nextInt();
+                                    if (opcionbusemp < 0 && opcionbusemp > 6) {
+                                        
+                                    }
+                                    switch(opcionbusemp){
+                                        case 1: //Buscar por id
+                                            System.out.println(Empleado.getEmpleadobyID(empleados));
+                                            continue;
+                                        case 2: //Buscar por nif
+                                            System.out.println(Empleado.getEmpleadobyNIF(empleados));
+                                            continue;
+                                        case 3: //Buscar por nombre
+                                            Empleado.mostrarEmpleados(Empleado.getEmpleadobyNombre(empleados));
+                                            continue;
+                                        case 4: //Buscar por apellidos
+                                            Empleado.mostrarEmpleados(Empleado.getEmpleadobyApellidos(empleados));
+                                            continue;
+                                        case 5: //Buscar por direccion
+                                            Empleado.mostrarEmpleados(Empleado.getEmpleadobyDireccion(empleados));
+                                            continue;
+                                        case 6: //Buscar por telefono
+                                            System.out.println(Empleado.getEmpleadobyTelefono(empleados));
+                                            continue;
+                                    }
+                                } while (opcionbusemp != 0);
+                                
                                 break;
                             default:
                                 continue;
@@ -131,4 +162,13 @@ public class Main {
         System.out.println("Pulsa 2 para crear un nuevo informe.");
     }
 
+    private static void MostrarMenuBuscarEmpleados() {
+        System.out.println("Pulsa 1 para buscar empleados por id");
+        System.out.println("Pulsa 2 para buscar empleados por nif");
+        System.out.println("Pulsa 3 para buscar empleados por nombre");
+        System.out.println("Pulsa 4 para buscar empleados por apelidos");
+        System.out.println("Pulsa 5 para buscar empleados por direccion");
+        System.out.println("Pulsa 6 para buscar empleados por telefono");
+        System.out.println("Pulsa 0 para salir");
+    }
 }
