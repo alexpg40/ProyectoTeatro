@@ -297,14 +297,15 @@ public class Empleado {
      */
     public static Empleado getEmpleadobyNIF(ArrayList<Empleado> array){
         Scanner in = new Scanner(System.in);
+        Empleado e = new Empleado();
         System.out.println("Introduce el Nif");
         String nif = in.nextLine();
-        for (Empleado e : array) {
+        for (Empleado emp : array) {
             if (nif.equals(e.nif)) {
-                return e;
+                e = emp;
             }
         }
-    return null;}
+    return e;}
 
     /**
      * Busca empleados con el nombre
@@ -330,14 +331,15 @@ public class Empleado {
      */
     public static Empleado getEmpleadobyTelefono(ArrayList<Empleado> array){
         Scanner in = new Scanner(System.in);
+        Empleado e = new Empleado();
         System.out.println("Introduce el telefono");
         String telefono = in.nextLine();
         for (Empleado emp : array) {
             if (telefono.equals(emp.telefono)) {
-                return emp;
+                e = emp;
             }
         }
-    return null;}
+    return e;}
     
     /**
      * Busca los objetos que coincide con los apellidos
