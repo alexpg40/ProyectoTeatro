@@ -32,6 +32,8 @@ public class Franquicia {
         valores válidos: true/false
         valores inválidos: null
      */
+    
+    // En las franquicias hay grupos de Trabajo.
     private GTrabajo grupotrabajo;
     // Se guarda una lista de los empleados de la franquicia
     private ArrayList<Empleado> empleados = new ArrayList<>();

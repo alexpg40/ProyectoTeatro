@@ -26,6 +26,8 @@ public class Informe {
     /*
         valores válidos: cualquier número
      */
+    
+    // Los empleados de secretariado realizan los informes
     private Secretariado secretario;
     // Se guarda una lista de los beneficios
     private ArrayList<Beneficio> beneficios = new ArrayList<>();
@@ -147,7 +149,7 @@ public class Informe {
             ret += "Importe:" + ben.getImporte() + "\n";
             ret += "Reporte:" + ben.getReporte() + "\n";
         }
-        //      + "\ncostes=";
+        // + "\ncostes=";
         for (Coste cos : costes) {
             ret += "Importe:" + cos.getImporte();
         }
