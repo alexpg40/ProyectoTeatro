@@ -274,12 +274,15 @@ public class Empleado {
 
     /**
      * Busca la id introduciza y devuelve un objeto de la BD con la misma id 
-     * @param id guarla la id a buscar
+     * @param array
      * @return devuelve el objeto con la misma id
      */
-    public Empleado getEmpleadobyID(long id){
+    public static Empleado getEmpleadobyID(ArrayList<Empleado> array){
         Empleado e = new Empleado();
-        for (Empleado emp : Utilidades.EMPLEADOS) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Introduce el id");
+        long id = input.nextLong();
+        for (Empleado emp : array) {
             if (id == emp.id) {
                 e = emp;
             }
@@ -289,77 +292,90 @@ public class Empleado {
     
     /**
      * Busca empleado en la BD por nif
-     * @param nif guarda el nif a buscar
+     * @param array
      * @return un objeto empleado con el mismo nif
      */
-    public Empleado getEmpleadobyNIF(String nif){
-        Empleado e = new Empleado();
-        for (Empleado emp : Utilidades.EMPLEADOS) {
-            if (nif.equals(emp.nif)) {
-                e = emp;
+    public static Empleado getEmpleadobyNIF(ArrayList<Empleado> array){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce el Nif");
+        String nif = in.nextLine();
+        for (Empleado e : array) {
+            if (nif.equals(e.nif)) {
+                return e;
             }
         }
-    return e;}
+    return null;}
 
     /**
      * Busca empleados con el nombre
-     * @param nombre guarda el nombre a buscar
+     * @param array 
      * @return un array con los empleados que coincide con el nombre
      */
-    public ArrayList<Empleado> getEmpleadobyNombre(String nombre){
-        ArrayList<Empleado> array = new ArrayList<>();
-        for (int i = 0; i < Utilidades.EMPLEADOS.length; i++) {
-            if (nombre.equals(Utilidades.EMPLEADOS[i].nombre)) {
-                array.add(Utilidades.EMPLEADOS[i]);
+    public static ArrayList<Empleado> getEmpleadobyNombre(ArrayList<Empleado> array){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce el nombre");
+        ArrayList<Empleado> ret = new ArrayList<>();
+        String nombre = in.nextLine();
+        for (int i = 0; i < array.size(); i++) {
+            if (array.get(i).nombre.contains(nombre)) {
+                ret.add(array.get(i));
             }
         }
-    return array;}
+    return ret;}
     
     /**
      * Busca empleados que coincide con el telefono
-     * @param telefono guarda el telefono a buscar
+     * @param array
      * @return devuelve el objeto con el mismo telefono
      */
-    public Empleado getEmpleadobyTelefono(String telefono){
-        Empleado e  = new Empleado();
-        for (Empleado emp : Utilidades.EMPLEADOS) {
+    public static Empleado getEmpleadobyTelefono(ArrayList<Empleado> array){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce el telefono");
+        String telefono = in.nextLine();
+        for (Empleado emp : array) {
             if (telefono.equals(emp.telefono)) {
-                e = emp;
+                return emp;
             }
         }
-    return e;}
+    return null;}
     
     /**
      * Busca los objetos que coincide con los apellidos
-     * @param apellidos guarda los apellidos a buscar
+     * @param array
      * @return ArrayList con los empleados que los apellidos
      */
-    public ArrayList<Empleado> getEmpleadobyApellidos(String apellidos){
-        ArrayList<Empleado> array = new ArrayList<>();
-        for (int i = 0; i < Utilidades.EMPLEADOS.length; i++) {
-            if (apellidos.equals(Utilidades.EMPLEADOS[i].apellidos)) {
-                array.add(Utilidades.EMPLEADOS[i]);
+    public static ArrayList<Empleado> getEmpleadobyApellidos(ArrayList<Empleado> array){
+        ArrayList<Empleado> ret = new ArrayList<>();
+        System.out.println("Introduce el apellido");
+        Scanner input = new Scanner(System.in);
+        String apellidos = input.nextLine();
+        for (int i = 0; i < array.size(); i++) {
+            if (apellidos.contains(array.get(i).apellidos)) {
+                ret.add(array.get(i));
             }
         }
-    return array;}
+    return ret;}
     
     /**
      * Busca empleados en una direccion
-     * @param direccion guarda la direccion a buscar
+     * @param array
      * @return ArrayList de empleados que vuelve los objetos empleados con esa direccion
      */
-    public ArrayList<Empleado> getEmpleadobyDireccion(String direccion){
-        ArrayList<Empleado> array = new ArrayList<>();
-        for (Empleado e : Utilidades.EMPLEADOS) {
-            if (direccion.equals(e.direccion)) {
-                array.add(e);
+    public static ArrayList<Empleado> getEmpleadobyDireccion(ArrayList<Empleado> array){
+        ArrayList<Empleado> ret = new ArrayList<>();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce la direccion");
+        String direccion = in.nextLine();
+        for (Empleado e : array) {
+            if (e.direccion.contains(direccion)) {
+                ret.add(e);
             }
         }
-    return array;}
+    return ret;}
     
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono;
     }
     
     /**
@@ -380,7 +396,7 @@ public class Empleado {
      */
     public static void mostrarEmpleados(ArrayList<Empleado> array){
         for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i).toString());
+            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono);
         }
     }
     
