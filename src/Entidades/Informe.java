@@ -26,6 +26,8 @@ public class Informe {
     /*
         valores válidos: cualquier número
      */
+    
+    // Los empleados de secretariado realizan los informes
     private Secretariado secretario;
     // Se guarda una lista de los beneficios
     private ArrayList<Beneficio> beneficios = new ArrayList<>();
@@ -100,7 +102,11 @@ public class Informe {
     public void setCostes(ArrayList<Coste> costes) {
         this.costes = costes;
     }
-
+    
+    /**
+     * Función que pide al usuario una fecha mediante el año, el mes y el día.
+     * @return date (fecha)
+     */
     public Date dameFecha() {
 
         Scanner in = new Scanner(System.in);
@@ -116,7 +122,11 @@ public class Informe {
         System.out.println("La fecha introducida es:" + date);
         return date;
     };
-     
+    
+    /**
+     * Función que realiza un nuevoInforme, con el id, el balance y la fecha.
+     * @return nuevoInforme
+     */
     public Informe nuevoInforme() {
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
@@ -129,7 +139,10 @@ public class Informe {
         inf.dameFecha();
         return inf;
     }
-    
+    /**
+     * Función que crea un nuevo id basándose en el último que tengamos en la BD.
+     * @return nuevo id
+     */
     public long nextIdInforme() {
         long idInf = 0;
         for (int i = 0; i < Utilidades.INFORMES.length; i++) {
@@ -147,7 +160,7 @@ public class Informe {
             ret += "Importe:" + ben.getImporte() + "\n";
             ret += "Reporte:" + ben.getReporte() + "\n";
         }
-        //      + "\ncostes=";
+        // + "\ncostes=";
         for (Coste cos : costes) {
             ret += "Importe:" + cos.getImporte();
         }
@@ -155,6 +168,10 @@ public class Informe {
         return ret;
     }
 
+    /**
+     * Función para ver los informes.
+     * @param array 
+     */
     public static void verInformes(ArrayList<Informe> array) {
         for (int i = 0; i < array.size(); i++) {
             System.out.println(array.get(i).toString());

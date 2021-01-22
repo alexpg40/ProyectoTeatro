@@ -37,6 +37,8 @@ public class Beneficio {
         valores válidos: cualquier número
         valores inválidos: cualquier carácter distinto a un número
      */
+    
+    // Los taquilleros reportan Beneficios.
     private Taquillero taquillero;
 
     public Beneficio() {
