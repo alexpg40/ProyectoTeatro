@@ -242,7 +242,7 @@ public class Franquicia {
              
     @Override
     public String toString() {
-        return "Franquicia{" + "id=" + id + ", fecha_creacion=" + fecha_creacion + ", ubicacion=" + ubicacion + ", accesibilidad_reducida=" + accesibilidadreducida + ", grupotrabajo=" + grupotrabajo + ", empleados=" + empleados + ", informe=" + informe + '}';
+        return id + ". Fecha de creación: " + fecha_creacion + ", está en " + ubicacion + ", accesibilidad reducida " + accesibilidadreducida + " grupotrabajo actual: " + grupotrabajo + " e informe " + informe;
     }
 
 }
