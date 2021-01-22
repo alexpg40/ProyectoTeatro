@@ -115,10 +115,7 @@ public class Informe {
 
         System.out.println("La fecha introducida es:" + date);
         return date;
-    }
-
-    ;
-     
+    };
      
     public Informe nuevoInforme() {
         Informe inf = new Informe();
@@ -132,7 +129,7 @@ public class Informe {
         inf.dameFecha();
         return inf;
     }
-
+    
     public long nextIdInforme() {
         long idInf = 0;
         for (int i = 0; i < Utilidades.INFORMES.length; i++) {

@@ -36,14 +36,19 @@ public class Limpieza extends EmpleadoDeTeatro {
 
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + '}';
+        String ret = "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + ", costes";
+        for (Coste cos : costes) {
+            ret += "Importe:" + cos.getImporte() + "\n";
+        }
+        ret += '}';
+        return ret;
     }
-
-    public ArrayList<Coste> getBeneficios() {
+    
+    public ArrayList<Coste> getCostes() {
         return costes;
     }
 
-    public void setBeneficios(ArrayList<Coste> beneficios) {
-        this.costes = beneficios;
+    public void setCostes(ArrayList<Coste> costes) {
+        this.costes = costes;
     }
 }
