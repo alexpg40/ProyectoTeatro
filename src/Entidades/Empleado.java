@@ -375,7 +375,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono;
+        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")";
     }
 
     /**
@@ -397,7 +397,7 @@ public class Empleado {
      */
     public static void mostrarEmpleados(ArrayList<Empleado> array) {
         for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono);
+            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono  + " (" + array.get(i).getClass().getSimpleName() + ")");
         }
     }
 

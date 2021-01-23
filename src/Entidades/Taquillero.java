@@ -36,7 +36,7 @@ public class Taquillero extends EmpleadoDeTeatro{
    
     @Override
     public String toString() {
-        String ret = "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", categoria" + categoria + "beneficios=";
+        String ret = this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")";
            for (Beneficio ben: beneficios){
                 ret += "Importe:" + ben.getImporte() + "\n";
                 ret += "Reporte:" + ben.getReporte() + "\n";
