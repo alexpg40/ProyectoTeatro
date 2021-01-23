@@ -87,7 +87,7 @@ public class Empleado {
     public Empleado() {
 
     }
-  
+
     public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia) {
         this.id = id;
         this.nombre = nombre;
@@ -115,7 +115,8 @@ public class Empleado {
                 id = e.id;
             }
         }
-    return id +1;}
+        return id + 1;
+    }
 
     public void validarNombre(String nombre) {
         boolean cond = false;
@@ -148,8 +149,8 @@ public class Empleado {
         } else {
             for (int i = 0; i < apellidos.length(); i++) {
                 if (((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z'))) {
-                    cond = false;                 
-                } else if(apellidos.charAt(i) != ' '){
+                    cond = false;
+                } else if (apellidos.charAt(i) != ' ') {
                     cond = true;
                     break;
                 }
@@ -273,133 +274,131 @@ public class Empleado {
     }
 
     /**
-     * Busca la id introduciza y devuelve un objeto de la BD con la misma id 
+     * Busca la id introduciza y devuelve un objeto de la BD con la misma id
+     *
+     * @param id
      * @param array
      * @return devuelve el objeto con la misma id
      */
-    public static Empleado getEmpleadobyID(ArrayList<Empleado> array){
+    public static Empleado getEmpleadobyID(long id, ArrayList<Empleado> array) {
         Empleado e = new Empleado();
-        Scanner input = new Scanner(System.in);
-        System.out.println("Introduce el id");
-        long id = input.nextLong();
         for (Empleado emp : array) {
             if (id == emp.id) {
                 e = emp;
             }
         }
-        
-    return e;}
-    
+
+        return e;
+    }
+
     /**
      * Busca empleado en la BD por nif
+     *
+     * @param nif
      * @param array
      * @return un objeto empleado con el mismo nif
      */
-    public static Empleado getEmpleadobyNIF(ArrayList<Empleado> array){
-        Scanner in = new Scanner(System.in);
+    public static Empleado getEmpleadobyNIF(String nif, ArrayList<Empleado> array) {
         Empleado e = new Empleado();
-        System.out.println("Introduce el Nif");
-        String nif = in.nextLine();
         for (Empleado emp : array) {
-            if (nif.equals(e.nif)) {
+            if (nif.equals(emp.nif)) {
                 e = emp;
             }
         }
-    return e;}
+        return e;
+    }
 
     /**
      * Busca empleados con el nombre
-     * @param array 
+     * @param nombre
+     * @param array
      * @return un array con los empleados que coincide con el nombre
      */
-    public static ArrayList<Empleado> getEmpleadobyNombre(ArrayList<Empleado> array){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Introduce el nombre");
+    public static ArrayList<Empleado> getEmpleadobyNombre(String nombre, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
-        String nombre = in.nextLine();
         for (int i = 0; i < array.size(); i++) {
             if (array.get(i).nombre.contains(nombre)) {
                 ret.add(array.get(i));
             }
         }
-    return ret;}
-    
+        return ret;
+    }
+
     /**
      * Busca empleados que coincide con el telefono
+     * @param telefono
      * @param array
      * @return devuelve el objeto con el mismo telefono
      */
-    public static Empleado getEmpleadobyTelefono(ArrayList<Empleado> array){
-        Scanner in = new Scanner(System.in);
+    public static Empleado getEmpleadobyTelefono(String telefono, ArrayList<Empleado> array) {
         Empleado e = new Empleado();
-        System.out.println("Introduce el telefono");
-        String telefono = in.nextLine();
         for (Empleado emp : array) {
             if (telefono.equals(emp.telefono)) {
                 e = emp;
             }
         }
-    return e;}
-    
+        return e;
+    }
+
     /**
      * Busca los objetos que coincide con los apellidos
+     * @param apellidos
      * @param array
      * @return ArrayList con los empleados que los apellidos
      */
-    public static ArrayList<Empleado> getEmpleadobyApellidos(ArrayList<Empleado> array){
+    public static ArrayList<Empleado> getEmpleadobyApellidos(String apellidos, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
-        System.out.println("Introduce el apellido");
-        Scanner input = new Scanner(System.in);
-        String apellidos = input.nextLine();
         for (int i = 0; i < array.size(); i++) {
             if (apellidos.contains(array.get(i).apellidos)) {
                 ret.add(array.get(i));
             }
         }
-    return ret;}
-    
+        return ret;
+    }
+
     /**
      * Busca empleados en una direccion
+     * @param direccion
      * @param array
-     * @return ArrayList de empleados que vuelve los objetos empleados con esa direccion
+     * @return ArrayList de empleados que vuelve los objetos empleados con esa
+     * direccion
      */
-    public static ArrayList<Empleado> getEmpleadobyDireccion(ArrayList<Empleado> array){
+    public static ArrayList<Empleado> getEmpleadobyDireccion(String direccion, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
-        Scanner in = new Scanner(System.in);
-        System.out.println("Introduce la direccion");
-        String direccion = in.nextLine();
         for (Empleado e : array) {
             if (e.direccion.contains(direccion)) {
                 ret.add(e);
             }
         }
-    return ret;}
-    
+        return ret;
+    }
+
     @Override
     public String toString() {
         return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono;
     }
-    
+
     /**
      * Convierte un array de empleados en un array list de empleados
-     * @param array 
-     * @return ararylist 
+     * @param array
+     * @return ararylist
      */
-    public static ArrayList<Empleado> convertirEmpleado(Empleado[] array){
+    public static ArrayList<Empleado> convertirEmpleado(Empleado[] array) {
         ArrayList<Empleado> ret = new ArrayList<>();
         for (Empleado e : array) {
             ret.add(e);
         }
-    return ret;}
-    
+        return ret;
+    }
+
     /**
      * Recorre todos el array e imprime los objetos usandro el toString
-     * @param array 
+     * @param array
      */
-    public static void mostrarEmpleados(ArrayList<Empleado> array){
+    public static void mostrarEmpleados(ArrayList<Empleado> array) {
         for (int i = 0; i < array.size(); i++) {
             System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono);
         }
     }
-    
+
 }
