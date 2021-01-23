@@ -19,8 +19,7 @@ public class Main {
         ArrayList <Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
         //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Informe> informes = Informe.convertirInforme(Utilidades.INFORMES);
-                
-                
+        
         int opcion = -1;
         do {
             MostrarMenu();
@@ -77,28 +76,69 @@ public class Main {
                                 do {
                                     MostrarMenuBuscarEmpleados();
                                     opcionbusemp = in.nextInt();
-                                    if (opcionbusemp < 0 && opcionbusemp > 6) {
-                                        
+                                    if (opcionbusemp < 0 || opcionbusemp > 6) {
+                                        System.out.println("Error. Vuelva a introducir la opción.");
                                     }
                                     switch(opcionbusemp){
                                         case 1: //Buscar por id
-                                            System.out.println(Empleado.getEmpleadobyID(empleados));
+                                            System.out.println("Introduce la ID a buscar.");
+                                            in = new Scanner(System.in);
+                                            long id = in.nextLong();
+                                            if (Empleado.getEmpleadobyID(id, empleados).getId() == 0) {
+                                                System.out.println("No existe ningun empleado con la ID introducida.");
+                                            } else{
+                                                System.out.println(Empleado.getEmpleadobyID(id, empleados));
+                                            }
                                             continue;
                                         case 2: //Buscar por nif
-                                            System.out.println(Empleado.getEmpleadobyNIF(empleados));
+                                            System.out.println("Introduce el NIF a buscar.");
+                                            in = new Scanner(System.in);
+                                            String nif = in.nextLine();
+                                            if (Empleado.getEmpleadobyNIF(nif, empleados).getNif() == null) {
+                                                System.out.println("No existe ningun empleado con el NIF introducido.");
+                                            } else{
+                                                System.out.println(Empleado.getEmpleadobyNIF(nif, empleados));
+                                            }
                                             continue;
                                         case 3: //Buscar por nombre
-                                            Empleado.mostrarEmpleados(Empleado.getEmpleadobyNombre(empleados));
+                                            System.out.println("Introduce el nombre a buscar.");
+                                            in = new Scanner(System.in);
+                                            String nombre = in.nextLine();
+                                            if (Empleado.getEmpleadobyNombre(nombre, empleados).isEmpty()) {
+                                                System.out.println("No existe ningun empleado con el nombre introducido.");
+                                            } else{
+                                                Empleado.mostrarEmpleados(Empleado.getEmpleadobyNombre(nombre, empleados));
+                                            }
                                             continue;
                                         case 4: //Buscar por apellidos
-                                            Empleado.mostrarEmpleados(Empleado.getEmpleadobyApellidos(empleados));
+                                            System.out.println("Introduce el apellido a buscar,");
+                                            in = new Scanner(System.in);
+                                            String apellidos = in.nextLine();
+                                            if (Empleado.getEmpleadobyApellidos(apellidos, empleados).isEmpty()) {
+                                                System.out.println("No existe ningun empleado con el apellido introducido.");
+                                            } else{
+                                                Empleado.mostrarEmpleados(Empleado.getEmpleadobyApellidos(apellidos, empleados));
+                                            }
                                             continue;
                                         case 5: //Buscar por direccion
-                                            Empleado.mostrarEmpleados(Empleado.getEmpleadobyDireccion(empleados));
+                                            System.out.println("Introduce la direccion a buscar.");
+                                            in = new Scanner(System.in);
+                                            String direccion = in.nextLine();
+                                            if (Empleado.getEmpleadobyDireccion(direccion, empleados).isEmpty()) {
+                                                System.out.println("No existe ningun empleado con la direccion introducido.");
+                                            } else{
+                                                Empleado.mostrarEmpleados(Empleado.getEmpleadobyDireccion(direccion, empleados));
+                                            }
                                             continue;
                                         case 6: //Buscar por telefono
-                                            System.out.println(Empleado.getEmpleadobyTelefono(empleados));
-                                            continue;
+                                            System.out.println("Introduce el telefono a buscar.");
+                                            in = new Scanner(System.in);
+                                            String telefono = in.nextLine();
+                                            if (Empleado.getEmpleadobyTelefono(telefono, empleados).getId() == 0) {
+                                                System.out.println("No existe ningun empelado con el telefono introducido.");
+                                            } else{
+                                                System.out.println(Empleado.getEmpleadobyTelefono(telefono, empleados));
+                                            }            
                                     }
                                 } while (opcionbusemp != 0);
                                 
@@ -144,9 +184,9 @@ public class Main {
     }
 
     private static void MostrarMenuEmpleados() {
-        System.out.println("Pulsa 1 para ver empleados.");
-        System.out.println("Pulsa 2 para nuevo empleado.");
-        System.out.println("Pulsa 3 para busca empleado.");
+        System.out.println("Pulsa 1 para Ver Empleados.");
+        System.out.println("Pulsa 2 para Nuevo Empleado.");
+        System.out.println("Pulsa 3 para Busca Empleado.");
         System.out.println("Pulsa 0 para salir");
     } 
     private static void MostrarMenuFranquicias(){
@@ -163,12 +203,12 @@ public class Main {
     }
 
     private static void MostrarMenuBuscarEmpleados() {
-        System.out.println("Pulsa 1 para buscar empleados por id");
-        System.out.println("Pulsa 2 para buscar empleados por nif");
-        System.out.println("Pulsa 3 para buscar empleados por nombre");
-        System.out.println("Pulsa 4 para buscar empleados por apelidos");
-        System.out.println("Pulsa 5 para buscar empleados por direccion");
-        System.out.println("Pulsa 6 para buscar empleados por telefono");
-        System.out.println("Pulsa 0 para salir");
+        System.out.println("Pulsa 1 para Buscar Empleados por Id");
+        System.out.println("Pulsa 2 para Buscar Empleados por Nif.");
+        System.out.println("Pulsa 3 para Buscar Empleados por Nombre.");
+        System.out.println("Pulsa 4 para Buscar Empleados por Apelidos.");
+        System.out.println("Pulsa 5 para Buscar Empleados por Direccion.");
+        System.out.println("Pulsa 6 para Buscar Empleados por Telefono.");
+        System.out.println("Pulsa 0 para salir.");
     }
 }
