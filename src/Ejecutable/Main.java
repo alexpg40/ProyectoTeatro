@@ -199,6 +199,7 @@ public class Main {
                         }
                         switch (opcioninf) {
                             case 1: //Ver informes
+                                informes.add(Informe.nuevoInforme());
                                 break;
                             case 2: // Nuevo informe 
                                 break;

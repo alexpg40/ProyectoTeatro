@@ -127,7 +127,7 @@ public class Informe {
      * Función que realiza un nuevoInforme, con el id, el balance y la fecha.
      * @return nuevoInforme
      */
-    public Informe nuevoInforme() {
+    public static Informe nuevoInforme() {
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
         inf.setId(nextIdInforme());
@@ -143,7 +143,7 @@ public class Informe {
      * Función que crea un nuevo id basándose en el último que tengamos en la BD.
      * @return nuevo id
      */
-    public long nextIdInforme() {
+    public static long nextIdInforme() {
         long idInf = 0;
         for (int i = 0; i < Utilidades.INFORMES.length; i++) {
             if (Utilidades.INFORMES[i].id > idInf) {
