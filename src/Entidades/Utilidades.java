@@ -26,7 +26,6 @@ public class Utilidades {
         new Empleado(13, "Pepe", "Mendizabal", "78496512A", "Galicia, A Coruña", "654796123", Franquicia),
         new Empleado(14, "Allejo", "Perez", "86496512A", "Galicia, A Coruña", "982796123", Franquicia),
         new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", Franquicia),
-        new Empleado(16, "Casemiro", "Rodriguez", "52496596A", "Asturias, Gijon", "684297135", Franquicia)
     };
 
     //He declarado un ArrayList para que no me de error
