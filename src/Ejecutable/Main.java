@@ -79,36 +79,34 @@ public class Main {
                         }
                         switch (opcionemp) {
                             case 1: //Ver Empleados
-                                int opcionveremp = -1;
-                                do {
-                                    MostrarMenuVerTiposdeEmpleados();
-                                    opcionveremp = in.nextInt();
-                                    if (opcionveremp < 0 || opcionveremp > 6) {
-                                        System.out.println("Error. Vuelva a introducir la opción.");
-                                    }
-                                    switch (opcionveremp) {
-                                        case 1:
-                                            Empleado.mostrarEmpleados(empleados);
-                                            continue;
-                                        case 2:
-                                            Empleado.mostrarEmpleados(empleadosA);
-                                            continue;
-                                        case 3:
-                                            Empleado.mostrarEmpleados(empleadosD);
-                                            continue;
-                                        case 4:
-                                            Empleado.mostrarEmpleados(empleadosL);
-                                            continue;
-                                        case 5:
-                                            Empleado.mostrarEmpleados(empleadosT);
-                                            continue;
-                                        case 6:
-                                            Empleado.mostrarEmpleados(empleadosS);
-                                    }
-                                } while (opcionveremp != 0);
+                                Empleado.mostrarEmpleados(empleados);
                                 break;
                             case 2: //Nuevo Empleado
-                                empleados.add(Empleado.nuevoEmpleado());
+                                int opcionnuevoemp = -1;
+                                do {
+                                    MostrarMenuNuevoEmpleados();
+                                    opcionnuevoemp = in.nextInt();
+                                    if (opcionnuevoemp < 0 || opcionnuevoemp > 5) {
+                                        System.out.println("Error. Vuelva a introducir la opción.");
+                                    }
+                                    switch(opcionnuevoemp){
+                                        case 1: //Nuevo Acomodador
+                                            empleados.add(Acomodador.nuevoAcomodador());
+                                            continue;
+                                        case 2: // Nuevo Director
+                                            empleados.add(Direccion.nuevaDireccion());
+                                            continue;
+                                        case 3: //Nuevo Limpiador
+                                            empleados.add(Limpieza.nuevoLimpieza());
+                                            continue;
+                                        case 4: //Nuevo Secretario
+                                            empleados.add(Secretariado.nuevoSecretariado());
+                                            continue;
+                                        case 5: //Nuevo Taquillero
+                                            empleados.add(Taquillero.nuevoTaquillero());
+                                    }
+                                } while (opcionnuevoemp != 0);
+                                
                                 break;
                             case 3: //Buscar empleados
                                 int opcionbusemp = -1;
@@ -255,13 +253,12 @@ public class Main {
         System.out.println("Pulsa 0 para Salir.");
     }
 
-    private static void MostrarMenuVerTiposdeEmpleados() {
-        System.out.println("Pulsa 1 para Ver Empleados");
-        System.out.println("Pulsa 2 para Ver Acomodadores.");
-        System.out.println("Pulsa 3 para Ver Directores.");
-        System.out.println("Pulsa 4 para Ver Limpiadores.");
-        System.out.println("Pulsa 5 para Ver Taquilleros");
-        System.out.println("Pulsa 6 para Ver Secretarios");
-        System.out.println("Pulsa 0 para Salir");
+    private static void MostrarMenuNuevoEmpleados() {
+        System.out.println("Pulsa 1 para Nuevo Acomodador.");
+        System.out.println("Pulsa 2 para Nuevo Direccion.");
+        System.out.println("Pulsa 3 para Nuevo Limpiador");
+        System.out.println("Pulsa 4 para Nuevo Secretariado.");
+        System.out.println("Pulsa 5 para Nuevo Taquillero.");
+        System.out.println("Pulsa 0 para Salir.");
     }
 }
