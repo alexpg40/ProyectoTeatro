@@ -20,6 +20,10 @@ public class Limpieza extends EmpleadoDeTeatro {
         super();
     }
 
+    public Limpieza(Empleado e){
+        super(e);
+    }
+    
     public Limpieza(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria) {
         this.id = id;
         this.nombre = nombre;
@@ -51,4 +55,10 @@ public class Limpieza extends EmpleadoDeTeatro {
     public void setCostes(ArrayList<Coste> costes) {
         this.costes = costes;
     }
+    
+    public static Limpieza nuevoLimpieza(){
+        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro();
+        Limpieza l = new Limpieza(e);
+    return l;}
+    
 }

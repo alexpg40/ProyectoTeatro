@@ -31,6 +31,10 @@ public class Direccion extends EmpleadoDeOficina {
         super();
     }
     
+    public Direccion(Empleado e){
+        super(e);
+    }
+    
     public Direccion (long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD){
         this.id = id;
         this.nombre = nombre;
@@ -55,58 +59,12 @@ public class Direccion extends EmpleadoDeOficina {
     }
     
      public static Direccion nuevaDireccion(){
-        Direccion direc = new Direccion();
-        Scanner sc = new Scanner(System.in);
-        direc.getId();
-        System.out.println("Introduce el id");
-        long id;
-        do {
-            sc = new Scanner(System.in);
-            id = sc.nextLong();
-            direc.setId(id);
-        } while (direc.getId() != id);
-        System.out.println("Introduce el nombre");
-        String nomb;
-        do {
-            sc = new Scanner(System.in);
-            nomb = sc.nextLine();
-            direc.validarNombre(nomb);
-        } while (direc.getNombre() != nomb);
-        System.out.println("Introduce los apellidos");
-        String ap;
-        do {
-            sc = new Scanner(System.in);
-            ap = sc.nextLine();
-            direc.validarApellidos(ap);
-        } while (direc.getApellidos() != ap);
-        System.out.println("Introduce el NIF");
-        String nif;
-        do {
-            sc = new Scanner(System.in);
-            nif = sc.nextLine();
-            direc.validarNIF(nif);
-        } while (direc.getNif() != nif);
-        System.out.println("Introduce el telefono");
-        String tl;
-        do {
-            sc = new Scanner(System.in);
-            tl = sc.nextLine();
-            direc.validarTelefono(tl);
-        } while (direc.getTelefono() != tl);
-        System.out.println("Introduce la dirección");
-        String d;
-        do {
-            sc = new Scanner(System.in);
-            d = sc.nextLine();
-            direc.validarDireccion(d);
-        } while (direc.getDireccion() != d);
-        System.out.println("Introduce los años en plantilla");
-        int pln;
-        do {
-            sc = new Scanner(System.in);
-            pln = sc.nextInt();
-            direc.setAñosPlantillaD(pln);
-        } while (direc.getAñosPlantillaD() != pln);
+        Scanner in = new Scanner(System.in);
+        EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina();
+        Direccion direc = new Direccion(e);
+        System.out.println("Introduce los años en plantilla.");
+        int años = in.nextInt();
+        direc.validarAñosPlantillaD(años);
         return direc;
      }
      

@@ -19,6 +19,10 @@ public class Acomodador extends EmpleadoDeTeatro {
     public Acomodador() {
         super();
     }
+    
+    public Acomodador(Empleado e){
+        super(e);
+    }
 
     public Acomodador(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria) {
         this.id = id;
@@ -51,4 +55,10 @@ public class Acomodador extends EmpleadoDeTeatro {
     public void setBeneficios(ArrayList<Coste> costes) {
         this.costes = costes;
     }
+    
+    public static Acomodador nuevoAcomodador(){
+        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro();
+        Acomodador a = new Acomodador(e);
+    return a;}
+    
 }

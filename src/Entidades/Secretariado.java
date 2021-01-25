@@ -30,9 +30,18 @@ public class Secretariado extends EmpleadoDeOficina {
         super();
     }
     
+    public Secretariado(Empleado e){
+        super(e);
+    }
+    
     public Secretariado (Empleado e, int añosPlantilla){
         super(e, añosPlantilla);
     }
+    
+    public static Secretariado nuevoSecretariado(){
+        EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina();
+        Secretariado s = new Secretariado(e);
+    return s;}
     
     @Override
     public String toString() {

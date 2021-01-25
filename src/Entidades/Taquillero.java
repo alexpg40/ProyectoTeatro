@@ -20,6 +20,10 @@ public class Taquillero extends EmpleadoDeTeatro{
        super();
    }
    
+   public Taquillero(Empleado e){
+       super(e);
+   }
+   
    public Taquillero(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria){
         this.id = id;
         this.nombre = nombre;
@@ -48,6 +52,11 @@ public class Taquillero extends EmpleadoDeTeatro{
         return beneficios;
     }
 
+    public static Taquillero nuevoTaquillero(){
+        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro();
+        Taquillero t = new Taquillero(e);
+    return t;}
+    
     public void setBeneficio(ArrayList<Beneficio> beneficios) {
         this.beneficios = beneficios;
     } 
