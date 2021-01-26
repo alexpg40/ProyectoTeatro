@@ -93,6 +93,14 @@ public class Beneficio {
         this.reporte = reporte;
     }
     
+    public Taquillero getTaquillero(){
+    return taquillero;
+    }
+    
+    public void setTaquillero (Taquillero taquillero) {
+        this.taquillero = taquillero;
+    }
+    
     
     public long nextIdBeneficio() {
         long idBen = 0;
