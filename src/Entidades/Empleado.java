@@ -8,10 +8,7 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author DarkB
- */
+
 public class Empleado {
 
     //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
@@ -108,9 +105,9 @@ public class Empleado {
         this.franquicia = e.franquicia;
     }
 
-    public long generarId() {
+    public long generarId(ArrayList<Empleado> empleados) {
         long id = 0;
-        for (Empleado e : Utilidades.EMPLEADOS) {
+        for (Empleado e : empleados) {
             if (id < e.id) {
                 id = e.id;
             }
@@ -230,10 +227,10 @@ public class Empleado {
         }
     }
 
-    public static Empleado nuevoEmpleado() {
+    public static Empleado nuevoEmpleado(ArrayList<Empleado> empleados) {
         Empleado e = new Empleado();
         Scanner in;
-        e.setId(e.generarId());
+        e.setId(e.generarId(empleados));
         System.out.println("Introduce el nombre");
         String us;
         do {

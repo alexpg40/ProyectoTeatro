@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -53,9 +54,9 @@ public class EmpleadoDeOficina extends Empleado{
         }
     }
     
-    public static EmpleadoDeOficina nuevoEmpleadoDeOficina(){
+    public static EmpleadoDeOficina nuevoEmpleadoDeOficina(ArrayList<Empleado> empleados){
         Scanner sc;
-        Empleado e = Empleado.nuevoEmpleado();
+        Empleado e = Empleado.nuevoEmpleado(empleados);
         EmpleadoDeOficina ef = new EmpleadoDeOficina(e);
         System.out.println("Introcude los años en plantilla");
         int a;

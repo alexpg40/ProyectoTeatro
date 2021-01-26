@@ -56,8 +56,8 @@ public class Acomodador extends EmpleadoDeTeatro {
         this.costes = costes;
     }
     
-    public static Acomodador nuevoAcomodador(){
-        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro();
+    public static Acomodador nuevoAcomodador(ArrayList<Empleado> empleados){
+        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro(empleados);
         Acomodador a = new Acomodador(e);
     return a;}
     

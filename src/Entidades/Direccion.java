@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -58,9 +59,9 @@ public class Direccion extends EmpleadoDeOficina {
         }
     }
     
-     public static Direccion nuevaDireccion(){
+     public static Direccion nuevaDireccion(ArrayList<Empleado> empleados){
         Scanner in = new Scanner(System.in);
-        EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina();
+        EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina(empleados);
         Direccion direc = new Direccion(e);
         System.out.println("Introduce los años en plantilla.");
         int años = in.nextInt();

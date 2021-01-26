@@ -46,8 +46,8 @@ public class Secretariado extends EmpleadoDeOficina {
         this.nominas = nominas;
     } 
     
-    public static Secretariado nuevoSecretariado(){
-        EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina();
+    public static Secretariado nuevoSecretariado(ArrayList<Empleado> empleados){
+        EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina(empleados);
         Secretariado s = new Secretariado(e);
     return s;}
     

@@ -52,8 +52,8 @@ public class Taquillero extends EmpleadoDeTeatro{
         return beneficios;
     }
 
-    public static Taquillero nuevoTaquillero(){
-        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro();
+    public static Taquillero nuevoTaquillero(ArrayList<Empleado> empleados){
+        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro(empleados);
         Taquillero t = new Taquillero(e);
     return t;}
     

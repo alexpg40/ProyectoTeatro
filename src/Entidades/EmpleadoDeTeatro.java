@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmpleadoDeTeatro extends Empleado {
@@ -61,8 +62,8 @@ public class EmpleadoDeTeatro extends Empleado {
             this.categoria = categoria;
         }
     }
-    public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(){
-        Empleado e = Empleado.nuevoEmpleado();
+    public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(ArrayList<Empleado> empleados){
+        Empleado e = Empleado.nuevoEmpleado(empleados);
         EmpleadoDeTeatro et = new EmpleadoDeTeatro(e);
         Scanner sc;
         System.out.println("Introduce la categoria");

@@ -251,28 +251,28 @@ public class Main {
     private static void NuevoEmpleado(ArrayList<Empleado> empleados) {
         Scanner in = new Scanner(System.in);
         int opcionnuevoemp = -1;
-                    do {
-                        MostrarMenuNuevoEmpleados();
-                        opcionnuevoemp = in.nextInt();
-                        if (opcionnuevoemp < 0 || opcionnuevoemp > 5) {
-                            System.out.println("Error. Vuelva a introducir la opción.");
-                        }
-                        switch (opcionnuevoemp) {
-                            case 1: //Nuevo Acomodador
-                                empleados.add(Acomodador.nuevoAcomodador());
-                                continue;
-                            case 2: // Nuevo Director
-                                empleados.add(Direccion.nuevaDireccion());
-                                continue;
-                            case 3: //Nuevo Limpiador
-                                empleados.add(Limpieza.nuevoLimpieza());
-                                continue;
-                            case 4: //Nuevo Secretario
-                                empleados.add(Secretariado.nuevoSecretariado());
-                                continue;
-                            case 5: //Nuevo Taquillero
-                                empleados.add(Taquillero.nuevoTaquillero());
-                        }
-                    } while (opcionnuevoemp != 0);
+        do {
+            MostrarMenuNuevoEmpleados();
+            opcionnuevoemp = in.nextInt();
+            if (opcionnuevoemp < 0 || opcionnuevoemp > 5) {
+                System.out.println("Error. Vuelva a introducir la opción.");
+            }
+            switch (opcionnuevoemp) {
+                case 1: //Nuevo Acomodador
+                    empleados.add(Acomodador.nuevoAcomodador(empleados));
+                    continue;
+                case 2: // Nuevo Director
+                    empleados.add(Direccion.nuevaDireccion(empleados));
+                    continue;
+                case 3: //Nuevo Limpiador
+                    empleados.add(Limpieza.nuevoLimpieza(empleados));
+                    continue;
+                case 4: //Nuevo Secretario
+                    empleados.add(Secretariado.nuevoSecretariado(empleados));
+                    continue;
+                case 5: //Nuevo Taquillero
+                    empleados.add(Taquillero.nuevoTaquillero(empleados));
+            }
+        } while (opcionnuevoemp != 0);
     }
 }

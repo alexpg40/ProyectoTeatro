@@ -56,8 +56,8 @@ public class Limpieza extends EmpleadoDeTeatro {
         this.costes = costes;
     }
     
-    public static Limpieza nuevoLimpieza(){
-        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro();
+    public static Limpieza nuevoLimpieza(ArrayList<Empleado> empleados){
+        EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro(empleados);
         Limpieza l = new Limpieza(e);
     return l;}
     
