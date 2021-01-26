@@ -174,7 +174,6 @@ public class Main {
         System.out.println("Pulsa 4 para Buscar Empleados por Apelidos.");
         System.out.println("Pulsa 5 para Buscar Empleados por Direccion.");
         System.out.println("Pulsa 6 para Buscar Empleados por Telefono.");
-        System.out.println("Pulsa 7 para Buscar Empleados por Tipo de Empleado.");
         System.out.println("Pulsa 0 para Salir.");
     }
 

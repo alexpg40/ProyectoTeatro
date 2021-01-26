@@ -298,7 +298,7 @@ public class Empleado {
     public static Empleado getEmpleadobyNIF(String nif, ArrayList<Empleado> array) {
         Empleado e = new Empleado();
         for (Empleado emp : array) {
-            if (nif.equals(emp.nif)) {
+            if (nif.toLowerCase().equals(emp.nif.toLowerCase())) {
                 e = emp;
             }
         }
@@ -314,7 +314,7 @@ public class Empleado {
     public static ArrayList<Empleado> getEmpleadobyNombre(String nombre, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
         for (int i = 0; i < array.size(); i++) {
-            if (array.get(i).nombre.contains(nombre)) {
+            if (array.get(i).nombre.toLowerCase().contains(nombre.toLowerCase())) {
                 ret.add(array.get(i));
             }
         }
@@ -346,7 +346,7 @@ public class Empleado {
     public static ArrayList<Empleado> getEmpleadobyApellidos(String apellidos, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
         for (int i = 0; i < array.size(); i++) {
-            if (apellidos.contains(array.get(i).apellidos)) {
+            if (apellidos.toLowerCase().contains(array.get(i).apellidos.toLowerCase())) {
                 ret.add(array.get(i));
             }
         }
@@ -363,7 +363,7 @@ public class Empleado {
     public static ArrayList<Empleado> getEmpleadobyDireccion(String direccion, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
         for (Empleado e : array) {
-            if (e.direccion.contains(direccion)) {
+            if (e.direccion.toLowerCase().contains(direccion.toLowerCase())) {
                 ret.add(e);
             }
         }
