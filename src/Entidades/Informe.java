@@ -160,7 +160,7 @@ public class Informe {
             ret += "Importe:" + ben.getImporte() + "\n";
             ret += "Reporte:" + ben.getReporte() + "\n";
         }
-        // + "\ncostes=";
+        ret += "\ncostes=";
         for (Coste cos : costes) {
             ret += "Importe:" + cos.getImporte();
         }
@@ -177,6 +177,7 @@ public class Informe {
             System.out.println(array.get(i).toString());
         }
     }
+    
     /**
      * Función que convierte un array de Informes en un ArrayList de Informes
      * con los mismos elementos.
