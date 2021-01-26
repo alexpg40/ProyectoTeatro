@@ -233,11 +233,36 @@ public class Franquicia {
                 for (Franquicia fran : Utilidades.FRANQUICIAS) {
                     if (id == fran.id) {
                         f = fran;
+                        System.out.println(f);
                     }
                 }
-            System.out.println(f);
+            
             return f;
             
+        };
+        
+        public static Franquicia buscarFranquicia(String ubicacion){
+            Franquicia fr = new Franquicia();
+                for (Franquicia franq : Utilidades.FRANQUICIAS) {
+                    if (franq.ubicacion.contains(ubicacion)) {
+                        fr = franq;
+                        System.out.println(fr);
+                    }
+                }
+            
+            return fr;
+        };
+        
+        public static Franquicia buscarFranquicia(boolean condicion){
+            Franquicia fra = new Franquicia();
+                for (Franquicia franqu : Utilidades.FRANQUICIAS) {
+                    if (condicion = fra.accesibilidadreducida) {
+                        fra = franqu;
+                        System.out.println(fra);
+                    }
+                }
+            
+            return fra;
         };
              
     @Override

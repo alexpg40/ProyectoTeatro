@@ -84,16 +84,17 @@ public class GTrabajo {
     
     public static GTrabajo nuevoGTrabajo(){
         GTrabajo gt = new GTrabajo();
-        Scanner sc = new Scanner(System.in);
+        Scanner in;
         gt.setId(gt.generarId());
-        System.out.println("Introduce la semana");
+        System.out.println("Introduzca la semana: " + "\n");
         long semana;
         do {
             semana =-1;
-            sc = new Scanner(System.in);
-            semana = sc.nextLong();
+            in = new Scanner(System.in);
+            semana = in.nextLong();
             gt.validarSemana(semana);
         } while (gt.getSemana() != semana || semana <= 0 || semana > 6);
+        System.out.println("La semana introducida es " + semana);
     return gt;}
     
     @Override
