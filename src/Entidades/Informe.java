@@ -169,7 +169,7 @@ public class Informe {
     }
 
     /**
-     * Función para ver los informes.
+     * Función que nos permite ver los Informes.
      * @param array 
      */
     public static void verInformes(ArrayList<Informe> array) {
