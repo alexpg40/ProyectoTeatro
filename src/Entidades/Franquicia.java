@@ -242,7 +242,16 @@ public class Franquicia {
              
     @Override
     public String toString() {
-        return id + ". Fecha de creación: " + fecha_creacion + ", está en " + ubicacion + ", accesibilidad reducida " + accesibilidadreducida + " grupotrabajo actual: " + grupotrabajo + " e informe " + informe;
+        String ret = id + ". Fecha de creación: " + fecha_creacion + ", está en " + ubicacion + ", accesibilidad reducida " + accesibilidadreducida + " grupotrabajo actual: " + grupotrabajo + "informe " + informe + "Empleados:" + empleados;
+    for (Empleado emp : empleados) {
+            ret += "Nombre:" + emp.getNombre() + "\n";
+            ret += "Apellidos:" + emp.getApellidos() + "\n";
+            ret += "Telefono:" + emp.getTelefono() + "\n";
+            ret += "NIF:" + emp.getNif() + "\n";
+            ret += "Direccion:" + emp.getDireccion() + "\n";
+        }
+        ret += '}';
+        return ret;
     }
-
-}
+    
+ }

@@ -101,7 +101,10 @@ public class Beneficio {
         this.taquillero = taquillero;
     }
     
-    
+    /**
+     * Función que nos da el siguiente id de un beneficio.
+     * @return idBen
+     */
     public long nextIdBeneficio() {
         long idBen = 0;
         for (int i = 0; i< Utilidades.BENEFICIOS.length; i++){
@@ -120,7 +123,11 @@ public class Beneficio {
         }
 
     };
-    
+    /**
+     * Función que pide fecha al usuario.
+     * @param dt
+     * @return date
+     */
      public Date dameFecha(Date dt) {
         Scanner in = new Scanner(System.in);
         System.out.println("Dame el año:");
@@ -133,7 +140,10 @@ public class Beneficio {
         System.out.println("La fecha introducida es:" + date);
         return date;
     };
-    
+    /**
+     * Función que crea un nuevo Beneficio.
+     * @return b
+     */
     public Beneficio nuevoBeneficio() {
         Beneficio b = new Beneficio();
         Scanner sc = new Scanner(System.in);
@@ -158,6 +168,6 @@ public class Beneficio {
 
     @Override
     public String toString() {
-        return "Beneficio{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", reporte=" + reporte + ", taquillero=" + taquillero + '}';
+        return "Beneficio{" + "\nId=" + id + "\nFecha=" + fecha + "\nImporte=" + importe + "\nReporte=" + reporte + "\nTaquillero=" + taquillero + '}';
     }
 }
