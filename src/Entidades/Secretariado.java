@@ -38,6 +38,14 @@ public class Secretariado extends EmpleadoDeOficina {
         super(e, añosPlantilla);
     }
     
+    public ArrayList<Nomina> getNomina() {
+        return nominas;
+    }
+    
+    public void setBeneficio(ArrayList<Beneficio> beneficios) {
+        this.nominas = nominas;
+    } 
+    
     public static Secretariado nuevoSecretariado(){
         EmpleadoDeOficina e = EmpleadoDeOficina.nuevoEmpleadoDeOficina();
         Secretariado s = new Secretariado(e);
