@@ -32,6 +32,7 @@ public class Main {
         ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
         //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Informe> informes = Informe.convertirInforme(Utilidades.INFORMES);
+        ArrayList<GTrabajo> grupostrabajo = GTrabajo.convertirGTrabajo(Utilidades.GTRABAJO);
 
         int opcion = -1;
         do {
@@ -120,11 +121,14 @@ public class Main {
                         opcioninf = -1;
                     } while (opcioninf < 0 || opcioninf > 2);
                     break;
+                case 4:
+                    System.out.println("");
+                    break;
                 default: //Salir
                     continue;
             }
             opcion = -1;
-        } while (opcion < 0 || opcion > 3);
+        } while (opcion < 0 || opcion > 4);
 
     }
 
