@@ -161,4 +161,10 @@ public class GTrabajo {
         return ret;
     }
     
+    public static void verGruposTrabajo(ArrayList<GTrabajo> array) {
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i).toString());
+        }
+    }
+    
 }
