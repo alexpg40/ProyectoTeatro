@@ -112,7 +112,7 @@ public class GTrabajo {
     @Override
     public String toString() {
         String ret;
-        ret = "GTrabajo{" + "id=" + id + ", semana=" + semana + ", EmpleadosTeatro=" + EmpleadosTeatro + ", franquicia=" + franquicia + '}';
+        ret = id + ". "+ "la semana es " + semana + ", el mes es " + mes + ", los empleados son: " + EmpleadosTeatro + " y trabajaron en la franquicia: " + franquicia;
             for(EmpleadoDeTeatro e : EmpleadosTeatro){
                 ret += "Id del empleado= " + e.getId() + "\n";
                 ret += "Nombre del empleado= " + e.getNombre() + "\n";
@@ -128,7 +128,7 @@ public class GTrabajo {
      * @param id donde se guarda la id a buscar
      * @return Objeto con la id que coincide
      */
-    public GTrabajo getGTrabajobyID(long id){
+    public static GTrabajo getGTrabajobyID(long id){
         GTrabajo gt = new GTrabajo();
         for (GTrabajo g : Utilidades.GTRABAJO) {
             if (g.id == id) {
@@ -136,22 +136,40 @@ public class GTrabajo {
                 break;
             }
         }
-        
-    return gt;}
+        System.out.println(gt);
+        return gt;
+    }
     
     /**
      * Metodo que busca un objeto en la BD con la misma semana
      * @param semana variable donde se guarda la semana que quieres buscar
+     * @param mes variable donde se guarda el mes que quieres buscar.
      * @return array con los objetos que coincide con la semana
      */
-    public ArrayList<GTrabajo> getGTrabajobySemana(long semana){
+    public static ArrayList<GTrabajo> getGTrabajobySemana(long semana, long mes){
         ArrayList<GTrabajo> array = new ArrayList<>();
         for (GTrabajo g : Utilidades.GTRABAJO) {
-            if (g.semana == semana) {
+            if (g.semana == semana && g.mes == mes) {
                 array.add(g);
             }
         }
-    return array;}
+        System.out.println(array);
+        return array;
+    }
+    
+//     public static GTrabajo buscarGTrabajoID(long id) {
+//            
+//            Franquicia f = new Franquicia();
+//                for (Franquicia fran : Utilidades.FRANQUICIAS) {
+//                    if (id == fran.id) {
+//                        f = fran;
+//                        System.out.println(f);
+//                    }
+//                }
+//            
+//            return f;
+//            
+//        };
     
     public static ArrayList<GTrabajo> convertirGTrabajo(GTrabajo[] array) {
         ArrayList<GTrabajo> ret = new ArrayList<>();
