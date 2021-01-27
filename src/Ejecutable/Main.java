@@ -39,7 +39,7 @@ public class Main {
             MostrarMenu();
             Scanner in = new Scanner(System.in);
             opcion = in.nextInt();
-            if (opcion < 0 || opcion > 3) {
+            if (opcion < 0 || opcion > 4) {
                 System.out.println("Error. Vuelva a introducir la opción.");
             }
             switch (opcion) {
@@ -121,8 +121,15 @@ public class Main {
                         opcioninf = -1;
                     } while (opcioninf < 0 || opcioninf > 2);
                     break;
-                case 4:
-                    System.out.println("");
+                case 4: // Gestion de grupos de trabajo
+                    int opcionMenuGrupos;
+                    Scanner scMenuGrupos = new Scanner (System.in);
+                    do {
+                        mostrarMenuGrupos();
+                        opcionMenuGrupos = scMenuGrupos.nextInt();
+                    } while(opcionMenuGrupos > 4);
+                    
+                    
                     break;
                 default: //Salir
                     continue;
@@ -137,6 +144,7 @@ public class Main {
         System.out.println("Pulsa 1 para entrar en Gestión de Franquicias.");
         System.out.println("Pulsa 2 para entrar en Gestión de Empleados.");
         System.out.println("Pulsa 3 para entrar en Gestión de Informes.");
+        System.out.println("Pulsa 4 para entrar en la Gestion de los Grupos de trabajo.");
         System.out.println("Pulsa 0 para salir.");
     }
 
@@ -179,6 +187,13 @@ public class Main {
         System.out.println("Pulsa 0 para Salir.");
     }
 
+    private static void mostrarMenuGrupos() {
+        System.out.println("Has accedido al menú de Gestion de Grupos de trabajo.");
+        System.out.println("Presione 1 para ver los Grupos de trabajo." + "\n" 
+                + "Presione 2 para  buscar grupos de trabajo." + "\n" 
+                + "Presione 3 para gestionar grupos de trabajo." + "\n" 
+                + "Presione 4 para salir.");
+    };
     private static void GestionEmpleados(ArrayList<Empleado> empleados) {
         Scanner in = new Scanner(System.in);
         System.out.println("Has entrado en la Gestión de Empleados!");
