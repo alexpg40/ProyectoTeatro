@@ -132,6 +132,38 @@ public class Main {
                             GTrabajo.verGruposTrabajo(grupostrabajo);
                             break;
                         case 2: // Buscar
+                            int opcionBusquedaGrupos;
+                            Scanner scBusquedaGrupos = new Scanner (System.in);
+                            
+                            do {
+                                System.out.println("Has accedido al menú Busqueda de Grupos de trabajo." + "\n" 
+                                    + "Seleccione 1 para buscar por ID." + "\n" 
+                                    + "Seleccione 2 para buscar por Semana." + "\n"
+                                    + "Seleccione 3 para salir. ");
+                                opcionBusquedaGrupos = scBusquedaGrupos.nextInt();
+                            } while(opcionBusquedaGrupos > 3);
+                            switch(opcionBusquedaGrupos){
+                                case 1:
+                                    int busquedaId;
+                                    Scanner scBusquedaId = new Scanner (System.in);
+                                    System.out.println("Introduzca el ID con el que desea buscar el grupo.");
+                                    busquedaId = scBusquedaId.nextInt();
+                                    GTrabajo.getGTrabajobyID(busquedaId);
+                                    break;
+                                case 2:
+                                    int Semana, Mes;
+                                    Scanner scSemanaMes = new Scanner (System.in);
+                                    System.out.println("Introduzca la semana: ");
+                                    Semana = scSemanaMes.nextInt();
+                                    System.out.println("Introduzca el mes: ");
+                                    Mes = scSemanaMes.nextInt();
+                                    GTrabajo.getGTrabajobySemana(Semana, Mes);
+                                    break;
+                                case 3:
+                                    
+                                    break;
+                                default:
+                            }
                             break;
                         case 3: // Gestionar
                             break;
