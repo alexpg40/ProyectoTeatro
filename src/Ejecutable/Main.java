@@ -126,10 +126,19 @@ public class Main {
                     Scanner scMenuGrupos = new Scanner (System.in);
                     do {
                         mostrarMenuGrupos();
-                        opcionMenuGrupos = scMenuGrupos.nextInt();
+                        opcionMenuGrupos = scMenuGrupos.nextInt(); 
+                        switch (opcionMenuGrupos) {
+                        case 1: 
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        default:
+                    }
                     } while(opcionMenuGrupos > 4);
-                    
-                    
                     break;
                 default: //Salir
                     continue;
