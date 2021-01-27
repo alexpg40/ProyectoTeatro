@@ -153,4 +153,12 @@ public class GTrabajo {
         }
     return array;}
     
+    public static ArrayList<GTrabajo> convertirGTrabajo(GTrabajo[] array) {
+        ArrayList<GTrabajo> ret = new ArrayList<>();
+        for (GTrabajo gtrabajo : array) {
+            ret.add((GTrabajo)gtrabajo);
+        }
+        return ret;
+    }
+    
 }
