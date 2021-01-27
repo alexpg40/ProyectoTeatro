@@ -10,6 +10,9 @@ public class GTrabajo {
     //VALORES VALIDOS: NUMEROS ENTEROS => 1 y <=6 && VALORES INVALIDOS: CUALQUIER CARACTER O NUMERO DIFERENTE
     private long semana;
     
+    // Valores validos: Numeros enteros mayores de 1 y menores de 12. Valores invalidos: Cualquier letra, o numero fuera del rango establecido.
+    private long mes;
+    
     // Se guarda una lista de los trabajadores que forman parte de grupo de trabajo
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
     
@@ -23,14 +26,15 @@ public class GTrabajo {
         this.semana = gt.semana;
         this.EmpleadosTeatro = gt.EmpleadosTeatro;
         this.franquicia = gt.franquicia;
+        this.mes = gt.mes;
     };
     
-    public GTrabajo(long id, long semana, Franquicia franquicia, ArrayList<EmpleadoDeTeatro> EmpleadosTeatro) {
+    public GTrabajo(long id, long semana, long mes,Franquicia franquicia, ArrayList<EmpleadoDeTeatro> EmpleadosTeatro) {
         this.id = id;
         this.semana = semana;
         this.franquicia = franquicia;
         this.EmpleadosTeatro = EmpleadosTeatro;
-        
+        this.mes = mes;
     }
 
     public long getId() {
@@ -39,6 +43,10 @@ public class GTrabajo {
 
     public long getSemana() {
         return semana;
+    }
+
+    public long getMes() {
+        return mes;
     }
 
     public ArrayList<EmpleadoDeTeatro> getEmpleadosTeatro() {
@@ -57,6 +65,10 @@ public class GTrabajo {
         this.semana = semana;
     }
 
+    public void setMes(long mes) {
+        this.mes = mes;
+    }
+    
     public void setEmpleadosTeatro(ArrayList<EmpleadoDeTeatro> EmpleadosTeatro) {
         this.EmpleadosTeatro = EmpleadosTeatro;
     }
