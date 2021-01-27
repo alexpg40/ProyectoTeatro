@@ -64,7 +64,25 @@ public class Informe {
     }
 
     public double getBalance() {
-        return balance;
+        double ret = 0.0;
+        for (Beneficio ben: this.beneficios){
+            ret += ben.getImporte();
+        }
+//       for (Coste cos: this.costes){
+//           ret -= cos.getImporte();
+//       }
+        for (int i = 0; i < this.costes.size(); i++){
+            Coste cos = this.costes.get(i);
+            ret -= cos.getImporte();
+        }
+//        int i = 0;
+//        Coste cos = new Coste();
+//        while (i < this.costes.size()){
+//            cos = this.costes.get(i);
+//            ret -= cos.getImporte();
+//            i++;
+//        }
+        return ret;
     }
 
     public Secretariado getSecretario() {
@@ -107,7 +125,7 @@ public class Informe {
      * Función que pide al usuario una fecha mediante el año, el mes y el día.
      * @return date (fecha)
      */
-    public Date dameFecha() {
+    public static Date dameFecha() {
 
         Scanner in = new Scanner(System.in);
 
@@ -131,14 +149,11 @@ public class Informe {
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
         inf.setId(nextIdInforme());
-        System.out.println("Introduce el balance");
-        double bal;
-        sc = new Scanner(System.in);
-        bal = sc.nextDouble();
-        inf.setBalance(bal);
-        inf.dameFecha();
+        inf.getBalance();
+        inf.setMesyano(dameFecha());
         return inf;
     }
+    
     /**
      * Función que crea un nuevo id basándose en el último que tengamos en la BD.
      * @return nuevo id
