@@ -5,7 +5,6 @@ import java.sql.Date;
 
 public class Utilidades {
 
-    
     //He declarado la franquicia para que no me de error
     static Franquicia franquicia;
     //long id, String nombre, String apellidos, String nif, String direccion, String telefono, franquicia franquicia
@@ -25,23 +24,11 @@ public class Utilidades {
         new Empleado(12, "Txema", "Fernandez", "98745821D", "Asturias, Oviedo", "987478652", franquicia),
         new Empleado(13, "Pepe", "Mendizabal", "78496512A", "Galicia, A Coruña", "654796123", franquicia),
         new Empleado(14, "Allejo", "Perez", "86496512A", "Galicia, A Coruña", "982796123", franquicia),
-        new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", franquicia),
-    };
-
-    //He declarado un ArrayList para que no me de error
-    static ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
-    //long id, long semana, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
-    public static final GTrabajo GTRABAJO[] = {
-        new GTrabajo(1, 3, franquicia, empleadosTeatro),
-        new GTrabajo(2, 1, franquicia, empleadosTeatro),
-        new GTrabajo(5, 7, franquicia, empleadosTeatro),
-        new GTrabajo(3, 6, franquicia, empleadosTeatro),
-        new GTrabajo(9, 2, franquicia, empleadosTeatro)
-    };
+        new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", franquicia),};
 
     // long id, Date mesyano, otra vez ni puta idea de poner la fecha.
     public static final Nomina NOMINAS[] = {
-        new Nomina(1, new Date (2010, 11, 28)),
+        new Nomina(1, new Date(2010, 11, 28)),
         new Nomina(2, new Date(2016, 5, 10)),
         new Nomina(3, new Date(2014, 2, 21)),
         new Nomina(4, new Date(2019, 12, 12)),
@@ -51,7 +38,33 @@ public class Utilidades {
         new Nomina(8, new Date(2019, 12, 12)),
         new Nomina(9, new Date(2019, 12, 12))
     };
+    
+    //He declarado un ArrayList para que no me de error
+    static ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
 
+    // He declarado Informe, empleados y GTrabajo para que no diese error
+    static Informe informe;
+    static GTrabajo GTrabajo;
+    static ArrayList<Empleado> Empleados = new ArrayList();
+
+    public static final Franquicia FRANQUICIAS[] = {
+        new Franquicia(1, new Date(2019, 12, 12), "Barcelona, Llissá de Munt", true, informe, Empleados, GTrabajo),
+        new Franquicia(2, new Date(2019, 12, 12), "Madrid, Zofío", false, informe, Empleados, GTrabajo),
+        new Franquicia(3, new Date(2019, 12, 12), "Cantabria, Santander", true, informe, Empleados, GTrabajo),
+        new Franquicia(4, new Date(2019, 12, 12), "Galicia, Vigo", false, informe, Empleados, GTrabajo),
+        new Franquicia(5, new Date(2019, 12, 12), "Almería, Níjar", true, informe, Empleados, GTrabajo),
+        new Franquicia(6, new Date(2019, 12, 12), "Alicante, Benidorm", false, informe, Empleados, GTrabajo)
+    };
+    
+    //long id, long semana, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
+    public static final GTrabajo GTRABAJO[] = {
+        new GTrabajo(1, 3, FRANQUICIAS[1], empleadosTeatro),
+        new GTrabajo(2, 1, FRANQUICIAS[0], empleadosTeatro),
+        new GTrabajo(5, 7, FRANQUICIAS[2], empleadosTeatro),
+        new GTrabajo(3, 6, FRANQUICIAS[3], empleadosTeatro),
+        new GTrabajo(9, 2, FRANQUICIAS[4], empleadosTeatro)
+    };
+    
     //char categoria, Nomina nomina
     public static final EmpleadoDeTeatro EMPLEADOSDETEATRO[] = {
         new EmpleadoDeTeatro(EMPLEADOS[0], 'A', NOMINAS[0]),
@@ -72,17 +85,32 @@ public class Utilidades {
         new EmpleadoDeOficina(EMPLEADOS[12], 4)
 
     };
+    
+    // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
+    public static final Direccion DIRECCIONES[] = {
+        new Direccion(EMPLEADOS[13], 4),
+        new Direccion(EMPLEADOS[14], 10),
+        new Direccion(EMPLEADOS[15], 1)
+    };
 
+    //Empleado e, char categoria, Nomina nomina
+    public static final Limpieza LIMPIADORES[] = {
+        new Limpieza(EMPLEADOS[0], 'A', NOMINAS[1]),
+        new Limpieza(EMPLEADOS[1], 'C', NOMINAS[0]),
+        new Limpieza(EMPLEADOS[2], 'B', NOMINAS[2])
+    };
+    //Empleado e, char categoria, Nomina nomina
+    public static final Acomodador ACOMODADORES[] = {
+        new Acomodador(EMPLEADOS[3], 'B', NOMINAS[3]),
+        new Acomodador(EMPLEADOS[4], 'A', NOMINAS[4]),
+        new Acomodador(EMPLEADOS[5], 'C', NOMINAS[5])
+    };
+    
     // long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe
     // long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina, Informe informe
-    // Dan error porque no tengo ni puñetera idea de poner la fecha.
-    static Acomodador acomodador;
-    static Limpieza limpieza;
-    static Informe informe;
-
     public static final Coste COSTES[] = {
-        new Coste(1, new Date (2010, 11, 28), 23, acomodador, limpieza, NOMINAS[0], informe),
-        new Coste(2, new Date (2010, 11, 28), 800, limpieza, NOMINAS[1], informe),};
+        new Coste(1, new Date(2010, 11, 28), 23, ACOMODADORES[0], LIMPIADORES[0], NOMINAS[0], informe),
+        new Coste(2, new Date(2010, 11, 28), 800, LIMPIADORES[1], NOMINAS[1], informe),};
 
     // long id, char tipo, int mes
     public static final Bono BONOS[] = {
@@ -102,25 +130,19 @@ public class Utilidades {
         new Usuario(1, " Elver ", "Galarga ", "91871326F ", "648919849", "guillermo.illera97@gmail.com")
     };
 
-    // He declarado Informe, empleados y GTrabajo para que no diese error
-    static Informe Informe;
-    static GTrabajo GTrabajo;
-    static ArrayList<Empleado> Empleados = new ArrayList();
-    // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
-    
     //Empleado e, char categoria, Nomina nomina
     public static final Taquillero TAQUILLEROS[] = {
         new Taquillero(EMPLEADOS[6], 'A', NOMINAS[6]),
         new Taquillero(EMPLEADOS[7], 'B', NOMINAS[7]),
         new Taquillero(EMPLEADOS[8], 'C', NOMINAS[8])
     };
-    
+
     // long id, Date fecha, double importe, double reporte, Taquillero taquillero
     public static final Beneficio BENEFICIOS[] = {
         new Beneficio(1, new java.sql.Date(2019, 12, 12), 27.04, 300.3, TAQUILLEROS[0]),
         new Beneficio(2, new java.sql.Date(2019, 12, 12), 20.18, 300.6, TAQUILLEROS[1])
     };
-    
+
     public static final Secretariado SECRETARIOS[] = {
         new Secretariado(EMPLEADOS[9], 1),
         new Secretariado(EMPLEADOS[10], 2),
@@ -140,36 +162,5 @@ public class Utilidades {
         new Informe(7, new Date(2019, 12, 12), 964.6, SECRETARIOS[0], beneficios, Costes),
         new Informe(8, new Date(2019, 12, 12), 412.01, SECRETARIOS[1], beneficios, Costes),
         new Informe(9, new Date(2019, 12, 12), 202.1, SECRETARIOS[2], beneficios, Costes)
-    };
-    
-    static GTrabajo Gtrabajo;
-    
-    public static final Franquicia FRANQUICIAS[] = {
-        new Franquicia(1, new Date(2019, 12, 12), "Barcelona, Llissá de Munt", true, informe, Empleados, Gtrabajo),
-        new Franquicia(2, new Date(2019, 12, 12), "Madrid, Zofío", false, informe, Empleados, Gtrabajo),
-        new Franquicia(3, new Date(2019, 12, 12), "Cantabria, Santander", true, informe, Empleados, Gtrabajo),
-        new Franquicia(4, new Date(2019, 12, 12), "Galicia, Vigo", false, informe, Empleados, Gtrabajo),
-        new Franquicia(5, new Date(2019, 12, 12), "Almería, Níjar", true, informe, Empleados, Gtrabajo),
-        new Franquicia(6, new Date(2019, 12, 12), "Alicante, Benidorm", false, informe, Empleados, Gtrabajo)
-    };
-
-    // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
-    public static final Direccion DIRECCIONES[] = {
-        new Direccion(EMPLEADOS[13], 4),
-        new Direccion(EMPLEADOS[14], 10),
-        new Direccion(EMPLEADOS[15],1)
-    };
-
-    //Empleado e, char categoria, Nomina nomina
-    public static final Limpieza LIMPIADORES[] = {
-        new Limpieza(EMPLEADOS[0], 'A', NOMINAS[1]),
-        new Limpieza(EMPLEADOS[1], 'C', NOMINAS[0]),
-        new Limpieza(EMPLEADOS[2], 'B', NOMINAS[2])
-    };
-    //Empleado e, char categoria, Nomina nomina
-    public static final Acomodador ACOMODADORES[] = {
-        new Acomodador(EMPLEADOS[3], 'B', NOMINAS[3]),
-        new Acomodador(EMPLEADOS[4], 'A', NOMINAS[4]),
-        new Acomodador(EMPLEADOS[5], 'C', NOMINAS[5])
     };
 }
