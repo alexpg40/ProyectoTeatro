@@ -258,10 +258,9 @@ public class Franquicia {
                 for (Franquicia franqu : Utilidades.FRANQUICIAS) {
                     if (condicion = fra.accesibilidadreducida) {
                         fra = franqu;
-                        System.out.println(fra);
                     }
                 }
-            
+            System.out.println(fra);
             return fra;
         };
              
