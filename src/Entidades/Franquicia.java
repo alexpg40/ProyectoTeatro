@@ -173,7 +173,7 @@ public class Franquicia {
     }
 
     /**
-     * Función que devuelve un objeto de Franquicia entero.
+     * Función que devuelve un objeto de franquicia entero.
      * @return 
      */
     
@@ -205,7 +205,7 @@ public class Franquicia {
     }
      /**
       * Funcion que lo que hace es covertir un Array de franquicia que se pasa en el parametro
-      * y la convierte en un ArrayList de Franquicia tambien.
+ y la convierte en un ArrayList de franquicia tambien.
       * @param array
       * @return ArrayList<Franquicia>
       */
@@ -217,7 +217,7 @@ public class Franquicia {
         return ret;
       }
       /**
-       * Función que devuelve una lista de todas las franquicias en el ArrayList de tipo Franquicia.
+       * Función que devuelve una lista de todas las franquicias en el ArrayList de tipo franquicia.
        * @param array 
        */
       public static void verFranquicias (ArrayList <Franquicia> array) {

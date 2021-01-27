@@ -56,7 +56,7 @@ public class Main {
                             case 1: // Ver Franquicias
                                 Franquicia.verFranquicias(franquicias);
                                 break;
-                            case 2: // Crear Franquicia
+                            case 2: // Crear franquicia
                                 break;
                             case 3:
                                 Scanner opcionFranquicias = new Scanner(System.in);
@@ -69,40 +69,29 @@ public class Main {
                                         "4. Salir" + "\n");
                                 
                                 opcionMenuFran = opcionFranquicias.nextInt();
-                                if (opcionMenuFran == 1) {
-                                    int idFran;
-                                    Scanner scId = new Scanner (System.in);
-                                    System.out.println("Introduzca el ID de la franquicia.");
-                                    idFran = scId.nextInt();
-                                    Franquicia.buscarFranquicia(idFran);
-                                }
+                                switch(opcionMenuFran){
                                 
-                                if (opcionMenuFran == 2) {
-                                    String UbFran;
-                                    Scanner scUb = new Scanner (System.in);
-                                    System.out.println("Introduzca la ubicación de la franquicia.");
-                                    UbFran = scUb.nextLine();
-                                    UbFran = UbFran.substring(0, 1).toUpperCase() + UbFran.substring(1).toLowerCase();
-                                    Franquicia.buscarFranquicia(UbFran);
-                                }
-                                
-                                if (opcionMenuFran == 3) {
-                                    char filtro;
-                                    boolean condicion = false;
+                                    case 1:
+                                        int idFran;
+                                        Scanner scId = new Scanner (System.in);
+                                        System.out.println("Introduzca el ID de la franquicia.");
+                                        idFran = scId.nextInt();
+                                        Franquicia.buscarFranquicia(idFran);
+                                        break;
+                                        
+                                    case 2:
+                                        String UbFran;
+                                        Scanner scUb = new Scanner (System.in);
+                                        System.out.println("Introduzca la ubicación de la franquicia.");
+                                        UbFran = scUb.nextLine();
+                                        UbFran = UbFran.substring(0, 1).toUpperCase() + UbFran.substring(1).toLowerCase();
+                                        Franquicia.buscarFranquicia(UbFran);
+                                        break;
+                                        
+                                    case 3:
+                                       //TODO Franquicia.buscarFranquicia(condicion);
+                                        break;
                                     
-                                    Scanner scFiltro = new Scanner(System.in);
-                                    System.out.println("Introduzca S para buscar franquicias con accesibilidad reducida " + "\n" + 
-                                            "Introduzca N para buscar franquicias sin accesibilidad reducida." + "\n");
-                                    filtro = scFiltro.nextLine().toLowerCase().charAt(0);
-                                    if (filtro == 's') {
-                                        condicion = true;
-                                    }
-                                    
-                                    if (filtro == 'n') {
-                                        condicion = false;
-                                    }
-                                    
-                                    Franquicia.buscarFranquicia(condicion);
                                 }
                         } 
                     } while (opcionFran < 0 || opcionFran > 3);

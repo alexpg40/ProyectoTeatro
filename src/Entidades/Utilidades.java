@@ -6,37 +6,38 @@ import java.sql.Date;
 public class Utilidades {
 
     
-    //He declarado la Franquicia para que no me de error
-    static Franquicia Franquicia;
-    //long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia Franquicia
+    //He declarado la franquicia para que no me de error
+    static Franquicia franquicia;
+    //long id, String nombre, String apellidos, String nif, String direccion, String telefono, franquicia franquicia
     public static final Empleado EMPLEADOS[] = {
-        new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293932238", Franquicia),
-        new Empleado(2, "Jose Juan", "Garcia", "23456789S", "Cantabria, Soto", "123431314", Franquicia),
-        new Empleado(3, "Pepe", "Perez", "34567891A", "Alicante", "134123764", Franquicia),
-        new Empleado(4, "Aitor", "Mendizabal", "54348943C", "Murcia", "345501459", Franquicia),
-        new Empleado(5, "Josito", "Fernandez", "83774591A", "Galicia, Vigo", "123459230", Franquicia),
-        new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124451123", Franquicia),
-        new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459213459", Franquicia),
-        new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864344459", Franquicia),
-        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", Franquicia),
-        new Empleado(10, "Manolo", "Eliot", "98545621A", "Valencia", "987654123", Franquicia),
-        new Empleado(11, "Jesus", "Garcia", "458325461A", "Andalucia, Malaga", "786594132", Franquicia),
-        new Empleado(12, "Jose", "Pascual", "65748932A", "Cantabria, Rasines", "986574213", Franquicia),
-        new Empleado(12, "Txema", "Fernandez", "98745821D", "Asturias, Oviedo", "987478652", Franquicia),
-        new Empleado(13, "Pepe", "Mendizabal", "78496512A", "Galicia, A Coruña", "654796123", Franquicia),
-        new Empleado(14, "Allejo", "Perez", "86496512A", "Galicia, A Coruña", "982796123", Franquicia),
-        new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", Franquicia),
+        new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293932238", franquicia),
+        new Empleado(2, "Jose Juan", "Garcia", "23456789S", "Cantabria, Soto", "123431314", franquicia),
+        new Empleado(3, "Pepe", "Perez", "34567891A", "Alicante", "134123764", franquicia),
+        new Empleado(4, "Aitor", "Mendizabal", "54348943C", "Murcia", "345501459", franquicia),
+        new Empleado(5, "Josito", "Fernandez", "83774591A", "Galicia, Vigo", "123459230", franquicia),
+        new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124451123", franquicia),
+        new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459213459", franquicia),
+        new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864344459", franquicia),
+        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", franquicia),
+        new Empleado(10, "Manolo", "Eliot", "98545621A", "Valencia", "987654123", franquicia),
+        new Empleado(11, "Jesus", "Garcia", "458325461A", "Andalucia, Malaga", "786594132", franquicia),
+        new Empleado(12, "Jose", "Pascual", "65748932A", "Cantabria, Rasines", "986574213", franquicia),
+        new Empleado(12, "Txema", "Fernandez", "98745821D", "Asturias, Oviedo", "987478652", franquicia),
+        new Empleado(13, "Pepe", "Mendizabal", "78496512A", "Galicia, A Coruña", "654796123", franquicia),
+        new Empleado(14, "Allejo", "Perez", "86496512A", "Galicia, A Coruña", "982796123", franquicia),
+        new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", franquicia),
     };
 
     //He declarado un ArrayList para que no me de error
-    static ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
-    //long id, long semana, ArrayList <EmpleadosDeTeatro> EmpleadosTeatro, Franquicia franquicia 
+    static ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
+    //long id, long semana, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
     public static final GTrabajo GTRABAJO[] = {
-        new GTrabajo(1, 3, Franquicia, EmpleadosTeatro),
-        new GTrabajo(2, 1, Franquicia, EmpleadosTeatro),
-        new GTrabajo(5, 7, Franquicia, EmpleadosTeatro),
-        new GTrabajo(3, 6, Franquicia, EmpleadosTeatro),
-        new GTrabajo(9, 2, Franquicia, EmpleadosTeatro),};
+        new GTrabajo(1, 3, franquicia, empleadosTeatro),
+        new GTrabajo(2, 1, franquicia, empleadosTeatro),
+        new GTrabajo(5, 7, franquicia, empleadosTeatro),
+        new GTrabajo(3, 6, franquicia, empleadosTeatro),
+        new GTrabajo(9, 2, franquicia, empleadosTeatro)
+    };
 
     // long id, Date mesyano, otra vez ni puta idea de poner la fecha.
     public static final Nomina NOMINAS[] = {
@@ -48,7 +49,8 @@ public class Utilidades {
         new Nomina(6, new Date(2009, 12, 5)),
         new Nomina(7, new Date(2019, 12, 12)),
         new Nomina(8, new Date(2019, 12, 12)),
-        new Nomina(9, new Date(2019, 12, 12)),};
+        new Nomina(9, new Date(2019, 12, 12))
+    };
 
     //char categoria, Nomina nomina
     public static final EmpleadoDeTeatro EMPLEADOSDETEATRO[] = {
@@ -106,7 +108,7 @@ public class Utilidades {
     static ArrayList<Empleado> Empleados = new ArrayList();
     // long ID, Date fecha_creacion, String ubicacion, boolean accesibilidad_reducida, Informe informe, ArrayList<Empleado> empleados, GTrabajo grupotrabajo
     
- //Empleado e, char categoria, Nomina nomina
+    //Empleado e, char categoria, Nomina nomina
     public static final Taquillero TAQUILLEROS[] = {
         new Taquillero(EMPLEADOS[6], 'A', NOMINAS[6]),
         new Taquillero(EMPLEADOS[7], 'B', NOMINAS[7]),
