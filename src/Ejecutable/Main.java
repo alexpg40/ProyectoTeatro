@@ -128,13 +128,14 @@ public class Main {
                         mostrarMenuGrupos();
                         opcionMenuGrupos = scMenuGrupos.nextInt(); 
                         switch (opcionMenuGrupos) {
-                        case 1: 
+                        case 1:  // Ver
+                            GTrabajo.verGruposTrabajo(grupostrabajo);
                             break;
-                        case 2:
+                        case 2: // Buscar
                             break;
-                        case 3:
+                        case 3: // Gestionar
                             break;
-                        case 4:
+                        case 4: // Salir
                             break;
                         default:
                     }
