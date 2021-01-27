@@ -2,6 +2,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Scanner;
 
 public class Utilidades {
 
@@ -163,4 +164,24 @@ public class Utilidades {
         new Informe(8, new Date(2019, 12, 12), 412.01, SECRETARIOS[1], beneficios, Costes),
         new Informe(9, new Date(2019, 12, 12), 202.1, SECRETARIOS[2], beneficios, Costes)
     };
+    
+    public static boolean leerBoolean() {
+        boolean ret;
+        Scanner in;
+        char resp;
+        do {
+            System.out.println("Pulse s para Sí o n para No");
+            in = new Scanner(System.in, "ISO-8859-1");
+            resp = in.nextLine().charAt(0);
+            if (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N') {
+                System.out.println("Valor introducido incorrecto.");
+            }
+        } while (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N');
+        if (resp == 's' || resp != 'S') {
+            ret = true;
+        } else {
+            ret = false;
+        }
+        return ret;
+    }
 }
