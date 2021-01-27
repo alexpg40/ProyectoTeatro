@@ -57,15 +57,6 @@ public class Utilidades {
         new Franquicia(6, new Date(2019, 12, 12), "Alicante, Benidorm", false, informe, Empleados, GTrabajo)
     };
     
-    //long id, long semana, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
-    public static final GTrabajo GTRABAJO[] = {
-        new GTrabajo(1, 3, FRANQUICIAS[1], empleadosTeatro),
-        new GTrabajo(2, 1, FRANQUICIAS[0], empleadosTeatro),
-        new GTrabajo(5, 7, FRANQUICIAS[2], empleadosTeatro),
-        new GTrabajo(3, 6, FRANQUICIAS[3], empleadosTeatro),
-        new GTrabajo(9, 2, FRANQUICIAS[4], empleadosTeatro)
-    };
-    
     //char categoria, Nomina nomina
     public static final EmpleadoDeTeatro EMPLEADOSDETEATRO[] = {
         new EmpleadoDeTeatro(EMPLEADOS[0], 'A', NOMINAS[0]),
@@ -105,6 +96,15 @@ public class Utilidades {
         new Acomodador(EMPLEADOS[3], 'B', NOMINAS[3]),
         new Acomodador(EMPLEADOS[4], 'A', NOMINAS[4]),
         new Acomodador(EMPLEADOS[5], 'C', NOMINAS[5])
+    };
+    
+    //long id, long semana, long mes, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
+    public static final GTrabajo GTRABAJO[] = {
+        new GTrabajo(1, 3, 2, FRANQUICIAS[1], empleadosTeatro),
+        new GTrabajo(2, 1, 6, FRANQUICIAS[0], empleadosTeatro),
+        new GTrabajo(5, 7, 8, FRANQUICIAS[2], empleadosTeatro),
+        new GTrabajo(3, 6, 1, FRANQUICIAS[3], empleadosTeatro),
+        new GTrabajo(9, 2, 12,FRANQUICIAS[4], empleadosTeatro)
     };
     
     // long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe
