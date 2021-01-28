@@ -36,7 +36,7 @@ public class Main {
 
         int opcion = -1;
         do {
-            MostrarMenu();
+            mostrarMenu();
             Scanner in = new Scanner(System.in);
             opcion = in.nextInt();
             if (opcion < 0 || opcion > 4) {
@@ -47,7 +47,7 @@ public class Main {
                     System.out.println("Has entrado en la Gestión de Franquicias.");
                     int opcionFran = -1;
                     do {
-                        MostrarMenuFranquicias();
+                        mostrarMenuFranquicias();
                         opcionFran = in.nextInt();
                         if (opcionFran < 0 || opcionFran > 3) {
                             System.out.println("Opción equivocada. Vuelva a introducir la opción.");
@@ -99,13 +99,13 @@ public class Main {
                     } while (opcionFran < 0 || opcionFran > 3);
                     break;
                 case 2: //Gestión de Empleados
-                    GestionEmpleados(empleados);
+                    gestionEmpleados(empleados);
                     break;
                 case 3: //Gestión de Informes
                     System.out.println("Has entrado en la Gestión de Informes.");
                     int opcioninf = -1;
                     do {
-                        MostrarMenuInformes();
+                        mostrarMenuInformes();
                         opcioninf = in.nextInt();
                         if (opcioninf < 0 || opcioninf > 2) {
                             System.out.println("Error.Vuelva a introducir la opción.");
@@ -182,7 +182,7 @@ public class Main {
 
     }
 
-    private static void MostrarMenu() {
+    private static void mostrarMenu() {
         System.out.println("-.- MENÚ PRINCIPAL -.-");
         System.out.println("Pulsa 1 para entrar en Gestión de Franquicias.");
         System.out.println("Pulsa 2 para entrar en Gestión de Empleados.");
@@ -191,14 +191,14 @@ public class Main {
         System.out.println("Pulsa 0 para salir.");
     }
 
-    private static void MostrarMenuEmpleados() {
+    private static void mostrarMenuEmpleados() {
         System.out.println("Pulsa 1 para Ver Empleados.");
         System.out.println("Pulsa 2 para Nuevo Empleado.");
         System.out.println("Pulsa 3 para Buscar Empleado.");
         System.out.println("Pulsa 0 para salir");
     }
 
-    private static void MostrarMenuFranquicias() {
+    private static void mostrarMenuFranquicias() {
         System.out.println("Pulsa 1 para ver franquicias.");
         System.out.println("Pulsa 2 para crear franquicias.");
         System.out.println("Pulsa 3 para buscar franquicias.");
@@ -206,12 +206,12 @@ public class Main {
 
     }
 
-    private static void MostrarMenuInformes() {
+    private static void mostrarMenuInformes() {
         System.out.println("Pulsa 1 para ver informes.");
         System.out.println("Pulsa 2 para crear un nuevo informe.");
     }
 
-    private static void MostrarMenuBuscarEmpleados() {
+    private static void mostrarMenuBuscarEmpleados() {
         System.out.println("Pulsa 1 para Buscar Empleados por Id");
         System.out.println("Pulsa 2 para Buscar Empleados por Nif.");
         System.out.println("Pulsa 3 para Buscar Empleados por Nombre.");
@@ -221,7 +221,7 @@ public class Main {
         System.out.println("Pulsa 0 para Salir.");
     }
 
-    private static void MostrarMenuNuevoEmpleados() {
+    private static void mostrarMenuNuevoEmpleados() {
         System.out.println("Pulsa 1 para Nuevo Acomodador.");
         System.out.println("Pulsa 2 para Nuevo Direccion.");
         System.out.println("Pulsa 3 para Nuevo Limpiador");
@@ -237,12 +237,12 @@ public class Main {
                 + "Presione 3 para gestionar grupos de trabajo." + "\n" 
                 + "Presione 4 para salir.");
     };
-    private static void GestionEmpleados(ArrayList<Empleado> empleados) {
+    private static void gestionEmpleados(ArrayList<Empleado> empleados) {
         Scanner in = new Scanner(System.in);
         System.out.println("Has entrado en la Gestión de Empleados!");
         int opcionemp = -1;
         do {
-            MostrarMenuEmpleados();
+            mostrarMenuEmpleados();
             opcionemp = in.nextInt();
             if (opcionemp < 0 || opcionemp > 3) {
                 System.out.println("Error. Vuelva a introducir la opción.");
@@ -252,10 +252,10 @@ public class Main {
                     Empleado.mostrarEmpleados(empleados);
                     break;
                 case 2: //Nuevo Empleado
-                    NuevoEmpleado(empleados);
+                    nuevoEmpleado(empleados);
                     break;
                 case 3: //Buscar empleados
-                    BuscarEmpleado(empleados);
+                    buscarEmpleado(empleados);
                     break;
                 default:
                     continue;
@@ -264,11 +264,11 @@ public class Main {
         } while (opcionemp < 0 || opcionemp > 3);
     }
 
-    private static void BuscarEmpleado(ArrayList<Empleado> empleados) {
+    private static void buscarEmpleado(ArrayList<Empleado> empleados) {
         int opcionbusemp = -1;
         Scanner in = new Scanner(System.in);
         do {
-            MostrarMenuBuscarEmpleados();
+            mostrarMenuBuscarEmpleados();
             opcionbusemp = in.nextInt();
             if (opcionbusemp < 0 || opcionbusemp > 6) {
                 System.out.println("Error. Vuelva a introducir la opción.");
@@ -337,11 +337,11 @@ public class Main {
         } while (opcionbusemp != 0);
     }
 
-    private static void NuevoEmpleado(ArrayList<Empleado> empleados) {
+    private static void nuevoEmpleado(ArrayList<Empleado> empleados) {
         Scanner in = new Scanner(System.in);
         int opcionnuevoemp = -1;
         do {
-            MostrarMenuNuevoEmpleados();
+            mostrarMenuNuevoEmpleados();
             opcionnuevoemp = in.nextInt();
             if (opcionnuevoemp < 0 || opcionnuevoemp > 5) {
                 System.out.println("Error. Vuelva a introducir la opción.");
