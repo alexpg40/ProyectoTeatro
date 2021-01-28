@@ -28,12 +28,32 @@ public class Main {
         empleados.addAll(empleadosT);
         empleados.addAll(empleadosS);
         empleados.addAll(empleadosD);
+        
         //Convertimos el array de franquicias de la BS a ArrayList para poder trabajar con el
         ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
         //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Informe> informes = Informe.convertirInforme(Utilidades.INFORMES);
         ArrayList<GTrabajo> grupostrabajo = GTrabajo.convertirGTrabajo(Utilidades.GTRABAJO);
 
+        //Hago la relacion de un empleado trabaja en una franquicia con un metodo
+        empleados.get(0).trabajarEn(franquicias.get(0));
+        empleados.get(1).trabajarEn(franquicias.get(1));
+        empleados.get(2).trabajarEn(franquicias.get(2));
+        empleados.get(3).trabajarEn(franquicias.get(3));
+        empleados.get(4).trabajarEn(franquicias.get(4));
+        empleados.get(5).trabajarEn(franquicias.get(5));
+        empleados.get(6).trabajarEn(franquicias.get(0));
+        empleados.get(7).trabajarEn(franquicias.get(1));
+        empleados.get(8).trabajarEn(franquicias.get(2));
+        empleados.get(9).trabajarEn(franquicias.get(3));
+        empleados.get(10).trabajarEn(franquicias.get(4));
+        empleados.get(11).trabajarEn(franquicias.get(5));
+        empleados.get(12).trabajarEn(franquicias.get(0));
+        empleados.get(13).trabajarEn(franquicias.get(1));
+        empleados.get(14).trabajarEn(franquicias.get(2));
+        
+        
+        
         int opcion = -1;
         do {
             mostrarMenu();

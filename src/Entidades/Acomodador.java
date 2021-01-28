@@ -40,7 +40,7 @@ public class Acomodador extends EmpleadoDeTeatro {
 
     @Override
     public String toString() {
-        String ret = this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")";
+        String ret = this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: " + franquicia.getId();
         for (Coste cos : costes) {
             ret += "Importe:" + cos.getImporte() + "\n";
         }

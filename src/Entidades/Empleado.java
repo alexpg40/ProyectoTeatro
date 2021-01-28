@@ -372,7 +372,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")";
+        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: " + franquicia.getId();
     }
 
     /**
@@ -394,8 +394,16 @@ public class Empleado {
      */
     public static void mostrarEmpleados(ArrayList<Empleado> array) {
         for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono  + " (" + array.get(i).getClass().getSimpleName() + ")");
+            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono  + " (" + array.get(i).getClass().getSimpleName() + ")" + "trabaja en la franquicia de " + array.get(i).franquicia.getUbicacion());
         }
     }
-
+    
+    public void trabajarEn(Franquicia franquicia){
+        if (!franquicia.getEmpleados().contains(this)) {
+            franquicia.getEmpleados().add(this);
+        }
+        if (this.getFranquicia() != franquicia) {
+            this.setFranquicia(franquicia);
+        }
+    }
 }
