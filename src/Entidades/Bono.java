@@ -91,7 +91,7 @@ public class Bono {
     public Bono nuevoBono() {
         Bono b = new Bono();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introcude la categoria");
+        System.out.println("Introduce la categoria");
         char tipo = 0;
         do {
             tipo = 0;

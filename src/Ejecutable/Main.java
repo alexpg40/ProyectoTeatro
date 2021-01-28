@@ -117,7 +117,7 @@ public class Main {
                             case 2: // Nuevo informe 
                                 informes.add(Informe.nuevoInforme());
                                 break;
-                            default:
+                            default: //Salir
                                 break;
                         }
                         opcioninf = -1;
