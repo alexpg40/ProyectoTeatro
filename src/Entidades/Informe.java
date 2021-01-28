@@ -150,7 +150,7 @@ public class Informe {
         Scanner sc = new Scanner(System.in);
         inf.setId(nextIdInforme());
         inf.getBalance();
-        inf.setMesyano(dameFecha());
+        inf.setMesyano(Utilidades.dameFecha());
         return inf;
     }
     
