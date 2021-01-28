@@ -111,6 +111,8 @@ public class GTrabajo {
         empleados.addAll(empleadosS);
         empleados.addAll(empleadosD);
         
+        ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
+        
         GTrabajo gt = new GTrabajo();
         
         Scanner in = new Scanner(System.in);
@@ -125,10 +127,8 @@ public class GTrabajo {
             gt.validarSemana(semana);
         } while (gt.getSemana() != semana || semana <= 0 || semana > 6);
         
-        
-        
         System.out.println("¿Cuantos usuarios desea introducir en el grupo?" + "\n");
-        int nUsuarios, opcionMenuUsuarios;
+        int nUsuarios, opcionMenuUsuarios, opcionMenuFranquicias;
         nUsuarios = in.nextInt();
         
         for (int i = 0; i < nUsuarios; i++) {
@@ -145,18 +145,19 @@ public class GTrabajo {
                };
                
                switch (opcionMenuUsuarios) {
-                   case 1:
+                   case 1: // Por ID
                        int idUsuario;
                        Scanner scId = new Scanner (System.in);
-                       System.out.println("Introduce el ID del empleado que quieres buscar: ");
+                       System.out.println("Introduce el ID del empleado que quieres añadir: ");
                        idUsuario = scId.nextInt();
                        Empleado.añadirEmpleadobyID(idUsuario, empleados);
+                       
                        break;
                    
-                   case 2:
+                   case 2: // Por NIF
                        break;
                     
-                   case 3:
+                   case 3: // Por nombre y apellidos
                        break;
                    
                    default:
@@ -164,6 +165,40 @@ public class GTrabajo {
                
             } while(opcionMenuUsuarios > 4);
         };
+        
+        do {
+               System.out.println("¿Como desea registrar la Franquicia en la que trabajaran?" + "\n" 
+            +   "Pulse 1 para introducir por ID." + "\n" 
+            +   "Pulse 2 para introducir por NIF." + "\n"
+            +   "Pulse 3 para introducir por Nombre y apellidos." + "\n"
+            +   "Pulse 4 para salir." + "\n");
+               opcionMenuFranquicias = in.nextInt();
+               
+               if (opcionMenuFranquicias > 4){
+                   System.out.println("Opcion invalida, introduzca otra por favor.");
+               };
+               
+               switch (opcionMenuFranquicias) {
+                   case 1: // Por ID
+                       int idUsuario;
+                       Scanner scId = new Scanner (System.in);
+                       System.out.println("Introduce el ID del empleado que quieres añadir: ");
+                       idUsuario = scId.nextInt();
+                       Empleado.añadirEmpleadobyID(idUsuario, empleados);
+                       
+                       break;
+                   
+                   case 2: // Por NIF
+                       break;
+                    
+                   case 3: // Por nombre y apellidos
+                       break;
+                   
+                   default:
+               }
+               
+            } while(opcionMenuFranquicias > 4);
+        
     return gt;}
 
     @Override
