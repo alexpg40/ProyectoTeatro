@@ -287,6 +287,8 @@ public class Empleado {
 
         return e;
     }
+    
+    
 
     /**
      * Busca empleado en la BD por nif
@@ -304,7 +306,20 @@ public class Empleado {
         }
         return e;
     }
+    
+    public static Empleado añadirEmpleadobyID(long id, ArrayList<Empleado> array) {
+        Empleado e = new Empleado();
 
+        for (Empleado emp : array) {
+            if (id == emp.id) {
+                e = emp;
+                
+            }
+        }
+
+        return e;
+    }
+    
     /**
      * Busca empleados con el nombre
      * @param nombre
@@ -405,5 +420,5 @@ public class Empleado {
         if (this.getFranquicia() != franquicia) {
             this.setFranquicia(franquicia);
         }
-    }
+    }   
 }

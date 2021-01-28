@@ -171,7 +171,7 @@ public class Utilidades {
         Scanner in;
         char resp;
         do {
-            System.out.println("Pulse s para Sí o n para No");
+            System.out.println("Pulse S para Sí o N para No");
             in = new Scanner(System.in, "ISO-8859-1");
             resp = in.nextLine().charAt(0);
             if (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N') {

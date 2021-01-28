@@ -95,9 +95,27 @@ public class GTrabajo {
     }
     
     public static GTrabajo nuevoGTrabajo(){
+        
+        //Convertirmos todos los array de todos los tipos de empleados que hay para poder trabajar con ellos
+        ArrayList<Empleado> empleadosD = Empleado.convertirEmpleado(Utilidades.DIRECCIONES);
+        ArrayList<Empleado> empleadosL = Empleado.convertirEmpleado(Utilidades.LIMPIADORES);
+        ArrayList<Empleado> empleadosA = Empleado.convertirEmpleado(Utilidades.ACOMODADORES);
+        ArrayList<Empleado> empleadosS = Empleado.convertirEmpleado(Utilidades.SECRETARIOS);
+        ArrayList<Empleado> empleadosT = Empleado.convertirEmpleado(Utilidades.TAQUILLEROS);
+
+        //Declaro un ArrayList empleados donde guardo todos los tipos de empleados
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        empleados.addAll(empleadosL);
+        empleados.addAll(empleadosA);
+        empleados.addAll(empleadosT);
+        empleados.addAll(empleadosS);
+        empleados.addAll(empleadosD);
+        
         GTrabajo gt = new GTrabajo();
-        Scanner in;
+        
+        Scanner in = new Scanner(System.in);
         gt.setId(gt.generarId());
+        
         System.out.println("Introduzca la semana: " + "\n");
         long semana;
         do {
@@ -106,22 +124,54 @@ public class GTrabajo {
             semana = in.nextLong();
             gt.validarSemana(semana);
         } while (gt.getSemana() != semana || semana <= 0 || semana > 6);
-        System.out.println("La semana introducida es " + semana);
+        
+        
+        
+        System.out.println("¿Cuantos usuarios desea introducir en el grupo?" + "\n");
+        int nUsuarios, opcionMenuUsuarios;
+        nUsuarios = in.nextInt();
+        
+        for (int i = 0; i < nUsuarios; i++) {
+            do {
+               System.out.println("¿Como desea introducir el usuario numero " + i + "?" + "\n" 
+            +   "Pulse 1 para introducir por ID." + "\n" 
+            +   "Pulse 2 para introducir por NIF." + "\n"
+            +   "Pulse 3 para introducir por Nombre y apellidos." + "\n"
+            +   "Pulse 4 para salir." + "\n");
+               opcionMenuUsuarios = in.nextInt();
+               
+               if (opcionMenuUsuarios > 4){
+                   System.out.println("Opcion invalida, introduzca otra por favor.");
+               };
+               
+               switch (opcionMenuUsuarios) {
+                   case 1:
+                       int idUsuario;
+                       Scanner scId = new Scanner (System.in);
+                       System.out.println("Introduce el ID del empleado que quieres buscar: ");
+                       idUsuario = scId.nextInt();
+                       Empleado.añadirEmpleadobyID(idUsuario, empleados);
+                       break;
+                   
+                   case 2:
+                       break;
+                    
+                   case 3:
+                       break;
+                   
+                   default:
+               }
+               
+            } while(opcionMenuUsuarios > 4);
+        };
     return gt;}
-    
+
     @Override
     public String toString() {
         String ret;
-        ret = id + ". "+ "la semana es " + semana + ", el mes es " + mes + ", los empleados son: " + EmpleadosTeatro + " y trabajaron en la franquicia: " + franquicia;
-            for(EmpleadoDeTeatro e : EmpleadosTeatro){
-                ret += "Id del empleado= " + e.getId() + "\n";
-                ret += "Nombre del empleado= " + e.getNombre() + "\n";
-                ret += "Apellidos del empleado= " +e.getApellidos() + "\n";
-                ret += "Nif del empleado= " + e.getNif() + "\n";
-                ret += "Telefono del empleado" + e.getTelefono() + "\n";
-                ret += "Direccion del empleado" + e.getDireccion() + "\n";
-            }
-    return ret + "\n";}
+        ret = "El grupo de trabajo con " + "id " + id + " en la semana " + semana + " y el mes " + mes + " contó con los empleados " + EmpleadosTeatro + " en la franquicia " + franquicia;
+        return ret + "\n";
+    }
     
     /**
      * Busca en la BD un objeto con la misma id y la devuelve
@@ -141,7 +191,7 @@ public class GTrabajo {
     }
     
     /**
-     * Metodo que busca un objeto en la BD con la misma semana
+     * Metodo que busca un objeto en la BD con la misma semana y el mismo mes.
      * @param semana variable donde se guarda la semana que quieres buscar
      * @param mes variable donde se guarda el mes que quieres buscar.
      * @return array con los objetos que coincide con la semana

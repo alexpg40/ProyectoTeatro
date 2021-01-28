@@ -182,13 +182,12 @@ public class Main {
                                     GTrabajo.getGTrabajobySemana(Semana, Mes);
                                     break;
                                 case 3:
-                                    
                                     break;
                                 default:
                             }
                             break;
                         case 3: // Gestionar
-                            
+                            GTrabajo.nuevoGTrabajo();
                             break;
                         case 4: // Salir
                             break;
