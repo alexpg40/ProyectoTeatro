@@ -102,9 +102,10 @@ public class Utilidades {
     public static final GTrabajo GTRABAJO[] = {
         new GTrabajo(1, 3, 2, FRANQUICIAS[1], empleadosTeatro),
         new GTrabajo(2, 1, 6, FRANQUICIAS[0], empleadosTeatro),
-        new GTrabajo(5, 7, 8, FRANQUICIAS[2], empleadosTeatro),
+        new GTrabajo(5, 2, 8, FRANQUICIAS[2], empleadosTeatro),
         new GTrabajo(3, 6, 1, FRANQUICIAS[3], empleadosTeatro),
-        new GTrabajo(9, 2, 12,FRANQUICIAS[4], empleadosTeatro)
+        new GTrabajo(9, 2, 12,FRANQUICIAS[4], empleadosTeatro),
+        new GTrabajo(4, 4, 3, FRANQUICIAS[5], empleadosTeatro)
     };
     
     // long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe
