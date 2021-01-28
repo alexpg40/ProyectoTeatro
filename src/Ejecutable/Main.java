@@ -92,7 +92,7 @@ public class Main {
                                     case 3:
                                         System.out.println("Introduzca s para ver las franquicias con accesibilidad reducida. " + "\n" 
                                         + "Introduzca n para ver las franquicias sin accesibilidad reducida." + "\n");
-                                        Franquicia.buscarFranquicia(Utilidades.leerBoolean());
+                                        Franquicia.verFranquicias(Franquicia.buscarFranquicia(Utilidades.leerBoolean()));
                                         break;
                                 }
                         } 
@@ -168,6 +168,7 @@ public class Main {
                             }
                             break;
                         case 3: // Gestionar
+                            
                             break;
                         case 4: // Salir
                             break;
