@@ -253,14 +253,14 @@ public class Franquicia {
             return fr;
         };
         
-        public static Franquicia buscarFranquicia(boolean condicion){
-            Franquicia fra = new Franquicia();
+        public static ArrayList <Franquicia> buscarFranquicia(boolean condicion){
+            ArrayList <Franquicia> fra = new ArrayList <>();
                 for (Franquicia franqu : Utilidades.FRANQUICIAS) {
-                    if (condicion = fra.accesibilidadreducida) {
-                        fra = franqu;
+                    if (franqu.accesibilidadreducida == condicion) {
+                        fra.add(franqu);
                     }
                 }
-            System.out.println(fra);
+            // System.out.println(fra);
             return fra;
         };
              
