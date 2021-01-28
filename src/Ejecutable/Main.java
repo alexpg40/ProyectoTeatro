@@ -118,6 +118,7 @@ public class Main {
                                 informes.add(Informe.nuevoInforme());
                                 break;
                             default:
+                                break;
                         }
                         opcioninf = -1;
                     } while (opcioninf < 0 || opcioninf > 2);
@@ -209,6 +210,7 @@ public class Main {
     private static void mostrarMenuInformes() {
         System.out.println("Pulsa 1 para ver informes.");
         System.out.println("Pulsa 2 para crear un nuevo informe.");
+        System.out.println("Pulsa 0 para salir del menú de informes.");
     }
 
     private static void mostrarMenuBuscarEmpleados() {
