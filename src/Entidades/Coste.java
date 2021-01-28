@@ -138,7 +138,7 @@ public class Coste {
         Coste c = new Coste();
         Scanner in = new Scanner(System.in);
         c.generarId();
-             
+        c.setFecha(Utilidades.dameFecha());
         System.out.println("Introduzca el importe: ");
         
         long imp;

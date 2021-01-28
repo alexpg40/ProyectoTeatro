@@ -184,4 +184,24 @@ public class Utilidades {
         }
         return ret;
     }
+    
+     /**
+     * Función que pide al usuario una fecha mediante el año, el mes y el día.
+     * @return date (fecha)
+     */
+    public static Date dameFecha() {
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Dame el año:");
+        int year = in.nextInt();
+        System.out.println("Dame el mes:");
+        int month = in.nextInt();
+        System.out.println("Dame el día:");
+        int day = in.nextInt();
+        Date date = new Date(year, month, day);
+
+        System.out.println("La fecha introducida es:" + date);
+        return date;
+    };
 }

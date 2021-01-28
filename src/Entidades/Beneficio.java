@@ -123,23 +123,7 @@ public class Beneficio {
         }
 
     };
-    /**
-     * Función que pide fecha al usuario.
-     * @param dt
-     * @return date
-     */
-     public Date dameFecha(Date dt) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Dame el año:");
-        int year = in.nextInt();
-        System.out.println("Dame el mes:");
-        int month = in.nextInt();
-        System.out.println("Dame el día:");
-        int day = in.nextInt();
-        Date date = (Date) new GregorianCalendar(year, month, day).getTime();
-        System.out.println("La fecha introducida es:" + date);
-        return date;
-    };
+    
     /**
      * Función que crea un nuevo Beneficio.
      * @return b
@@ -162,7 +146,7 @@ public class Beneficio {
         b.setReporte(rep);
         Date date = (Date) new GregorianCalendar().getTime();
         sc = new Scanner(System.in);
-        b.dameFecha(date);
+        b.setFecha(Utilidades.dameFecha());
         return b;
     }
 

@@ -33,7 +33,7 @@ public class Nomina {
         this.id = id;
     }
 
-    public void setMesyaño(Date mesyano) {
+    public void setMesyano(Date mesyano) {
         this.mesyano = mesyano;
     }
 
@@ -45,6 +45,7 @@ public class Nomina {
         Nomina n = new Nomina();
         n.generarId();
         System.out.println("Se ha generado la ID: " + n.getId());
+        n.setMesyano(Utilidades.dameFecha());
         return n;
     };
     
