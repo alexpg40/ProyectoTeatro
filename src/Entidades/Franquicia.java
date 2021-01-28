@@ -155,23 +155,7 @@ public class Franquicia {
             System.out.println("No hay ayudas en la accesibilidad reducida");
         }
     }
-    /**
-     * Función que devuelve una fecha metida por el usuario.
-     * @return 
-     */
-    public Date dameFecha() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Dame el año:");
-        int year = in.nextInt();
-        System.out.println("Dame el mes:");
-        int month = in.nextInt();
-        System.out.println("Dame el día:");
-        int day = in.nextInt();
-        Date date = (Date) new GregorianCalendar(year, month, day).getTime();
-        System.out.println("La fecha introducida es:" + date);
-        return date;
-    }
-
+    
     /**
      * Función que devuelve un objeto de franquicia entero.
      * @return 
@@ -200,7 +184,7 @@ public class Franquicia {
         sc = new Scanner(System.in);
         ac = sc.nextBoolean();
         f.setAccesibilidadReducida(ac);
-        f.dameFecha();
+        f.setFecha_creacion(Utilidades.dameFecha());
         return f;
     }
      /**
