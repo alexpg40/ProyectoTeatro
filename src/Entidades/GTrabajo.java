@@ -17,7 +17,7 @@ public class GTrabajo {
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
     
     // Se guarda la franquicia donde está el grupo de trabajo
-    private Franquicia franquicia;
+    private static Franquicia franquicia;
     
     public GTrabajo(){};
     
@@ -111,8 +111,6 @@ public class GTrabajo {
         empleados.addAll(empleadosS);
         empleados.addAll(empleadosD);
         
-        ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
-        
         GTrabajo gt = new GTrabajo();
         
         Scanner in = new Scanner(System.in);
@@ -169,35 +167,41 @@ public class GTrabajo {
         do {
                System.out.println("¿Como desea registrar la Franquicia en la que trabajaran?" + "\n" 
             +   "Pulse 1 para introducir por ID." + "\n" 
-            +   "Pulse 2 para introducir por NIF." + "\n"
-            +   "Pulse 3 para introducir por Nombre y apellidos." + "\n"
-            +   "Pulse 4 para salir." + "\n");
+            +   "Pulse 2 para introducir por Nombre y apellidos." + "\n"
+            +   "Pulse 3 para salir." + "\n");
+               
                opcionMenuFranquicias = in.nextInt();
                
-               if (opcionMenuFranquicias > 4){
+               if (opcionMenuFranquicias > 3){
                    System.out.println("Opcion invalida, introduzca otra por favor.");
                };
                
                switch (opcionMenuFranquicias) {
                    case 1: // Por ID
-                       int idUsuario;
+                       int idFranquicia;
+                       boolean condicion;
                        Scanner scId = new Scanner (System.in);
-                       System.out.println("Introduce el ID del empleado que quieres añadir: ");
-                       idUsuario = scId.nextInt();
-                       Empleado.añadirEmpleadobyID(idUsuario, empleados);
+                       System.out.println("Introduce el ID de la Franquicia que quieres añadir: ");
+                       idFranquicia = scId.nextInt();
+                       do {
+                       
+                        Franquicia.buscarFranquicia(idFranquicia);
+                           System.out.println("¿Es esta la Franquicia que quiere añadir?");
+                           gt.setFranquicia(franquicia);
+                           condicion = Utilidades.leerBoolean();
+                       } while (condicion == false);
+                       
+                       
                        
                        break;
                    
                    case 2: // Por NIF
                        break;
-                    
-                   case 3: // Por nombre y apellidos
-                       break;
                    
                    default:
                }
                
-            } while(opcionMenuFranquicias > 4);
+            } while(opcionMenuFranquicias > 3);
         
     return gt;}
 

@@ -313,10 +313,9 @@ public class Empleado {
         for (Empleado emp : array) {
             if (id == emp.id) {
                 e = emp;
-                
             }
         }
-
+        System.out.println(e);
         return e;
     }
     

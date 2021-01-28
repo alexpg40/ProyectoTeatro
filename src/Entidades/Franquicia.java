@@ -1,11 +1,8 @@
 package Entidades;
-//Guillermo Illera Vinatea
 
 import java.util.ArrayList;
 import java.sql.Date;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
-import javafx.scene.input.KeyCode;
 
 public class Franquicia {
 
