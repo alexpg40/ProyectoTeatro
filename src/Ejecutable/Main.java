@@ -29,6 +29,18 @@ public class Main {
         empleados.addAll(empleadosS);
         empleados.addAll(empleadosD);
         
+        // Convierto los array de los empleados de teatro para trabajarlos
+        
+        ArrayList<EmpleadoDeTeatro> empleadosLimpiadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.LIMPIADORES);
+        ArrayList<EmpleadoDeTeatro> empleadosAcomodadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.ACOMODADORES);
+        ArrayList<EmpleadoDeTeatro> empleadosTaquilleros = GTrabajo.convertirEmpleadoTeatro(Utilidades.TAQUILLEROS);
+        
+        // Declaro un ArrayList para guardar los empleados de Teatro.
+        ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
+        empleadosTeatro.addAll(empleadosLimpiadores);
+        empleadosTeatro.addAll(empleadosAcomodadores);
+        empleadosTeatro.addAll(empleadosTaquilleros);
+        
         //Convertimos el array de franquicias de la BS a ArrayList para poder trabajar con el
         ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
         //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el

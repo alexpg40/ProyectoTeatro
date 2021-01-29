@@ -96,21 +96,15 @@ public class GTrabajo {
     
     public static GTrabajo nuevoGTrabajo(){
         
-        //Convertirmos todos los array de todos los tipos de empleados que hay para poder trabajar con ellos
-        ArrayList<Empleado> empleadosD = Empleado.convertirEmpleado(Utilidades.DIRECCIONES);
-        ArrayList<Empleado> empleadosL = Empleado.convertirEmpleado(Utilidades.LIMPIADORES);
-        ArrayList<Empleado> empleadosA = Empleado.convertirEmpleado(Utilidades.ACOMODADORES);
-        ArrayList<Empleado> empleadosS = Empleado.convertirEmpleado(Utilidades.SECRETARIOS);
-        ArrayList<Empleado> empleadosT = Empleado.convertirEmpleado(Utilidades.TAQUILLEROS);
-
-        //Declaro un ArrayList empleados donde guardo todos los tipos de empleados
-        ArrayList<Empleado> empleados = new ArrayList<>();
-        empleados.addAll(empleadosL);
-        empleados.addAll(empleadosA);
-        empleados.addAll(empleadosT);
-        empleados.addAll(empleadosS);
-        empleados.addAll(empleadosD);
+        ArrayList<EmpleadoDeTeatro> empleadosLimpiadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.LIMPIADORES);
+        ArrayList<EmpleadoDeTeatro> empleadosAcomodadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.ACOMODADORES);
+        ArrayList<EmpleadoDeTeatro> empleadosTaquilleros = GTrabajo.convertirEmpleadoTeatro(Utilidades.TAQUILLEROS);
         
+        // Declaro un ArrayList para guardar los empleados de Teatro.
+        ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
+        empleadosTeatro.addAll(empleadosLimpiadores);
+        empleadosTeatro.addAll(empleadosAcomodadores);
+        empleadosTeatro.addAll(empleadosTaquilleros);
         GTrabajo gt = new GTrabajo();
         
         Scanner in = new Scanner(System.in);
@@ -131,7 +125,7 @@ public class GTrabajo {
         
         for (int i = 0; i < nUsuarios; i++) {
             do {
-               System.out.println("¿Como desea introducir el usuario numero " + i + "?" + "\n" 
+               System.out.println("¿Como desea introducir el usuario numero " + (i+1) + "?" + "\n" 
             +   "Pulse 1 para introducir por ID." + "\n" 
             +   "Pulse 2 para introducir por NIF." + "\n"
             +   "Pulse 3 para introducir por Nombre y apellidos." + "\n"
@@ -145,11 +139,12 @@ public class GTrabajo {
                switch (opcionMenuUsuarios) {
                    case 1: // Por ID
                        int idUsuario;
+                       ArrayList <Empleado> nuevoGrupo = new ArrayList <Empleado>();
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID del empleado que quieres añadir: ");
                        idUsuario = scId.nextInt();
-                       Empleado.añadirEmpleadobyID(idUsuario, empleados);
-                       
+                       nuevoGrupo.add(Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro, nuevoGrupo));
+                       System.out.println(nuevoGrupo);
                        break;
                    
                    case 2: // Por NIF
@@ -182,6 +177,9 @@ public class GTrabajo {
                        boolean condicion;
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID de la Franquicia que quieres añadir: ");
+                       
+                       /*
+                       
                        idFranquicia = scId.nextInt();
                        do {
                        
@@ -193,7 +191,7 @@ public class GTrabajo {
                        
                        
                        
-                       break;
+                       break; */
                    
                    case 2: // Por NIF
                        break;
@@ -273,5 +271,14 @@ public class GTrabajo {
             System.out.println(array.get(i).toString());
         }
     }
+    
+    public static ArrayList<EmpleadoDeTeatro> convertirEmpleadoTeatro(EmpleadoDeTeatro[] array) {
+        ArrayList<EmpleadoDeTeatro> ret = new ArrayList<>();
+        for (EmpleadoDeTeatro e : array) {
+            ret.add(e);
+        }
+        return ret;
+    }
+    
     
 }

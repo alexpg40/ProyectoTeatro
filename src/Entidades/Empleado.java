@@ -307,18 +307,6 @@ public class Empleado {
         return e;
     }
     
-    public static Empleado añadirEmpleadobyID(long id, ArrayList<Empleado> array) {
-        Empleado e = new Empleado();
-
-        for (Empleado emp : array) {
-            if (id == emp.id) {
-                e = emp;
-            }
-        }
-        System.out.println(e);
-        return e;
-    }
-    
     /**
      * Busca empleados con el nombre
      * @param nombre
@@ -419,5 +407,20 @@ public class Empleado {
         if (this.getFranquicia() != franquicia) {
             this.setFranquicia(franquicia);
         }
-    }   
+    }
+    
+        
+     public static Empleado añadirEmpleadobyID(long id, ArrayList<EmpleadoDeTeatro> empleadosTeatro, ArrayList <Empleado> nuevoGrupo) {
+         
+        Empleado e = new Empleado();
+        
+        for (EmpleadoDeTeatro empleadoTeatro : empleadosTeatro) {
+            if (id == empleadoTeatro.id) {
+                e = empleadoTeatro;
+                System.out.println("Se ha añadido " + e);
+            }
+        }
+        return e;
+    }
+    
 }
