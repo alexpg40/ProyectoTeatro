@@ -143,7 +143,7 @@ public class GTrabajo {
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID del empleado que quieres añadir: ");
                        idUsuario = scId.nextInt();
-                       nuevoGrupo.add(Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro, nuevoGrupo));
+                       nuevoGrupo.add(Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro));
                        System.out.println(nuevoGrupo);
                        break;
                    

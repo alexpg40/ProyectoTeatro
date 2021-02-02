@@ -410,7 +410,7 @@ public class Empleado {
     }
     
         
-     public static Empleado añadirEmpleadobyID(long id, ArrayList<EmpleadoDeTeatro> empleadosTeatro, ArrayList <Empleado> nuevoGrupo) {
+     public static Empleado añadirEmpleadobyID(long id, ArrayList<EmpleadoDeTeatro> empleadosTeatro) {
          
         Empleado e = new Empleado();
         
