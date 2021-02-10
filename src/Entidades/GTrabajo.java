@@ -124,6 +124,7 @@ public class GTrabajo {
         int nUsuarios, opcionMenuUsuarios, opcionMenuFranquicias;
         nUsuarios = in.nextInt();
         Empleado empleadosGrupo[] = new Empleado[nUsuarios];
+        int idUsuario = -2;
         
         for (int i = 0; i < nUsuarios; i++) {
             do {
@@ -140,10 +141,13 @@ public class GTrabajo {
                
                switch (opcionMenuUsuarios) {
                    case 1: // Por ID
-                       int idUsuario;
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID del empleado que quieres añadir: ");
-                       idUsuario = scId.nextInt();
+                       try {
+                       idUsuario = scId.nextInt(); 
+                       } catch (java.util.InputMismatchException e) {
+                           break;
+                       }
                        empleadosGrupo[i] = Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro);
                        System.out.println(Arrays.toString(empleadosGrupo));
                        break;
@@ -159,7 +163,7 @@ public class GTrabajo {
                
             } while(opcionMenuUsuarios > 4);
         };
-        
+        if (idUsuario != -1 || idUsuario != 0){
         do {
                System.out.println("¿Como desea registrar la Franquicia en la que trabajaran?" + "\n" 
             +   "Pulse 1 para introducir por ID." + "\n" 
@@ -178,7 +182,13 @@ public class GTrabajo {
                        boolean condicion;
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID de la Franquicia que quieres añadir: ");
+                       try {
                        idFranquicia = scId.nextInt();
+                       } catch (java.util.InputMismatchException e) {
+                           System.out.println("Introduzca un valor correcto.");
+                           e.getMessage();
+                           break;
+                       };
                        do {
                        
                         Franquicia.buscarFranquicia(idFranquicia);
@@ -195,6 +205,8 @@ public class GTrabajo {
                }
                
             } while(opcionMenuFranquicias > 3);
+        }
+        
         
     return gt;}
 
