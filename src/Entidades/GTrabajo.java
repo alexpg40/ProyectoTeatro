@@ -1,6 +1,7 @@
 package Entidades;
 // Guillermo Illera Vinatea
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GTrabajo {
@@ -122,6 +123,7 @@ public class GTrabajo {
         System.out.println("¿Cuantos usuarios desea introducir en el grupo?" + "\n");
         int nUsuarios, opcionMenuUsuarios, opcionMenuFranquicias;
         nUsuarios = in.nextInt();
+        Empleado empleadosGrupo[] = new Empleado[nUsuarios];
         
         for (int i = 0; i < nUsuarios; i++) {
             do {
@@ -139,12 +141,11 @@ public class GTrabajo {
                switch (opcionMenuUsuarios) {
                    case 1: // Por ID
                        int idUsuario;
-                       ArrayList <Empleado> nuevoGrupo = new ArrayList <Empleado>();
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID del empleado que quieres añadir: ");
                        idUsuario = scId.nextInt();
-                       nuevoGrupo.add(Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro));
-                       System.out.println(nuevoGrupo);
+                       empleadosGrupo[i] = Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro);
+                       System.out.println(Arrays.toString(empleadosGrupo));
                        break;
                    
                    case 2: // Por NIF
@@ -177,9 +178,6 @@ public class GTrabajo {
                        boolean condicion;
                        Scanner scId = new Scanner (System.in);
                        System.out.println("Introduce el ID de la Franquicia que quieres añadir: ");
-                       
-                       /*
-                       
                        idFranquicia = scId.nextInt();
                        do {
                        
@@ -188,10 +186,7 @@ public class GTrabajo {
                            gt.setFranquicia(franquicia);
                            condicion = Utilidades.leerBoolean();
                        } while (condicion == false);
-                       
-                       
-                       
-                       break; */
+                       break;
                    
                    case 2: // Por NIF
                        break;
