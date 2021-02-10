@@ -150,7 +150,7 @@ public class GTrabajo {
                        }
                        empleadosGrupo[i] = Empleado.añadirEmpleadobyID(idUsuario, empleadosTeatro);
                        System.out.println(Arrays.toString(empleadosGrupo));
-                       break;
+                       continue;
                    
                    case 2: // Por NIF
                        break;
@@ -190,7 +190,6 @@ public class GTrabajo {
                            break;
                        };
                        do {
-                       
                         Franquicia.buscarFranquicia(idFranquicia);
                            System.out.println("¿Es esta la Franquicia que quiere añadir?");
                            gt.setFranquicia(franquicia);
