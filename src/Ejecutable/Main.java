@@ -70,6 +70,7 @@ public class Main {
         do {
             mostrarMenu();
             Scanner in = new Scanner(System.in);
+            try {
             opcion = in.nextInt();
             if (opcion < 0 || opcion > 4) {
                 System.out.println("Error. Vuelva a introducir la opción.");
@@ -211,8 +212,10 @@ public class Main {
                     continue;
             }
             opcion = -1;
-        } while (opcion < 0 || opcion > 4);
-
+            } catch (java.util.InputMismatchException e) {
+                continue;
+            }
+        } while (opcion < 0 || opcion > 4);  
     }
 
     private static void mostrarMenu() {
