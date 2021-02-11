@@ -161,34 +161,24 @@ public class Empleado {
         }
     }
 
-    public void validarNIF(String nif) {
-        boolean cond = false;
-        if (nif.length() != 9) {
-            System.out.println("El nif debeser de 9 digitos");
-            return;
-        } else if (!((nif.charAt(8) >= 'a' && nif.charAt(8) <= 'z') || (nif.charAt(8) >= 'A' && nif.charAt(8) <= 'Z'))) {
-            System.out.println("Debe finalizar con una letra");
-            return;
-        } else {
-            for (int i = 0; i < 7; i++) {
-                if (!(nif.charAt(i) >= '0' && nif.charAt(i) <= '9')) {
-                    System.out.println("Los primeros 8 digitos deben ser numeros");
-                } else {
-                    for (Empleado e : Utilidades.EMPLEADOS) {
-                        if (e.getNif().equals(nif)) {
-                            cond = true;
-                            break;
-                        } else {
-                            cond = false;
-                        }
-                    }
+    public void validarNIF(String nif, ArrayList<Empleado> empleados) {
+        if (nif.isEmpty()) {
+            System.out.println("No puede estar vacio.");
+        } else if (nif.length() != 9){
+            System.out.println("El nif debe ser de 9 digitos.");
+        } else if (!Utilidades.isNumeric(nif.substring(0, 8))){
+            System.out.println("Los 8 primeros digitos deben ser numeros");
+        } else if (!String.valueOf(nif.charAt(8)).matches("[a-zA-Z]")){
+            System.out.println("El último debe ser una letra");
+        } else{
+            for (int i = 0; i < empleados.size(); i++) {
+                if (empleados.get(i).nif.equals(nif)) {
+                    System.out.println("No puede repertirse el nif.");
+                    break;
+                } else if (!empleados.get(i).nif.equals(nif) && i == (empleados.size() -1)){
+                    this.nif = nif;
                 }
             }
-        }
-        if (cond) {
-            System.out.println("Este nif ya esta registrado en la base");
-        } else {
-            this.nif = nif;
         }
     }
 
@@ -253,7 +243,7 @@ public class Empleado {
             e.setNif(" ");
             in = new Scanner(System.in);
             n = in.nextLine();
-            e.validarNIF(n);
+            e.validarNIF(n, empleados);
         } while (!e.getNif().equals(n));
         System.out.println("Introduce el telefono");
         String t;
