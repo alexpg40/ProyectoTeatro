@@ -234,38 +234,43 @@ public class Empleado {
         System.out.println("Introduce el nombre");
         String us;
         do {
+            e.setNombre(" ");
             in = new Scanner(System.in);
             us = in.nextLine();
             e.validarNombre(us);
-        } while (e.getNombre() != us);
+        } while (!e.getNombre().equals(us));
         System.out.println("Introduce los apellidos");
         String ap;
         do {
+            e.setApellidos(" ");
             in = new Scanner(System.in);
             ap = in.nextLine();
             e.validarApellidos(ap);
-        } while (e.getApellidos() != ap);
+        } while (!e.getApellidos().equals(ap));
         System.out.println("Introduce el NIF");
         String n;
         do {
+            e.setNif(" ");
             in = new Scanner(System.in);
             n = in.nextLine();
             e.validarNIF(n);
-        } while (e.getNif() != n);
+        } while (!e.getNif().equals(n));
         System.out.println("Introduce el telefono");
         String t;
         do {
+            e.setTelefono(" ");
             in = new Scanner(System.in);
             t = in.nextLine();
             e.validarTelefono(t);
-        } while (e.getTelefono() != t);
+        } while (!e.getTelefono().equals(t));
         System.out.println("Introduce tu direccion");
         String d;
         do {
+            e.setDireccion(" ");
             in = new Scanner(System.in);
             d = in.nextLine();
             e.validarDireccion(d);
-        } while (e.getDireccion() != d);
+        } while (!e.getDireccion().equals(d));
 
         return e;
     }

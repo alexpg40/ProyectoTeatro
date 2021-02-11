@@ -209,7 +209,7 @@ public class Utilidades {
     }
     ;
     
-    private static Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+    private static final Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
