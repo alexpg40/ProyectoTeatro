@@ -3,6 +3,7 @@ package Entidades;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Utilidades {
 
@@ -39,7 +40,7 @@ public class Utilidades {
         new Nomina(8, new Date(2019, 12, 12)),
         new Nomina(9, new Date(2019, 12, 12))
     };
-    
+
     //He declarado un ArrayList para que no me de error
     static ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
 
@@ -56,7 +57,7 @@ public class Utilidades {
         new Franquicia(5, new Date(2019, 12, 12), "Almería, Níjar", true, informe, Empleados, GTrabajo),
         new Franquicia(6, new Date(2019, 12, 12), "Alicante, Benidorm", false, informe, Empleados, GTrabajo)
     };
-    
+
     //char categoria, Nomina nomina
     public static final EmpleadoDeTeatro EMPLEADOSDETEATRO[] = {
         new EmpleadoDeTeatro(EMPLEADOS[0], 'A', NOMINAS[0]),
@@ -77,7 +78,7 @@ public class Utilidades {
         new EmpleadoDeOficina(EMPLEADOS[12], 4)
 
     };
-    
+
     // long id, String nombre, String apellidos, String nif, String direccion, String telefono, int añosPlantillaD
     public static final Direccion DIRECCIONES[] = {
         new Direccion(EMPLEADOS[13], 4),
@@ -97,17 +98,17 @@ public class Utilidades {
         new Acomodador(EMPLEADOS[4], 'A', NOMINAS[4]),
         new Acomodador(EMPLEADOS[5], 'C', NOMINAS[5])
     };
-    
+
     //long id, long semana, long mes, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
     public static final GTrabajo GTRABAJO[] = {
         new GTrabajo(1, 3, 2, FRANQUICIAS[1], empleadosTeatro),
         new GTrabajo(2, 1, 6, FRANQUICIAS[0], empleadosTeatro),
         new GTrabajo(5, 2, 8, FRANQUICIAS[2], empleadosTeatro),
         new GTrabajo(3, 6, 1, FRANQUICIAS[3], empleadosTeatro),
-        new GTrabajo(9, 2, 12,FRANQUICIAS[4], empleadosTeatro),
+        new GTrabajo(9, 2, 12, FRANQUICIAS[4], empleadosTeatro),
         new GTrabajo(4, 4, 3, FRANQUICIAS[5], empleadosTeatro)
     };
-    
+
     // long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe
     // long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina, Informe informe
     public static final Coste COSTES[] = {
@@ -165,7 +166,7 @@ public class Utilidades {
         new Informe(8, new Date(2019, 12, 12), 412.01, SECRETARIOS[1], beneficios, Costes),
         new Informe(9, new Date(2019, 12, 12), 202.1, SECRETARIOS[2], beneficios, Costes)
     };
-    
+
     public static boolean leerBoolean() {
         boolean ret;
         Scanner in;
@@ -185,9 +186,10 @@ public class Utilidades {
         }
         return ret;
     }
-    
-     /**
+
+    /**
      * Función que pide al usuario una fecha mediante el año, el mes y el día.
+     *
      * @return date (fecha)
      */
     public static Date dameFecha() {
@@ -204,5 +206,16 @@ public class Utilidades {
 
         System.out.println("La fecha introducida es:" + date);
         return date;
-    };
+    }
+    ;
+    
+    private static Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        return pattern.matcher(strNum).matches();
+    }
+
 }
