@@ -217,5 +217,4 @@ public class Utilidades {
         }
         return pattern.matcher(strNum).matches();
     }
-
 }

@@ -116,46 +116,24 @@ public class Empleado {
     }
 
     public void validarNombre(String nombre) {
-        boolean cond = false;
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
-            return;
-        } else {
-            for (int i = 0; i < nombre.length(); i++) {
-                if (!((nombre.charAt(i) >= 'a' && nombre.charAt(i) <= 'z') || (nombre.charAt(i) >= 'A' && nombre.charAt(i) <= 'Z'))) {
-                    cond = true;
-                    break;
-                } else {
-                    cond = false;
-                }
-            }
-
-        }
-        if (cond) {
-            System.out.println("Solo se permiten letras");
+        } else if(nombre.matches(".*\\d.*")){
+            System.out.println("No puede tener numeros.");
+        } else if(nombre.length() < 2 || nombre.length() > 150){
+            System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
         } else {
             this.nombre = nombre;
         }
     }
 
     public void validarApellidos(String apellidos) {
-        boolean cond = false;
         if (apellidos.isEmpty()) {
             System.out.println("No puede estar vacio");
-            return;
-        } else {
-            for (int i = 0; i < apellidos.length(); i++) {
-                if (((apellidos.charAt(i) >= 'a' && apellidos.charAt(i) <= 'z') || (apellidos.charAt(i) >= 'A' && apellidos.charAt(i) <= 'Z'))) {
-                    cond = false;
-                } else if (apellidos.charAt(i) != ' ') {
-                    cond = true;
-                    break;
-                }
-            }
-
-        }
-        if (cond) {
-            System.out.println("Solo se permiten letras");
+        } else if(apellidos.matches(".*\\d.*")){
+            System.out.println("No puede tener numeros.");
+        } else if(apellidos.length() < 2 || apellidos.length() > 150){
+            System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
         } else {
             this.apellidos = apellidos;
         }
@@ -191,29 +169,14 @@ public class Empleado {
     }
 
     public void validarTelefono(String telefono) {
-        boolean cond = false;
         if (telefono.contains(CharSequence.class.cast(" "))) {
             System.out.println("No puede haber espacios");
+        } else if (telefono.length() != 9) {
+            System.out.println("Tiene que tener 9 números.");
+        } else if(!Utilidades.isNumeric(telefono) ){
+            System.out.println("Solo se permiten números");
         } else {
-            if (telefono.length() != 9) {
-                System.out.println("Debe tener nueve numeros");
-                return;
-            } else {
-                for (int i = 0; i < telefono.length(); i++) {
-                    if (!(telefono.charAt(i) >= '0' && telefono.charAt(i) <= '9')) {
-                        cond = true;
-                        break;
-                    } else {
-                        cond = false;
-                    }
-                }
-            }
-
-            if (cond) {
-                System.out.println("Solo se permiten números");
-            } else {
-                this.telefono = telefono;
-            }
+            this.telefono = telefono;
         }
     }
 
