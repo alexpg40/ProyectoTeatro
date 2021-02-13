@@ -10,14 +10,11 @@ public class GTrabajo {
     private long id;
     //VALORES VALIDOS: NUMEROS ENTEROS => 1 y <=6 && VALORES INVALIDOS: CUALQUIER CARACTER O NUMERO DIFERENTE
     private long semana;
-    
-    // Valores validos: Numeros enteros mayores de 1 y menores de 12. Valores invalidos: Cualquier letra, o numero fuera del rango establecido.
+    //VALORES VALIDOS: NÚMEROS ENTEROS => 1 Y <=12 && VALORES INVALIDOS: CUALQUIER CARACTER O NUMERO DIFRENTE
     private long mes;
-    
-    // Se guarda una lista de los trabajadores que forman parte de grupo de trabajo
+    //ARRAY LIST DE LOS EMPLEADOS DE TEATRO QUE FORMAN EL GRUPO DE TRABAJO
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
-    
-    // Se guarda la franquicia donde está el grupo de trabajo
+    //FRANQUICIA DONDE TRABAJA EL GRUPO DE TRABAJO
     private static Franquicia franquicia;
     
     public GTrabajo(){};
@@ -78,6 +75,10 @@ public class GTrabajo {
         this.franquicia = franquicia;
     }
 
+    /**
+     * Recorre un array con los grupos de trabajo 
+     * @return mayor id + 1
+     */
     public long generarId() {
         long id = 0;
         for (GTrabajo gt : Utilidades.GTRABAJO) {
@@ -87,9 +88,15 @@ public class GTrabajo {
         }
     return id+1;}
     
+    /**
+     * Valida la semana y la setea en el grupo de trabajo
+     * @param semana a validar
+     */
     public void validarSemana(long semana){
+        //Comprueba que el valor se ha un valor valido entre 1 y 6
         if (!(semana >= 1 && semana <=6)) {
             System.out.println("Solo puede estar entre la semana 1 y la 6");
+            //Setea la semana al grupo de trabajo
         } else{
             this.semana = semana;
         }

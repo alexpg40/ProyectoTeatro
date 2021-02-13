@@ -46,14 +46,25 @@ public class EmpleadoDeOficina extends Empleado{
         this.añosPlantilla = añosPlantilla;
     }
     
-    public void comprobarAñosplantilla(int añosPlantilla){
+    /**
+     * Valida los años en plantilla
+     * @param añosPlantilla a validar
+     */
+    public void validarAñosplantilla(int añosPlantilla){
+        //Valida que los años sean entre 0 como minimo y 80 como máximo.
         if (!(añosPlantilla >= 0 && añosPlantilla <80)) {
             System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
+            //Setea los años en plantilla del empleado.
         } else{
             this.añosPlantilla = añosPlantilla;
         }
     }
     
+    /**
+     * Crea y devuelve un empleado de oficina con los datos introducidos.
+     * @param empleados 
+     * @return 
+     */
     public static EmpleadoDeOficina nuevoEmpleadoDeOficina(ArrayList<Empleado> empleados){
         Scanner sc;
         Empleado e = Empleado.nuevoEmpleado(empleados);
@@ -63,7 +74,7 @@ public class EmpleadoDeOficina extends Empleado{
         do {
             sc = new Scanner(System.in);
             a = sc.nextInt();
-            ef.comprobarAñosplantilla(a);
+            ef.validarAñosplantilla(a);
         } while (ef.getAñosPlantilla() != a);
     return ef;}
     

@@ -12,7 +12,7 @@ public class EmpleadoDeTeatro extends Empleado {
     
     //VALORES VALIDOS: A, B, C, y D && VALORES INVALIDOS: CUALQUIER CARACTER DIFERENTE A A,B,C y D 
     protected char categoria;
-    //Cada empleado de teatro tiene una nomina que es calculada por secretario y revisada por direccion
+    //CADA EMPLEADO DE TEATRO TIENE UNA NOMINA QUE ES CALCULADO POR SECRETARIO Y REVISADA POR DIRECCION
     private Nomina nomina;
    
     public EmpleadoDeTeatro(){
@@ -55,13 +55,25 @@ public class EmpleadoDeTeatro extends Empleado {
         this.nomina = nomina;
     }
     
-    public void comprobarCategoria(char categoria){
+    /**
+     * Valida la categoria de empleados de teatro
+     * @param categoria a validar
+     */
+    public void validarCategoria(char categoria){
+        //Comprueba que sea un categoria existente.
         if (categoria != 'A' && categoria !='B' && categoria !='C' && categoria !='D') {
             System.out.println("La categoria solo puede ser A, B, C o D");
+            //Setea la categoria del empleado.
         } else{
             this.categoria = categoria;
         }
     }
+    
+    /**
+     * Crea y devuelve un empleado de teatro con los datos introducidos.
+     * @param empleados
+     * @return 
+     */
     public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(ArrayList<Empleado> empleados){
         Empleado e = Empleado.nuevoEmpleado(empleados);
         EmpleadoDeTeatro et = new EmpleadoDeTeatro(e);
@@ -72,7 +84,7 @@ public class EmpleadoDeTeatro extends Empleado {
             c = 0;
             sc = new Scanner(System.in);
             c = sc.next().charAt(c);
-            et.comprobarCategoria((char) c);
+            et.validarCategoria((char) c);
         } while (et.getCategoria() != c);
     return et;}
     

@@ -105,6 +105,11 @@ public class Empleado {
         this.franquicia = e.franquicia;
     }
 
+    /**
+     * Recorre el array con todos los empleados y la id para el siguiente empleado 
+     * @param empleados array a recorrer
+     * @return id para el empleado
+     */
     public long generarId(ArrayList<Empleado> empleados) {
         long id = 0;
         for (Empleado e : empleados) {
@@ -115,40 +120,66 @@ public class Empleado {
         return id + 1;
     }
 
+    /**
+     * Valida el nombre del empleado y si lo setea si pasa la validacion
+     * @param nombre a validar
+     */
     public void validarNombre(String nombre) {
+        //Comprueba si el String esta vacio
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
+            //Comprueba si el String contiene algún numero
         } else if(nombre.matches(".*\\d.*")){
             System.out.println("No puede tener numeros.");
-        } else if(nombre.length() < 2 || nombre.length() > 150){
+            //Comprueba que el nombre se ha de una longitud mayor e igual que 2 y menor que 150
+        } else if(nombre.length() <= 2 || nombre.length() > 150){
             System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
+            //Setea el nombre al empleado si pasa todas las validaciones
         } else {
             this.nombre = nombre;
         }
     }
 
+    /**
+     * Valida los apellidos y los setea si pasa las validaciones
+     * @param apellidos a comprobar
+     */
     public void validarApellidos(String apellidos) {
+        //Comprueba si esta vacio
         if (apellidos.isEmpty()) {
             System.out.println("No puede estar vacio");
+            //Comprueba si contiene algun numero
         } else if(apellidos.matches(".*\\d.*")){
             System.out.println("No puede tener numeros.");
-        } else if(apellidos.length() < 2 || apellidos.length() > 150){
+            //Comprueba si el String es mayor e igual que 2 o menor que 150.
+        } else if(apellidos.length() <= 2 || apellidos.length() > 150){
             System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
+            //Setea cuando pasa las validaciones
         } else {
             this.apellidos = apellidos;
         }
     }
 
+    /**
+     * Valida nif del empleado y los setea si pasa las validaciones
+     * @param nif a comprobar
+     * @param empleados para saber si esta repetido
+     */
     public void validarNIF(String nif, ArrayList<Empleado> empleados) {
+        //Comprueba si el String esta vacio
         if (nif.isEmpty()) {
             System.out.println("No puede estar vacio.");
+            //La longitud del String tiene que ser igual a 9
         } else if (nif.length() != 9){
             System.out.println("El nif debe ser de 9 digitos.");
+            //Los primeros 8 digitos tienen que ser números
         } else if (!Utilidades.isNumeric(nif.substring(0, 8))){
             System.out.println("Los 8 primeros digitos deben ser numeros");
+            //El primero digito debe ser una letra.
         } else if (!String.valueOf(nif.charAt(8)).matches("[a-zA-Z]")){
             System.out.println("El último debe ser una letra");
         } else{
+            //Recorre el array y comprueba no este ya registrado
             for (int i = 0; i < empleados.size(); i++) {
                 if (empleados.get(i).nif.equals(nif)) {
                     System.out.println("No puede repertirse el nif.");
@@ -160,7 +191,12 @@ public class Empleado {
         }
     }
 
+    /**
+     * Valida la direccion del empleado y la setea si se cumple las validaciones
+     * @param direccion a comprobar
+     */
     public void validarDireccion(String direccion) {
+        //Comprueba si esta vacio el String
         if (direccion.isEmpty()) {
             System.out.println("La direccion no puede estar vacia");
         } else {
@@ -168,18 +204,31 @@ public class Empleado {
         }
     }
 
+    /**
+     * Valida el telefono del empleado y lo setea si se cumple las validaciones
+     * @param telefono a comprobar 
+     */
     public void validarTelefono(String telefono) {
+        //Comprueba que no tenga ningun espacio 
         if (telefono.contains(CharSequence.class.cast(" "))) {
             System.out.println("No puede haber espacios");
+            //Comprueba que la longitud del telefono sea igual a 9
         } else if (telefono.length() != 9) {
             System.out.println("Tiene que tener 9 números.");
+            //Comprueba que solo se permiten numeros
         } else if(!Utilidades.isNumeric(telefono) ){
             System.out.println("Solo se permiten números");
+            //Setea el telefono si pasa las validaciones
         } else {
             this.telefono = telefono;
         }
     }
 
+    /**
+     * Devuelve un empleado con los datos introducidos
+     * @param empleados
+     * @return 
+     */
     public static Empleado nuevoEmpleado(ArrayList<Empleado> empleados) {
         Empleado e = new Empleado();
         Scanner in;
@@ -358,6 +407,10 @@ public class Empleado {
         }
     }
     
+    /**
+     * Introduce el empleado en una franquicia.
+     * @param franquicia donde se guarda el empleado
+     */
     public void trabajarEn(Franquicia franquicia){
         if (!franquicia.getEmpleados().contains(this)) {
             franquicia.getEmpleados().add(this);
@@ -369,9 +422,7 @@ public class Empleado {
     
         
      public static Empleado añadirEmpleadobyID(long id, ArrayList<EmpleadoDeTeatro> empleadosTeatro) {
-         
-        Empleado e = new Empleado();
-        
+        Empleado e = new Empleado(); 
         for (EmpleadoDeTeatro empleadoTeatro : empleadosTeatro) {
             if (id == empleadoTeatro.id) {
                 e = empleadoTeatro;
