@@ -58,16 +58,17 @@ public class EmpleadoDeTeatro extends Empleado {
     /**
      * Valida la categoria de empleados de teatro
      * @param categoria a validar
+     * @return boolean
      */
-    public void validarCategoria(char categoria){
+    public boolean validarCategoria(char categoria){
         //Comprueba que sea un categoria existente.
         if (categoria != 'A' && categoria !='B' && categoria !='C' && categoria !='D') {
             System.out.println("La categoria solo puede ser A, B, C o D");
             //Setea la categoria del empleado.
         } else{
-            this.categoria = categoria;
+            return true;
         }
-    }
+    return false;}
     
     /**
      * Crea y devuelve un empleado de teatro con los datos introducidos.
@@ -84,7 +85,9 @@ public class EmpleadoDeTeatro extends Empleado {
             c = 0;
             sc = new Scanner(System.in);
             c = sc.next().charAt(c);
-            et.validarCategoria((char) c);
+            if (et.validarCategoria((char) c)) {
+             et.setCategoria(c);
+            }
         } while (et.getCategoria() != c);
     return et;}
     

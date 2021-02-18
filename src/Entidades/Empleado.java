@@ -121,10 +121,11 @@ public class Empleado {
     }
 
     /**
-     * Valida el nombre del empleado y si lo setea si pasa la validacion
+     * Valida el nombre del empleado
      * @param nombre a validar
+     * @return boolean
      */
-    public void validarNombre(String nombre) {
+    public boolean validarNombre(String nombre) {
         //Comprueba si el String esta vacio
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
@@ -134,17 +135,19 @@ public class Empleado {
             //Comprueba que el nombre se ha de una longitud mayor e igual que 2 y menor que 150
         } else if(nombre.length() <= 2 || nombre.length() > 150){
             System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
-            //Setea el nombre al empleado si pasa todas las validaciones
+            //Devuelve true cuando pasa todos las validaciones
         } else {
-            this.nombre = nombre;
+            return true;
         }
+        return false;
     }
 
     /**
-     * Valida los apellidos y los setea si pasa las validaciones
+     * Valida los apellidos
      * @param apellidos a comprobar
+     * @return boolean
      */
-    public void validarApellidos(String apellidos) {
+    public boolean validarApellidos(String apellidos) {
         //Comprueba si esta vacio
         if (apellidos.isEmpty()) {
             System.out.println("No puede estar vacio");
@@ -154,18 +157,20 @@ public class Empleado {
             //Comprueba si el String es mayor e igual que 2 o menor que 150.
         } else if(apellidos.length() <= 2 || apellidos.length() > 150){
             System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
-            //Setea cuando pasa las validaciones
+            //Devuelve true si pasa las validaciones
         } else {
-            this.apellidos = apellidos;
+            return true;
         }
+        return false;
     }
 
     /**
-     * Valida nif del empleado y los setea si pasa las validaciones
+     * Valida nif del empleado 
      * @param nif a comprobar
      * @param empleados para saber si esta repetido
+     * @return boolean
      */
-    public void validarNIF(String nif, ArrayList<Empleado> empleados) {
+    public boolean validarNIF(String nif, ArrayList<Empleado> empleados) {
         //Comprueba si el String esta vacio
         if (nif.isEmpty()) {
             System.out.println("No puede estar vacio.");
@@ -185,30 +190,34 @@ public class Empleado {
                     System.out.println("No puede repertirse el nif.");
                     break;
                 } else if (!empleados.get(i).nif.equals(nif) && i == (empleados.size() -1)){
-                    this.nif = nif;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     /**
-     * Valida la direccion del empleado y la setea si se cumple las validaciones
+     * Valida la direccion del empleado
      * @param direccion a comprobar
+     * @return boolean
      */
-    public void validarDireccion(String direccion) {
+    public boolean validarDireccion(String direccion) {
         //Comprueba si esta vacio el String
         if (direccion.isEmpty()) {
             System.out.println("La direccion no puede estar vacia");
         } else {
-            this.direccion = direccion;
+            return true;
         }
+    return false;
     }
 
     /**
-     * Valida el telefono del empleado y lo setea si se cumple las validaciones
+     * Valida el telefono del empleado
      * @param telefono a comprobar 
+     * @return boolean
      */
-    public void validarTelefono(String telefono) {
+    public boolean validarTelefono(String telefono) {
         //Comprueba que no tenga ningun espacio 
         if (telefono.contains(CharSequence.class.cast(" "))) {
             System.out.println("No puede haber espacios");
@@ -218,11 +227,11 @@ public class Empleado {
             //Comprueba que solo se permiten numeros
         } else if(!Utilidades.isNumeric(telefono) ){
             System.out.println("Solo se permiten números");
-            //Setea el telefono si pasa las validaciones
+            //Devuelve true si pasa todas las validaciones
         } else {
-            this.telefono = telefono;
+            return true;
         }
-    }
+    return false;}
 
     /**
      * Devuelve un empleado con los datos introducidos
@@ -239,7 +248,9 @@ public class Empleado {
             e.setNombre(" ");
             in = new Scanner(System.in);
             us = in.nextLine();
-            e.validarNombre(us);
+            if (e.validarNombre(us)) {
+                e.setNombre(us);
+            }
         } while (!e.getNombre().equals(us));
         System.out.println("Introduce los apellidos");
         String ap;
@@ -247,7 +258,9 @@ public class Empleado {
             e.setApellidos(" ");
             in = new Scanner(System.in);
             ap = in.nextLine();
-            e.validarApellidos(ap);
+            if (e.validarApellidos(ap)) {
+                e.setApellidos(ap);
+            }
         } while (!e.getApellidos().equals(ap));
         System.out.println("Introduce el NIF");
         String n;
@@ -255,7 +268,9 @@ public class Empleado {
             e.setNif(" ");
             in = new Scanner(System.in);
             n = in.nextLine();
-            e.validarNIF(n, empleados);
+            if (e.validarNIF(n, empleados)) {
+                e.setNif(n);
+            }
         } while (!e.getNif().equals(n));
         System.out.println("Introduce el telefono");
         String t;
@@ -263,7 +278,9 @@ public class Empleado {
             e.setTelefono(" ");
             in = new Scanner(System.in);
             t = in.nextLine();
-            e.validarTelefono(t);
+            if (e.validarTelefono(t)) {
+                e.setTelefono(t);
+            }
         } while (!e.getTelefono().equals(t));
         System.out.println("Introduce tu direccion");
         String d;
@@ -271,7 +288,9 @@ public class Empleado {
             e.setDireccion(" ");
             in = new Scanner(System.in);
             d = in.nextLine();
-            e.validarDireccion(d);
+            if (e.validarDireccion(d)) {
+                e.setDireccion(d);
+            }
         } while (!e.getDireccion().equals(d));
 
         return e;

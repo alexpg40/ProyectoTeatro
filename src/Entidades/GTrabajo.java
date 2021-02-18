@@ -91,15 +91,17 @@ public class GTrabajo {
     /**
      * Valida la semana y la setea en el grupo de trabajo
      * @param semana a validar
+     * @return boolean
      */
-    public void validarSemana(long semana){
+    public boolean validarSemana(long semana){
         //Comprueba que el valor se ha un valor valido entre 1 y 6
         if (!(semana >= 1 && semana <=6)) {
             System.out.println("Solo puede estar entre la semana 1 y la 6");
             //Setea la semana al grupo de trabajo
         } else{
-            this.semana = semana;
+            return true;
         }
+    return false;
     }
     
     public static GTrabajo nuevoGTrabajo(){
@@ -124,7 +126,9 @@ public class GTrabajo {
             semana =-1;
             in = new Scanner(System.in);
             semana = in.nextLong();
-            gt.validarSemana(semana);
+            if (gt.validarSemana(semana)) {
+                gt.setSemana(semana);
+            }
         } while (gt.getSemana() != semana || semana <= 0 || semana > 6);
         
         System.out.println("¿Cuantos usuarios desea introducir en el grupo?" + "\n");

@@ -49,15 +49,17 @@ public class EmpleadoDeOficina extends Empleado{
     /**
      * Valida los años en plantilla
      * @param añosPlantilla a validar
+     * @return boolean
      */
-    public void validarAñosplantilla(int añosPlantilla){
+    public boolean validarAñosplantilla(int añosPlantilla){
         //Valida que los años sean entre 0 como minimo y 80 como máximo.
         if (!(añosPlantilla >= 0 && añosPlantilla <80)) {
             System.out.println("Los años en plantilla tiene que estar entre 0 y 80");
             //Setea los años en plantilla del empleado.
         } else{
-            this.añosPlantilla = añosPlantilla;
+            return true;
         }
+    return true;
     }
     
     /**
@@ -74,7 +76,9 @@ public class EmpleadoDeOficina extends Empleado{
         do {
             sc = new Scanner(System.in);
             a = sc.nextInt();
-            ef.validarAñosplantilla(a);
+            if (ef.validarAñosplantilla(a)) {
+                ef.setAñosPlantilla(a);
+            }
         } while (ef.getAñosPlantilla() != a);
     return ef;}
     
