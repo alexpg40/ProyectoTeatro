@@ -170,7 +170,7 @@ public class Informe {
 
     @Override
     public String toString() {
-        String ret = "Informe{\n" + "id=" + id + "\nmesyano=" + mesyano + "\nbalance=" + balance + "\nsecretario=" + secretario + "\nbeneficios=";
+        String ret = "Los datos del informe son: \n" + "id=" + id + "\nmesyano=" + mesyano + "\nbalance=" + balance + "\nsecretario=" + secretario + "\nbeneficios=";
         for (Beneficio ben : beneficios) {
             ret += "Importe:" + ben.getImporte() + "\n";
             ret += "Reporte:" + ben.getReporte() + "\n";
