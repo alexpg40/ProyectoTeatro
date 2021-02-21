@@ -151,7 +151,7 @@ public class Main {
                                 informes.add(Informe.nuevoInforme());
                                 break;
                             default: //Salir
-                                break;
+                                continue;
                         }
                         opcioninf = -1;
                     } while (opcioninf < 0 || opcioninf > 2);
