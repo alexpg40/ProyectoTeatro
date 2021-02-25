@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 
 public class Coste {
+    
     private long id;
     // Valores válidos: Números > 0 | Valores inválidos: Números <=0 | Otras restricciones: No puede repetirse, solo puede ser entero. 
     private Date fecha;
@@ -15,13 +16,10 @@ public class Coste {
     private double importe;
     // Valores válidos: Cualquier número > 0 | Valores inválidos: Numero <=0, cualquier carácter distinto, vacío y null.
     private Acomodador acomodador;
-   
     // Se guarda el limpiador que reporta el coste
     private Limpieza limpieza;
     // Se guarda la nómina que genera el coste
     private Nomina nomina;
-    // Se guarda el informe en el que va el coste
-    private Informe informe;
     
     public Coste (){};
     
@@ -32,35 +30,31 @@ public class Coste {
         this.acomodador = cos.acomodador;
         this.limpieza = cos.limpieza;
         this.nomina = cos.nomina;
-        this.informe = cos.informe;
     };
 
-    public Coste(long id, Date fecha, double importe, Acomodador acomodador, Limpieza limpieza, Nomina nomina, Informe informe) {
+    public Coste(long id, Date fecha, double importe, Acomodador acomodador, Limpieza limpieza, Nomina nomina) {
         this.id = id;
         this.fecha = fecha;
         this.importe = importe;
         this.acomodador = acomodador;
         this.limpieza = limpieza;
         this.nomina = nomina;
-        this.informe = informe;
     }
     
-    public Coste(long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe) {
+    public Coste(long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina) {
         this.id = id;
         this.fecha = fecha;
         this.importe = importe;
         this.acomodador = acomodador;
         this.nomina = nomina;
-        this.informe = informe;
     }
 
-    public Coste(long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina, Informe informe) {
+    public Coste(long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina) {
         this.id = id;
         this.fecha = fecha;
         this.importe = importe;
         this.limpieza = limpieza;
         this.nomina = nomina;
-        this.informe = informe;
     }
     
     public long getId() {
@@ -87,10 +81,6 @@ public class Coste {
         return nomina;
     }
 
-    public Informe getInforme() {
-        return informe;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -113,10 +103,6 @@ public class Coste {
 
     public void setNomina(Nomina nomina) {
         this.nomina = nomina;
-    }
-
-    public void setInforme(Informe informe) {
-        this.informe = informe;
     }
     
     public void generarId(){
@@ -153,7 +139,7 @@ public class Coste {
     
     @Override
     public String toString() {
-        return "Coste{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", acomodador=" + acomodador + ", limpieza=" + limpieza + ", nomina=" + nomina + ", informe=" + informe + '}';
+        return "Coste{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", acomodador=" + acomodador + ", limpieza=" + limpieza + ", nomina=" + nomina + '}';
     }
     
     

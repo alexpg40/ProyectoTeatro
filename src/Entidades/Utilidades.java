@@ -112,8 +112,8 @@ public class Utilidades {
     // long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe
     // long id, Date fecha, double importe, Limpieza limpieza, Nomina nomina, Informe informe
     public static final Coste COSTES[] = {
-        new Coste(1, new Date(2010, 11, 28), 23, ACOMODADORES[0], LIMPIADORES[0], NOMINAS[0], informe),
-        new Coste(2, new Date(2010, 11, 28), 800, LIMPIADORES[1], NOMINAS[1], informe),};
+        new Coste(1, new Date(2010, 11, 28), 23, ACOMODADORES[0], LIMPIADORES[0], NOMINAS[0]),
+        new Coste(2, new Date(2010, 11, 28), 800, LIMPIADORES[1], NOMINAS[1])};
 
     // long id, char tipo, int mes
     public static final Bono BONOS[] = {

@@ -45,6 +45,7 @@ public class Main {
         ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
         //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
         ArrayList<Informe> informes = Informe.convertirInforme(Utilidades.INFORMES);
+        //Convertimos el array de grupo de trabajo de la BS a ArrayList para porder trabjar con el
         ArrayList<GTrabajo> grupostrabajo = GTrabajo.convertirGTrabajo(Utilidades.GTRABAJO);
 
         //Hago la relacion de un empleado trabaja en una franquicia con un metodo
@@ -72,6 +73,10 @@ public class Main {
             Scanner in = new Scanner(System.in);
             try {
             opcion = in.nextInt();
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("\nSolo se permiten numeros enteros entre 0 y 4");
+                continue;
+            }
             if (opcion < 0 || opcion > 4) {
                 System.out.println("Error. Vuelva a introducir la opción.");
             }
@@ -81,7 +86,12 @@ public class Main {
                     int opcionFran = -1;
                     do {
                         mostrarMenuFranquicias();
-                        opcionFran = in.nextInt();
+                        try{
+                           opcionFran = in.nextInt(); 
+                        }catch(java.util.InputMismatchException e){
+                            System.out.println("Solo se permiten números enteros 0 y 3");
+                            continue;
+                        }
                         if (opcionFran < 0 || opcionFran > 3) {
                             System.out.println("Opción equivocada. Vuelva a introducir la opción.");
                             continue;
@@ -212,9 +222,6 @@ public class Main {
                     continue;
             }
             opcion = -1;
-            } catch (java.util.InputMismatchException e) {
-                continue;
-            }
         } while (opcion < 0 || opcion > 4);  
     }
 

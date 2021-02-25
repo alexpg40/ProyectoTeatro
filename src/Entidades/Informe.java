@@ -3,7 +3,6 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.sql.Date;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Informe {

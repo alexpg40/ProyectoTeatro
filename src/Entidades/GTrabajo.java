@@ -15,7 +15,7 @@ public class GTrabajo {
     //ARRAY LIST DE LOS EMPLEADOS DE TEATRO QUE FORMAN EL GRUPO DE TRABAJO
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
     //FRANQUICIA DONDE TRABAJA EL GRUPO DE TRABAJO
-    private static Franquicia franquicia;
+    private Franquicia franquicia;
     
     public GTrabajo(){};
     
@@ -201,7 +201,7 @@ public class GTrabajo {
                            break;
                        };
                        do {
-                        Franquicia.buscarFranquicia(idFranquicia);
+                        Franquicia franquicia = Franquicia.buscarFranquicia(idFranquicia);
                            System.out.println("¿Es esta la Franquicia que quiere añadir?");
                            gt.setFranquicia(franquicia);
                            condicion = Utilidades.leerBoolean();
