@@ -42,7 +42,7 @@ public class Secretariado extends EmpleadoDeOficina {
         return nominas;
     }
     
-    public void setBeneficio(ArrayList<Beneficio> beneficios) {
+    public void setNomina(ArrayList<Nomina> nominas) {
         this.nominas = nominas;
     } 
     
