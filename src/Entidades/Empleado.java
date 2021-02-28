@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -516,28 +517,21 @@ public class Empleado implements Serializable {
         OutputStream os;
         ObjectOutput out = null;
         try {
-            File f = new File("empleadosbinario.txt");
-            if (f.createNewFile()) {
-                try {
-                    os = new FileOutputStream("empleadosbinario.txt");
-                    out = new ObjectOutputStream(os);
-                    out.writeObject(empleados);
-                } catch (FileNotFoundException ex) {
-                    System.out.println("Archivo no encontrado");;
-                } catch (IOException ex) {
-                    System.out.println("Error");
-                } finally {
-                    try {
-                        out.close();
-                    } catch (IOException ex) {
-                        System.out.println("No se ha podido cerrar el Stream");
-                    }
-                }
-                System.out.println("Se ha creado el archivo con los empleados binarios!");
-            }
+            os = new FileOutputStream("empleadosbinario.txt");
+            out = new ObjectOutputStream(os);
+            out.writeObject(empleados);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
         } catch (IOException ex) {
-            System.out.println("No se pudo crear el archivo");
+            System.out.println("Error");
+        } finally {
+            try {
+                out.close();
+            } catch (IOException ex) {
+                System.out.println("No se ha podido cerrar el Stream");
+            }
         }
+        System.out.println("Se ha creado el archivo con los empleados binarios!");
     }
 
     public void guardarEmpleadoBinario() {
@@ -602,7 +596,7 @@ public class Empleado implements Serializable {
         } catch (IOException ex) {
             System.out.println("Error");
         } catch (ClassNotFoundException ex) {
-            System.out.println("Error");
+            System.out.println("Clase no encontrada");
         }
     }
 
@@ -615,8 +609,10 @@ public class Empleado implements Serializable {
             bw.newLine();
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
+
         } catch (IOException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Empleado.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (bw != null) {
                 try {
@@ -635,11 +631,11 @@ public class Empleado implements Serializable {
         ObjectInput oi;
         try {
             is = new FileInputStream(ruta);
-            oi = new ObjectInputStream(is);
+            oi = new ObjectInputStream(is);;
             ArrayList<Empleado> empleados = (ArrayList<Empleado>) oi.readObject();
             for (Empleado e : empleados) {
                 System.out.println("Se ha importado con exito el empleado: ");
-                System.out.println(e.toString());
+                System.out.println(e.data());
                 ret.add(e);
             }
         } catch (FileNotFoundException ex) {
@@ -649,5 +645,6 @@ public class Empleado implements Serializable {
         } catch (ClassNotFoundException ex) {
             System.out.println("Clase no encontrada");
         }
-    return ret;}
+        return ret;
+    }
 }
