@@ -1,11 +1,13 @@
 package Entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
 
-public class Franquicia {
+public class Franquicia implements Serializable{
 
+    private static final long serialVersionUID = 923841203981203L;
     private long id;
     /*  
         valores válidos: números > 0

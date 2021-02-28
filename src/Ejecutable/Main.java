@@ -14,6 +14,8 @@ public class Main {
     //main 
     public static void main(String[] args) {
 
+        ArrayList<Empleado> empleadostotal = Empleado.convertirEmpleado(Utilidades.EMPLEADOS);
+
         //Convertirmos todos los array de todos los tipos de empleados que hay para poder trabajar con ellos
         ArrayList<Empleado> empleadosD = Empleado.convertirEmpleado(Utilidades.DIRECCIONES);
         ArrayList<Empleado> empleadosL = Empleado.convertirEmpleado(Utilidades.LIMPIADORES);
@@ -28,19 +30,18 @@ public class Main {
         empleados.addAll(empleadosT);
         empleados.addAll(empleadosS);
         empleados.addAll(empleadosD);
-        
+
         // Convierto los array de los empleados de teatro para trabajarlos
-        
         ArrayList<EmpleadoDeTeatro> empleadosLimpiadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.LIMPIADORES);
         ArrayList<EmpleadoDeTeatro> empleadosAcomodadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.ACOMODADORES);
         ArrayList<EmpleadoDeTeatro> empleadosTaquilleros = GTrabajo.convertirEmpleadoTeatro(Utilidades.TAQUILLEROS);
-        
+
         // Declaro un ArrayList para guardar los empleados de Teatro.
         ArrayList<EmpleadoDeTeatro> empleadosTeatro = new ArrayList<>();
         empleadosTeatro.addAll(empleadosLimpiadores);
         empleadosTeatro.addAll(empleadosAcomodadores);
         empleadosTeatro.addAll(empleadosTaquilleros);
-        
+
         //Convertimos el array de franquicias de la BS a ArrayList para poder trabajar con el
         ArrayList<Franquicia> franquicias = Franquicia.convertirFranquicia(Utilidades.FRANQUICIAS);
         //Convertimos el array de empleados de la BS a ArrayList para poder trabajar con el
@@ -64,15 +65,18 @@ public class Main {
         empleados.get(12).trabajarEn(franquicias.get(0));
         empleados.get(13).trabajarEn(franquicias.get(1));
         empleados.get(14).trabajarEn(franquicias.get(2));
-        
-        
-        
+
+        //Se crea un archivo de texto con los empleados con String
+        Empleado.guardarEmpledos(empleados);
+        //Se crea un archivo de texto con los empleados en binario
+        Empleado.guardarEmpleadosBinario(empleadostotal);
+
         int opcion = -1;
         do {
             mostrarMenu();
             Scanner in = new Scanner(System.in);
             try {
-            opcion = in.nextInt();
+                opcion = in.nextInt();
             } catch (java.util.InputMismatchException e) {
                 System.out.println("\nSolo se permiten numeros enteros entre 0 y 4");
                 continue;
@@ -86,9 +90,9 @@ public class Main {
                     int opcionFran = -1;
                     do {
                         mostrarMenuFranquicias();
-                        try{
-                           opcionFran = in.nextInt(); 
-                        }catch(java.util.InputMismatchException e){
+                        try {
+                            opcionFran = in.nextInt();
+                        } catch (java.util.InputMismatchException e) {
                             System.out.println("Solo se permiten números enteros 0 y 3");
                             continue;
                         }
@@ -105,40 +109,40 @@ public class Main {
                             case 3:
                                 Scanner opcionFranquicias = new Scanner(System.in);
                                 int opcionMenuFran;
-                                
-                                System.out.println("Introduzca la opción que desee: " + "\n" +
-                                        "1. Buscar franquicia por ID." + "\n" + 
-                                        "2. Buscar franquicia por ubicacion." + "\n" +
-                                        "3. Filtrar franquicias por accesibilidad para minusvalidos." + "\n" + 
-                                        "4. Salir" + "\n");
-                                
+
+                                System.out.println("Introduzca la opción que desee: " + "\n"
+                                        + "1. Buscar franquicia por ID." + "\n"
+                                        + "2. Buscar franquicia por ubicacion." + "\n"
+                                        + "3. Filtrar franquicias por accesibilidad para minusvalidos." + "\n"
+                                        + "4. Salir" + "\n");
+
                                 opcionMenuFran = opcionFranquicias.nextInt();
-                                switch(opcionMenuFran){
-                                
+                                switch (opcionMenuFran) {
+
                                     case 1:
                                         int idFran;
-                                        Scanner scId = new Scanner (System.in);
+                                        Scanner scId = new Scanner(System.in);
                                         System.out.println("Introduzca el ID de la franquicia.");
                                         idFran = scId.nextInt();
                                         Franquicia.buscarFranquicia(idFran);
                                         break;
-                                        
+
                                     case 2:
                                         String UbFran;
-                                        Scanner scUb = new Scanner (System.in);
+                                        Scanner scUb = new Scanner(System.in);
                                         System.out.println("Introduzca la ubicación de la franquicia.");
                                         UbFran = scUb.nextLine();
                                         UbFran = UbFran.substring(0, 1).toUpperCase() + UbFran.substring(1).toLowerCase();
                                         Franquicia.buscarFranquicia(UbFran);
                                         break;
-                                        
+
                                     case 3:
-                                        System.out.println("Introduzca s para ver las franquicias con accesibilidad reducida. " + "\n" 
-                                        + "Introduzca n para ver las franquicias sin accesibilidad reducida." + "\n");
+                                        System.out.println("Introduzca s para ver las franquicias con accesibilidad reducida. " + "\n"
+                                                + "Introduzca n para ver las franquicias sin accesibilidad reducida." + "\n");
                                         Franquicia.verFranquicias(Franquicia.buscarFranquicia(Utilidades.leerBoolean()));
                                         break;
                                 }
-                        } 
+                        }
                     } while (opcionFran < 0 || opcionFran > 3);
                     break;
                 case 2: //Gestión de Empleados
@@ -168,61 +172,62 @@ public class Main {
                     break;
                 case 4: // Gestion de grupos de trabajo
                     int opcionMenuGrupos;
-                    Scanner scMenuGrupos = new Scanner (System.in);
+                    Scanner scMenuGrupos = new Scanner(System.in);
                     do {
                         mostrarMenuGrupos();
-                        opcionMenuGrupos = scMenuGrupos.nextInt(); 
+                        opcionMenuGrupos = scMenuGrupos.nextInt();
                         switch (opcionMenuGrupos) {
-                        case 1:  // Ver
-                            GTrabajo.verGruposTrabajo(grupostrabajo);
-                            break;
-                        case 2: // Buscar
-                            int opcionBusquedaGrupos;
-                            Scanner scBusquedaGrupos = new Scanner (System.in);
-                            
-                            do {
-                                System.out.println("Has accedido al menú Busqueda de Grupos de trabajo." + "\n" 
-                                    + "Seleccione 1 para buscar por ID." + "\n" 
-                                    + "Seleccione 2 para buscar por Semana." + "\n"
-                                    + "Seleccione 3 para salir. ");
-                                opcionBusquedaGrupos = scBusquedaGrupos.nextInt();
-                            } while(opcionBusquedaGrupos > 3);
-                            switch(opcionBusquedaGrupos){
-                                case 1:
-                                    int busquedaId;
-                                    Scanner scBusquedaId = new Scanner (System.in);
-                                    System.out.println("Introduzca el ID con el que desea buscar el grupo.");
-                                    busquedaId = scBusquedaId.nextInt();
-                                    GTrabajo.getGTrabajobyID(busquedaId);
-                                    break;
-                                case 2:
-                                    int Semana, Mes;
-                                    Scanner scSemanaMes = new Scanner (System.in);
-                                    System.out.println("Introduzca la semana: ");
-                                    Semana = scSemanaMes.nextInt();
-                                    System.out.println("Introduzca el mes: ");
-                                    Mes = scSemanaMes.nextInt();
-                                    GTrabajo.getGTrabajobySemana(Semana, Mes);
-                                    break;
-                                case 3:
-                                    break;
-                                default:
-                            }
-                            break;
-                        case 3: // Gestionar
-                            GTrabajo.nuevoGTrabajo();
-                            break;
-                        case 4: // Salir
-                            break;
-                        default:
-                    }
-                    } while(opcionMenuGrupos > 4);
+                            case 1:  // Ver
+                                GTrabajo.verGruposTrabajo(grupostrabajo);
+                                break;
+                            case 2: // Buscar
+                                int opcionBusquedaGrupos;
+                                Scanner scBusquedaGrupos = new Scanner(System.in);
+
+                                do {
+                                    System.out.println("Has accedido al menú Busqueda de Grupos de trabajo." + "\n"
+                                            + "Seleccione 1 para buscar por ID." + "\n"
+                                            + "Seleccione 2 para buscar por Semana." + "\n"
+                                            + "Seleccione 3 para salir. ");
+                                    opcionBusquedaGrupos = scBusquedaGrupos.nextInt();
+                                } while (opcionBusquedaGrupos > 3);
+                                switch (opcionBusquedaGrupos) {
+                                    case 1:
+                                        int busquedaId;
+                                        Scanner scBusquedaId = new Scanner(System.in);
+                                        System.out.println("Introduzca el ID con el que desea buscar el grupo.");
+                                        busquedaId = scBusquedaId.nextInt();
+                                        GTrabajo.getGTrabajobyID(busquedaId);
+                                        break;
+                                    case 2:
+                                        int Semana,
+                                         Mes;
+                                        Scanner scSemanaMes = new Scanner(System.in);
+                                        System.out.println("Introduzca la semana: ");
+                                        Semana = scSemanaMes.nextInt();
+                                        System.out.println("Introduzca el mes: ");
+                                        Mes = scSemanaMes.nextInt();
+                                        GTrabajo.getGTrabajobySemana(Semana, Mes);
+                                        break;
+                                    case 3:
+                                        break;
+                                    default:
+                                }
+                                break;
+                            case 3: // Gestionar
+                                GTrabajo.nuevoGTrabajo();
+                                break;
+                            case 4: // Salir
+                                break;
+                            default:
+                        }
+                    } while (opcionMenuGrupos > 4);
                     break;
                 default: //Salir
                     continue;
             }
             opcion = -1;
-        } while (opcion < 0 || opcion > 4);  
+        } while (opcion < 0 || opcion > 4);
     }
 
     private static void mostrarMenu() {
@@ -276,11 +281,13 @@ public class Main {
 
     private static void mostrarMenuGrupos() {
         System.out.println("Has accedido al menú de Gestion de Grupos de trabajo.");
-        System.out.println("Presione 1 para ver los Grupos de trabajo." + "\n" 
-                + "Presione 2 para  buscar grupos de trabajo." + "\n" 
-                + "Presione 3 para gestionar grupos de trabajo." + "\n" 
+        System.out.println("Presione 1 para ver los Grupos de trabajo." + "\n"
+                + "Presione 2 para  buscar grupos de trabajo." + "\n"
+                + "Presione 3 para gestionar grupos de trabajo." + "\n"
                 + "Presione 4 para salir.");
-    };
+    }
+
+    ;
     private static void gestionEmpleados(ArrayList<Empleado> empleados) {
         Scanner in = new Scanner(System.in);
         System.out.println("Has entrado en la Gestión de Empleados!");

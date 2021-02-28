@@ -5,12 +5,28 @@
  */
 package Entidades;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class Empleado implements Serializable {
 
-public class Empleado {
-
+    private static final long serialVersionUID = 923841203981203L;
     //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
     protected long id;
     //VALORES VALIDOS: CUALQUIER LETRA && VALORES INVALIDOS: CUALQUIER CARACTER DIFERENTE A UNA LETRA
@@ -106,7 +122,9 @@ public class Empleado {
     }
 
     /**
-     * Recorre el array con todos los empleados y la id para el siguiente empleado 
+     * Recorre el array con todos los empleados y la id para el siguiente
+     * empleado
+     *
      * @param empleados array a recorrer
      * @return id para el empleado
      */
@@ -122,6 +140,7 @@ public class Empleado {
 
     /**
      * Valida el nombre del empleado
+     *
      * @param nombre a validar
      * @return boolean
      */
@@ -130,10 +149,10 @@ public class Empleado {
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
             //Comprueba si el String contiene algún numero
-        } else if(nombre.matches(".*\\d.*")){
+        } else if (nombre.matches(".*\\d.*")) {
             System.out.println("No puede tener numeros.");
             //Comprueba que el nombre se ha de una longitud mayor e igual que 2 y menor que 150
-        } else if(nombre.length() <= 2 || nombre.length() > 150){
+        } else if (nombre.length() <= 2 || nombre.length() > 150) {
             System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
             //Devuelve true cuando pasa todos las validaciones
         } else {
@@ -144,6 +163,7 @@ public class Empleado {
 
     /**
      * Valida los apellidos
+     *
      * @param apellidos a comprobar
      * @return boolean
      */
@@ -152,10 +172,10 @@ public class Empleado {
         if (apellidos.isEmpty()) {
             System.out.println("No puede estar vacio");
             //Comprueba si contiene algun numero
-        } else if(apellidos.matches(".*\\d.*")){
+        } else if (apellidos.matches(".*\\d.*")) {
             System.out.println("No puede tener numeros.");
             //Comprueba si el String es mayor e igual que 2 o menor que 150.
-        } else if(apellidos.length() <= 2 || apellidos.length() > 150){
+        } else if (apellidos.length() <= 2 || apellidos.length() > 150) {
             System.out.println("No puede ser menor de 2 carácteres o superior de 150.");
             //Devuelve true si pasa las validaciones
         } else {
@@ -165,7 +185,8 @@ public class Empleado {
     }
 
     /**
-     * Valida nif del empleado 
+     * Valida nif del empleado
+     *
      * @param nif a comprobar
      * @param empleados para saber si esta repetido
      * @return boolean
@@ -175,21 +196,21 @@ public class Empleado {
         if (nif.isEmpty()) {
             System.out.println("No puede estar vacio.");
             //La longitud del String tiene que ser igual a 9
-        } else if (nif.length() != 9){
+        } else if (nif.length() != 9) {
             System.out.println("El nif debe ser de 9 digitos.");
             //Los primeros 8 digitos tienen que ser números
-        } else if (!Utilidades.isNumeric(nif.substring(0, 8))){
+        } else if (!Utilidades.isNumeric(nif.substring(0, 8))) {
             System.out.println("Los 8 primeros digitos deben ser numeros");
             //El primero digito debe ser una letra.
-        } else if (!String.valueOf(nif.charAt(8)).matches("[a-zA-Z]")){
+        } else if (!String.valueOf(nif.charAt(8)).matches("[a-zA-Z]")) {
             System.out.println("El último debe ser una letra");
-        } else{
+        } else {
             //Recorre el array y comprueba no este ya registrado
             for (int i = 0; i < empleados.size(); i++) {
                 if (empleados.get(i).nif.equals(nif)) {
                     System.out.println("No puede repertirse el nif.");
                     break;
-                } else if (!empleados.get(i).nif.equals(nif) && i == (empleados.size() -1)){
+                } else if (!empleados.get(i).nif.equals(nif) && i == (empleados.size() - 1)) {
                     return true;
                 }
             }
@@ -199,6 +220,7 @@ public class Empleado {
 
     /**
      * Valida la direccion del empleado
+     *
      * @param direccion a comprobar
      * @return boolean
      */
@@ -209,12 +231,13 @@ public class Empleado {
         } else {
             return true;
         }
-    return false;
+        return false;
     }
 
     /**
      * Valida el telefono del empleado
-     * @param telefono a comprobar 
+     *
+     * @param telefono a comprobar
      * @return boolean
      */
     public boolean validarTelefono(String telefono) {
@@ -225,18 +248,20 @@ public class Empleado {
         } else if (telefono.length() != 9) {
             System.out.println("Tiene que tener 9 números.");
             //Comprueba que solo se permiten numeros
-        } else if(!Utilidades.isNumeric(telefono) ){
+        } else if (!Utilidades.isNumeric(telefono)) {
             System.out.println("Solo se permiten números");
             //Devuelve true si pasa todas las validaciones
         } else {
             return true;
         }
-    return false;}
+        return false;
+    }
 
     /**
      * Devuelve un empleado con los datos introducidos
+     *
      * @param empleados
-     * @return 
+     * @return
      */
     public static Empleado nuevoEmpleado(ArrayList<Empleado> empleados) {
         Empleado e = new Empleado();
@@ -313,8 +338,6 @@ public class Empleado {
 
         return e;
     }
-    
-    
 
     /**
      * Busca empleado en la BD por nif
@@ -332,9 +355,10 @@ public class Empleado {
         }
         return e;
     }
-    
+
     /**
      * Busca empleados con el nombre
+     *
      * @param nombre
      * @param array
      * @return un array con los empleados que coincide con el nombre
@@ -351,6 +375,7 @@ public class Empleado {
 
     /**
      * Busca empleados que coincide con el telefono
+     *
      * @param telefono
      * @param array
      * @return devuelve el objeto con el mismo telefono
@@ -367,6 +392,7 @@ public class Empleado {
 
     /**
      * Busca los objetos que coincide con los apellidos
+     *
      * @param apellidos
      * @param array
      * @return ArrayList con los empleados que los apellidos
@@ -383,6 +409,7 @@ public class Empleado {
 
     /**
      * Busca empleados en una direccion
+     *
      * @param direccion
      * @param array
      * @return ArrayList de empleados que vuelve los objetos empleados con esa
@@ -400,11 +427,12 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: " + franquicia.getId();
+        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: " ;
     }
 
     /**
      * Convierte un array de empleados en un array list de empleados
+     *
      * @param array
      * @return ararylist
      */
@@ -418,19 +446,21 @@ public class Empleado {
 
     /**
      * Recorre todos el array e imprime los objetos usandro el toString
+     *
      * @param array
      */
     public static void mostrarEmpleados(ArrayList<Empleado> array) {
         for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono  + " (" + array.get(i).getClass().getSimpleName() + ")" + "trabaja en la franquicia de " + array.get(i).franquicia.getUbicacion());
+            System.out.println(array.get(i).id + ". " + array.get(i).nombre + " " + array.get(i).apellidos + " Nif: " + array.get(i).nif + " Telefono: " + array.get(i).telefono + " (" + array.get(i).getClass().getSimpleName() + ")" + "trabaja en la franquicia de " + array.get(i).franquicia.getUbicacion());
         }
     }
-    
+
     /**
      * Introduce el empleado en una franquicia.
+     *
      * @param franquicia donde se guarda el empleado
      */
-    public void trabajarEn(Franquicia franquicia){
+    public void trabajarEn(Franquicia franquicia) {
         if (!franquicia.getEmpleados().contains(this)) {
             franquicia.getEmpleados().add(this);
         }
@@ -438,10 +468,9 @@ public class Empleado {
             this.setFranquicia(franquicia);
         }
     }
-    
-        
-     public static Empleado añadirEmpleadobyID(long id, ArrayList<EmpleadoDeTeatro> empleadosTeatro) {
-        Empleado e = new Empleado(); 
+
+    public static Empleado añadirEmpleadobyID(long id, ArrayList<EmpleadoDeTeatro> empleadosTeatro) {
+        Empleado e = new Empleado();
         for (EmpleadoDeTeatro empleadoTeatro : empleadosTeatro) {
             if (id == empleadoTeatro.id) {
                 e = empleadoTeatro;
@@ -450,5 +479,154 @@ public class Empleado {
         }
         return e;
     }
-    
+
+    public String data() {
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono;
+    }
+
+    public static void guardarEmpledos(ArrayList<Empleado> empleados) {
+        try {
+            BufferedWriter bw = null;
+            File f = new File("empleados.txt");
+            if (f.createNewFile()) {
+                try {
+                    FileWriter fw = new FileWriter(f, true);
+                    bw = new BufferedWriter(fw);
+                    for (Empleado e : empleados) {
+                        bw.write(e.data());
+                        bw.newLine();
+                    }
+                } catch (IOException e) {
+                    System.out.println("Error");
+                } finally {
+                    try {
+                        bw.close();
+                    } catch (IOException ex) {
+                        System.out.println("Error");
+                    }
+                }
+                System.out.println("Se ha creado el archivo con los empleados!");
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public static void guardarEmpleadosBinario(ArrayList<Empleado> empleados) {
+        try {
+            OutputStream os;
+            ObjectOutput out = null;
+            File f = new File("empleadosbinario.txt");
+            if (f.createNewFile()) {
+                try {
+                    os = new FileOutputStream("empleadosbinario.txt");
+                    out = new ObjectOutputStream(os);
+                    out.writeObject(empleados);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Archivo no encontrado");;
+                } catch (IOException ex) {
+                    System.out.println("Error");
+                } finally {
+                    try {
+                        out.close();
+                    } catch (IOException ex) {
+                        System.out.println("No se ha podido cerrar el Stream");
+                    }  
+                }
+                System.out.println("Se ha creado el archivo con los empleados binarios!");
+            }
+        } catch (IOException ex) {
+            System.out.println("No se pudo crear el archivo");
+        }
+    }
+
+    public void guardarEmpleadoBinario() {
+        OutputStream os;
+        ObjectOutput out = null;
+        try {
+            os = new FileOutputStream("empleadobinario.txt");
+            out = new ObjectOutputStream(os);
+            out.writeObject(this);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");;
+        } catch (IOException ex) {
+            System.out.println("Error");
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    System.out.println("Error");
+                }
+            }
+        }
+    }
+
+    public static void leerFicheroBinario() {
+        InputStream is;
+        ObjectInput in = null;
+        try {
+            is = new FileInputStream("empleadobinario.txt");
+            in = new ObjectInputStream(is);
+            Empleado e = (Empleado) in.readObject();
+            System.out.println(e);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            System.out.println("Error");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Fallo al convertir el objeto a jugador");
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                }
+            }
+        }
+    }
+
+    public static void leerFicheroBinarios() {
+        InputStream is;
+        ObjectInput oi;
+        try {
+            is = new FileInputStream("empleadosbinario.txt");
+            oi = new ObjectInputStream(is);
+            ArrayList<Empleado> empleados = (ArrayList<Empleado>) oi.readObject();
+            for (Empleado e : empleados) {
+                System.out.println(e.toString());
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            System.out.println("Error");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Error");
+        }
+    }
+
+    public void guardarEmpleado() {
+        BufferedWriter bw = null;
+        try {
+            FileWriter fw = new FileWriter("empleados.txt", true);
+            bw = new BufferedWriter(fw);
+            bw.write(this.data());
+            bw.newLine();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                }
+            }
+        }
+
+    }
+
 }
