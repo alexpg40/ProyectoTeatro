@@ -72,6 +72,8 @@ public class Main {
         Empleado.guardarEmpledos(empleados);
         //Se crea un archivo de texto con los empleados en binario
         Empleado.guardarEmpleadosBinario(empleadostotal);
+        //Importa empleados desde un fichero y devuelve un arraylist NO FUNCIONA BIEN
+        ArrayList<Empleado> empeladosret = Empleado.importarEmpleados("empleados.txt");
 
         int opcion = -1;
         do {

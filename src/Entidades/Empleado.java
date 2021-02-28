@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +22,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -631,7 +633,7 @@ public class Empleado implements Serializable {
         ObjectInput oi;
         try {
             is = new FileInputStream(ruta);
-            oi = new ObjectInputStream(is);;
+            oi = new ObjectInputStream(is);
             ArrayList<Empleado> empleados = (ArrayList<Empleado>) oi.readObject();
             for (Empleado e : empleados) {
                 System.out.println("Se ha importado con exito el empleado: ");
@@ -647,4 +649,34 @@ public class Empleado implements Serializable {
         }
         return ret;
     }
+    
+    public static ArrayList<Empleado> importarEmpleados(String ubicacion) {
+        ArrayList<Empleado> ret = new ArrayList<>();
+        Empleado e = new Empleado();
+        String texto;
+        File f = new File(ubicacion);
+        try {
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            try {
+                while ((texto = br.readLine()) != null) {
+                    String[] array = texto.split("|");
+                    e.setId(Long.valueOf(array[0]));
+                    e.setNombre(array[1]);
+                    e.setApellidos(array[2]);
+                    e.setNif(array[3]);
+                    e.setDireccion(array[4]);
+                    e.setTelefono(array[5]);
+                    ret.add(e);
+                }
+                br.close();
+            } catch (IOException i) {
+                System.out.println(i.getMessage());
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error");
+        }
+    return ret;
+    }
+    
 }
