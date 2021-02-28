@@ -427,7 +427,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: " ;
+        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: ";
     }
 
     /**
@@ -513,9 +513,9 @@ public class Empleado implements Serializable {
     }
 
     public static void guardarEmpleadosBinario(ArrayList<Empleado> empleados) {
+        OutputStream os;
+        ObjectOutput out = null;
         try {
-            OutputStream os;
-            ObjectOutput out = null;
             File f = new File("empleadosbinario.txt");
             if (f.createNewFile()) {
                 try {
@@ -531,7 +531,7 @@ public class Empleado implements Serializable {
                         out.close();
                     } catch (IOException ex) {
                         System.out.println("No se ha podido cerrar el Stream");
-                    }  
+                    }
                 }
                 System.out.println("Se ha creado el archivo con los empleados binarios!");
             }
@@ -629,4 +629,25 @@ public class Empleado implements Serializable {
 
     }
 
+    public static ArrayList<Empleado> importarFicheroBinarios(String ruta) {
+        ArrayList<Empleado> ret = new ArrayList<>();
+        InputStream is;
+        ObjectInput oi;
+        try {
+            is = new FileInputStream(ruta);
+            oi = new ObjectInputStream(is);
+            ArrayList<Empleado> empleados = (ArrayList<Empleado>) oi.readObject();
+            for (Empleado e : empleados) {
+                System.out.println("Se ha importado con exito el empleado: ");
+                System.out.println(e.toString());
+                ret.add(e);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            System.out.println("Se ha dado una IOException");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Clase no encontrada");
+        }
+    return ret;}
 }

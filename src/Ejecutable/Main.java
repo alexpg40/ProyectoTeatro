@@ -65,7 +65,9 @@ public class Main {
         empleados.get(12).trabajarEn(franquicias.get(0));
         empleados.get(13).trabajarEn(franquicias.get(1));
         empleados.get(14).trabajarEn(franquicias.get(2));
-
+        
+        //Se importar el archivo binarios devolviendo un ArrayList
+        Empleado.importarFicheroBinarios("empleadosbinario.txt");
         //Se crea un archivo de texto con los empleados con String
         Empleado.guardarEmpledos(empleados);
         //Se crea un archivo de texto con los empleados en binario
