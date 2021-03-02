@@ -660,7 +660,8 @@ public class Empleado implements Serializable {
             BufferedReader br = new BufferedReader(fr);
             try {
                 while ((texto = br.readLine()) != null) {
-                    String[] array = texto.split("|");
+                    e = new Empleado();
+                    String[] array = texto.split("\\|");
                     e.setId(Long.valueOf(array[0]));
                     e.setNombre(array[1]);
                     e.setApellidos(array[2]);
