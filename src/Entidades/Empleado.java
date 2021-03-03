@@ -649,10 +649,10 @@ public class Empleado implements Serializable {
         }
         return ret;
     }
-    
+
     public static ArrayList<Empleado> importarEmpleados(String ubicacion) {
         ArrayList<Empleado> ret = new ArrayList<>();
-        Empleado e = new Empleado();
+        Empleado e;
         String texto;
         File f = new File(ubicacion);
         try {
@@ -677,7 +677,37 @@ public class Empleado implements Serializable {
         } catch (FileNotFoundException ex) {
             System.out.println("Error");
         }
-    return ret;
+        return ret;
     }
-    
+
+    public static Empleado getempleadoByID(long id) {
+        Empleado e = new Empleado();
+        String texto;
+        File f = new File("empleados.txt");
+        try {
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            try {
+                while ((texto = br.readLine()) != null) {
+                    String[] array = texto.split("\\|");
+                    if (Long.valueOf(array[0]) == id) {
+                        e.setId(Long.valueOf(array[0]));
+                        e.setNombre(array[1]);
+                        e.setApellidos(array[2]);
+                        e.setNif(array[3]);
+                        e.setDireccion(array[4]);
+                        e.setTelefono(array[5]);
+                        return e;
+                    }
+                }
+                br.close();
+            } catch (IOException i) {
+                System.out.println(i.getMessage());
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error");
+        }
+        return e;
+    }
+
 }
