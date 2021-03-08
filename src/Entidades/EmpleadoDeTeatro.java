@@ -72,8 +72,8 @@ public class EmpleadoDeTeatro extends Empleado {
     
     /**
      * Crea y devuelve un empleado de teatro con los datos introducidos.
-     * @param empleados
-     * @return 
+     * @param empleados donde se añade
+     * @return empleado de teatro
      */
     public static EmpleadoDeTeatro nuevoEmpleadoDeTeatro(ArrayList<Empleado> empleados){
         Empleado e = Empleado.nuevoEmpleado(empleados);
