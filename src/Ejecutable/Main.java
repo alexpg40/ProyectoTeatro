@@ -65,15 +65,11 @@ public class Main {
         empleados.get(12).trabajarEn(franquicias.get(0));
         empleados.get(13).trabajarEn(franquicias.get(1));
         empleados.get(14).trabajarEn(franquicias.get(2));
-        
-        //Se importar el archivo binarios devolviendo un ArrayList
-        //ArrayList<Empleado> empleadosimportados = Empleado.importarFicheroBinarios("empleadosbinario.txt");
+
         //Se crea un archivo de texto con los empleados con String
         Empleado.guardarEmpledos(empleados);
         //Se crea un archivo de texto con los empleados en binario
         Empleado.guardarEmpleadosBinario(empleadostotal);
-        //Importa empleados desde un fichero y devuelve un arraylist
-        ArrayList<Empleado> impempleados = Empleado.importarEmpleados("empleados.txt");
         
         int opcion = -1;
         do {
@@ -247,6 +243,7 @@ public class Main {
         System.out.println("Pulsa 1 para Ver Empleados.");
         System.out.println("Pulsa 2 para Nuevo Empleado.");
         System.out.println("Pulsa 3 para Buscar Empleado.");
+        System.out.println("Pulsa 4 para Gestion de Ficheros.");
         System.out.println("Pulsa 0 para salir");
     }
 
@@ -299,7 +296,7 @@ public class Main {
         do {
             mostrarMenuEmpleados();
             opcionemp = in.nextInt();
-            if (opcionemp < 0 || opcionemp > 3) {
+            if (opcionemp < 0 || opcionemp > 4) {
                 System.out.println("Error. Vuelva a introducir la opción.");
             }
             switch (opcionemp) {
@@ -312,11 +309,14 @@ public class Main {
                 case 3: //Buscar empleados
                     buscarEmpleado(empleados);
                     break;
+                case 4:
+                    gestionFicherosEmpleados(empleados);
+                    break;
                 default:
                     continue;
             }
             opcionemp = -1;
-        } while (opcionemp < 0 || opcionemp > 3);
+        } while (opcionemp < 0 || opcionemp > 4);
     }
 
     private static void buscarEmpleado(ArrayList<Empleado> empleados) {
@@ -418,5 +418,63 @@ public class Main {
                     empleados.add(Taquillero.nuevoTaquillero(empleados));
             }
         } while (opcionnuevoemp != 0);
+    }
+
+    private static void gestionFicherosEmpleados(ArrayList<Empleado> empleados) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Has entrado en la Gestión de Empleados!");
+        int opcionemp = -1;
+        do {
+            mostrarMenuGestionFicherosEmpleados();
+            opcionemp = in.nextInt();
+            if (opcionemp < 0 || opcionemp > 6) {
+                System.out.println("Error. Vuelva a introducir la opción.");
+            }
+            switch (opcionemp) {
+                case 1: //Buscar Empleado Fichero
+                    in = new Scanner(System.in);
+                    System.out.println("Introduce la id del empleado a buscar.");
+                    int id = in.nextInt();
+                    System.out.println(Empleado.getEmpleadoByIDFichero(id).toString());
+                    break;
+                case 2: //Muestra los empleados del fichero binario de empleados
+                    Empleado.leerFicheroBinarioEmpleados();
+                    break;
+                case 3: //Leer fichero de texto empleados
+                    Utilidades.leerFichero("empleados.txt");
+                    break;
+                case 4:
+                    in = new Scanner(System.in);
+                    String ubicacion = in.nextLine();
+                    ArrayList<Empleado> empleadosret = Empleado.importarEmpleados(ubicacion);
+                    for (Empleado e : empleadosret) {
+                        System.out.println("Se ha importado el empleados: ");
+                        System.out.println(e.data());
+                    }
+                    break;
+                case 5:
+                    in = new Scanner(System.in);
+                    String ubicacion2 = in.nextLine();
+                    Empleado.importarEmpleadosBinarios(ubicacion2);
+                    break;
+                case 6:
+                    Empleado e = Empleado.nuevoEmpleado(empleados);
+                    e.guardarEmpleado();
+                    break;
+                default:
+                    continue;
+            }
+            opcionemp = -1;
+        } while (opcionemp < 0 || opcionemp > 6);
+    }
+
+    private static void mostrarMenuGestionFicherosEmpleados() {
+        System.out.println("Pulsa 1 para Buscar Empleado Por Id En Fichero.");
+        System.out.println("Pulsa 2 para Mostrar Fichero Binario De Empleados.");
+        System.out.println("Pulsa 3 para Mostrar Fichero De Texto De Empleados.");
+        System.out.println("Pulsa 4 para Importar Fichero De Texto con Empleados.");
+        System.out.println("Pulsa 5 para Importar Fichero Binario con Empleados.");
+        System.out.println("Pulsa 6 para Crear Un Empleado e Importarlo al Fichero de Texto.");
+        System.out.println("Pulsa 0 para Salir.");
     }
 }
