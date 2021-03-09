@@ -435,7 +435,7 @@ public class Main {
                     in = new Scanner(System.in);
                     System.out.println("Introduce la id del empleado a buscar.");
                     int id = in.nextInt();
-                    System.out.println(Empleado.getEmpleadoByIDFichero(id).toString());
+                    Empleado.getEmpleadoByIDFichero(id).toString();
                     break;
                 case 2: //Muestra los empleados del fichero binario de empleados
                     Empleado.leerFicheroBinarioEmpleados();

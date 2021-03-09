@@ -790,9 +790,11 @@ public class Empleado implements Serializable {
                         e.setNif(array[3]);
                         e.setDireccion(array[4]);
                         e.setTelefono(array[5]);
+                        System.out.println(e);
                         return e;
                     }
                 }
+                System.out.println("No existe el empleado con el id introducido.");
             } catch (IOException i) {
                 System.out.println(i.getMessage());
             }
