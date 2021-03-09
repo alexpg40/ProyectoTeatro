@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class Utilidades {
 
     //He declarado la franquicia para que no me de error
-    static Franquicia franquicia;
+    static Franquicia franquicia = new Franquicia();
     //long id, String nombre, String apellidos, String nif, String direccion, String telefono, franquicia franquicia
     public static final Empleado EMPLEADOS[] = {
         new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293932238", franquicia, franquicia.getId()),

@@ -546,7 +546,7 @@ public class EmpleadoTest {
     @Test
     public void testLeerFicheroBinario() {
         System.out.println("leerFicheroBinario");
-        Empleado.leerFicheroBinario();
+        //Empleado.leerFicheroBinario();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -557,7 +557,7 @@ public class EmpleadoTest {
     @Test
     public void testLeerFicheroBinarios() {
         System.out.println("leerFicheroBinarios");
-        Empleado.leerFicheroBinarios();
+        //Empleado.leerFicheroBinarios();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
