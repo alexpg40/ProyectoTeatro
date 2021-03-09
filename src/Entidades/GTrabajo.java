@@ -116,6 +116,14 @@ public class GTrabajo {
     return false;
     }
     
+    public boolean validarMes(long mes){
+        if (!(mes < 1 && mes > 12)) {
+            System.out.println("Solo se permite el valor entre 1 y 12");
+        } else{
+            return true;
+        }
+    return false;}
+    
     public static GTrabajo nuevoGTrabajo(){
         
         ArrayList<EmpleadoDeTeatro> empleadosLimpiadores = GTrabajo.convertirEmpleadoTeatro(Utilidades.LIMPIADORES);
