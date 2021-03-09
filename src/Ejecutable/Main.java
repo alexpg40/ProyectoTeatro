@@ -445,6 +445,7 @@ public class Main {
                     break;
                 case 4:
                     in = new Scanner(System.in);
+                    System.out.println("Introduce la ubicacion");
                     String ubicacion = in.nextLine();
                     ArrayList<Empleado> empleadosret = Empleado.importarEmpleados(ubicacion);
                     for (Empleado e : empleadosret) {
@@ -454,6 +455,7 @@ public class Main {
                     break;
                 case 5:
                     in = new Scanner(System.in);
+                    System.out.println("Introduce la ubicacion");
                     String ubicacion2 = in.nextLine();
                     Empleado.importarEmpleadosBinarios(ubicacion2);
                     break;
