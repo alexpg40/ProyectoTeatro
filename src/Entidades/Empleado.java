@@ -43,6 +43,16 @@ public class Empleado implements Serializable {
     //VALORES VALIDOS: NÚMEROS ENTEROS, 9 OBLIGATORIAMENTE && VALORES INVALIDOS: CUALQUIER CARACTER DIFERENTE A UN NUMERO
     protected String telefono;
     protected Franquicia franquicia;
+    //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
+    protected long idfranquicia;
+
+    public long getIdfranquicia() {
+        return idfranquicia;
+    }
+
+    public void setIdfranquicia(long idfranquicia) {
+        this.idfranquicia = idfranquicia;
+    }
 
     public long getId() {
         return id;
@@ -104,7 +114,7 @@ public class Empleado implements Serializable {
 
     }
 
-    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia) {
+    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia, long idfranquicia) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -112,6 +122,7 @@ public class Empleado implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         this.franquicia = franquicia;
+        this.idfranquicia = idfranquicia;
     }
 
     public Empleado(Empleado e) {
@@ -122,6 +133,7 @@ public class Empleado implements Serializable {
         this.direccion = e.direccion;
         this.telefono = e.telefono;
         this.franquicia = e.franquicia;
+        this.idfranquicia = e.idfranquicia;
     }
 
     /**

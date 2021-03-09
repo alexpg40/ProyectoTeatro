@@ -16,6 +16,16 @@ public class GTrabajo {
     private ArrayList<EmpleadoDeTeatro> EmpleadosTeatro = new ArrayList<>();
     //FRANQUICIA DONDE TRABAJA EL GRUPO DE TRABAJO
     private Franquicia franquicia;
+    //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
+    private long idfranquicia;
+
+    public long getIdfranquicia() {
+        return idfranquicia;
+    }
+
+    public void setIdfranquicia(long idfranquicia) {
+        this.idfranquicia = idfranquicia;
+    }
     
     public GTrabajo(){};
     
@@ -25,14 +35,16 @@ public class GTrabajo {
         this.EmpleadosTeatro = gt.EmpleadosTeatro;
         this.franquicia = gt.franquicia;
         this.mes = gt.mes;
+        this.idfranquicia = gt.idfranquicia;
     };
     
-    public GTrabajo(long id, long semana, long mes,Franquicia franquicia, ArrayList<EmpleadoDeTeatro> EmpleadosTeatro) {
+    public GTrabajo(long id, long semana, long mes,Franquicia franquicia, ArrayList<EmpleadoDeTeatro> EmpleadosTeatro, long idfranquicia) {
         this.id = id;
         this.semana = semana;
         this.franquicia = franquicia;
         this.EmpleadosTeatro = EmpleadosTeatro;
         this.mes = mes;
+        this.idfranquicia= idfranquicia;
     }
 
     public long getId() {

@@ -19,22 +19,22 @@ public class Utilidades {
     static Franquicia franquicia;
     //long id, String nombre, String apellidos, String nif, String direccion, String telefono, franquicia franquicia
     public static final Empleado EMPLEADOS[] = {
-        new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293932238", franquicia),
-        new Empleado(2, "Jose Juan", "Garcia", "23456789S", "Cantabria, Soto", "123431314", franquicia),
-        new Empleado(3, "Pepe", "Perez", "34567891A", "Alicante", "134123764", franquicia),
-        new Empleado(4, "Aitor", "Mendizabal", "54348943C", "Murcia", "345501459", franquicia),
-        new Empleado(5, "Josito", "Fernandez", "83774591A", "Galicia, Vigo", "123459230", franquicia),
-        new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124451123", franquicia),
-        new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459213459", franquicia),
-        new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864344459", franquicia),
-        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", franquicia),
-        new Empleado(10, "Manolo", "Eliot", "98545621A", "Valencia", "987654123", franquicia),
-        new Empleado(11, "Jesus", "Garcia", "458325461A", "Andalucia, Malaga", "786594132", franquicia),
-        new Empleado(12, "Jose", "Pascual", "65748932A", "Cantabria, Rasines", "986574213", franquicia),
-        new Empleado(12, "Txema", "Fernandez", "98745821D", "Asturias, Oviedo", "987478652", franquicia),
-        new Empleado(13, "Pepe", "Mendizabal", "78496512A", "Galicia, A Coruña", "654796123", franquicia),
-        new Empleado(14, "Allejo", "Perez", "86496512A", "Galicia, A Coruña", "982796123", franquicia),
-        new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", franquicia),};
+        new Empleado(1, "Amelio", "Pascual", "12345678A", "Madrid, Las Rozas", "293932238", franquicia, franquicia.getId()),
+        new Empleado(2, "Jose Juan", "Garcia", "23456789S", "Cantabria, Soto", "123431314", franquicia, franquicia.getId()),
+        new Empleado(3, "Pepe", "Perez", "34567891A", "Alicante", "134123764", franquicia, franquicia.getId()),
+        new Empleado(4, "Aitor", "Mendizabal", "54348943C", "Murcia", "345501459", franquicia, franquicia.getId()),
+        new Empleado(5, "Josito", "Fernandez", "83774591A", "Galicia, Vigo", "123459230", franquicia, franquicia.getId()),
+        new Empleado(6, "Alex", "Perez", "34912312A", "Cantabria", "124451123", franquicia, franquicia.getId()),
+        new Empleado(7, "Guillermo", "Illera", "45913412F", "Cantabria", "459213459", franquicia, franquicia.getId()),
+        new Empleado(8, "Sandra", "Burgos", "34939139A", "Cantabria", "864344459", franquicia, franquicia.getId()),
+        new Empleado(9, "Pepito", "Garcia", "49583943V", "Almeria", "495459348", franquicia, franquicia.getId()),
+        new Empleado(10, "Manolo", "Eliot", "98545621A", "Valencia", "987654123", franquicia, franquicia.getId()),
+        new Empleado(11, "Jesus", "Garcia", "458325461A", "Andalucia, Malaga", "786594132", franquicia, franquicia.getId()),
+        new Empleado(12, "Jose", "Pascual", "65748932A", "Cantabria, Rasines", "986574213", franquicia, franquicia.getId()),
+        new Empleado(12, "Txema", "Fernandez", "98745821D", "Asturias, Oviedo", "987478652", franquicia, franquicia.getId()),
+        new Empleado(13, "Pepe", "Mendizabal", "78496512A", "Galicia, A Coruña", "654796123", franquicia, franquicia.getId()),
+        new Empleado(14, "Allejo", "Perez", "86496512A", "Galicia, A Coruña", "982796123", franquicia, franquicia.getId()),
+        new Empleado(15, "Octavio", "Gonzales", "92496512D", "Galicia, A Coruña", "658796123", franquicia, franquicia.getId())};
 
     // long id, Date mesyano, otra vez ni puta idea de poner la fecha.
     public static final Nomina NOMINAS[] = {
@@ -109,12 +109,12 @@ public class Utilidades {
 
     //long id, long semana, long mes, ArrayList <EmpleadosDeTeatro> empleadosTeatro, franquicia franquicia 
     public static final GTrabajo GTRABAJO[] = {
-        new GTrabajo(1, 3, 2, FRANQUICIAS[1], empleadosTeatro),
-        new GTrabajo(2, 1, 6, FRANQUICIAS[0], empleadosTeatro),
-        new GTrabajo(5, 2, 8, FRANQUICIAS[2], empleadosTeatro),
-        new GTrabajo(3, 6, 1, FRANQUICIAS[3], empleadosTeatro),
-        new GTrabajo(9, 2, 12, FRANQUICIAS[4], empleadosTeatro),
-        new GTrabajo(4, 4, 3, FRANQUICIAS[5], empleadosTeatro)
+        new GTrabajo(1, 3, 2, FRANQUICIAS[1], empleadosTeatro, FRANQUICIAS[1].getId()),
+        new GTrabajo(2, 1, 6, FRANQUICIAS[0], empleadosTeatro, FRANQUICIAS[0].getId()),
+        new GTrabajo(5, 2, 8, FRANQUICIAS[2], empleadosTeatro, FRANQUICIAS[2].getId()),
+        new GTrabajo(3, 6, 1, FRANQUICIAS[3], empleadosTeatro, FRANQUICIAS[3].getId()),
+        new GTrabajo(9, 2, 12, FRANQUICIAS[4], empleadosTeatro, FRANQUICIAS[4].getId()),
+        new GTrabajo(4, 4, 3, FRANQUICIAS[5], empleadosTeatro, FRANQUICIAS[5].getId())
     };
 
     // long id, Date fecha, double importe, Acomodador acomodador, Nomina nomina, Informe informe
