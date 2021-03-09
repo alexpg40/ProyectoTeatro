@@ -86,4 +86,10 @@ public class EmpleadoDeOficina extends Empleado{
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", direccion=" + direccion + ", telefono=" + telefono + ", años en plantilla" + añosPlantilla +'}';
     }
+    
+   @Override
+    public String data() {
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono + "|" + this.añosPlantilla;
+    }
+    
 }

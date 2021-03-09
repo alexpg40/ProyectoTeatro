@@ -309,5 +309,8 @@ public class GTrabajo {
         return ret;
     }
     
+    public String data() {
+        return this.id + "|" + this.semana + "|" + this.mes + "|" + this.EmpleadosTeatro + "|" + this.franquicia + "|" + this.idfranquicia;
+    }
     
 }

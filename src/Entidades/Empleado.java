@@ -528,28 +528,39 @@ public class Empleado implements Serializable {
     }
 
     public static void guardarEmpleadosBinario(ArrayList<Empleado> empleados) {
-        OutputStream os;
+        OutputStream os = null;
         ObjectOutput out = null;
         try {
             os = new FileOutputStream("empleadosbinario.txt");
             out = new ObjectOutputStream(os);
-            out.writeObject(empleados);
+            for (Empleado e : empleados) {
+                out.writeObject(e);
+            }
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
         } catch (IOException ex) {
-            System.out.println("Error");
+            System.out.println("No se ha podido crear el OutputStream");
         } finally {
-            try {
-                out.close();
-            } catch (IOException ex) {
-                System.out.println("No se ha podido cerrar el Stream");
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el OutputStream");
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar ObjectOutputStream");
+                }
             }
         }
         System.out.println("Se ha creado el archivo con los empleados binarios!");
     }
 
     public void guardarEmpleadoBinario() {
-        OutputStream os;
+        OutputStream os = null;
         ObjectOutput out = null;
         try {
             os = new FileOutputStream("empleadobinario.txt");
@@ -558,20 +569,27 @@ public class Empleado implements Serializable {
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");;
         } catch (IOException ex) {
-            System.out.println("Error");
+            System.out.println("No se ha podido crear el OutputStream");
         } finally {
             if (out != null) {
                 try {
                     out.close();
                 } catch (IOException ex) {
-                    System.out.println("Error");
+                    System.out.println("No se ha podido cerrar el ObjectOutputStream");
+                }
+            }
+            if (os != null) {
+                try{
+                    os.close();
+                }catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el OutputStream");
                 }
             }
         }
     }
 
-    public static void leerFicheroBinario() {
-        InputStream is;
+    public static void leerObjetoBinarioEmpleado() {
+        InputStream is = null;
         ObjectInput in = null;
         try {
             is = new FileInputStream("empleadobinario.txt");
@@ -589,35 +607,58 @@ public class Empleado implements Serializable {
                 try {
                     in.close();
                 } catch (IOException ex) {
-                    System.out.println("Error al cerrar el Stream");
+                    System.out.println("No se ha podido cerrar el ObjectInputStream");
+                }
+            }
+            if (is != null) {
+                try{
+                    is.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el InputStream");
                 }
             }
         }
     }
 
-    public static void leerFicheroBinarios() {
-        InputStream is;
-        ObjectInput oi;
+    public static void leerFicheroBinarioEmpleados() {
+        InputStream is = null;
+        ObjectInput oi = null;
         try {
             is = new FileInputStream("empleadosbinario.txt");
             oi = new ObjectInputStream(is);
-            ArrayList<Empleado> empleados = (ArrayList<Empleado>) oi.readObject();
-            for (Empleado e : empleados) {
+            while(is.available() > 0){
+                Empleado e = (Empleado) oi.readObject();
                 System.out.println(e.toString());
             }
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
         } catch (IOException ex) {
-            System.out.println("Error");
+            System.out.println("No se ha podido crear el ObjectInputStream");
         } catch (ClassNotFoundException ex) {
             System.out.println("Clase no encontrada");
+        } finally{
+            if (is !=null ) {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el InputStream");
+                }
+            }
+            if (oi != null) {
+                try {
+                    oi.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el ObjectInputStream");
+                }
+            }
         }
     }
 
     public void guardarEmpleado() {
         BufferedWriter bw = null;
+        FileWriter fw = null;
         try {
-            FileWriter fw = new FileWriter("empleados.txt", true);
+            fw = new FileWriter("empleados.txt", true);
             bw = new BufferedWriter(fw);
             bw.write(this.data());
             bw.newLine();
@@ -635,19 +676,26 @@ public class Empleado implements Serializable {
                     System.out.println("Error al cerrar el Stream");
                 }
             }
+            if (fw != null) {
+                try{
+                    fw.close();
+                } catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el FileWriter");
+                }
+            }
         }
 
     }
 
-    public static ArrayList<Empleado> importarFicheroBinarios(String ruta) {
+    public static ArrayList<Empleado> importarEmpleadosBinarios(String ruta) {
         ArrayList<Empleado> ret = new ArrayList<>();
-        InputStream is;
-        ObjectInput oi;
+        InputStream is = null;
+        ObjectInput oi = null;
         try {
             is = new FileInputStream(ruta);
             oi = new ObjectInputStream(is);
-            ArrayList<Empleado> empleados = (ArrayList<Empleado>) oi.readObject();
-            for (Empleado e : empleados) {
+            while (is.available() > 0) {
+                Empleado e = (Empleado) oi.readObject();
                 System.out.println("Se ha importado con exito el empleado: ");
                 System.out.println(e.data());
                 ret.add(e);
@@ -658,6 +706,21 @@ public class Empleado implements Serializable {
             System.out.println("Se ha dado una IOException");
         } catch (ClassNotFoundException ex) {
             System.out.println("Clase no encontrada");
+        } finally{
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el InputStream");
+                }
+            }
+            if (oi != null) {
+                try {
+                    oi.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el ObjectInputStream");
+                }
+            }
         }
         return ret;
     }
@@ -667,9 +730,11 @@ public class Empleado implements Serializable {
         Empleado e;
         String texto;
         File f = new File(ubicacion);
+        BufferedReader br = null;
+        FileReader fr = null;
         try {
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
             try {
                 while ((texto = br.readLine()) != null) {
                     e = new Empleado();
@@ -682,23 +747,39 @@ public class Empleado implements Serializable {
                     e.setTelefono(array[5]);
                     ret.add(e);
                 }
-                br.close();
             } catch (IOException i) {
                 System.out.println(i.getMessage());
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("Error");
+            System.out.println("Archivo no encontrado");
+        } finally{
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el BufferedReader");
+                }
+            }
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el FileReader");
+                }
+            }
         }
         return ret;
     }
 
-    public static Empleado getempleadoByID(long id) {
+    public static Empleado getEmpleadoByIDFichero(long id) {
         Empleado e = new Empleado();
         String texto;
         File f = new File("empleados.txt");
+        FileReader fr = null;
+        BufferedReader br = null;
         try {
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
             try {
                 while ((texto = br.readLine()) != null) {
                     String[] array = texto.split("\\|");
@@ -712,12 +793,26 @@ public class Empleado implements Serializable {
                         return e;
                     }
                 }
-                br.close();
             } catch (IOException i) {
                 System.out.println(i.getMessage());
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("Error");
+            System.out.println("No se ha podido encontrar el archivo");
+        } finally{
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el BufferedReader");
+                }
+            }
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el FileReader");
+                }
+            }
         }
         return e;
     }
