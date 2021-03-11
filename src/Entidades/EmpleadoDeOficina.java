@@ -83,6 +83,7 @@ public class EmpleadoDeOficina extends Empleado {
                 a = sc.nextInt();
             } catch (InputMismatchException ex) {
                 System.out.println("Solo se permiten números enteros");
+                continue;
             }
             if (ef.validarAñosplantilla(a)) {
                 ef.setAñosPlantilla(a);
