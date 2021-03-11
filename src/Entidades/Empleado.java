@@ -495,10 +495,18 @@ public class Empleado implements Serializable {
         return e;
     }
 
+    /**
+     *  Metodo para exportar los empleados fichero de texto
+     * @return un string que se escribe en el fichero
+     */
     public String data() {
         return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono;
     }
 
+    /**
+     * Crea un archivo de texto donde con el metodo data se escriben en cada linea cada empleado del array 
+     * @param empleados a escribir en el fichero
+     */
     public static void guardarEmpledos(ArrayList<Empleado> empleados) {
         try {
             BufferedWriter bw = null;
@@ -559,6 +567,9 @@ public class Empleado implements Serializable {
         System.out.println("Se ha creado el archivo con los empleados binarios!");
     }
 
+    /**
+     * Guarda un único empleado en un fichero binario
+     */
     public void guardarEmpleadoBinario() {
         OutputStream os = null;
         ObjectOutput out = null;
@@ -588,6 +599,9 @@ public class Empleado implements Serializable {
         }
     }
 
+    /**
+     * Lee un objeto empleado del archivo binario donde se guarda el anterior metodo
+     */
     public static void leerObjetoBinarioEmpleado() {
         InputStream is = null;
         ObjectInput in = null;
@@ -620,6 +634,9 @@ public class Empleado implements Serializable {
         }
     }
 
+    /**
+     * Lee el archivo binario donde se guarda los empleados
+     */
     public static void leerFicheroBinarioEmpleados() {
         InputStream is = null;
         ObjectInput oi = null;
@@ -654,6 +671,9 @@ public class Empleado implements Serializable {
         }
     }
 
+    /**
+     * Guarda un objeto de tipo empleado en el fichero de texto ya creado "empleados.txt", sin borrar los anteriores
+     */
     public void guardarEmpleado() {
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -686,7 +706,11 @@ public class Empleado implements Serializable {
         }
 
     }
-
+    /**
+     * Importa los empleados guardados en un fichero guardado en el parametro ruta
+     * @param ruta string de la ruta
+     * @return un arraylist con los empleados importados
+     */
     public static ArrayList<Empleado> importarEmpleadosBinarios(String ruta) {
         ArrayList<Empleado> ret = new ArrayList<>();
         InputStream is = null;
@@ -725,6 +749,11 @@ public class Empleado implements Serializable {
         return ret;
     }
 
+    /**
+     * Importa los empleados de un fichero de texto de un ruta que has de pasar como parametro
+     * @param ubicacion string con la ruta
+     * @return arraylist de empleados importados
+     */
     public static ArrayList<Empleado> importarEmpleados(String ubicacion) {
         ArrayList<Empleado> ret = new ArrayList<>();
         Empleado e;
@@ -771,6 +800,11 @@ public class Empleado implements Serializable {
         return ret;
     }
 
+    /**
+     * Busca en el archivo de texto un empleado con la id introducida
+     * @param id a buscar
+     * @return empleado con la misma id que la introducida
+     */
     public static Empleado getEmpleadoByIDFichero(long id) {
         Empleado e = new Empleado();
         String texto;
