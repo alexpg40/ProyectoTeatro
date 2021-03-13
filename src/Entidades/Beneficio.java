@@ -37,7 +37,7 @@ public class Beneficio {
         valores válidos: cualquier número
         valores inválidos: cualquier carácter distinto a un número
      */
-    
+
     // Los taquilleros reportan Beneficios.
     private Taquillero taquillero;
 
@@ -92,41 +92,46 @@ public class Beneficio {
     public void setReporte(double reporte) {
         this.reporte = reporte;
     }
-    
-    public Taquillero getTaquillero(){
-    return taquillero;
+
+    public Taquillero getTaquillero() {
+        return taquillero;
     }
-    
-    public void setTaquillero (Taquillero taquillero) {
+
+    public void setTaquillero(Taquillero taquillero) {
         this.taquillero = taquillero;
     }
-    
+
     /**
      * Función que nos da el siguiente id de un beneficio.
+     *
      * @return idBen
      */
     public long nextIdBeneficio() {
         long idBen = 0;
-        for (int i = 0; i< Utilidades.BENEFICIOS.length; i++){
-            if(Utilidades.BENEFICIOS[i].id > idBen)
+        for (int i = 0; i < Utilidades.BENEFICIOS.length; i++) {
+            if (Utilidades.BENEFICIOS[i].id > idBen) {
                 idBen = Utilidades.BENEFICIOS[i].id;
+            }
         }
-        return idBen +1;
+        return idBen + 1;
     }
- 
+
     /**
      * Función que valida un importe
-     * @param importe 
+     *
+     * @param importe
+     * @return boolean
      */
-    public void validarImporte(double importe) {
-
+    public boolean validarImporte(double importe) {
         if (importe < 0) {
             System.out.println("No puede ser menor que 0.");
         } else {
-            this.importe = importe;
+            return true;
         }
+        return false;
+    }
 
-    };
+    ;
     
     /**
      * Función que crea un nuevo Beneficio.

@@ -131,15 +131,19 @@ public class Franquicia implements Serializable{
 
     
     /**
-     * Función que comprueba si la ubicación introducida está vacía.
+     * Función que valida una ubicación
      * @param ubicacion 
+     * @return boolean
      */
-    public void validarUbicacion(String ubicacion) {
+    public boolean validarUbicacion(String ubicacion) {
         if (ubicacion.isEmpty()) {
             System.out.println("La ubicación no puede estar vacia");
+        } else if (ubicacion.length() < 0 || ubicacion.length() > 150) {
+            System.out.println("La ubicacion no puede ser menor de 0 ni mayor de 150");
         } else {
-            this.ubicacion = ubicacion;
+            return true;
         }
+        return false;
     }
 
     
