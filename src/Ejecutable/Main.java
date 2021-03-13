@@ -153,7 +153,12 @@ public class Main {
                     int opcioninf = -1;
                     do {
                         mostrarMenuInformes();
+                        try {
                         opcioninf = in.nextInt();
+                        } catch (java.util.InputMismatchException e) {
+                            System.out.println("\nSolo se permiten números enteros entre 0 y 2");
+                            continue;
+                        }
                         if (opcioninf < 0 || opcioninf > 2) {
                             System.out.println("Error.Vuelva a introducir la opción.");
                         }
