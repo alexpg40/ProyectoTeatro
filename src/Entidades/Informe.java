@@ -148,8 +148,9 @@ public class Informe {
         Informe inf = new Informe();
         Scanner sc = new Scanner(System.in);
         inf.setId(nextIdInforme());
-        inf.getBalance();
+        inf.setBalance(inf.getBalance());
         inf.setMesyano(Utilidades.dameFecha());
+        inf.setSecretario(inf.getSecretario());
         return inf;
     }
     
@@ -165,6 +166,21 @@ public class Informe {
             }
         }
         return idInf + 1;
+    }
+    
+   /**
+     * Función que valida el balance
+     *
+     * @param balance
+     * @return boolean
+     */
+    public boolean validarDiametro(double balance) {
+        if (balance < 0) {
+            System.out.println("El balance no puede ser menor de 0");
+        } else {
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -144,18 +144,6 @@ public class Franquicia implements Serializable{
 
     
     /**
-     * Funcion que comprueba si la franquicia tiene ayudas para la accesibilidad reducida.
-     * @param accesibilidad 
-     */
-    public void validarAccesibilidad(boolean accesibilidad) {
-        if (true) {
-            System.out.println("Hay ayudas para la accesibilidad reducida");
-        } else {
-            System.out.println("No hay ayudas en la accesibilidad reducida");
-        }
-    }
-    
-    /**
      * Función que devuelve un objeto de franquicia entero.
      * @return 
      */

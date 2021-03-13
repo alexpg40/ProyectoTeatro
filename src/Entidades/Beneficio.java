@@ -113,7 +113,11 @@ public class Beneficio {
         }
         return idBen +1;
     }
-            
+ 
+    /**
+     * Función que valida un importe
+     * @param importe 
+     */
     public void validarImporte(double importe) {
 
         if (importe < 0) {
