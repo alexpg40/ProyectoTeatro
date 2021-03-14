@@ -1,11 +1,21 @@
 package Entidades;
 
 import Entidades.Bono;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -346,6 +356,9 @@ public class Usuario {
         }
     }
     
+    /**
+     * Guarda un usuario
+     */
     public void guardarUsuario() {
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -380,4 +393,294 @@ public class Usuario {
         }
 
     }
+    
+    
+    /**
+     * 
+     * @param ruta
+     * @return Un arrayList con el Usuario importado
+     */
+     public static ArrayList<Usuario> importarUsuario(String ruta) {
+        ArrayList<Usuario> ret = new ArrayList<>();
+        Usuario u;
+        String texto;
+        File f = new File(ruta);
+        BufferedReader br = null;
+        FileReader fr = null;
+        try {
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
+            try {
+                while ((texto = br.readLine()) != null) {
+                    u = new Usuario();
+                    String[] array = texto.split("\\|");
+                    u.setId(Long.valueOf(array[0]));
+                    u.setNombre(array[1]);
+                    u.setApellidos(array[2]);
+                    u.setNif(array[3]);
+                    u.setTelefono(array[4]);
+                    u.setEmail(array[5]);
+                    u.setIdBono(Integer.parseInt(array[6]));
+                    ret.add(u);
+                }
+            } catch (IOException i) {
+                System.out.println(i.getMessage());
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+        } finally{
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el BufferedReader");
+                    ex.getStackTrace();
+                }
+            }
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el FileReader");
+                    ex.getStackTrace();
+                }
+            }
+        }
+        return ret;
+    }
+     
+     public static void guardarUsuariosBinario(ArrayList<Usuario> usuarios) {
+        OutputStream os = null;
+        ObjectOutput out = null;
+        try {
+            os = new FileOutputStream("usuariosbin.txt");
+            out = new ObjectOutputStream(os);
+            for (Usuario u : usuarios) {
+                out.writeObject(u);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+        } catch (IOException ex) {
+            System.out.println("No se ha podido crear el OutputStream");
+            ex.getStackTrace();
+        } finally {
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el OutputStream");
+                    ex.getStackTrace();
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar ObjectOutputStream");
+                    ex.getStackTrace();
+                }
+            }
+        }
+    }
+     
+    public void guardarUsuarioBinario() {
+        OutputStream os = null;
+        ObjectOutput out = null;
+        try {
+            os = new FileOutputStream("usuariobin.txt");
+            out = new ObjectOutputStream(os);
+            out.writeObject(this);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+        } catch (IOException ex) {
+            System.out.println("No se ha podido crear el OutputStream");
+            ex.getStackTrace();
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el ObjectOutputStream");
+                    ex.getStackTrace();
+                }
+            }
+            if (os != null) {
+                try{
+                    os.close();
+                }catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el OutputStream");
+                    ex.getStackTrace();
+                }
+            }
+        }
+    }
+    
+    public static void leerObjetoBinarioUsuario() {
+        InputStream is = null;
+        ObjectInput in = null;
+        try {
+            is = new FileInputStream("usuariobin.txt");
+            in = new ObjectInputStream(is);
+            Usuario u = (Usuario) in.readObject();
+            System.out.println(u);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+        } catch (IOException ex) {
+            System.out.println("Error");
+            ex.getStackTrace();
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Fallo al convertir el objeto a jugador");
+            ex.getStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el ObjectInputStream");
+                    ex.getStackTrace();
+                }
+            }
+            if (is != null) {
+                try{
+                    is.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el InputStream");
+                    ex.getStackTrace();
+                }
+            }
+        }
+    }
+    
+         public static void leerFicheroBinarioEmpleados() {
+        InputStream is = null;
+        ObjectInput oi = null;
+        try {
+            is = new FileInputStream("usuariosbin.txt");
+            oi = new ObjectInputStream(is);
+            while(is.available() > 0){
+                Empleado e = (Empleado) oi.readObject();
+                System.out.println(e.toString());
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            System.out.println("No se ha podido crear el ObjectInputStream");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Clase no encontrada");
+        } finally{
+            if (is !=null ) {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el InputStream");
+                }
+            }
+            if (oi != null) {
+                try {
+                    oi.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el ObjectInputStream");
+                }
+            }
+        }
+    }
+    
+    public static ArrayList<Usuario> importarUsuariosBinarios(String ruta) {
+        ArrayList<Usuario> ret = new ArrayList<>();
+        InputStream is = null;
+        ObjectInput oi = null;
+        try {
+            is = new FileInputStream(ruta);
+            oi = new ObjectInputStream(is);
+            while (is.available() > 0) {
+                Usuario u = (Usuario) oi.readObject();
+                System.out.println("Se ha importado con exito el usuario: ");
+                System.out.println(u.data());
+                ret.add(u);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+        } catch (IOException ex) {
+            System.out.println("Se ha dado una IOException");
+            ex.getStackTrace();
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Clase no encontrada");
+            ex.getStackTrace();
+        } finally{
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el InputStream");
+                    ex.getStackTrace();
+                }
+            }
+            if (oi != null) {
+                try {
+                    oi.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el ObjectInputStream");
+                    ex.getStackTrace();
+                }
+            }
+        }
+        return ret;
+    }
+
+    public static Usuario getUsuarioByIDFichero(long id) {
+        Usuario u = new Usuario();
+        String texto;
+        File f = new File("usuarios.txt");
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
+            try {
+                while ((texto = br.readLine()) != null) {
+                    String[] array = texto.split("\\|");
+                    if (Long.valueOf(array[0]) == id) {
+                        u.setId(Long.valueOf(array[0]));
+                        u.setNombre(array[1]);
+                        u.setApellidos(array[2]);
+                        u.setNif(array[3]);
+                        u.setTelefono(array[4]);
+                        u.setEmail(array[5]);
+                        u.setIdBono(Integer.parseInt(array[6]));
+                        System.out.println(u);
+                        return u;
+                    }
+                }
+                System.out.println("No existe el empleado con el id introducido.");
+            } catch (IOException i) {
+                System.out.println(i.getMessage());
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("No se ha podido encontrar el archivo");
+        } finally{
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el BufferedReader");
+                    ex.getStackTrace();
+                }
+            }
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException ex) {
+                    System.out.println("No se ha podido cerrar el FileReader");
+                    ex.getStackTrace();
+                }
+            }
+        }
+        return u;
+    }
+    
 }
