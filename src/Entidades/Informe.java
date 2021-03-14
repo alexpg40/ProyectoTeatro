@@ -174,7 +174,7 @@ public class Informe {
      * @param balance
      * @return boolean
      */
-    public boolean validarDiametro(double balance) {
+    public boolean validarBalance(double balance) {
         if (balance < 0) {
             System.out.println("El balance no puede ser menor de 0");
         } else {
