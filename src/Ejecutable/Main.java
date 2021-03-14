@@ -88,7 +88,7 @@ public class Main {
         ArrayList <Coste> costes = Coste.convertirCostes(Utilidades.COSTES);
         
         // Exportando costes a .txt
-        Coste.guardarCoste(costes);
+        Coste.guardarCostes(costes);
         
         // Convierto array de Nomina a arrayList
         ArrayList <Nomina> nominas = Nomina.convertirNominas(Utilidades.NOMINAS);

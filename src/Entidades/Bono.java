@@ -2,6 +2,7 @@ package Entidades;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -109,6 +110,7 @@ public class Bono {
             m = in.nextInt();
             b.comprobarMes(m);
         } while (b.getMes() != m);
+        b.guardarBono();
         return b;
     }
 
@@ -169,4 +171,38 @@ public class Bono {
         return ret;
     }
     
+        public void guardarBono() {
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("bono.txt", true);
+            bw = new BufferedWriter(fw);
+            bw.write(this.data());
+            bw.newLine();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+
+        } catch (IOException ex) {
+            ex.getStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                    ex.getStackTrace();
+                }
+            }
+            if (fw != null) {
+                try{
+                    fw.close();
+                } catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el FileWriter");
+                    ex.getStackTrace();
+                }
+            }
+        }
+
+    }
 }

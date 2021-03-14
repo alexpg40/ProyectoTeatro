@@ -59,6 +59,7 @@ public class Acomodador extends EmpleadoDeTeatro {
     public static Acomodador nuevoAcomodador(ArrayList<Empleado> empleados){
         EmpleadoDeTeatro e = EmpleadoDeTeatro.nuevoEmpleadoDeTeatro(empleados);
         Acomodador a = new Acomodador(e);
+        
     return a;}
     
 }

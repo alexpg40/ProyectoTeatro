@@ -2,6 +2,7 @@ package Entidades;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
@@ -51,6 +52,7 @@ public class Nomina {
         n.generarId();
         System.out.println("Se ha generado la ID: " + n.getId());
         n.setMesyano(Utilidades.dameFecha());
+        n.guardarNomina();
         return n;
     };
     
@@ -110,4 +112,40 @@ public class Nomina {
         }
         return ret;
     }
+    
+        public void guardarNomina() {
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("usuario.txt", true);
+            bw = new BufferedWriter(fw);
+            bw.write(this.data());
+            bw.newLine();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+
+        } catch (IOException ex) {
+            ex.getStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                    ex.getStackTrace();
+                }
+            }
+            if (fw != null) {
+                try{
+                    fw.close();
+                } catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el FileWriter");
+                    ex.getStackTrace();
+                }
+            }
+        }
+    }
+        
+    
 }

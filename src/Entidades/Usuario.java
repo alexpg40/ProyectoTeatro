@@ -3,10 +3,13 @@ package Entidades;
 import Entidades.Bono;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -276,6 +279,8 @@ public class Usuario {
             u.comprobarTelefono(telefono);
         } while (u.getTelefono() != telefono);
         introducirEmail();
+        
+        u.guardarUsuario();
         return u;
         
     };
@@ -339,5 +344,40 @@ public class Usuario {
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
+    }
+    
+    public void guardarUsuario() {
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("usuario.txt", true);
+            bw = new BufferedWriter(fw);
+            bw.write(this.data());
+            bw.newLine();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+
+        } catch (IOException ex) {
+            ex.getStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                    ex.getStackTrace();
+                }
+            }
+            if (fw != null) {
+                try{
+                    fw.close();
+                } catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el FileWriter");
+                    ex.getStackTrace();
+                }
+            }
+        }
+
     }
 }

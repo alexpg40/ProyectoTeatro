@@ -2,6 +2,7 @@ package Entidades;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
@@ -130,6 +131,7 @@ public class Coste {
         Scanner in = new Scanner(System.in);
         c.generarId();
         c.setFecha(Utilidades.dameFecha());
+        c.guardarCoste();
         System.out.println("Introduzca el importe: ");
         
         long imp;
@@ -160,7 +162,7 @@ public class Coste {
      * Crea un archivo de texto donde con el metodo data se escriben en cada linea cada empleado del array 
      * @param costes a escribir en el fichero
      */
-    public static void guardarCoste(ArrayList<Coste> costes) {
+    public static void guardarCostes(ArrayList<Coste> costes) {
         try {
             BufferedWriter bw = null;
             File f = new File("costes.txt");
@@ -196,5 +198,40 @@ public class Coste {
             ret.add((Coste)coste);
         }
         return ret;
+    }
+    
+        public void guardarCoste() {
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("coste.txt", true);
+            bw = new BufferedWriter(fw);
+            bw.write(this.data());
+            bw.newLine();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+            ex.getStackTrace();
+
+        } catch (IOException ex) {
+            ex.getStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                    ex.getStackTrace();
+                }
+            }
+            if (fw != null) {
+                try{
+                    fw.close();
+                } catch(IOException ex){
+                    System.out.println("No se ha podido cerrar el FileWriter");
+                    ex.getStackTrace();
+                }
+            }
+        }
+
     }
 }
