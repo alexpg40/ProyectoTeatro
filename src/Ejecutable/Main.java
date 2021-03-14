@@ -71,6 +71,11 @@ public class Main {
         //Se crea un archivo de texto con los empleados en binario
         Empleado.guardarEmpleadosBinario(empleadostotal);
         
+        //Creamos un archivo de texto con los informes con String
+        Informe.guardarInformes(informes);
+        //Creamos un archivo de texto con los informes en Binario
+        Informe.guardarinformesBinario(informes);
+        
         
         // Convierto array de usuarios a arraylist
         ArrayList<Usuario> usuarios = Usuario.convertirUsuarios(Utilidades.USUARIOS);
