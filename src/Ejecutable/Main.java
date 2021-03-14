@@ -296,6 +296,7 @@ public class Main {
     private static void mostrarMenuInformes() {
         System.out.println("Pulsa 1 para ver informes.");
         System.out.println("Pulsa 2 para crear un nuevo informe.");
+        System.out.println("Pulsa 3 para Gestion de Ficheros.");
         System.out.println("Pulsa 0 para salir del menú de informes.");
     }
 
