@@ -189,7 +189,7 @@ public class Main {
                             System.out.println("\nSolo se permiten números enteros entre 0 y 2");
                             continue;
                         }
-                        if (opcioninf < 0 || opcioninf > 2) {
+                        if (opcioninf < 0 || opcioninf > 3) {
                             System.out.println("Error.Vuelva a introducir la opción.");
                         }
                         switch (opcioninf) {
@@ -198,6 +198,9 @@ public class Main {
                                 break;
                             case 2: // Nuevo informe 
                                 informes.add(Informe.nuevoInforme());
+                                break;
+                            case 3:
+                                gestionFicherosInformes(informes);
                                 break;
                             default: //Salir
                                 continue;
@@ -504,6 +507,52 @@ public class Main {
             opcionemp = -1;
         } while (opcionemp < 0 || opcionemp > 6);
     }
+    
+     private static void gestionFicherosInformes(ArrayList<Informe> informes) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Has entrado en la Gestión de Informes");
+        int opcioninf = -1;
+        do {
+            mostrarMenuGestionFicherosInformes();
+            opcioninf = in.nextInt();
+            if (opcioninf < 0 || opcioninf > 5) {
+                System.out.println("Error. Vuelva a introducir la opción.");
+            }
+            switch (opcioninf) {
+                case 1: //Buscar Informe Fichero
+                    in = new Scanner(System.in);
+                    System.out.println("Introduce la id del informe a buscar.");
+                    int id = in.nextInt();
+                    Informe.getInformeByIDFichero(id).toString();
+                    break;
+                case 2: //Muestra los informes del fichero binario de empleados
+                    Informe.leerFicheroBinarioInformes();
+                    break;
+                case 3: //Leer fichero de texto empleados
+                    Utilidades.leerFichero("informes.txt");
+                    break;
+                case 4:
+                    in = new Scanner(System.in);
+                    System.out.println("Introduce la ubicacion");
+                    String ubi = in.nextLine();
+                    ArrayList<Informe> informesr = Informe.importarInformes(ubi);
+                    for (Informe inf : informesr) {
+                        System.out.println("Se ha importado el empleados: ");
+                        System.out.println(inf.data());
+                    }
+                    break;
+                case 5:
+                    in = new Scanner(System.in);
+                    System.out.println("Introduce la ubicacion");
+                    String ubicacion2 = in.nextLine();
+                    Informe.importarInformesBinarios(ubicacion2);
+                    break;
+                default:
+                    continue;
+            }
+            opcioninf = -1;
+        } while (opcioninf < 0 || opcioninf > 5);
+    }
 
     private static void mostrarMenuGestionFicherosEmpleados() {
         System.out.println("Pulsa 1 para Buscar Empleado Por Id En Fichero.");
@@ -512,6 +561,15 @@ public class Main {
         System.out.println("Pulsa 4 para Importar Fichero De Texto con Empleados.");
         System.out.println("Pulsa 5 para Importar Fichero Binario con Empleados.");
         System.out.println("Pulsa 6 para Crear Un Empleado e Importarlo al Fichero de Texto.");
+        System.out.println("Pulsa 0 para Salir.");
+    }
+    
+    private static void mostrarMenuGestionFicherosInformes(){
+        System.out.println("Pulsa 1 para Buscar Informe por id en un Fichero.");
+        System.out.println("Pulsa 2 para Mostrar fichero binario de Informes.");
+        System.out.println("Pulsa 3 para Mostrar fichero de texto de informes.");
+        System.out.println("Pulsa 4 para Importar fichero de texto con informes.");
+        System.out.println("Pulsa 5 para Importar fichero binario con informes.");
         System.out.println("Pulsa 0 para Salir.");
     }
 }
