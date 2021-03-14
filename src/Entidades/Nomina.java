@@ -1,6 +1,11 @@
 package Entidades;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Nomina {
     private long id;
@@ -53,4 +58,56 @@ public class Nomina {
     public String toString() {
         return "Nomina{" + "id=" + id + ", mesya\u00f1o=" + mesyano + '}';
     }    
+    
+        
+     /**
+     *  Metodo para exportar los bonos.
+     * @return Un string que se añade al fichero exportado
+     */
+ 
+    public String data() {
+        return this.id + "|" + this.mesyano;
+    }
+
+    /**
+     * Crea un archivo de texto donde con el metodo data se escriben en cada linea cada empleado del array 
+     * @param costes a escribir en el fichero
+     */
+    public static void guardarNomina(ArrayList<Nomina> nominas) {
+        try {
+            BufferedWriter bw = null;
+            File f = new File("costes.txt");
+            if (f.createNewFile()) {
+                try {
+                    FileWriter fw = new FileWriter(f, true);
+                    bw = new BufferedWriter(fw);
+                    for (Nomina n: nominas) {
+                        bw.write(n.data());
+                        bw.newLine();
+                    }
+                } catch (IOException e) {
+                    System.out.println(" Error de Entrada/Salida ");
+                    e.getStackTrace();
+                } finally {
+                    try {
+                        bw.close();
+                    } catch (IOException ex) {
+                        System.out.println("Error de Entrada/Salida ");
+                        ex.getStackTrace();
+                    }
+                }
+                System.out.println("Se ha creado el archivo con los bonos.");
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    public static ArrayList<Nomina> convertirNominas(Nomina[] array) {
+        ArrayList<Nomina> ret = new ArrayList<>();
+        for (Nomina nominas : array) {
+            ret.add((Nomina)nominas);
+        }
+        return ret;
+    }
 }

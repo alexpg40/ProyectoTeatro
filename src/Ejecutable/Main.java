@@ -71,6 +71,31 @@ public class Main {
         //Se crea un archivo de texto con los empleados en binario
         Empleado.guardarEmpleadosBinario(empleadostotal);
         
+        
+        // Convierto array de usuarios a arraylist
+        ArrayList<Usuario> usuarios = Usuario.convertirUsuarios(Utilidades.USUARIOS);
+              
+        // Exportando usuarios a .txt
+        Usuario.guardarUsuarios(usuarios);
+        
+        //  Convierto array de Bonos a arraylist
+        ArrayList <Bono> bonos = Bono.convertirBonos(Utilidades.BONOS);
+        
+        // Exportando bonos a .txt
+        Bono.guardarBonos(bonos);
+        
+        // Convierto array de Coste a arrayList
+        ArrayList <Coste> costes = Coste.convertirCostes(Utilidades.COSTES);
+        
+        // Exportando costes a .txt
+        Coste.guardarCoste(costes);
+        
+        // Convierto array de Nomina a arrayList
+        ArrayList <Nomina> nominas = Nomina.convertirNominas(Utilidades.NOMINAS);
+        
+        // Exportando nominas a .txt
+        Nomina.guardarNomina(nominas);
+        
         int opcion = -1;
         do {
             mostrarMenu();

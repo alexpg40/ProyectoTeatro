@@ -1,0 +1,2 @@
+1|4. Aitor Mendizabal Nif: 54348943C Telefono: 345501459 (Acomodador)trabaja en la franquicia con la id: 4}|3910-12-28|23.0|1. Amelio Pascual Nif: 12345678A Telefono: 293932238 (Limpieza)}|Nomina{id=1, mesyaño=3910-12-28}
+2|null|3910-12-28|800.0|2. Jose Juan Garcia Nif: 23456789S Telefono: 123431314 (Limpieza)}|Nomina{id=2, mesyaño=3916-06-10}

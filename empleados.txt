@@ -1,0 +1,15 @@
+1|Amelio|Pascual|12345678A|Madrid, Las Rozas|293932238|A|0
+2|Jose Juan|Garcia|23456789S|Cantabria, Soto|123431314|C|0
+3|Pepe|Perez|34567891A|Alicante|134123764|B|0
+4|Aitor|Mendizabal|54348943C|Murcia|345501459|B|0
+5|Josito|Fernandez|83774591A|Galicia, Vigo|123459230|A|0
+6|Alex|Perez|34912312A|Cantabria|124451123|C|0
+7|Guillermo|Illera|45913412F|Cantabria|459213459|A|0
+8|Sandra|Burgos|34939139A|Cantabria|864344459|B|0
+9|Pepito|Garcia|49583943V|Almeria|495459348|C|0
+10|Manolo|Eliot|98545621A|Valencia|987654123|1
+11|Jesus|Garcia|458325461A|Andalucia, Malaga|786594132|2
+12|Jose|Pascual|65748932A|Cantabria, Rasines|986574213|3
+13|Pepe|Mendizabal|78496512A|Galicia, A Coruña|654796123|4
+14|Allejo|Perez|86496512A|Galicia, A Coruña|982796123|10
+15|Octavio|Gonzales|92496512D|Galicia, A Coruña|658796123|1

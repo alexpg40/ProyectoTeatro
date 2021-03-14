@@ -1,5 +1,9 @@
 package Entidades;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -113,4 +117,56 @@ public class Bono {
     public String toString() {
         return "Bono{" + "id=" + id + ", tipo=" + tipo + ", mes=" + mes + ", usuario=" + usuario + '}';
     }
+    
+     /**
+     *  Metodo para exportar los bonos.
+     * @return Un string que se añade al fichero exportado
+     */
+ 
+    public String data() {
+        return this.id + "|" + this.mes + "|" + this.tipo + "|" + this.usuario;
+    }
+
+    /**
+     * Crea un archivo de texto donde con el metodo data se escriben en cada linea cada empleado del array 
+     * @param bonos a escribir en el fichero
+     */
+    public static void guardarBonos(ArrayList<Bono> bonos) {
+        try {
+            BufferedWriter bw = null;
+            File f = new File("bonos.txt");
+            if (f.createNewFile()) {
+                try {
+                    FileWriter fw = new FileWriter(f, true);
+                    bw = new BufferedWriter(fw);
+                    for (Bono b : bonos) {
+                        bw.write(b.data());
+                        bw.newLine();
+                    }
+                } catch (IOException e) {
+                    System.out.println(" Error de Entrada/Salida ");
+                    e.getStackTrace();
+                } finally {
+                    try {
+                        bw.close();
+                    } catch (IOException ex) {
+                        System.out.println("Error de Entrada/Salida ");
+                        ex.getStackTrace();
+                    }
+                }
+                System.out.println("Se ha creado el archivo con los bonos.");
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    public static ArrayList<Bono> convertirBonos(Bono[] array) {
+        ArrayList<Bono> ret = new ArrayList<>();
+        for (Bono bono : array) {
+            ret.add((Bono)bono);
+        }
+        return ret;
+    }
+    
 }

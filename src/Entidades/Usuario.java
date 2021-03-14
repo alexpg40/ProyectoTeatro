@@ -1,6 +1,10 @@
 package Entidades;
 
 import Entidades.Bono;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -20,7 +24,7 @@ public class Usuario {
     private String email;   
     // Valores válidos: Cualquier carácter | Valores inválidos: Carácteres especiales exceptuando la arroba (@) | Otras restricciones: Tiene que contener una arroba(@).
     // Los usuarios pueden tener muchos bonos
-    private ArrayList<Bono> bonos = new ArrayList<>();
+    private int idBono;
     
     
     
@@ -28,13 +32,14 @@ public class Usuario {
         
     }
     
-    public Usuario (long id, String nombre, String apellidos, String nif, String telefono, String email) {
+    public Usuario (long id, String nombre, String apellidos, String nif, String telefono, String email, int idBono) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nif = nif;
         this.telefono = telefono;
         this.email = email;
+        this.idBono = idBono;
     }
     
      public Usuario (Usuario usu){
@@ -44,8 +49,17 @@ public class Usuario {
         this.nif = usu.nif;
         this.telefono = usu.telefono;
         this.email = usu.email;
+        this.idBono = usu.idBono;
     }
-    
+
+    public int getIdBono() {
+        return idBono;
+    }
+
+    public void setIdBono(int idBono) {
+        this.idBono = idBono;
+    }
+     
     public long getId () {
         return id;
     }
@@ -265,18 +279,65 @@ public class Usuario {
         return u;
         
     };
+
     @Override
     public String toString() {
-        String ret = "Los datos del Usuario son: " + " \nid del usuario: " + id + "\nnombre: " + nombre + "\napellidos: " + apellidos + "\nel DNI es" + nif + "\nteléfono: " + telefono + "\nel correo es " + email + " los bonos asociados a este usuario son: "+'}';
-            for (Bono b : bonos){
-                ret += "La ID del bono" + b.getId();
-                ret += "" + b.getMes();
-                ret += "" + b.getTipo();
-                ret += "" + b.getUsuario();
-            }
-               
-    ret += '}';
-    return ret;
+        return "La ID del usuario es" + id + ", el nombre es " + nombre + "los apellidos son " + apellidos + "\n" +" el NIF es " + nif + " su telefono es " + telefono + " el email es " + email + "\n" + " el id del Bono es " + idBono + '}';
+    }
+    
+    /**
+     * 
+     * @param array
+     * @return ArrayList de un Array de Usuarios
+     */
+    public static ArrayList<Usuario> convertirUsuarios(Usuario[] array) {
+        ArrayList<Usuario> ret = new ArrayList<>();
+        for (Usuario usuario : array) {
+            ret.add((Usuario)usuario);
+        }
+        return ret;
+    }
+    
+    /**
+     *  Metodo para exportar los usuarios.
+     * @return Un string que se añade al fichero exportado
+     */
+ 
+    public String data() {
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.telefono + "|" + this.email + "|" + this.idBono;
+    }
 
+    /**
+     * Crea un archivo de texto donde con el metodo data se escriben en cada linea cada empleado del array 
+     * @param usuarios a escribir en el fichero
+     */
+    public static void guardarUsuarios(ArrayList<Usuario> usuarios) {
+        try {
+            BufferedWriter bw = null;
+            File f = new File("usuarios.txt");
+            if (f.createNewFile()) {
+                try {
+                    FileWriter fw = new FileWriter(f, true);
+                    bw = new BufferedWriter(fw);
+                    for (Usuario u : usuarios) {
+                        bw.write(u.data());
+                        bw.newLine();
+                    }
+                } catch (IOException e) {
+                    System.out.println("Error de Entrada/Salida");
+                    e.getStackTrace();
+                } finally {
+                    try {
+                        bw.close();
+                    } catch (IOException ex) {
+                        System.out.println("Error de Entrada/Salida");
+                        ex.getStackTrace();
+                    }
+                }
+                System.out.println("Se ha creado el archivo con los Usuarios.");
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 }

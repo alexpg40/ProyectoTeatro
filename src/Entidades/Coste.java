@@ -1,6 +1,11 @@
 package Entidades;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -142,5 +147,54 @@ public class Coste {
         return "Coste{" + "id=" + id + ", fecha=" + fecha + ", importe=" + importe + ", acomodador=" + acomodador + ", limpieza=" + limpieza + ", nomina=" + nomina + '}';
     }
     
+     /**
+     *  Metodo para exportar los bonos.
+     * @return Un string que se añade al fichero exportado
+     */
+ 
+    public String data() {
+        return this.id + "|" + this.acomodador + "|" + this.fecha + "|" + this.importe + "|" + this.limpieza + "|" + this.nomina;
+    }
+
+    /**
+     * Crea un archivo de texto donde con el metodo data se escriben en cada linea cada empleado del array 
+     * @param costes a escribir en el fichero
+     */
+    public static void guardarCoste(ArrayList<Coste> costes) {
+        try {
+            BufferedWriter bw = null;
+            File f = new File("costes.txt");
+            if (f.createNewFile()) {
+                try {
+                    FileWriter fw = new FileWriter(f, true);
+                    bw = new BufferedWriter(fw);
+                    for (Coste c: costes) {
+                        bw.write(c.data());
+                        bw.newLine();
+                    }
+                } catch (IOException e) {
+                    System.out.println(" Error de Entrada/Salida ");
+                    e.getStackTrace();
+                } finally {
+                    try {
+                        bw.close();
+                    } catch (IOException ex) {
+                        System.out.println("Error de Entrada/Salida ");
+                        ex.getStackTrace();
+                    }
+                }
+                System.out.println("Se ha creado el archivo con los bonos.");
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
     
+    public static ArrayList<Coste> convertirCostes(Coste[] array) {
+        ArrayList<Coste> ret = new ArrayList<>();
+        for (Coste coste : array) {
+            ret.add((Coste)coste);
+        }
+        return ret;
+    }
 }
