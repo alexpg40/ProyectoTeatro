@@ -372,14 +372,14 @@ public class Informe implements Serializable{
      * Lee un objeto informe del archivo binario donde se guarda el anterior
      * metodo
      */
-    public static void leerObjetoBinarioEmpleado() {
+    public static void leerObjetoBinarioInforme() {
         InputStream is = null;
         ObjectInput in = null;
         try {
             is = new FileInputStream("informebinario.txt");
             in = new ObjectInputStream(is);
-            Empleado e = (Empleado) in.readObject();
-            System.out.println(e);
+            Informe inf = (Informe) in.readObject();
+            System.out.println(inf);
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
         } catch (IOException ex) {
