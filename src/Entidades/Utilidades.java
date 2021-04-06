@@ -225,7 +225,7 @@ public class Utilidades {
         }
         return pattern.matcher(strNum).matches();
     }
-    
+
     public static void leerFichero(String ubicacion) {
         String texto;
         File f = new File(ubicacion);
@@ -244,7 +244,7 @@ public class Utilidades {
             System.out.println("Error");
         }
     }
-    
+
     public static void escribirFichero(String ubicacion) {
         String linea;
         BufferedWriter bw = null;
@@ -272,6 +272,12 @@ public class Utilidades {
             } catch (IOException ex) {
                 System.out.println("Error");
             }
+        }
+    }
+
+    public static <T> void leerArrayList(ArrayList<T> array) {
+        for (T t : array) {
+            System.out.println(t);
         }
     }
 }
