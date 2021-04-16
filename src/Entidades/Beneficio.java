@@ -40,6 +40,7 @@ public class Beneficio {
 
     // Los taquilleros reportan Beneficios.
     private Taquillero taquillero;
+    private long idBono;
 
     public Beneficio() {
 
