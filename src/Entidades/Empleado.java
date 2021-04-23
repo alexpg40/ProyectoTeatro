@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.io.*;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -29,6 +30,7 @@ public class Empleado implements Serializable {
     protected Franquicia franquicia;
     //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
     protected long idfranquicia;
+    protected long idnomina;
 
     public long getIdfranquicia() {
         return idfranquicia;
@@ -98,6 +100,14 @@ public class Empleado implements Serializable {
 
     }
 
+    public long getIdnomina() {
+        return idnomina;
+    }
+
+    public void setIdnomina(long idnomina) {
+        this.idnomina = idnomina;
+    }
+    
     public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, Franquicia franquicia, long idfranquicia) {
         this.id = id;
         this.nombre = nombre;
@@ -120,6 +130,17 @@ public class Empleado implements Serializable {
         this.idfranquicia = e.idfranquicia;
     }
 
+    public Empleado(long id, String nombre, String apellidos, String nif, String direccion, String telefono, long idfranquicia, long idnomina){
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nif = nif;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.idfranquicia = idfranquicia;
+        this.idnomina = idnomina;
+    }
+    
     /**
      * Recorre el array con todos los empleados y la id para el siguiente
      * empleado
