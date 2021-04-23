@@ -20,11 +20,11 @@ import java.util.logging.Logger;
  * @author alex
  */
 public class EmpleadoDAO {
-    
+
     private Empleado e;
     private static Connection conn;
-    
-    public static ArrayList<Empleado> todosEmpleados(){
+
+    public static ArrayList<Empleado> todosEmpleados() {
         ArrayList<Empleado> ret = new ArrayList<>();
         try {
             if (conn == null || conn.isClosed()) {
@@ -58,6 +58,76 @@ public class EmpleadoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return ret;}
+        return ret;
+    }
+
+    public static void insertarEmpleado(Empleado e) {
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("INSERT INTO Empleado VALUES (?,?,?,?,?,?,?,?)");
+                long id = e.getId();
+                String nombre = e.getNombre();
+                String apellido = e.getApellidos();
+                String nif = e.getNif();
+                String direccion = e.getDireccion();
+                String telefono = e.getTelefono();
+                long idFranquicia = e.getIdfranquicia();
+                long idNomina = e.getIdnomina();
+                pstmt.setLong(1, id);
+                pstmt.setString(2, nombre);
+                pstmt.setString(3, apellido);
+                pstmt.setString(4, nif);
+                pstmt.setString(5, direccion);
+                pstmt.setString(6, telefono);
+                pstmt.setLong(7, idFranquicia);
+                pstmt.setLong(8, idNomina);
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void eleminarEmpleado(int id){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("DELETE FROM Empleado WHERE idEmpleado = ?");
+                pstmt.setInt(1, id);
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
