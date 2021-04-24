@@ -8,13 +8,14 @@ package Ejecutable;
 import java.util.Scanner;
 import java.util.ArrayList;
 import Entidades.*;
-import dao.UsuarioDAO;
+import DAO.*;
 
 public class Main {
 
     //main 
     public static void main(String[] args) {
-                        
+        
+                       
         ArrayList<Empleado> empleadostotal = Empleado.convertirEmpleado(Utilidades.EMPLEADOS);
 
         //Convertirmos todos los array de todos los tipos de empleados que hay para poder trabajar con ellos

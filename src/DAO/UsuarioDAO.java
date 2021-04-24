@@ -1,8 +1,9 @@
-package dao;
+package DAO;
 
 import java.sql.Connection;
 import Entidades.Usuario;
 import ConexionBD.ConexionBD;
+import Entidades.Empleado;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,42 +29,41 @@ public class UsuarioDAO {
         conn = ConexionBD.establecerConexion();
     }
     
-    public static Usuario selecionarUsuarios(String nombre) {
-        Usuario usuario = null;
-
+    public static ArrayList<Usuario> mostrarUsuarios() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
             try {
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT * FROM usuario WHERE nombre = ?");
-                pstmt.setString(1, String.valueOf(nombre));
+                pstmt = conn.prepareStatement("SELECT * FROM Usuario");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
                     long id = prs.getLong("idUsuario");
-                    String nombreUsuario = prs.getString("nombre");
-                    String apellidoUsuario = prs.getString("apellido");
-                    String NIF = prs.getString("nif");
+                    String nombre = prs.getString("nombre");
+                    String apellido = prs.getString("apellido");
+                    String nif = prs.getString("nif");
                     String telefono = prs.getString("telefono");
                     String email = prs.getString("email");
                     int idBono = prs.getInt("idBono");
-                    usuario = new Usuario(id, nombreUsuario, apellidoUsuario, NIF, telefono, email, idBono);
+                    
+                    Usuario u = new Usuario(id, nombre, apellido, nif, telefono, email, idBono);
+                    usuarios.add(u);
                 }
-                prs.close();
-                pstmt.close();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DAO.EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 if (conn != null) {
                     ConexionBD.cerrarConexion();
                 }
             }
+
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO.EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return usuario;
+        return usuarios;
     }
     
      public static Usuario insertarUsuario(Usuario u) {
