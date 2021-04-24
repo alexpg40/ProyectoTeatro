@@ -25,15 +25,16 @@ public class EmpleadoDAO {
     private static Connection conn;
 
     public static ArrayList<Empleado> todosEmpleados() {
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
         ArrayList<Empleado> ret = new ArrayList<>();
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                PreparedStatement pstmt = null;
                 pstmt = conn.prepareStatement("SELECT * FROM Empleado");
-                ResultSet prs = pstmt.executeQuery();
+                prs = pstmt.executeQuery();
                 while (prs.next()) {
                     int id = prs.getInt("idEmpleado");
                     String nombre = prs.getString("nombre");
@@ -52,6 +53,12 @@ public class EmpleadoDAO {
             } finally {
                 if (conn != null) {
                     ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
                 }
             }
 
@@ -103,7 +110,7 @@ public class EmpleadoDAO {
         }
     }
 
-    public static void eleminarEmpleado(int id){
+    public static void elminarEmpleado(int id){
         PreparedStatement pstmt = null;
         try {
             if (conn == null || conn.isClosed()) {
@@ -129,5 +136,168 @@ public class EmpleadoDAO {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static Empleado leerDetalles(int id){
+        Empleado e = null;
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE idEmpleado = " + id );
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    int idEmpleado = prs.getInt("idEmpleado");
+                    String nombre = prs.getString("nombre");
+                    String apellido = prs.getString("apellido");
+                    String nif = prs.getString("nif");
+                    String direccion = prs.getString("direccion");
+                    String telefono = prs.getString("telefono");
+                    long idFranquicia = prs.getLong("idFranquicia");
+                    long idNomina = prs.getLong("idNonima");
+                    e = new Empleado(idEmpleado, nombre, apellido, nif, direccion, telefono, idFranquicia, idNomina);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return e;}
+    
+    public static void actualizarEmpleado(Empleado e){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                long id = e.getId();
+                String nombre = e.getNombre();
+                String apellido = e.getApellidos();
+                String direccion = e.getDireccion();
+                String nif = e.getNif();
+                long idFranquicia = e.getIdfranquicia();
+                long idNomina = e.getIdnomina();
+                pstmt = conn.prepareStatement("UPDATE Empleado SET nombre ='" +  nombre + "', apellido ='" + apellido + "', direccion ='" + direccion +
+                        "', nif ='" + nif + "', idFranquicia ='" + idFranquicia + "', idNonima ='" + idNomina + "' WHERE idEmpleado =" + id);
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static ArrayList<Empleado> getEmpleadoByNombre(String name){
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        ArrayList<Empleado> ret = new ArrayList<>();
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE nombre = '" + name +"'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    int id = prs.getInt("idEmpleado");
+                    String nombre = prs.getString("nombre");
+                    String apellido = prs.getString("apellido");
+                    String nif = prs.getString("nif");
+                    String direccion = prs.getString("direccion");
+                    String telefono = prs.getString("telefono");
+                    long idFranquicia = prs.getLong("idFranquicia");
+                    long idNomina = prs.getLong("idNonima");
+                    Empleado e = new Empleado(id, nombre, apellido, nif, direccion, telefono, idFranquicia, idNomina);
+                    ret.add(e);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    return ret;}
+    
+    public static Empleado getEmpleadoById(int idEmpleado){
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        Empleado e = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE idEmpleado = '" + idEmpleado +"'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    int id = prs.getInt("idEmpleado");
+                    String nombre = prs.getString("nombre");
+                    String apellido = prs.getString("apellido");
+                    String nif = prs.getString("nif");
+                    String direccion = prs.getString("direccion");
+                    String telefono = prs.getString("telefono");
+                    long idFranquicia = prs.getLong("idFranquicia");
+                    long idNomina = prs.getLong("idNonima");
+                    e = new Empleado(id, nombre, apellido, nif, direccion, telefono, idFranquicia, idNomina);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    return e;}
     
 }
