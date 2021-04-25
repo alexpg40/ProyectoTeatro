@@ -15,9 +15,8 @@ public class Main {
     //main 
     public static void main(String[] args) {
         
-                       
         ArrayList<Empleado> empleadostotal = Empleado.convertirEmpleado(Utilidades.EMPLEADOS);
-
+        
         //Convertirmos todos los array de todos los tipos de empleados que hay para poder trabajar con ellos
         ArrayList<Empleado> empleadosD = Empleado.convertirEmpleado(Utilidades.DIRECCIONES);
         ArrayList<Empleado> empleadosL = Empleado.convertirEmpleado(Utilidades.LIMPIADORES);
