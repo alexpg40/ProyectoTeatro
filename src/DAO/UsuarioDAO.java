@@ -160,34 +160,28 @@ public class UsuarioDAO {
         return u;
     }
 
-    public static void verElementos() {
+    public static void verElementos(Usuario u) {
 
         int opcion = -1;
         do {
-            System.out.println(" \b 0. Salir " + "\n" + " 1. Ver Acomodadores   " + "|" + "   2. Ver Beneficios" + "\n"
-                    + " 3. Ver Bonos   " + "|" + "   4. Ver Costes" + "\n"
-                    + " 5. Ver Empl.Dirección   " + "|" + "   6. Ver Empleados" + "\n"
-                    + " 7. Ver Empl.Oficina   " + "|" + "   8. Ver Empl.Teatro" + "\n"
-                    + " 9. Ver Franquicias   " + "|" + "   10. Ver Grupos de Trabajo" + "\n"
-                    + " 11. Ver Informes   " + "|" + "   12. Ver Emp.Limpieza" + "\n"
-                    + " 13. Ver Nominas   " + "|" + "   14. Ver Secretarios" + "\n"
-                    + "15. Ver Taquilleros   " + "|" + "   16. Ver usuarios");
+            System.out.println(" 1. Ver mis Bonos  " + "|" + " 2. Ver Franquicias " + "\n" + 
+                    " 0. Salir");
             Scanner in;
             try {
                 in = new Scanner(System.in);
                 opcion = in.nextInt();
             } catch (java.util.InputMismatchException e) {
-                System.out.println("\nSolo se permiten numeros enteros entre 0 y 16");
+                System.out.println("\nSolo se permiten numeros enteros entre 0 y 2");
                 continue;
             }
-            if (opcion < 0 || opcion > 16) {
+            if (opcion < 0 || opcion > 2) {
                 System.out.println("Error. Vuelva a introducir la opción.");
             }
 
             switch (opcion) {
 
                 case 1:
-                    System.out.println("Has seleccionado ver acomodadores: ");
+                    System.out.println("Has seleccionado ver tus bonos: ");
                     try {
                         if (conn == null || conn.isClosed()) {
                             conn = ConexionBD.establecerConexion();
@@ -195,53 +189,47 @@ public class UsuarioDAO {
 
                         Statement stmt = null;
                         stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                        String sqlRec = "SELECT a.idAcomodador, e.idEmpleado, e.nombre, e.apellido, e.nif FROM acomodador as a, empleado as e WHERE a.idAcomodador = e.idEmpleado";
+                        String sqlRec = "SELECT b.*, u.nombre, u.apellido FROM bono as b, usuario as u WHERE u.idBono = b.idBono and";
+                        sqlRec += " nombre='" + u.getNombre() + "'";
                         ResultSet rs = stmt.executeQuery(sqlRec);
                         while (rs.next()) {
-                            long idAcomodador = rs.getInt("idAcomodador");
-                            String idEmpleado = rs.getString("idEmpleado");
+                            int idBono = rs.getInt("idBono");
+                            int mes = rs.getInt("mes");
+                            String tipo = rs.getString("tipo");
                             String nombre = rs.getString("nombre");
                             String apellido = rs.getString("apellido");
-                            String nif = rs.getString("nif");
 
-                            System.out.println("El ID del acomodador es: " + idAcomodador + ", el ID del EMPLEADO es: " + idEmpleado + "\n"
-                                    + "El empleado se llama " + nombre + apellido + ", con el NIF:" + nif);
+                            System.out.println("El ID del bono es: " + idBono + ", el mes es: " + mes + "\n" + ", el tipo de bono es " + tipo + "\n"
+                                    + "Este bono pertenece a:  " + nombre + apellido);
                         }
 
                     } catch (SQLException ex) {
                         Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
                     break;
                 case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    break;
-                case 11:
-                    break;
-                case 12:
-                    break;
-                case 13:
-                    break;
-                case 14:
-                    break;
-                case 15:
-                    break;
-                case 16:
+                    System.out.println("Has seleccionado ver las franquicias existentes: ");
+                    try {
+                        if (conn == null || conn.isClosed()) {
+                            conn = ConexionBD.establecerConexion();
+                        }
+
+                        Statement stmt = null;
+                        stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                        String sqlRec = "SELECT ubicacion, accesibilidad FROM Franquicia";
+                        ResultSet rs = stmt.executeQuery(sqlRec);
+                        while (rs.next()) {
+                            String ubicacion = rs.getString("ubicacion");
+                            int accesibilidad = rs.getInt("accesibilidad");
+                            if (accesibilidad == 1) {
+                                System.out.println("Hay una franquicia en: " + ubicacion + " y tiene una buena accesibilidad para personas con movilidad reducida.");
+                            } else {
+                                System.out.println("Hay una franquicia en: " + ubicacion + " y no tiene una buena accesibilidad para personas con movilidad reducida.");
+                            }
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 default:
                     System.out.println("Opción incorrecta...");
@@ -249,7 +237,7 @@ public class UsuarioDAO {
             }
 
         } while (opcion < 0 || opcion
-                > 16);
+                > 2);
     }
 
     public static void eliminarUsuario(int id) {
