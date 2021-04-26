@@ -189,7 +189,7 @@ public class UsuarioDAO {
 
                         Statement stmt = null;
                         stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                        String sqlRec = "SELECT b.*, u.nombre, u.apellido FROM bono as b, usuario as u WHERE u.idBono = b.idBono and";
+                        String sqlRec = "SELECT b.*, u.nombre, u.apellido FROM bono as b, usuario as u WHERE b.idUsuario = u.idUsuario and";
                         sqlRec += " nombre='" + u.getNombre() + "'";
                         ResultSet rs = stmt.executeQuery(sqlRec);
                         while (rs.next()) {
