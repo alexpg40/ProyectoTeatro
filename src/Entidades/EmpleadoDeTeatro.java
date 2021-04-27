@@ -32,16 +32,7 @@ public class EmpleadoDeTeatro extends Empleado {
     protected char categoria;
     //CADA EMPLEADO DE TEATRO TIENE UNA NOMINA QUE ES CALCULADO POR SECRETARIO Y REVISADA POR DIRECCION
     private Nomina nomina;
-    //VALORES VALIDOS: NÚMEROS ENTEROS,  HA DE SER ÚNICO PARA CADA INSTANCIA  > 0 && VALORES INVALIDOS: NÚMEROS ENTEROS <= 0
-    private long idnomina;
-
-    public long getIdnomina() {
-        return idnomina;
-    }
-
-    public void setIdnomina(long idnomina) {
-        this.idnomina = idnomina;
-    }
+    private long idGrupoDeTeatro;
 
     public EmpleadoDeTeatro() {
         super();
@@ -84,6 +75,12 @@ public class EmpleadoDeTeatro extends Empleado {
         this.nomina = nomina;
     }
 
+    public EmpleadoDeTeatro(Empleado e, char categoria, long idGrupoDeTeatro){
+        super(e);
+        this.categoria = categoria;
+        this.idGrupoDeTeatro = idGrupoDeTeatro;
+    }
+    
     /**
      * Valida la categoria de empleados de teatro
      *
