@@ -60,7 +60,7 @@ public class InformeDAO {
                 }
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
-                //  Logger.getLogger(EjemplarDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 if (conn != null) {
                     ConexionBD.cerrarConexion();
