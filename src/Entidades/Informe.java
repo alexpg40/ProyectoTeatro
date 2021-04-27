@@ -51,6 +51,15 @@ public class Informe implements Serializable{
     // Se guarda una lista de los costes
     private ArrayList<Coste> costes = new ArrayList<>();
     private long idsecretariado;
+    private long idfranquicia;
+
+    public long getIdfranquicia() {
+        return idfranquicia;
+    }
+
+    public void setIdfranquicia(long idfranquicia) {
+        this.idfranquicia = idfranquicia;
+    }
 
     public void setIdSecretariado(long idsecretariado) {
         this.idsecretariado = idsecretariado;

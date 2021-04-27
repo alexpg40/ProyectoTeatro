@@ -8,6 +8,7 @@ package DAO;
 import ConexionBD.ConexionBD;
 import Entidades.Informe;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -134,7 +135,41 @@ public class InformeDAO {
      * @param inf
      */
     public void modificarInforme(Informe inf) {
+try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                PreparedStatement pstmt = null;
 
+                Date mesyano = inf.getMesyano();
+                long idSecretariado = inf.getIdSecretariado();
+                long idFranquicia = inf.getIdfranquicia();
+                double balance = inf.getBalance();
+                
+
+                String sql = "UPDATE Informe SET ";
+                sql += "mesyano='" + mesyano + "'";
+                sql += ", idSecretariado='" + idSecretariado + "'";
+                sql += ", idFranquicia=" + idFranquicia;
+                sql += ", balance=" + balance;
+
+                sql += " WHERE id = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, String.valueOf(inf.getId()));
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
