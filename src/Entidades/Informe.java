@@ -50,23 +50,23 @@ public class Informe implements Serializable{
     private ArrayList<Beneficio> beneficios = new ArrayList<>();
     // Se guarda una lista de los costes
     private ArrayList<Coste> costes = new ArrayList<>();
-    private long idsecretariado;
-    private long idfranquicia;
+    private long idSecretariado;
+    private long idFranquicia;
 
     public long getIdfranquicia() {
-        return idfranquicia;
+        return idFranquicia;
     }
 
-    public void setIdfranquicia(long idfranquicia) {
-        this.idfranquicia = idfranquicia;
+    public void setIdfranquicia(long idFranquicia) {
+        this.idFranquicia = idFranquicia;
     }
 
-    public void setIdSecretariado(long idsecretariado) {
-        this.idsecretariado = idsecretariado;
+    public void setIdSecretariado(long idSecretariado) {
+        this.idSecretariado = idSecretariado;
     }
 
     public long getIdSecretariado() {
-        return idsecretariado;
+        return idSecretariado;
     }
 
     public Informe() {
@@ -90,6 +90,13 @@ public class Informe implements Serializable{
         this.costes = costes;
     }
 
+    public Informe(long id, Date mesyano, double balance, long idsecretariado, long idfranquicia){
+        this.id = id;
+        this.mesyano = mesyano;
+        this.balance = balance;
+        this.idSecretariado = idsecretariado;
+        this.idFranquicia = idfranquicia;
+    }
     public long getId() {
         return id;
     }
@@ -189,7 +196,8 @@ public class Informe implements Serializable{
         inf.setId(nextIdInforme());
         inf.setBalance(inf.getBalance());
         inf.setMesyano(Utilidades.dameFecha());
-        inf.setSecretario(inf.getSecretario());
+        inf.setIdSecretariado(inf.getIdSecretariado());
+        inf.setIdfranquicia(inf.getIdfranquicia());
         return inf;
     }
 

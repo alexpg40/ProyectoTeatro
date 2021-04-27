@@ -6,13 +6,17 @@
 package DAO;
 
 import ConexionBD.ConexionBD;
+import Entidades.Beneficio;
+import Entidades.Coste;
 import Entidades.Informe;
+import Entidades.Secretariado;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -55,7 +59,11 @@ public class InformeDAO {
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
                     int id = prs.getInt("idInforme");
-                    Informe informe = new Informe(); //MIRAR CONSTRUCTOR
+                    Date mesyano = prs.getDate("mesyano");
+                    double balance = prs.getDouble("balance");
+                    int idsecretariado = prs.getInt("idSecretariado");
+                    int idfranquicia = prs.getInt("idFranquicia");
+                    Informe informe = new Informe(id, mesyano, balance, idsecretariado, idfranquicia); //MIRAR CONSTRUCTOR
                     todosLosInformes.add(informe);
                 }
             } catch (SQLException ex) {
@@ -88,8 +96,11 @@ public class InformeDAO {
                 PreparedStatement pstmt = null;
 
                 long idSecretariado = inf.getIdSecretariado();
+                long idFranquicia = inf.getIdfranquicia();
+                Date mesyano = inf.getMesyano();
+                double balance = inf.getBalance();
 
-                String sql = "INSERT INTO Informe(idSecretariado) VALUES('" + idSecretariado + "')";
+                String sql = "INSERT INTO Informe(idSecretariado, idFranquicia, mesyano, balance) VALUES('" + idSecretariado + idFranquicia + mesyano + balance + "')";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
@@ -101,9 +112,12 @@ public class InformeDAO {
                 sqlRec += " ORDER BY id DESC";
                 ResultSet rs = stmt.executeQuery(sqlRec);
                 while (rs.next()) {
-                    int id = rs.getInt("idInforme");
+                    long id = rs.getLong("idInforme");
                     idSecretariado = rs.getLong("idSecretariado");
-                    inf = new Informe(); //MIRAR CONSTRUCTOR
+                    idFranquicia = rs.getLong("idFranquicia");
+                    mesyano = rs.getDate("mesyano");
+                    balance = rs.getDouble("balance");
+                    inf = new Informe(id, mesyano, balance, idSecretariado, idFranquicia);
                     return inf;
                 }
             } catch (SQLException ex) {
@@ -123,19 +137,29 @@ public class InformeDAO {
     }
 
     /**
-     *
+     * Función que enseña los detalles de un elemento que haya seleccionado el usuario
      * @param inf
      */
     public void verDetallesInforme(Informe inf) {
-
+        System.out.println("Detalles de Informes");
+        System.out.println("--------------------");
+        System.out.println("Id: " + inf.getId());
+        System.out.println("Mes y año: " + inf.getMesyano());
+        System.out.println("Balance: " + inf.getBalance());
+        System.out.println("idSecretariado: " + inf.getIdSecretariado());
+        System.out.println("idFranquicia: " + inf.getIdfranquicia());
+        System.out.println("--------------------");
     }
 
     /**
+     * Función que modifica o actualizar uno o varios de los datos de un
+     * elemento ya existente en la BD por los nuevos datos que introduzca el
+     * usuario.
      *
      * @param inf
      */
     public void modificarInforme(Informe inf) {
-try {
+        try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
@@ -146,7 +170,6 @@ try {
                 long idSecretariado = inf.getIdSecretariado();
                 long idFranquicia = inf.getIdfranquicia();
                 double balance = inf.getBalance();
-                
 
                 String sql = "UPDATE Informe SET ";
                 sql += "mesyano='" + mesyano + "'";
