@@ -58,6 +58,14 @@ public class EmpleadoDeTeatro extends Empleado {
         this.nomina = nomina;
     }
 
+    public long getIdGrupoDeTeatro() {
+        return idGrupoDeTeatro;
+    }
+
+    public void setIdGrupoDeTeatro(long idGrupoDeTeatro) {
+        this.idGrupoDeTeatro = idGrupoDeTeatro;
+    }
+    
     public EmpleadoDeTeatro(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria, Nomina nomina) {
         this.id = id;
         this.nombre = nombre;
