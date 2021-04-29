@@ -31,6 +31,12 @@ public class EmpleadoDeOficina extends Empleado {
         this.añosPlantilla = añosPlantilla;
     }
 
+    public EmpleadoDeOficina(Empleado e, int añosPlantilla, long idNomina){
+        super(e);
+        this.añosPlantilla = añosPlantilla;
+        this.idnomina = idNomina;
+    }
+    
     public EmpleadoDeOficina(long id, String nombre, String apellidos, String nif, String direccion, String telefono, char categoria) {
         super.id = id;
         super.nombre = nombre;
