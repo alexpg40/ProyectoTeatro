@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  * @author DarkB
  */
 public class EmpleadoDeOficinaDAO {
-    
+
     private EmpleadoDeOficina e;
     private static Connection conn;
-    
-    public static ArrayList<EmpleadoDeOficina> todosEmpleadosOficina(){
+
+    public static ArrayList<EmpleadoDeOficina> todosEmpleadosOficina() {
         ArrayList<EmpleadoDeOficina> ret = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet prs = null;
@@ -41,7 +41,8 @@ public class EmpleadoDeOficinaDAO {
                     int id = prs.getInt("idEmpleadoDeOficina");
                     Empleado e = EmpleadoDAO.getEmpleadoById(id);
                     int añosPlantilla = prs.getInt(2);
-                    EmpleadoDeOficina eo = new EmpleadoDeOficina(e, añosPlantilla);
+                    long idNomina = e.getIdnomina();
+                    EmpleadoDeOficina eo = new EmpleadoDeOficina(e, añosPlantilla, idNomina);
                     ret.add(eo);
                 }
             } catch (SQLException ex) {
@@ -62,9 +63,10 @@ public class EmpleadoDeOficinaDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return ret;}
-    
-    public static EmpleadoDeOficina getEmpleadoDeOficinaById(int id){
+        return ret;
+    }
+
+    public static EmpleadoDeOficina getEmpleadoDeOficinaById(int id) {
         EmpleadoDeOficina ret = new EmpleadoDeOficina();
         PreparedStatement pstmt = null;
         ResultSet prs = null;
@@ -79,7 +81,8 @@ public class EmpleadoDeOficinaDAO {
                     int idEmpleadoDeOficina = prs.getInt("idEmpleadoDeOficina");
                     Empleado e = EmpleadoDAO.getEmpleadoById(idEmpleadoDeOficina);
                     int añosPlantilla = prs.getInt(2);
-                    ret = new EmpleadoDeOficina(e, añosPlantilla);
+                    long idNomina = e.getIdnomina();
+                    ret = new EmpleadoDeOficina(e, añosPlantilla, idNomina);
                 }
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
@@ -99,9 +102,10 @@ public class EmpleadoDeOficinaDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return ret;}
-    
-    public static ArrayList<EmpleadoDeOficina> getEmpleadoDeOficinaByNombre(String nombre){
+        return ret;
+    }
+
+    public static ArrayList<EmpleadoDeOficina> getEmpleadoDeOficinaByNombre(String nombre) {
         ArrayList<EmpleadoDeOficina> ret = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet prs = null;
@@ -118,8 +122,9 @@ public class EmpleadoDeOficinaDAO {
                     ArrayList<Empleado> empleados = EmpleadoDAO.getEmpleadoByNombre(nombre);
                     for (Empleado e : empleados) {
                         long idEmpleado = e.getId();
+                        long idNomina = e.getIdnomina();
                         if (idEmpleadoDeOficina == idEmpleado) {
-                            EmpleadoDeOficina eo = new EmpleadoDeOficina(e, añosPlantilla);
+                            EmpleadoDeOficina eo = new EmpleadoDeOficina(e, añosPlantilla, idNomina);
                             ret.add(eo);
                         }
                     }
@@ -142,10 +147,12 @@ public class EmpleadoDeOficinaDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return ret;}
-    
-    public static void actualizarEmpleadoDeOficina(EmpleadoDeOficina e){
+        return ret;
+    }
+
+    public static int actualizarEmpleadoDeOficina(EmpleadoDeOficina e) {
         PreparedStatement pstmt = null;
+        int n = 0;
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
@@ -161,7 +168,7 @@ public class EmpleadoDeOficinaDAO {
                 long añosPlantilla = e.getAñosPlantilla();
                 EmpleadoDAO.actualizarEmpleado(e);
                 pstmt = conn.prepareStatement("UPDATE EmpleadoDeOficina SET aniosPlantilla = '" + añosPlantilla + "' WHERE idEmpleadoDeOficina = " + id);
-                pstmt.executeUpdate();
+                n = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -177,20 +184,21 @@ public class EmpleadoDeOficinaDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public static void eleminarEmpleadoDeOficina(int id){
+    return n;}
+
+    public static int eleminarEmpleadoDeOficina(long id) {
         Empleado e = EmpleadoDAO.getEmpleadoById(id);
-        EmpleadoDAO.elminarEmpleado(id);
+        EmpleadoDAO.eliminarEmpleado(id);
         PreparedStatement pstmt = null;
+        int n = 0;
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
             try {
                 pstmt = conn.prepareStatement("DELETE FROM EmpleadoDeOficina WHERE idEmpleadoDeOficina = ?");
-                pstmt.setInt(1, id);
-                pstmt.executeUpdate();
+                pstmt.setLong(1, id);
+                n = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,5 +214,49 @@ public class EmpleadoDeOficinaDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }  
+    return n;}
+
+    public static void leerDetalles(EmpleadoDeOficina of) {
+        long idEmpleado = of.getId();
+        Empleado e = EmpleadoDAO.getEmpleadoById(idEmpleado);
+        System.out.println("DETALLES DEL EMPLEADO DE OFICINA");
+        System.out.println("---------------------");
+        System.out.println("ID: " + idEmpleado);
+        System.out.println("NOMBRE: " + e.getNombre() + "\t" + "APELLIDO: " + e.getApellidos());
+        System.out.println("NIF: " + e.getNif() + "\t" + "TELEFONO: " + e.getTelefono());
+        System.out.println("AÑOS EN PLANTILLA: " + of.getAñosPlantilla());
+        System.out.println("----------------------");
+
+    }
+
+    public static int insertarEmpleadoDeOficina(EmpleadoDeOficina e){
+        int n = 0;
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                EmpleadoDAO.insertarEmpleado(e);
+                pstmt = conn.prepareStatement("INSERT INTO EmpleadoDeOficina VALUES (?,?)");
+                pstmt.setLong(1, e.getId());
+                pstmt.setLong(2, e.getAñosPlantilla());
+                n = pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return n;}
+    
 }

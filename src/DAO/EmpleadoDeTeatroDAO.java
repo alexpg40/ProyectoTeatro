@@ -71,7 +71,7 @@ public class EmpleadoDeTeatroDAO {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                EmpleadoDAO.elminarEmpleado(id);
+                EmpleadoDAO.eliminarEmpleado(id);
                 pstmt = conn.prepareStatement("DELETE FROM EmpleadoDeTeatro WHERE idEmpleadoDeTeatro = " + id);
                 pstmt.execute();
             } catch (SQLException ex) {

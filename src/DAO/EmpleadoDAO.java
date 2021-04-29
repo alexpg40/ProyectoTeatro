@@ -68,8 +68,9 @@ public class EmpleadoDAO {
         return ret;
     }
 
-    public static void insertarEmpleado(Empleado e) {
+    public static int insertarEmpleado(Empleado e) {
         PreparedStatement pstmt = null;
+        int n = 0;
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
@@ -92,7 +93,7 @@ public class EmpleadoDAO {
                 pstmt.setString(6, telefono);
                 pstmt.setLong(7, idFranquicia);
                 pstmt.setLong(8, idNomina);
-                pstmt.executeUpdate();
+                n = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,18 +109,19 @@ public class EmpleadoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    return n;}
 
-    public static void elminarEmpleado(int id){
+    public static int eliminarEmpleado(long id){
         PreparedStatement pstmt = null;
+        int n = 0;
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
             try {
                 pstmt = conn.prepareStatement("DELETE FROM Empleado WHERE idEmpleado = ?");
-                pstmt.setInt(1, id);
-                pstmt.executeUpdate();
+                pstmt.setLong(1, id);
+                n = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -135,52 +137,20 @@ public class EmpleadoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    return n;}
+    
+    public static void leerDetalles(Empleado e){
+        System.out.println("DETALLES DEL EMPLEADOS");
+        System.out.println("----------------------");
+        System.out.println("ID: " + e.getId());
+        System.out.println("NOMBRE: " + e.getNombre() + "\t" + " APELLIDO: " + e.getApellidos());
+        System.out.println("NIF: " + e.getNif() + "\t" + "TELEFONO: " + e.getTelefono());
+        System.out.println("----------------------");
     }
     
-    public static Empleado leerDetalles(int id){
-        Empleado e = null;
+    public static int actualizarEmpleado(Empleado e){
         PreparedStatement pstmt = null;
-        ResultSet prs = null;
-        try {
-            if (conn == null || conn.isClosed()) {
-                conn = ConexionBD.establecerConexion();
-            }
-            try {
-                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE idEmpleado = " + id );
-                prs = pstmt.executeQuery();
-                while (prs.next()) {
-                    int idEmpleado = prs.getInt("idEmpleado");
-                    String nombre = prs.getString("nombre");
-                    String apellido = prs.getString("apellido");
-                    String nif = prs.getString("nif");
-                    String direccion = prs.getString("direccion");
-                    String telefono = prs.getString("telefono");
-                    long idFranquicia = prs.getLong("idFranquicia");
-                    long idNomina = prs.getLong("idNonima");
-                    e = new Empleado(idEmpleado, nombre, apellido, nif, direccion, telefono, idFranquicia, idNomina);
-                }
-            } catch (SQLException ex) {
-                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
-                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                if (conn != null) {
-                    ConexionBD.cerrarConexion();
-                }
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-                if (prs != null) {
-                    prs.close();
-                }
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return e;}
-    
-    public static void actualizarEmpleado(Empleado e){
-        PreparedStatement pstmt = null;
+        int n = 0;
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
@@ -195,7 +165,7 @@ public class EmpleadoDAO {
                 long idNomina = e.getIdnomina();
                 pstmt = conn.prepareStatement("UPDATE Empleado SET nombre ='" +  nombre + "', apellido ='" + apellido + "', direccion ='" + direccion +
                         "', nif ='" + nif + "', idFranquicia ='" + idFranquicia + "', idNonima ='" + idNomina + "' WHERE idEmpleado =" + id);
-                pstmt.executeUpdate();
+                n = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,7 +181,7 @@ public class EmpleadoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    return n;}
     
     public static ArrayList<Empleado> getEmpleadoByNombre(String name){
         PreparedStatement pstmt = null;
@@ -257,7 +227,7 @@ public class EmpleadoDAO {
         
     return ret;}
     
-    public static Empleado getEmpleadoById(int idEmpleado){
+    public static Empleado getEmpleadoById(long idEmpleado){
         PreparedStatement pstmt = null;
         ResultSet prs = null;
         Empleado e = null;
