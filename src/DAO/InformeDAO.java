@@ -230,7 +230,7 @@ public class InformeDAO {
     }
 
     /**
-     * Función que devuelve un informe según el ID que le pidamos.
+     * Función que devuelve un informe según el ID del Informe que le pidamos.
      *
      * @param idInforme
      * @return
@@ -276,4 +276,50 @@ public class InformeDAO {
         return inf;
     }
 
+    /**
+     * Función que devuelve un informe según el ID de la Franquicia que le pidamos.
+     *
+     * @param idFranquicia
+     * @return
+     */
+    public static Informe getInformeByIdFranquicia(long idFranquicia) {
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        Informe inf = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Informe WHERE idFranquicia = '" + idFranquicia + "'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    long id = prs.getLong("idInforme");
+                    long idSecretariado = prs.getLong("idSecretariado");
+                    idFranquicia = prs.getLong("idFranquicia");
+                    Date mesyano = prs.getDate("mesyano");
+                    double balance = prs.getDouble("balance");
+                    inf = new Informe(id, mesyano, balance, idSecretariado, idFranquicia);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return inf;
+    }
 }
