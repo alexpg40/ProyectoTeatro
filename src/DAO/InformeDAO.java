@@ -137,7 +137,9 @@ public class InformeDAO {
     }
 
     /**
-     * Función que enseña los detalles de un elemento que haya seleccionado el usuario
+     * Función que enseña los detalles de un elemento que haya seleccionado el
+     * usuario
+     *
      * @param inf
      */
     public void verDetallesInforme(Informe inf) {
@@ -225,6 +227,53 @@ public class InformeDAO {
         } catch (SQLException ex) {
             Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * Función que devuelve un informe según el ID que le pidamos.
+     *
+     * @param idInforme
+     * @return
+     */
+    public static Informe getInformeById(long idInforme) {
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        Informe inf = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Informe WHERE idInforme = '" + idInforme + "'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    long id = prs.getLong("idInforme");
+                    long idSecretariado = prs.getLong("idSecretariado");
+                    long idFranquicia = prs.getLong("idFranquicia");
+                    Date mesyano = prs.getDate("mesyano");
+                    double balance = prs.getDouble("balance");
+                    inf = new Informe(id, mesyano, balance, idSecretariado, idFranquicia);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InformeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return inf;
     }
 
 }
