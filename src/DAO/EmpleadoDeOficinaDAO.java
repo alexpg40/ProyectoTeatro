@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author DarkB
+ * @author Alex
  */
 public class EmpleadoDeOficinaDAO {
 
