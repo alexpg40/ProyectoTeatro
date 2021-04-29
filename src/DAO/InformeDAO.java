@@ -201,7 +201,7 @@ public class InformeDAO {
      * Función que mediante un Delete elimina alguno o varios elemento/s ya
      * existentes en la BD y que ha seleccionado el usuario.
      *
-     * @param inf
+     * @param idInforme
      */
     public void eliminarInforme(int idInforme) {
         try {
