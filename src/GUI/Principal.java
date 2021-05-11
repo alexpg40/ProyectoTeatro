@@ -58,6 +58,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnAccesoUsuario.setText("Acceder");
+        btnAccesoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccesoUsuarioActionPerformed(evt);
+            }
+        });
 
         btnRegistroUsuario.setText("Registrarse");
         btnRegistroUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,6 +173,10 @@ public class Principal extends javax.swing.JFrame {
         ru.setLocationRelativeTo(this);
         ru.setVisible(true);
     }//GEN-LAST:event_btnRegistroUsuarioMouseClicked
+
+    private void btnAccesoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAccesoUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
