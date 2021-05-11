@@ -9,7 +9,6 @@ package GUI;
  *
  * @author alex
  */
-import GUI.NuevoEmpleado;
 
 public class EmpleadoGUI extends javax.swing.JFrame {
 
@@ -30,11 +29,11 @@ public class EmpleadoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu10 = new javax.swing.JMenu();
-        jPanel1 = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -42,36 +41,30 @@ public class EmpleadoGUI extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
 
         jMenu10.setText("jMenu10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GESTION DE EMPLEADOS");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
-        );
 
         jMenu3.setText("EMPLEADO");
         jMenu3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -91,6 +84,9 @@ public class EmpleadoGUI extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem1);
+
+        jMenuItem16.setText("Borrar");
+        jMenu3.add(jMenuItem16);
 
         jMenu1.setText("Buscar por...");
 
@@ -120,6 +116,14 @@ public class EmpleadoGUI extends javax.swing.JFrame {
         jMenuItem10.setText("Listar");
         jMenu2.add(jMenuItem10);
 
+        jMenuItem17.setText("Borrar");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem17);
+
         jMenuItem11.setText("Nuevo");
         jMenu2.add(jMenuItem11);
 
@@ -130,6 +134,9 @@ public class EmpleadoGUI extends javax.swing.JFrame {
         jMenuItem12.setText("Listar");
         jMenu5.add(jMenuItem12);
 
+        jMenuItem18.setText("Borrar");
+        jMenu5.add(jMenuItem18);
+
         jMenuItem13.setText("Nuevo");
         jMenu5.add(jMenuItem13);
 
@@ -139,6 +146,9 @@ public class EmpleadoGUI extends javax.swing.JFrame {
 
         jMenuItem14.setText("Listar");
         jMenu7.add(jMenuItem14);
+
+        jMenuItem19.setText("Borrar");
+        jMenu7.add(jMenuItem19);
 
         jMenuItem15.setText("Nuevo");
         jMenu7.add(jMenuItem15);
@@ -156,6 +166,9 @@ public class EmpleadoGUI extends javax.swing.JFrame {
         jMenuItem8.setText("Listar");
         jMenu8.add(jMenuItem8);
 
+        jMenuItem20.setText("Borrar");
+        jMenu8.add(jMenuItem20);
+
         jMenuItem9.setText("Nuevo");
         jMenu8.add(jMenuItem9);
 
@@ -165,6 +178,9 @@ public class EmpleadoGUI extends javax.swing.JFrame {
 
         jMenuItem6.setText("Listar");
         jMenu9.add(jMenuItem6);
+
+        jMenuItem21.setText("Borrar");
+        jMenu9.add(jMenuItem21);
 
         jMenuItem7.setText("Nuevo");
         jMenu9.add(jMenuItem7);
@@ -179,11 +195,11 @@ public class EmpleadoGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 689, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 442, Short.MAX_VALUE)
         );
 
         pack();
@@ -201,6 +217,10 @@ public class EmpleadoGUI extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +276,13 @@ public class EmpleadoGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -264,6 +290,5 @@ public class EmpleadoGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
