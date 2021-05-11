@@ -5,10 +5,13 @@
  */
 package GUI;
 
+import DAO.UsuarioDAO;
+import Entidades.Usuario;
 import Entidades.Utilidades;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
@@ -56,6 +59,7 @@ public class registroUsuario extends javax.swing.JDialog {
         btnLimpiarFormulario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Registro de usuario");
@@ -208,7 +212,7 @@ public class registroUsuario extends javax.swing.JDialog {
 
     private void btnRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseClicked
         
-        String Nombre, Apellido, NIF, Telefono, Email, Password;
+        String Nombre = null, Apellido = null, NIF = null, Telefono = null, Email = null, Password = null;
         
         if (campoNombre.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar." ,"Error: Introduzca los datos necesarios.",WARNING_MESSAGE);
@@ -245,7 +249,10 @@ public class registroUsuario extends javax.swing.JDialog {
         } else if (!String.valueOf(campoNif.getText().charAt(8)).matches("[a-zA-Z]")) {
             JOptionPane.showMessageDialog(this, "El ultimo dígito del NIF debe de ser una letra." ,"Error: El ultimo digito debe ser una letra",WARNING_MESSAGE);
             evt.consume();
-        } else {
+        } else if (UsuarioDAO.comprobarNIF(NIF) == true) {
+            JOptionPane.showMessageDialog(this, "El NIF ya está en uso." ,"Error: NIF repetido.",WARNING_MESSAGE);
+            evt.consume();
+        }else {
             NIF = campoNif.getText();
         }
         
@@ -265,10 +272,13 @@ public class registroUsuario extends javax.swing.JDialog {
         if (campoEmail.getText().isEmpty()) {
           JOptionPane.showMessageDialog(this, "El campo Email no está introducido" ,"Error: El Email está vacío.",WARNING_MESSAGE);
           evt.consume();
+        } else if (UsuarioDAO.comprobarCorreo(campoEmail.getText()) == true) {
+            JOptionPane.showMessageDialog(this, "El email ya existe." ,"Error: El Email ya existe.",WARNING_MESSAGE);
+            evt.consume();
         } else if (correo.find() == true){
-           Email = campoEmail.getText();
+            Email = campoEmail.getText();
         } else {
-           evt.consume();
+            evt.consume();
         }
         
         if (campoContrasena.getPassword().toString().isEmpty() || campoContrasena.getPassword().toString().length() < 5) {
@@ -277,7 +287,23 @@ public class registroUsuario extends javax.swing.JDialog {
         } else {
            Password = campoContrasena.getPassword().toString();
         }
+        if (Nombre != null && Apellido != null && NIF != null && Telefono != null && Email != null && Password != null) {
+            if (JOptionPane.showConfirmDialog(this, "Nombre introducido: " + Nombre + "\n" + "Apellido introducido: " + Apellido + "\n" + "NIF introducido: " + NIF + "\n" + "Telefono introducido: " + Telefono + "\n" + "Email introducido: " + Email) == 0) {
+                Usuario u = new Usuario();
+                u.setNombre(Nombre);
+                u.setApellidos(Apellido);
+                u.setNif(NIF);
+                u.setTelefono(Telefono);
+                u.setEmail(Email);
+                u.setPassword(Password);
+                UsuarioDAO.insertarUsuario(u);
+                JOptionPane.showMessageDialog(this, "El registro se ha realizado con exito.", "Exito", INFORMATION_MESSAGE);
+
+                this.setVisible(false);
+            };
+        }        
         
+
         
     }//GEN-LAST:event_btnRegistrarseMouseClicked
 
