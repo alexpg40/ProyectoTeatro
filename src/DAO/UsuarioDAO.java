@@ -47,9 +47,8 @@ public class UsuarioDAO {
                     String nif = prs.getString("nif");
                     String telefono = prs.getString("telefono");
                     String email = prs.getString("email");
-                    int idBono = prs.getInt("idBono");
 
-                    Usuario u = new Usuario(id, nombre, apellido, nif, telefono, email, idBono);
+                    Usuario u = new Usuario(id, nombre, apellido, nif, telefono, email);
                     usuarios.add(u);
                 }
             } catch (SQLException ex) {
@@ -86,8 +85,7 @@ public class UsuarioDAO {
                     String NIF = prs.getString("nif");
                     String telefono = prs.getString("telefono");
                     String email = prs.getString("email");
-                    int idBono = prs.getInt("idBono");
-                    usuario = new Usuario(id, nombreUsuario, apellidoUsuario, NIF, telefono, email, idBono);
+                    usuario = new Usuario(id, nombreUsuario, apellidoUsuario, NIF, telefono, email);
                 }
                 prs.close();
                 pstmt.close();
@@ -105,7 +103,7 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    public static Usuario insertarUsuario(Usuario u) {
+    public static void insertarUsuario(Usuario u) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
@@ -113,37 +111,17 @@ public class UsuarioDAO {
             try {
                 PreparedStatement pstmt = null;
 
-                long id = u.getId();
                 String nombre = u.getNombre();
                 String apellido = u.getApellidos();
                 String nif = u.getNif();
                 String telefono = u.getTelefono();
                 String email = u.getEmail();
-                int idBono = u.getIdBono();
+                String password = u.getPassword();
 
-                String sql = "INSERT INTO usuario(idUsuario, nombre, apellido, nif, telefono, email, idBono) "
-                        + "VALUES(" + id + ",'" + nombre + "','" + apellido + "','" + nif + "','" + telefono + "','" + email + "'," + idBono + ")";
+                String sql = "INSERT INTO usuario(nombre, apellido, nif, telefono, email, password)" + "\n"
+                        + "VALUES('" + nombre + "','" + apellido + "','" + nif + "','" + telefono + "','" + email + "','" + password + "');";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
-
-                //Se recupera de la BD el registro recien insertado;
-                Statement stmt = null;
-                stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                String sqlRec = "SELECT * FROM usuario WHERE ";
-                sqlRec += " nombre='" + nombre + "'";
-                sqlRec += " ORDER BY idUsuario DESC";
-                ResultSet rs = stmt.executeQuery(sqlRec);
-                while (rs.next()) {
-                    long idUsuarioInsertado = rs.getLong("idUsuario");
-                    String nombreUsuarioInsertado = rs.getString("nombre");
-                    String apellidoUsuarioInsertado = rs.getString("apellido");
-                    String nifUsuarioInsertado = rs.getString("nif");
-                    String telefonoUsuarioInsertado = rs.getString("telefono");
-                    String emailUsuarioInsertado = rs.getString("email");
-                    int idBonoUsuarioInsertado = rs.getInt("idBono");
-                    u = new Usuario(idUsuarioInsertado, nombreUsuarioInsertado, apellidoUsuarioInsertado, nifUsuarioInsertado, telefonoUsuarioInsertado, emailUsuarioInsertado, idBonoUsuarioInsertado);
-                    return u;
-                }
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,7 +135,6 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return u;
     }
 
     public static void verElementos(Usuario u) {
@@ -364,6 +341,70 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static boolean comprobarCorreo (String correo) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                String emailRecuperado = null;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT email FROM usuario");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()){
+                    emailRecuperado = prs.getString("email");
+                    if (emailRecuperado.equals(correo)){
+                        return true;
+                    }
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public static boolean comprobarNIF (String NIF) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                String nifRecuperado = null;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT nif FROM usuario");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()){
+                    nifRecuperado = prs.getString("nif");
+                    if (nifRecuperado.equals(NIF)){
+                        return true;
+                    }
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
 }
