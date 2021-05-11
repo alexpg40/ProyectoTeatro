@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import DAO.EmpleadoDAO;
+import Entidades.Empleado;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alex
@@ -28,82 +32,77 @@ public class NuevoEmpleado extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        apellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        NIF = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        direccion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        idFranquicia = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        idNomina = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         jPanel1.setLayout(new java.awt.GridLayout(4, 4, 10, 10));
 
-        jLabel1.setText("idEmpleado");
-        jLabel1.setFocusable(false);
-        jPanel1.add(jLabel1);
-        jPanel1.add(jTextField1);
-
         jLabel2.setText("nombre");
         jLabel2.setAlignmentX(6.0F);
         jPanel1.add(jLabel2);
-        jPanel1.add(jTextField5);
+        jPanel1.add(nombre);
 
         jLabel3.setText("apellido");
         jLabel3.setAlignmentX(6.0F);
         jPanel1.add(jLabel3);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                apellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2);
+        jPanel1.add(apellido);
 
         jLabel4.setText("NIF");
         jLabel4.setAlignmentX(6.0F);
         jPanel1.add(jLabel4);
-        jPanel1.add(jTextField6);
+        jPanel1.add(NIF);
 
         jLabel5.setText("dirección");
         jLabel5.setAlignmentX(6.0F);
         jPanel1.add(jLabel5);
-        jPanel1.add(jTextField3);
+        jPanel1.add(direccion);
 
         jLabel6.setText("telefono");
         jLabel6.setAlignmentX(6.0F);
         jPanel1.add(jLabel6);
-        jPanel1.add(jTextField4);
+        jPanel1.add(telefono);
 
         jLabel7.setText("idFranquicia");
         jLabel7.setAlignmentX(6.0F);
         jPanel1.add(jLabel7);
-        jPanel1.add(jTextField7);
+        jPanel1.add(idFranquicia);
 
         jLabel8.setText("idNomina");
         jLabel8.setAlignmentX(6.0F);
         jPanel1.add(jLabel8);
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        idNomina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                idNominaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField8);
-
-        jButton1.setText("Cancelar");
+        jPanel1.add(idNomina);
 
         jButton2.setText("Aceptar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,48 +110,74 @@ public class NuevoEmpleado extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(91, 91, 91)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(320, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(282, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(14, 14, 14)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_apellidoActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void idNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idNominaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_idNominaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        String nombre = this.nombre.getText();
+        String apellido = this.apellido.getText();
+        String nif = this.NIF.getText();
+        String direccion = this.direccion.getText();
+        String telefono = this.telefono.getText();
+        long idFranquicia = Long.parseLong(this.idFranquicia.getText());
+        long idNomina = Long.parseLong(this.idNomina.getText());
+        Empleado e = new Empleado(nombre, apellido, nif, direccion, telefono, idFranquicia, idNomina);
+        int n = e.validarEmpleado();
+        switch(n){
+            case 0:
+                JOptionPane.showMessageDialog(this, "Perfecto!", "Empleado registrado con exito!", JOptionPane.INFORMATION_MESSAGE);
+                EmpleadoDAO.insertarEmpleado(e);
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(this, "Error!", "ID no valido", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(this, "Error!", "Nombre no valido", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(this, "Error!", "Apellidos no validos", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(this, "Error!", "NIF no valido", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 5:
+                JOptionPane.showMessageDialog(this, "Error!", "Telefono no valido", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField NIF;
+    private javax.swing.JTextField apellido;
+    private javax.swing.JTextField direccion;
+    private javax.swing.JTextField idFranquicia;
+    private javax.swing.JTextField idNomina;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -161,13 +186,7 @@ public class NuevoEmpleado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }
