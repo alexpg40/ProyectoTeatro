@@ -134,11 +134,11 @@ public class Utilidades {
 
     // long id, String nombre, String apellidos, String nif, int telefono, String email e idBonos
     public static final Usuario USUARIOS[] = {
-        new Usuario(1, " Guillermo ", "Illera ", "21141255T ", "648937009", "guillermo.illera97@gmail.com", 1),
-        new Usuario(2, " Bernat ", "Cid ", "16874298G ", "648941259", "guillermo.illera97@gmail.com", 2),
-        new Usuario(3, " Candido ", "Cuellar ", "65100987H", "612684941", "guillermo.illera97@gmail.com", 5),
-        new Usuario(4, " Mireya ", "Bustos ", "65160165T ", "981985321", "guillermo.illera97@gmail.com", 7),
-        new Usuario(5, " Elver ", "Galarga ", "91871326F ", "648919849", "guillermo.illera97@gmail.com", 3)
+        new Usuario(1, " Guillermo ", "Illera ", "21141255T ", "648937009", "guillermo.illera97@gmail.com", "abc123."),
+        new Usuario(2, " Bernat ", "Cid ", "16874298G ", "648941259", "guillermo.illera97@gmail.com", "abc123."),
+        new Usuario(3, " Candido ", "Cuellar ", "65100987H", "612684941", "guillermo.illera97@gmail.com", "abc123."),
+        new Usuario(4, " Mireya ", "Bustos ", "65160165T ", "981985321", "guillermo.illera97@gmail.com", "abc123."),
+        new Usuario(5, " Elver ", "Galarga ", "91871326F ", "648919849", "guillermo.illera97@gmail.com", "abc123.")
     };
 
     //Empleado e, char categoria, Nomina nomina
