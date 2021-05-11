@@ -249,7 +249,7 @@ public class registroUsuario extends javax.swing.JDialog {
         } else if (!String.valueOf(campoNif.getText().charAt(8)).matches("[a-zA-Z]")) {
             JOptionPane.showMessageDialog(this, "El ultimo dígito del NIF debe de ser una letra." ,"Error: El ultimo digito debe ser una letra",WARNING_MESSAGE);
             evt.consume();
-        } else if (UsuarioDAO.comprobarNIF(NIF) == true) {
+        } else if (UsuarioDAO.comprobarNIF(campoNif.getText()) == true) {
             JOptionPane.showMessageDialog(this, "El NIF ya está en uso." ,"Error: NIF repetido.",WARNING_MESSAGE);
             evt.consume();
         }else {
