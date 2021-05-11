@@ -36,23 +36,22 @@ public class Usuario {
     // Valores válidos: Cualquier numero entero | Valores inválidos: | Otras restricciones: No puede repetirse y solo pueden haber números enteros.
     private String email;   
     // Valores válidos: Cualquier carácter | Valores inválidos: Carácteres especiales exceptuando la arroba (@) | Otras restricciones: Tiene que contener una arroba(@).
-    // Los usuarios pueden tener muchos bonos
-    private int idBono;
-    
-    
+    // Los usuarios pueden tener muchos bonos    
+    private String password;
+    // Valores validos, cualquiera puesto que cuantos mas valores diferentes mas segura es la contraseña.
     
     public Usuario () {
         
     }
     
-    public Usuario (long id, String nombre, String apellidos, String nif, String telefono, String email, int idBono) {
+    public Usuario (long id, String nombre, String apellidos, String nif, String telefono, String email, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nif = nif;
         this.telefono = telefono;
         this.email = email;
-        this.idBono = idBono;
+        this.password = password;
     }
     
      public Usuario (Usuario usu){
@@ -62,15 +61,25 @@ public class Usuario {
         this.nif = usu.nif;
         this.telefono = usu.telefono;
         this.email = usu.email;
-        this.idBono = usu.idBono;
+        this.password = usu.password;
     }
 
-    public int getIdBono() {
-        return idBono;
+    public Usuario(long id, String nombre, String apellidos, String nif, String telefono, String email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nif = nif;
+        this.telefono = telefono;
+        this.email = email;
     }
 
-    public void setIdBono(int idBono) {
-        this.idBono = idBono;
+    public Usuario(String nombreUsuarioInsertado, String apellidoUsuarioInsertado, String nifUsuarioInsertado, String telefonoUsuarioInsertado, String emailUsuarioInsertado, String passwordUsuarioInsertado) {
+        this.nombre = nombreUsuarioInsertado;
+        this.apellidos = apellidoUsuarioInsertado;
+        this.nif = nifUsuarioInsertado;
+        this.telefono = telefonoUsuarioInsertado;
+        this.email = emailUsuarioInsertado;
+        this.password = passwordUsuarioInsertado;
     }
      
     public long getId () {
@@ -119,6 +128,14 @@ public class Usuario {
     
     public void setEmail (String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     public long generarId(){
@@ -290,6 +307,13 @@ public class Usuario {
         } while (u.getTelefono() != telefono);
         introducirEmail();
         
+        String contraseña;
+        System.out.println("Introduce tu contraseña: ");
+        do {
+            in = new Scanner (System.in);
+            contraseña = in.nextLine();
+        } while (u.getPassword()!= contraseña);
+        
         u.guardarUsuario();
         return u;
         
@@ -297,7 +321,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "La ID del usuario es" + id + ", el nombre es " + nombre + "los apellidos son " + apellidos + "\n" +" el NIF es " + nif + " su telefono es " + telefono + " el email es " + email + "\n" + " el id del Bono es " + idBono + '}';
+        return "La ID del usuario es" + id + ", el nombre es " + nombre + "los apellidos son " + apellidos + "\n" +" el NIF es " + nif + " su telefono es " + telefono + " el email es " + email + '}';
     }
     
     /**
@@ -319,7 +343,7 @@ public class Usuario {
      */
  
     public String data() {
-        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.telefono + "|" + this.email + "|" + this.idBono;
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.telefono + "|" + this.email;
     }
 
     /**
@@ -420,7 +444,7 @@ public class Usuario {
                     u.setNif(array[3]);
                     u.setTelefono(array[4]);
                     u.setEmail(array[5]);
-                    u.setIdBono(Integer.parseInt(array[6]));
+                    u.setPassword(array[6]);
                     ret.add(u);
                 }
             } catch (IOException i) {
@@ -651,7 +675,6 @@ public class Usuario {
                         u.setNif(array[3]);
                         u.setTelefono(array[4]);
                         u.setEmail(array[5]);
-                        u.setIdBono(Integer.parseInt(array[6]));
                         System.out.println(u);
                         return u;
                     }
