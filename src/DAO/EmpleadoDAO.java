@@ -76,8 +76,7 @@ public class EmpleadoDAO {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                pstmt = conn.prepareStatement("INSERT INTO Empleado VALUES (?,?,?,?,?,?,?,?)");
-                long id = e.getId();
+                pstmt = conn.prepareStatement("INSERT INTO Empleado (nombre, apellido, nif, direccion, telefono, idFranquicia, idNonima) VALUES (?, ?, ?, ?, ?, ?, ?);");
                 String nombre = e.getNombre();
                 String apellido = e.getApellidos();
                 String nif = e.getNif();
@@ -85,14 +84,13 @@ public class EmpleadoDAO {
                 String telefono = e.getTelefono();
                 long idFranquicia = e.getIdfranquicia();
                 long idNomina = e.getIdnomina();
-                pstmt.setLong(1, id);
-                pstmt.setString(2, nombre);
-                pstmt.setString(3, apellido);
-                pstmt.setString(4, nif);
-                pstmt.setString(5, direccion);
-                pstmt.setString(6, telefono);
-                pstmt.setLong(7, idFranquicia);
-                pstmt.setLong(8, idNomina);
+                pstmt.setString(1, nombre);
+                pstmt.setString(2, apellido);
+                pstmt.setString(3, nif);
+                pstmt.setString(4, direccion);
+                pstmt.setString(5, telefono);
+                pstmt.setLong(6, idFranquicia);
+                pstmt.setLong(7, idNomina);
                 n = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
@@ -269,5 +267,41 @@ public class EmpleadoDAO {
         }
         
     return e;}
+    
+    public static boolean existeEmpleadoConID(long idEmpleado){
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE idEmpleado = '" + idEmpleado +"'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    int id = prs.getInt("idEmpleado");
+                    if (id == idEmpleado) {
+                        return true;
+                    }
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return false;}
     
 }
