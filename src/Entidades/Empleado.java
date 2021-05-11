@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import DAO.EmpleadoDAO;
 import java.io.*;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -141,6 +142,16 @@ public class Empleado implements Serializable {
         this.idnomina = idnomina;
     }
     
+        public Empleado(String nombre, String apellidos, String nif, String direccion, String telefono, long idfranquicia, long idnomina){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nif = nif;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.idfranquicia = idfranquicia;
+        this.idnomina = idnomina;
+    }
+    
     /**
      * Recorre el array con todos los empleados y la id para el siguiente
      * empleado
@@ -166,6 +177,7 @@ public class Empleado implements Serializable {
      */
     public boolean validarNombre(String nombre) {
         //Comprueba si el String esta vacio
+        this.nombre = nombre;
         if (nombre.isEmpty()) {
             System.out.println("No puede estar vacio");
             //Comprueba si el String contiene algún numero
@@ -857,5 +869,26 @@ public class Empleado implements Serializable {
         }
         return e;
     }
-
+    
+    public boolean validarIdEmpleado(){
+        if (this.id > 0 && !EmpleadoDAO.existeEmpleadoConID(this.id)) {
+            return false;
+        }
+    return true;}
+    
+    public int validarEmpleado(){
+        ArrayList<Empleado> empleados = EmpleadoDAO.todosEmpleados();
+        if (!this.validarNombre(this.nombre)){
+            return 2;
+        } else if (!this.validarApellidos(this.apellidos)){
+            return 3;
+        } else if (!this.validarNIF(this.nif, empleados)){
+            return 4;
+        } else if (!this.validarDireccion(this.direccion)){
+            return 5;
+        } else if (!this.validarTelefono(this.telefono)){
+            return 6;
+        }
+    return 0;}
+    
 }
