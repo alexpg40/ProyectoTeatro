@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 public class UsuarioDAO {
 
@@ -407,4 +409,72 @@ public class UsuarioDAO {
         return false;
     }
 
+     public static boolean loggearUsuario (String email, String password) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT password FROM usuario WHERE email = ?");
+                pstmt.setString(1, String.valueOf(email));
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    String pwdRecuperada = prs.getString("password");
+                    if (password.equals(pwdRecuperada)){
+                        return true;
+                    }
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+     
+     public static Usuario selecionarActual(String email) {
+        Usuario usuario = null;
+
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT * FROM usuario WHERE email = ?");
+                pstmt.setString(1, String.valueOf(email));
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    String nombreUsuario = prs.getString("nombre");
+                    String apellidoUsuario = prs.getString("apellido");
+                    String NIF = prs.getString("nif");
+                    String telefono = prs.getString("telefono");
+                    String emailRecuperado = prs.getString("email");
+                    String password = prs.getString("password");
+                    usuario = new Usuario(nombreUsuario, apellidoUsuario, NIF, telefono, emailRecuperado, password);
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
+    }
 }
