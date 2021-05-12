@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
@@ -278,6 +281,22 @@ public class Utilidades {
     public static <T> void leerArrayList(ArrayList<T> array) {
         for (T t : array) {
             System.out.println(t);
+        }
+    }
+    
+    public static String getMD5(String text) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(text.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 }
