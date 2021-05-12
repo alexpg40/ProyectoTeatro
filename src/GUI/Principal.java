@@ -5,6 +5,11 @@
  */
 package GUI;
 
+import DAO.UsuarioDAO;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+
 /**
  *
  * @author DAM112
@@ -30,9 +35,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        campoContrasena = new javax.swing.JPasswordField();
         btnAccesoUsuario = new javax.swing.JButton();
         btnRegistroUsuario = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -51,13 +56,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña: ");
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        campoContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                campoContrasenaActionPerformed(evt);
             }
         });
 
         btnAccesoUsuario.setText("Acceder");
+        btnAccesoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAccesoUsuarioMouseClicked(evt);
+            }
+        });
         btnAccesoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAccesoUsuarioActionPerformed(evt);
@@ -101,7 +111,7 @@ public class Principal extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -110,7 +120,7 @@ public class Principal extends javax.swing.JFrame {
                                                 .addComponent(btnAccesoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnRegistroUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(jPasswordField1))))))
+                                            .addComponent(campoContrasena))))))
                         .addGap(0, 39, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -125,11 +135,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(campoEmail))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
+                    .addComponent(campoContrasena))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAccesoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,9 +166,9 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void campoContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoContrasenaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_campoContrasenaActionPerformed
 
     private void btnAccesoEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccesoEmpleadoMouseClicked
 
@@ -177,6 +187,16 @@ public class Principal extends javax.swing.JFrame {
     private void btnAccesoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAccesoUsuarioActionPerformed
+   
+    private void btnAccesoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioMouseClicked
+        if (UsuarioDAO.loggearUsuario(campoEmail.getText(), campoContrasena.getText()) == true){
+            panelUsuario pu = new panelUsuario(campoEmail.getText(), campoContrasena.getText());
+            pu.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "La contraseña es incorrecta." ,"Error: Contraseña incorrecta.",WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAccesoUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -217,12 +237,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnAccesoEmpleado;
     private javax.swing.JButton btnAccesoUsuario;
     private javax.swing.JButton btnRegistroUsuario;
+    private javax.swing.JPasswordField campoContrasena;
+    private javax.swing.JTextField campoEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
