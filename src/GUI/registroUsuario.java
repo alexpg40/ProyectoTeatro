@@ -285,7 +285,7 @@ public class registroUsuario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "El campo Contraseña tiene que tener una longitud de al menos 5 carácteres." ,"Error: La contraseña no tiene una longitud adecuada..",WARNING_MESSAGE);
             evt.consume();
         } else {
-           Password = campoContrasena.getText();
+           Password = Utilidades.getMD5(new String ((campoContrasena.getPassword())));
         }
         if (Nombre != null && Apellido != null && NIF != null && Telefono != null && Email != null && Password != null) {
             if (JOptionPane.showConfirmDialog(this, "Nombre introducido: " + Nombre + "\n" + "Apellido introducido: " + Apellido + "\n" + "NIF introducido: " + NIF + "\n" + "Telefono introducido: " + Telefono + "\n" + "Email introducido: " + Email) == 0) {
