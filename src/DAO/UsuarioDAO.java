@@ -120,7 +120,7 @@ public class UsuarioDAO {
                 String email = u.getEmail();
                 String password = u.getPassword();
 
-                String sql = "INSERT INTO usuario(nombre, apellido, nif, telefono, email, password)" + "\n"
+                String sql = "INSERT INTO Usuario(nombre, apellido, nif, telefono, email, password)" + "\n"
                         + "VALUES('" + nombre + "','" + apellido + "','" + nif + "','" + telefono + "','" + email + "','" + password + "');";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
@@ -353,7 +353,7 @@ public class UsuarioDAO {
             try {
                 String emailRecuperado = null;
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT email FROM usuario");
+                pstmt = conn.prepareStatement("SELECT email FROM Usuario");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()){
                     emailRecuperado = prs.getString("email");
@@ -385,7 +385,7 @@ public class UsuarioDAO {
             try {
                 String nifRecuperado = null;
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT nif FROM usuario");
+                pstmt = conn.prepareStatement("SELECT nif FROM Usuario");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()){
                     nifRecuperado = prs.getString("nif");
@@ -416,7 +416,7 @@ public class UsuarioDAO {
             }
             try {
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT nombre, apellido, nif, telefono, email, password FROM usuario WHERE email = ?");
+                pstmt = conn.prepareStatement("SELECT nombre, apellido, nif, telefono, email, password FROM Usuario WHERE email = ?");
                 pstmt.setString(1, String.valueOf(usu.getEmail()));
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
@@ -457,7 +457,7 @@ public class UsuarioDAO {
             }
             try {
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT * FROM usuario WHERE email = ?");
+                pstmt = conn.prepareStatement("SELECT * FROM Usuario WHERE email = ?");
                 pstmt.setString(1, String.valueOf(email));
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
