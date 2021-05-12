@@ -22,15 +22,23 @@ public class panelUsuario extends javax.swing.JFrame {
     
     private String email;
     private String contrasena;
+    private String nombre;
+    private String apellido;
+    private String nif;
+    private String telefono;
     
     public panelUsuario() {
         initComponents();
     }
 
-    public panelUsuario(String email, String contrasena) {
+    public panelUsuario(String email, String contrasena, String nombre, String apellido, String nif, String telefono) {
         initComponents();
         this.email = email;
         this.contrasena = contrasena;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nif = nif;
+        this.telefono = telefono;
     }
 
     public String getEmail() {
@@ -48,7 +56,44 @@ public class panelUsuario extends javax.swing.JFrame {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     
+    public Usuario getUsuarioActual(String emailUsuarioActual) {
+        Usuario usuario = UsuarioDAO.selecionarActual(emailUsuarioActual);
+        return usuario;
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,6 +105,7 @@ public class panelUsuario extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -67,6 +113,14 @@ public class panelUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        jPanel2.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jPanel2ComponentAdded(evt);
+            }
+        });
+
+        jLabel1.setText("Hola, " + this.nombre);
 
         jButton1.setText("jButton1");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -80,16 +134,23 @@ public class panelUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(jButton1)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton1)))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(100, 100, 100)
                 .addComponent(jButton1)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comprar bono", jPanel2);
@@ -148,9 +209,12 @@ public class panelUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPanel2ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel2ComponentAdded
+        
+    }//GEN-LAST:event_jPanel2ComponentAdded
+
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Usuario usuarioActual = UsuarioDAO.selecionarActual(email);
-        JOptionPane.showMessageDialog(null, usuarioActual.getNombre() ,"Error: prueba",WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Hola, " + this.getNombre() ,"Error: Rellene los campos",WARNING_MESSAGE);
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -190,10 +254,14 @@ public class panelUsuario extends javax.swing.JFrame {
     }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
+
+
+
 }
