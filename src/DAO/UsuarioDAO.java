@@ -409,20 +409,26 @@ public class UsuarioDAO {
         return false;
     }
 
-     public static boolean loggearUsuario (String email, String password) {
+     public static boolean loggearUsuario (Usuario usu) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
             try {
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT password FROM usuario WHERE email = ?");
-                pstmt.setString(1, String.valueOf(email));
+                pstmt = conn.prepareStatement("SELECT nombre, apellido, nif, telefono, email, password FROM usuario WHERE email = ?");
+                pstmt.setString(1, String.valueOf(usu.getEmail()));
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
-                    String pwdRecuperada = prs.getString("password");
-                    if (password.equals(pwdRecuperada)){
+
+                    if (usu.getPassword().equals(prs.getString("password"))){
+                        usu.setNombre(prs.getString("nombre"));
+                        usu.setApellidos(prs.getString("apellido"));
+                        usu.setNif(prs.getString("nif"));
+                        usu.setTelefono("telefono");
                         return true;
+                    } else {
+                        return false;
                     }
                 }
                 prs.close();
@@ -430,6 +436,7 @@ public class UsuarioDAO {
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             } finally {
                 if (conn != null) {
                     ConexionBD.cerrarConexion();
