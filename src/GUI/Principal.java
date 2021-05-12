@@ -192,7 +192,7 @@ public class Principal extends javax.swing.JFrame {
    
     private void btnAccesoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioMouseClicked
        Usuario usuario = new Usuario();
-        
+       Usuario aux = new Usuario();
         String contrasena = new String (campoContrasena.getPassword());
         
         if (campoEmail.getText().isEmpty() || contrasena.isEmpty()){
@@ -202,9 +202,17 @@ public class Principal extends javax.swing.JFrame {
             
             usuario.setEmail(campoEmail.getText());
             usuario.setPassword(ccmd);
+            aux.setNombre(UsuarioDAO.selecionarActual(campoEmail.getText()).getNombre());
+            usuario.setNombre(aux.getNombre());
+            aux.setApellidos(UsuarioDAO.selecionarActual(campoEmail.getText()).getApellidos());
+            usuario.setApellidos(aux.getApellidos());
+            aux.setNif(UsuarioDAO.selecionarActual(campoEmail.getText()).getNif());
+            usuario.setNif(aux.getNif());
+            aux.setTelefono(UsuarioDAO.selecionarActual(campoEmail.getText()).getTelefono());
+            usuario.setTelefono(aux.getTelefono());
             
             if (UsuarioDAO.loggearUsuario(usuario)) {
-                panelUsuario pu = new panelUsuario(usuario.getEmail(), usuario.getPassword());
+                panelUsuario pu = new panelUsuario(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellidos(), usuario.getNif(), usuario.getTelefono());
                 pu.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Esa combinación de usuario y contraseña no existe." ,"Error: Rellene los campos",WARNING_MESSAGE);
