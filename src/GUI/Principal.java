@@ -6,6 +6,8 @@
 package GUI;
 
 import DAO.UsuarioDAO;
+import Entidades.Usuario;
+import Entidades.Utilidades;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
@@ -189,12 +191,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccesoUsuarioActionPerformed
    
     private void btnAccesoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioMouseClicked
-        if (UsuarioDAO.loggearUsuario(campoEmail.getText(), campoContrasena.getText()) == true){
-            panelUsuario pu = new panelUsuario(campoEmail.getText(), campoContrasena.getText());
-            pu.setVisible(true);
-            this.setVisible(false);
+       Usuario usuario = new Usuario();
+        
+        String contrasena = new String (campoContrasena.getPassword());
+        
+        if (campoEmail.getText().isEmpty() || contrasena.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Rellene todos los campos." ,"Error: Rellene los campos",WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "La contraseña es incorrecta." ,"Error: Contraseña incorrecta.",WARNING_MESSAGE);
+            String ccmd = Utilidades.getMD5(contrasena);
+            
+            usuario.setEmail(campoEmail.getText());
+            usuario.setPassword(ccmd);
+            
+            if (UsuarioDAO.loggearUsuario(usuario)) {
+                panelUsuario pu = new panelUsuario(usuario.getEmail(), usuario.getPassword());
+                pu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Esa combinación de usuario y contraseña no existe." ,"Error: Rellene los campos",WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnAccesoUsuarioMouseClicked
 
