@@ -298,7 +298,7 @@ public class registroUsuario extends javax.swing.JDialog {
                 u.setPassword(Password);
                 UsuarioDAO.insertarUsuario(u);
                 JOptionPane.showMessageDialog(this, "El registro se ha realizado con exito.", "Exito", INFORMATION_MESSAGE);
-
+                
                 this.setVisible(false);
             };
         }        
