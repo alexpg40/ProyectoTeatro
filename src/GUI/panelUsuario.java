@@ -119,7 +119,6 @@ public class panelUsuario extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         checkboxNombre = new javax.swing.JCheckBox();
         checkboxApellidos = new javax.swing.JCheckBox();
-        checkboxNif = new javax.swing.JCheckBox();
         checkboxTelefono = new javax.swing.JCheckBox();
         checkboxEmail = new javax.swing.JCheckBox();
         campoNombre = new javax.swing.JTextField();
@@ -174,13 +173,6 @@ public class panelUsuario extends javax.swing.JFrame {
         checkboxApellidos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 checkboxApellidosStateChanged(evt);
-            }
-        });
-
-        checkboxNif.setText("Editable");
-        checkboxNif.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                checkboxNifStateChanged(evt);
             }
         });
 
@@ -279,7 +271,6 @@ public class panelUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkboxNombre)
                             .addComponent(checkboxApellidos)
-                            .addComponent(checkboxNif)
                             .addComponent(checkboxTelefono)
                             .addComponent(checkboxEmail))
                         .addContainerGap(12, Short.MAX_VALUE))
@@ -309,12 +300,10 @@ public class panelUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(checkboxApellidos)
                     .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkboxNif)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(campoNif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoNif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkboxTelefono)
@@ -454,14 +443,6 @@ public class panelUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkboxApellidosStateChanged
 
-    private void checkboxNifStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxNifStateChanged
-        if (checkboxNif.isSelected()) {
-            campoNif.setEditable(true);
-        } else {
-            campoNif.setEditable(false);
-        }
-    }//GEN-LAST:event_checkboxNifStateChanged
-
     private void checkboxTelefonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxTelefonoStateChanged
         if (checkboxTelefono.isSelected()) {
             campoTelefono.setEditable(true);
@@ -480,83 +461,74 @@ public class panelUsuario extends javax.swing.JFrame {
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         String Nombre = this.nombre,
-               Apellido = this.apellido, 
-               NIF = this.nif, 
-               Telefono = this.telefono, 
-               Email = this.email;
-        
+                Apellido = this.apellido,
+                Telefono = this.telefono,
+                Email = this.email;
+
         String nuevoNombre = campoNombre.getText(),
-               nuevoApellido = campoApellidos.getText(), 
-               nuevoNIF = campoNif.getText(), 
-               nuevoTelefono = campoTelefono.getText(), 
-               nuevoEmail = campoEmail.getText();
-        
-        if (campoNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar." ,"Error: Introduzca los datos necesarios.",WARNING_MESSAGE);
+                nuevoApellido = campoApellidos.getText(),
+                nuevoTelefono = campoTelefono.getText(),
+                nuevoEmail = campoEmail.getText();
+
+        if (JOptionPane.showConfirmDialog(this, "Nuevo nombre introducido: " + nuevoNombre + "\n"
+                + "Nuevo apellido introducido: " + nuevoApellido + "\n"
+                + "\n" + "Nuevo telefono introducido: " + nuevoTelefono + "\n" + "Nuevo email introducido: " + nuevoEmail) == 0) {
+            
+        if (campoNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
             evt.consume();
-        } else if (campoNombre.getText().length() > 45){
-            JOptionPane.showMessageDialog(this, "El campo Nombre es mayor de 45 carácteres." ,"Error: El Nombre es muy largo.",WARNING_MESSAGE);
+        } else if (campoNombre.getText().length() > 45) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre es mayor de 45 carácteres.", "Error: El Nombre es muy largo.", WARNING_MESSAGE);
             evt.consume();
         } else if (campoNombre.getText().matches(".*\\d.*")) {
-            JOptionPane.showMessageDialog(this, "El campo Nombre no puede tener numeros." ,"Error: El nombre tiene letras.",WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo Nombre no puede tener numeros.", "Error: El nombre tiene letras.", WARNING_MESSAGE);
             evt.consume();
         } else if (!nuevoNombre.equals(Nombre)) {
-            UsuarioDAO.actualizarNombreUsuario(Nombre, this.nif, this.email, this.contrasena);
+            UsuarioDAO.actualizarNombreUsuario(nuevoNombre, this.nif, this.email, this.contrasena);
         }
-        
+
         if (campoApellidos.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Apellido está sin rellenar." ,"Error: Introduzca los datos necesarios.",WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo Apellido está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
             evt.consume();
         } else if (campoApellidos.getText().length() > 45) {
-            JOptionPane.showMessageDialog(this, "El campo Apellido es mayor de 45 carácteres." ,"Error: El apellido es muy largo.",WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo Apellido es mayor de 45 carácteres.", "Error: El apellido es muy largo.", WARNING_MESSAGE);
             evt.consume();
         } else if (campoApellidos.getText().matches(".*\\d.*")) {
-            JOptionPane.showMessageDialog(this, "El campo Apellido no puede tener numeros." ,"Error: El apellido tiene numeros.",WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo Apellido no puede tener numeros.", "Error: El apellido tiene numeros.", WARNING_MESSAGE);
             evt.consume();
-        } else {
-            Apellido = campoApellidos.getText();
+        } else if (!nuevoApellido.equals(Apellido)) {
+            UsuarioDAO.actualizarApellidoUsuario(nuevoApellido, this.nif, this.email, this.contrasena);
         }
-        
-        if (campoNif.getText().length() != 9) {
-            JOptionPane.showMessageDialog(this, "El campo NIF tiene que tener una longitud de 9 carácteres." ,"Error: El NIF no tiene una longitud adecuada..",WARNING_MESSAGE);
-            evt.consume();
-        } else if (!Utilidades.isNumeric(campoNif.getText().substring(0, 8))) {
-            JOptionPane.showMessageDialog(this, "Solo el ultimo dígito del NIF puede ser una letra." ,"Error: Solo ultimo digito puede ser letra",WARNING_MESSAGE);
-            evt.consume();
-        } else if (!String.valueOf(campoNif.getText().charAt(8)).matches("[a-zA-Z]")) {
-            JOptionPane.showMessageDialog(this, "El ultimo dígito del NIF debe de ser una letra." ,"Error: El ultimo digito debe ser una letra",WARNING_MESSAGE);
-            evt.consume();
-        } else if (UsuarioDAO.comprobarRepetidoNIFExcepto(Email, NIF)) {
-            JOptionPane.showMessageDialog(this, "El NIF ya está en uso." ,"Error: NIF repetido.",WARNING_MESSAGE);
-            evt.consume();
-        }else {
-            NIF = campoNif.getText();
-        }
-        
+
         if (campoTelefono.getText().length() != 9) {
-            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que tener una longitud de 9 carácteres." ,"Error: El NIF no tiene una longitud adecuada..",WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que tener una longitud de 9 carácteres.", "Error: El NIF no tiene una longitud adecuada..", WARNING_MESSAGE);
             evt.consume();
-        } else if (!Utilidades.isNumeric(campoTelefono.getText().substring(0,8))){
-            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que ser solo numeros." ,"Error: El Telefono tiene letras.",WARNING_MESSAGE);
+        } else if (!Utilidades.isNumeric(campoTelefono.getText().substring(0, 8))) {
+            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que ser solo numeros.", "Error: El Telefono tiene letras.", WARNING_MESSAGE);
             evt.consume();
-        } else {
-            Telefono = campoTelefono.getText();
+        } else if (!nuevoTelefono.equals(Telefono)) {
+            UsuarioDAO.actualizarTelefonoUsuario(nuevoTelefono, this.nif, this.email, this.contrasena);
         }
-        
-        Pattern patron = Pattern.compile("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))+");
-        Matcher correo = patron.matcher(campoEmail.getText());
-        
+
         if (campoEmail.getText().isEmpty()) {
-          JOptionPane.showMessageDialog(this, "El campo Email no está introducido" ,"Error: El Email está vacío.",WARNING_MESSAGE);
-          evt.consume();
-        } else if (UsuarioDAO.comprobarCorreoRepetidoExcepto(Email, Nombre)) {
-            JOptionPane.showMessageDialog(this, "El email ya existe." ,"Error: El Email ya existe.",WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo Email no está introducido", "Error: El Email está vacío.", WARNING_MESSAGE);
             evt.consume();
-        } else if (correo.find() == true){
-            Email = campoEmail.getText();
+        } else if (UsuarioDAO.comprobarCorreoRepetidoExcepto(nuevoEmail, Nombre)) {
+            JOptionPane.showMessageDialog(this, "El email ya existe.", "Error: El Email ya existe.", WARNING_MESSAGE);
+            evt.consume();
+           
         } else {
+            UsuarioDAO.actualizarEmailUsuario(this.getNif(),nuevoEmail, Email, this.contrasena);
             evt.consume();
+            Principal p = new Principal();
+            
+            
+            
+            p.setVisible(true);
+            this.setVisible(false);
         }
+}
+
     }//GEN-LAST:event_btnModificarMouseClicked
 
     /**
@@ -603,7 +575,6 @@ public class panelUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JCheckBox checkboxApellidos;
     private javax.swing.JCheckBox checkboxEmail;
-    private javax.swing.JCheckBox checkboxNif;
     private javax.swing.JCheckBox checkboxNombre;
     private javax.swing.JCheckBox checkboxTelefono;
     private javax.swing.JButton jButton1;

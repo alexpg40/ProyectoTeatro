@@ -92,7 +92,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="checkboxNombre" min="-2" max="-2" attributes="0"/>
                                   <Component id="checkboxApellidos" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkboxNif" min="-2" max="-2" attributes="0"/>
                                   <Component id="checkboxTelefono" min="-2" max="-2" attributes="0"/>
                                   <Component id="checkboxEmail" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -131,13 +130,10 @@
                           <Component id="checkboxApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="checkboxNif" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="campoNif" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="campoNif" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -220,14 +216,6 @@
               </Properties>
               <Events>
                 <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="checkboxApellidosStateChanged"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="checkboxNif">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editable"/>
-              </Properties>
-              <Events>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="checkboxNifStateChanged"/>
               </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkboxTelefono">
