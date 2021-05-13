@@ -177,8 +177,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccesoEmpleadoMouseClicked
 
     private void btnAccesoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoEmpleadoActionPerformed
-        AccesoEmpleados ac = new AccesoEmpleados();
-        ac.setVisible(true);
+        // AccesoEmpleados ac = new AccesoEmpleados();
+        // ac.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAccesoEmpleadoActionPerformed
 
@@ -195,7 +195,7 @@ public class Principal extends javax.swing.JFrame {
     private void btnAccesoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioMouseClicked
        Usuario usuario = new Usuario();
        Usuario aux = new Usuario();
-        String contrasena = new String (campoContrasena.getPassword());
+       String contrasena = new String (campoContrasena.getPassword());
         
         if (campoEmail.getText().isEmpty() || contrasena.isEmpty()){
             JOptionPane.showMessageDialog(this, "Rellene todos los campos." ,"Error: Rellene los campos",WARNING_MESSAGE);
