@@ -7,7 +7,11 @@ package GUI;
 
 import DAO.UsuarioDAO;
 import Entidades.Usuario;
+import Entidades.Utilidades;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
@@ -19,26 +23,25 @@ public class panelUsuario extends javax.swing.JFrame {
     /**
      * Creates new form panelUsuario
      */
-    
     private String email;
     private String contrasena;
     private String nombre;
     private String apellido;
     private String nif;
     private String telefono;
-    
+
     public panelUsuario() {
         initComponents();
     }
 
     public panelUsuario(String email, String contrasena, String nombre, String apellido, String nif, String telefono) {
-        initComponents();
         this.email = email;
         this.contrasena = contrasena;
         this.nombre = nombre;
         this.apellido = apellido;
         this.nif = nif;
         this.telefono = telefono;
+        initComponents();
     }
 
     public String getEmail() {
@@ -88,12 +91,12 @@ public class panelUsuario extends javax.swing.JFrame {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
+
     public Usuario getUsuarioActual(String emailUsuarioActual) {
         Usuario usuario = UsuarioDAO.selecionarActual(emailUsuarioActual);
         return usuario;
     }
-        
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,13 +106,36 @@ public class panelUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        checkboxNombre = new javax.swing.JCheckBox();
+        checkboxApellidos = new javax.swing.JCheckBox();
+        checkboxNif = new javax.swing.JCheckBox();
+        checkboxTelefono = new javax.swing.JCheckBox();
+        checkboxEmail = new javax.swing.JCheckBox();
+        campoNombre = new javax.swing.JTextField();
+        campoApellidos = new javax.swing.JTextField();
+        campoNif = new javax.swing.JTextField();
+        campoTelefono = new javax.swing.JTextField();
+        campoEmail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+
+        jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -120,12 +146,111 @@ public class panelUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Hola, " + this.nombre);
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Tus datos: ");
+
+        jLabel3.setText("Nombre: ");
+
+        jLabel4.setText("Apellidos:");
+
+        jLabel5.setText("NIF:");
+
+        jLabel6.setText("Telefono:");
+
+        jLabel7.setText("Email:");
+
+        checkboxNombre.setText("Editable");
+        checkboxNombre.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                checkboxNombreItemStateChanged(evt);
+            }
+        });
+
+        checkboxApellidos.setText("Editable");
+        checkboxApellidos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                checkboxApellidosStateChanged(evt);
+            }
+        });
+
+        checkboxNif.setText("Editable");
+        checkboxNif.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                checkboxNifStateChanged(evt);
+            }
+        });
+
+        checkboxTelefono.setText("Editable");
+        checkboxTelefono.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                checkboxTelefonoStateChanged(evt);
+            }
+        });
+        checkboxTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                checkboxTelefonoMouseClicked(evt);
+            }
+        });
+
+        checkboxEmail.setText("Editable");
+        checkboxEmail.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                checkboxEmailStateChanged(evt);
+            }
+        });
+        checkboxEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkboxEmailMouseClicked(evt);
+            }
+        });
+
+        campoNombre.setEnabled(true);
+        campoNombre.setEditable(false);
+        campoNombre.setText(this.getNombre());
+
+        campoApellidos.setEditable(false);
+        campoApellidos.setText(this.getApellido());
+
+        campoNif.setEditable(false);
+        campoNif.setText(this.getNif());
+        campoNif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNifActionPerformed(evt);
+            }
+        });
+
+        campoTelefono.setEditable(false);
+        campoTelefono.setText(this.getTelefono());
+
+        campoEmail.setEditable(false);
+        campoEmail.setText(this.getEmail());
+        campoEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoEmailActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Cambiar contraseña");
+
+        btnModificar.setText("Modificar campos");
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
+        });
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
 
@@ -133,37 +258,101 @@ public class panelUsuario extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(4, 4, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(campoApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                                    .addComponent(campoNombre))
+                                .addComponent(campoNif, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkboxNombre)
+                            .addComponent(checkboxApellidos)
+                            .addComponent(checkboxNif)
+                            .addComponent(checkboxTelefono)
+                            .addComponent(checkboxEmail))
+                        .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jButton1)))
-                .addContainerGap(292, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(108, 108, 108)
+                        .addComponent(jButton2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(100, 100, 100)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton2))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkboxNombre)
+                    .addComponent(jLabel3)
+                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(checkboxApellidos)
+                    .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkboxNif)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoNif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkboxTelefono)
+                    .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkboxEmail))
+                .addGap(18, 18, 18)
+                .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Comprar bono", jPanel2);
+        jTabbedPane1.addTab("Inicio", jPanel2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 342, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Ver mis bonos", jPanel3);
@@ -172,11 +361,11 @@ public class panelUsuario extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 342, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Ver franquicias", jPanel4);
@@ -185,14 +374,27 @@ public class panelUsuario extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 342, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Presentar reclamación", jPanel5);
+        jTabbedPane1.addTab("Comprar bonos", jPanel5);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 536, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 342, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Poner reclamación", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,12 +412,151 @@ public class panelUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel2ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel2ComponentAdded
-        
+
     }//GEN-LAST:event_jPanel2ComponentAdded
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        JOptionPane.showMessageDialog(this, "Hola, " + this.getNombre() ,"Error: Rellene los campos",WARNING_MESSAGE);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void campoNifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNifActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNifActionPerformed
+
+    private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoEmailActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void checkboxTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxTelefonoMouseClicked
+    }//GEN-LAST:event_checkboxTelefonoMouseClicked
+
+    private void checkboxEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxEmailMouseClicked
+    }//GEN-LAST:event_checkboxEmailMouseClicked
+
+    private void checkboxNombreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkboxNombreItemStateChanged
+        if (checkboxNombre.isSelected()) {
+            campoNombre.setEditable(true);
+        } else {
+            campoNombre.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxNombreItemStateChanged
+
+    private void checkboxApellidosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxApellidosStateChanged
+        if (checkboxApellidos.isSelected()) {
+            campoApellidos.setEditable(true);
+        } else {
+            campoApellidos.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxApellidosStateChanged
+
+    private void checkboxNifStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxNifStateChanged
+        if (checkboxNif.isSelected()) {
+            campoNif.setEditable(true);
+        } else {
+            campoNif.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxNifStateChanged
+
+    private void checkboxTelefonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxTelefonoStateChanged
+        if (checkboxTelefono.isSelected()) {
+            campoTelefono.setEditable(true);
+        } else {
+            campoTelefono.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxTelefonoStateChanged
+
+    private void checkboxEmailStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxEmailStateChanged
+        if (checkboxEmail.isSelected()) {
+            campoEmail.setEditable(true);
+        } else {
+            campoEmail.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxEmailStateChanged
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        String Nombre = this.nombre,
+               Apellido = this.apellido, 
+               NIF = this.nif, 
+               Telefono = this.telefono, 
+               Email = this.email;
+        
+        String nuevoNombre = campoNombre.getText(),
+               nuevoApellido = campoApellidos.getText(), 
+               nuevoNIF = campoNif.getText(), 
+               nuevoTelefono = campoTelefono.getText(), 
+               nuevoEmail = campoEmail.getText();
+        
+        if (campoNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar." ,"Error: Introduzca los datos necesarios.",WARNING_MESSAGE);
+            evt.consume();
+        } else if (campoNombre.getText().length() > 45){
+            JOptionPane.showMessageDialog(this, "El campo Nombre es mayor de 45 carácteres." ,"Error: El Nombre es muy largo.",WARNING_MESSAGE);
+            evt.consume();
+        } else if (campoNombre.getText().matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre no puede tener numeros." ,"Error: El nombre tiene letras.",WARNING_MESSAGE);
+            evt.consume();
+        } else if (!nuevoNombre.equals(Nombre)) {
+            UsuarioDAO.actualizarNombreUsuario(Nombre, this.nif, this.email, this.contrasena);
+        }
+        
+        if (campoApellidos.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Apellido está sin rellenar." ,"Error: Introduzca los datos necesarios.",WARNING_MESSAGE);
+            evt.consume();
+        } else if (campoApellidos.getText().length() > 45) {
+            JOptionPane.showMessageDialog(this, "El campo Apellido es mayor de 45 carácteres." ,"Error: El apellido es muy largo.",WARNING_MESSAGE);
+            evt.consume();
+        } else if (campoApellidos.getText().matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this, "El campo Apellido no puede tener numeros." ,"Error: El apellido tiene numeros.",WARNING_MESSAGE);
+            evt.consume();
+        } else {
+            Apellido = campoApellidos.getText();
+        }
+        
+        if (campoNif.getText().length() != 9) {
+            JOptionPane.showMessageDialog(this, "El campo NIF tiene que tener una longitud de 9 carácteres." ,"Error: El NIF no tiene una longitud adecuada..",WARNING_MESSAGE);
+            evt.consume();
+        } else if (!Utilidades.isNumeric(campoNif.getText().substring(0, 8))) {
+            JOptionPane.showMessageDialog(this, "Solo el ultimo dígito del NIF puede ser una letra." ,"Error: Solo ultimo digito puede ser letra",WARNING_MESSAGE);
+            evt.consume();
+        } else if (!String.valueOf(campoNif.getText().charAt(8)).matches("[a-zA-Z]")) {
+            JOptionPane.showMessageDialog(this, "El ultimo dígito del NIF debe de ser una letra." ,"Error: El ultimo digito debe ser una letra",WARNING_MESSAGE);
+            evt.consume();
+        } else if (UsuarioDAO.comprobarRepetidoNIFExcepto(Email, NIF)) {
+            JOptionPane.showMessageDialog(this, "El NIF ya está en uso." ,"Error: NIF repetido.",WARNING_MESSAGE);
+            evt.consume();
+        }else {
+            NIF = campoNif.getText();
+        }
+        
+        if (campoTelefono.getText().length() != 9) {
+            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que tener una longitud de 9 carácteres." ,"Error: El NIF no tiene una longitud adecuada..",WARNING_MESSAGE);
+            evt.consume();
+        } else if (!Utilidades.isNumeric(campoTelefono.getText().substring(0,8))){
+            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que ser solo numeros." ,"Error: El Telefono tiene letras.",WARNING_MESSAGE);
+            evt.consume();
+        } else {
+            Telefono = campoTelefono.getText();
+        }
+        
+        Pattern patron = Pattern.compile("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))+");
+        Matcher correo = patron.matcher(campoEmail.getText());
+        
+        if (campoEmail.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(this, "El campo Email no está introducido" ,"Error: El Email está vacío.",WARNING_MESSAGE);
+          evt.consume();
+        } else if (UsuarioDAO.comprobarCorreoRepetidoExcepto(Email, Nombre)) {
+            JOptionPane.showMessageDialog(this, "El email ya existe." ,"Error: El Email ya existe.",WARNING_MESSAGE);
+            evt.consume();
+        } else if (correo.find() == true){
+            Email = campoEmail.getText();
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+         JOptionPane.showMessageDialog(this, this.getTelefono(), "Exito", INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -251,17 +592,36 @@ public class panelUsuario extends javax.swing.JFrame {
             }
         });
 
-    }    
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JTextField campoApellidos;
+    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoNif;
+    private javax.swing.JTextField campoNombre;
+    private javax.swing.JTextField campoTelefono;
+    private javax.swing.JCheckBox checkboxApellidos;
+    private javax.swing.JCheckBox checkboxEmail;
+    private javax.swing.JCheckBox checkboxNif;
+    private javax.swing.JCheckBox checkboxNombre;
+    private javax.swing.JCheckBox checkboxTelefono;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-
-
 
 }
