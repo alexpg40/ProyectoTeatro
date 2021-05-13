@@ -227,6 +227,11 @@ public class panelUsuario extends javax.swing.JFrame {
         });
 
         jButton1.setText("Cambiar contraseña");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         btnModificar.setText("Modificar campos");
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -528,6 +533,12 @@ public class panelUsuario extends javax.swing.JFrame {
 }
 
     }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        cambioContrasenaUsuario ccu = new cambioContrasenaUsuario(this, true);
+        ccu.setLocationRelativeTo(this);
+        ccu.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
