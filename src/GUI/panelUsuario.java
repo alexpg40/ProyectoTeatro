@@ -521,9 +521,7 @@ public class panelUsuario extends javax.swing.JFrame {
             UsuarioDAO.actualizarEmailUsuario(this.getNif(),nuevoEmail, Email, this.contrasena);
             evt.consume();
             Principal p = new Principal();
-            
-            
-            
+            JOptionPane.showMessageDialog(this, "El cambio se ha realizado con exito, vuelva a iniciar sesion por favor.", "Exito", INFORMATION_MESSAGE);
             p.setVisible(true);
             this.setVisible(false);
         }
