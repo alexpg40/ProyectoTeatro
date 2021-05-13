@@ -345,6 +345,59 @@ public class UsuarioDAO {
         }
     }
     
+    public static void actualizarNombreUsuario(String nombre, String NIF, String Correo, String Contrasena){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("UPDATE Usuario SET nombre ='" +  nombre + "' WHERE nif='" + NIF + "' AND correo='" + Correo + "' AND password='" + Contrasena + "'");
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void actualizarUsuario(String nombre, String apellido, String nif, String telefono, String email){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("UPDATE Usuario SET nombre ='" +  nombre + "', apellido ='" + apellido + "', nif ='" + nif +
+                                              "', telefono ='" + telefono + "', email='"+ email  + "' WHERE email='" + email + "'");
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static boolean comprobarCorreo (String correo) {
         try {
             if (conn == null || conn.isClosed()) {
@@ -377,6 +430,38 @@ public class UsuarioDAO {
         return false;
     }
     
+    public static boolean comprobarCorreoRepetidoExcepto (String correo, String nombre) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                String emailRecuperado = null;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT email FROM Usuario WHERE NOT nombre='" + nombre + "'");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()){
+                    emailRecuperado = prs.getString("email");
+                    if (emailRecuperado.equals(correo)){
+                        return true;
+                    }
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public static boolean comprobarNIF (String NIF) {
         try {
             if (conn == null || conn.isClosed()) {
@@ -386,6 +471,38 @@ public class UsuarioDAO {
                 String nifRecuperado = null;
                 PreparedStatement pstmt = null;
                 pstmt = conn.prepareStatement("SELECT nif FROM Usuario");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()){
+                    nifRecuperado = prs.getString("nif");
+                    if (nifRecuperado.equals(NIF)){
+                        return true;
+                    }
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public static boolean comprobarRepetidoNIFExcepto (String Email, String NIF) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                String nifRecuperado = null;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT nif FROM Usuario WHERE NOT email='" + Email + "'");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()){
                     nifRecuperado = prs.getString("nif");
