@@ -177,7 +177,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccesoEmpleadoMouseClicked
 
     private void btnAccesoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoEmpleadoActionPerformed
-        // TODO add your handling code here:
+        AccesoEmpleados ac = new AccesoEmpleados();
+        ac.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAccesoEmpleadoActionPerformed
 
     private void btnRegistroUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroUsuarioMouseClicked
@@ -187,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroUsuarioMouseClicked
 
     private void btnAccesoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnAccesoUsuarioActionPerformed
    
     private void btnAccesoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccesoUsuarioMouseClicked
