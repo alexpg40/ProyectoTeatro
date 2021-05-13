@@ -542,7 +542,7 @@ public class UsuarioDAO {
                         usu.setNombre(prs.getString("nombre"));
                         usu.setApellidos(prs.getString("apellido"));
                         usu.setNif(prs.getString("nif"));
-                        usu.setTelefono("telefono");
+                        usu.setTelefono(prs.getString("telefono"));
                         return true;
                     } else {
                         return false;
