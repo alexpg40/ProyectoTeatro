@@ -352,7 +352,85 @@ public class UsuarioDAO {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                pstmt = conn.prepareStatement("UPDATE Usuario SET nombre ='" +  nombre + "' WHERE nif='" + NIF + "' AND correo='" + Correo + "' AND password='" + Contrasena + "'");
+                pstmt = conn.prepareStatement("UPDATE Usuario SET nombre ='" +  nombre + "' WHERE nif='" + NIF + "' AND email='" + Correo + "' AND password='" + Contrasena + "'");
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void actualizarApellidoUsuario(String apellido, String NIF, String Correo, String Contrasena){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("UPDATE Usuario SET apellido  ='" +  apellido + "' WHERE nif='" + NIF + "' AND email='" + Correo + "' AND password='" + Contrasena + "'");
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void actualizarTelefonoUsuario(String telefono, String NIF, String Correo, String Contrasena){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("UPDATE Usuario SET telefono  ='" +  telefono + "' WHERE nif='" + NIF + "' AND email='" + Correo + "' AND password='" + Contrasena + "'");
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void actualizarEmailUsuario(String NIF, String nuevoCorreo, String viejoCorreo, String Contrasena){
+        PreparedStatement pstmt = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("UPDATE Usuario SET email  ='" +  nuevoCorreo + "' WHERE nif='" + NIF + "' AND email='" + viejoCorreo + "' AND password='" + Contrasena + "'");
                 pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
@@ -438,7 +516,7 @@ public class UsuarioDAO {
             try {
                 String emailRecuperado = null;
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT email FROM Usuario WHERE NOT nombre='" + nombre + "'");
+                pstmt = conn.prepareStatement("SELECT email FROM Usuario WHERE nombre='" + nombre + "'");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()){
                     emailRecuperado = prs.getString("email");
