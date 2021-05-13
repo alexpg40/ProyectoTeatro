@@ -214,6 +214,7 @@ public class Principal extends javax.swing.JFrame {
             if (UsuarioDAO.loggearUsuario(usuario)) {
                 panelUsuario pu = new panelUsuario(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellidos(), usuario.getNif(), usuario.getTelefono());
                 pu.setVisible(true);
+                this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(this, "Esa combinación de usuario y contraseña no existe." ,"Error: Rellene los campos",WARNING_MESSAGE);
             }
