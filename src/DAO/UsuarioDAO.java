@@ -4,6 +4,7 @@ import java.sql.Connection;
 import Entidades.Usuario;
 import ConexionBD.ConexionBD;
 import Entidades.Empleado;
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -602,6 +604,94 @@ public class UsuarioDAO {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+   public static String[][] seleccionarBonosUsuario (String correo) {
+       String[][] bonos = null;
+       try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                ArrayList<String> mes = new ArrayList();
+                ArrayList<String> tipo = new ArrayList();
+                int aux = 0;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT b.mes, b.tipo FROM Bono as b, Usuario as u WHERE u.email='" + correo + "' AND u.idUsuario = b.idUsuario");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()){
+                    aux = prs.getInt("mes");
+                    mes.add(String.valueOf(aux));
+                    tipo.add(prs.getString("tipo"));
+                }
+                
+                String[] mesArray = new String[mes.size()];
+                mesArray = mes.toArray(mesArray);
+                
+                String[] tipoArray = new String[tipo.size()];
+                tipoArray = tipo.toArray(tipoArray);
+                
+                bonos = new String[mes.size()][2];
+                // Iterator it = mes.iterator();   
+                
+                // int iterador = 0;
+                //while (it.hasNext()){
+                //    bonos[iterador][0] = mesArray[iterador];
+                //    bonos[iterador][1] = tipoArray[iterador];
+                //    iterador++;
+                // }
+                
+                for (int i = 0; i < mes.size();i++){
+                    bonos[i][0] = mesArray[i];
+                    bonos[i][1] = tipoArray[i];
+                }
+                
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return bonos;
+    }
+    
+    public static int seleccionarIdUsuario (String correo) {
+        int id;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                int idRecuperada = -1;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT bono FROM Usuario WHERE email='" + correo + "'");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()){
+                    idRecuperada = prs.getInt("idUsuario");
+                    id = idRecuperada;
+                    return id;
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
     
     public static boolean comprobarRepetidoNIFExcepto (String Email, String NIF) {
