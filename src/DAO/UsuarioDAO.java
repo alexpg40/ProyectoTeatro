@@ -613,15 +613,50 @@ public class UsuarioDAO {
                 conn = ConexionBD.establecerConexion();
             }
             try {
+                String aux = "";
                 ArrayList<String> mes = new ArrayList();
                 ArrayList<String> tipo = new ArrayList();
-                int aux = 0;
                 PreparedStatement pstmt = null;
                 pstmt = conn.prepareStatement("SELECT b.mes, b.tipo FROM Bono as b, Usuario as u WHERE u.email='" + correo + "' AND u.idUsuario = b.idUsuario");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()){
-                    aux = prs.getInt("mes");
-                    mes.add(String.valueOf(aux));
+                    if (prs.getInt("mes") == 1) {
+                        aux = "Enero";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 2) {
+                        aux = "Febrero";
+                        mes.add(aux);
+                    }   else if (prs.getInt("mes") == 3) {
+                        aux = "Marzo";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 4) {
+                        aux = "Abril";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 5) {
+                        aux = "Mayo";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 6) {
+                        aux = "Junio";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 7) {
+                        aux = "Julio";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 8) {
+                        aux = "Agosto";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 9) {
+                        aux = "Septiembre";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 10) {
+                        aux = "Octubre";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 11) {
+                        aux = "Noviembre";
+                        mes.add(aux);
+                    } else if (prs.getInt("mes") == 12) {
+                        aux = "Diciembre";
+                        mes.add(aux);
+                    }
                     tipo.add(prs.getString("tipo"));
                 }
                 
@@ -632,10 +667,11 @@ public class UsuarioDAO {
                 tipoArray = tipo.toArray(tipoArray);
                 
                 bonos = new String[mes.size()][2];
+                
                 // Iterator it = mes.iterator();   
                 
                 // int iterador = 0;
-                //while (it.hasNext()){
+                // while (it.hasNext()){
                 //    bonos[iterador][0] = mesArray[iterador];
                 //    bonos[iterador][1] = tipoArray[iterador];
                 //    iterador++;
