@@ -8,7 +8,6 @@ package GUI;
 import DAO.UsuarioDAO;
 import Entidades.Usuario;
 import Entidades.Utilidades;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
