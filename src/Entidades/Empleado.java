@@ -250,6 +250,25 @@ public class Empleado implements Serializable {
         return false;
     }
 
+    public boolean validarNIFSinRepeticion(String nif) {
+        //Comprueba si el String esta vacio
+        if (nif.isEmpty()) {
+            System.out.println("No puede estar vacio.");
+            //La longitud del String tiene que ser igual a 9
+        } else if (nif.length() != 9) {
+            System.out.println("El nif debe ser de 9 digitos.");
+            //Los primeros 8 digitos tienen que ser números
+        } else if (!Utilidades.isNumeric(nif.substring(0, 8))) {
+            System.out.println("Los 8 primeros digitos deben ser numeros");
+            //El primero digito debe ser una letra.
+        } else if (!String.valueOf(nif.charAt(8)).matches("[a-zA-Z]")) {
+            System.out.println("El último debe ser una letra");
+        } else {
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Valida la direccion del empleado
      *

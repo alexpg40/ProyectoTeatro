@@ -304,4 +304,84 @@ public class EmpleadoDAO {
         }
     return false;}
     
+    public static Empleado getEmpleadoByNif(String DNI){
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        Empleado e = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE nif = '" + DNI +"'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    int id = prs.getInt("idEmpleado");
+                    String nombre = prs.getString("nombre");
+                    String apellido = prs.getString("apellido");
+                    String nif = prs.getString("nif");
+                    String direccion = prs.getString("direccion");
+                    String telefono = prs.getString("telefono");
+                    long idFranquicia = prs.getLong("idFranquicia");
+                    long idNomina = prs.getLong("idNonima");
+                    e = new Empleado(id, nombre, apellido, nif, direccion, telefono, idFranquicia, idNomina);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    return e;}
+    
+    public static boolean existeEmpleadoConNIF(String NIF){
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Empleado WHERE nif = '" + NIF +"'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    String DNI = prs.getString("nif");
+                    if (DNI == null ? NIF == null : DNI.equals(NIF)) {
+                        return true;
+                    }
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return false;
+    }
+    
 }
