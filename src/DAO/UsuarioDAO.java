@@ -16,6 +16,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 public class UsuarioDAO {
@@ -540,6 +541,37 @@ public class UsuarioDAO {
         return false;
     }
     
+    public static boolean actualizarContrasena(String Correo, String Contrasena, String contrasenaNueva){
+        PreparedStatement pstmt = null;
+        boolean ret = false;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("UPDATE Usuario SET password ='" +  contrasenaNueva + "' WHERE email='" + Correo + "' AND password='" + Contrasena + "'");
+                pstmt.executeUpdate();
+                ret = true;
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                ret = false;
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return ret;
+    }
+    
     public static boolean comprobarNIF (String NIF) {
         try {
             if (conn == null || conn.isClosed()) {
@@ -621,6 +653,40 @@ public class UsuarioDAO {
                         usu.setApellidos(prs.getString("apellido"));
                         usu.setNif(prs.getString("nif"));
                         usu.setTelefono(prs.getString("telefono"));
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+     
+    public static boolean loggearUsuario (String email, String contrasena) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT nombre, apellido, nif, telefono, email, password FROM Usuario WHERE email='" + email + "'");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()) {
+
+                    if (contrasena.equals(prs.getString("password"))){
                         return true;
                     } else {
                         return false;
