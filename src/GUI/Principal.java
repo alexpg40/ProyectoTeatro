@@ -177,8 +177,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccesoEmpleadoMouseClicked
 
     private void btnAccesoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoEmpleadoActionPerformed
-        // AccesoEmpleados ac = new AccesoEmpleados();
-        // ac.setVisible(true);
+        AccesoEmpleados ac = new AccesoEmpleados();
+        ac.setVisible(true);
+        ac.setLocationRelativeTo(this);
         this.setVisible(false);
     }//GEN-LAST:event_btnAccesoEmpleadoActionPerformed
 
