@@ -107,6 +107,11 @@ public class panelUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -128,12 +133,51 @@ public class panelUsuario extends javax.swing.JFrame {
         campoEmail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        botonTarjetaCredito = new javax.swing.JRadioButton();
+        botonContrareembolso = new javax.swing.JRadioButton();
+        botonTransferenciaBancaria = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaBonos = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
 
         jLabel9.setText("jLabel9");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -259,7 +303,7 @@ public class panelUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
-                        .addGap(4, 4, Short.MAX_VALUE)
+                        .addGap(10, 15, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -276,7 +320,7 @@ public class panelUsuario extends javax.swing.JFrame {
                             .addComponent(checkboxApellidos)
                             .addComponent(checkboxTelefono)
                             .addComponent(checkboxEmail))
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(54, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -321,62 +365,152 @@ public class panelUsuario extends javax.swing.JFrame {
                 .addComponent(btnModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
-        );
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("Comprar bono (Mensual)");
 
-        jTabbedPane1.addTab("Ver mis bonos", jPanel3);
+        jLabel10.setText("Tipo de bono: ");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
-        );
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo C - Completo", "Tipo P - Parcial" }));
 
-        jTabbedPane1.addTab("Ver franquicias", jPanel4);
+        buttonGroup1.add(botonTarjetaCredito);
+        botonTarjetaCredito.setText("Tarjeta de credito");
+
+        buttonGroup1.add(botonContrareembolso);
+        botonContrareembolso.setText("Contrareembolso");
+
+        buttonGroup1.add(botonTransferenciaBancaria);
+        botonTransferenciaBancaria.setText("Transferencia bancaria");
+
+        jLabel11.setText("Metodo de pago:");
+
+        jButton2.setText("Comprar");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel12.setText("Ver mis bonos");
+
+        tablaBonos.setModel(new javax.swing.table.DefaultTableModel(
+
+            UsuarioDAO.seleccionarBonosUsuario(this.getEmail()),
+            new String [] {
+                "Mes", "Tipo"
+
+            }
+        ));
+        jScrollPane4.setViewportView(tablaBonos);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(225, 225, 225))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonTarjetaCredito)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(botonContrareembolso)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(botonTransferenciaBancaria))))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 25, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(botonTarjetaCredito)
+                            .addComponent(botonContrareembolso)
+                            .addComponent(botonTransferenciaBancaria)))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 73, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Comprar bonos", jPanel5);
+        jTabbedPane1.addTab("Bonos", jPanel5);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Poner reclamación", jPanel1);
+        jTabbedPane1.addTab("tab3", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,71 +531,25 @@ public class panelUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel2ComponentAdded
 
-    private void campoNifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNifActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNifActionPerformed
-
-    private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoEmailActionPerformed
-
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void checkboxTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxTelefonoMouseClicked
-    }//GEN-LAST:event_checkboxTelefonoMouseClicked
-
-    private void checkboxEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxEmailMouseClicked
-    }//GEN-LAST:event_checkboxEmailMouseClicked
-
-    private void checkboxNombreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkboxNombreItemStateChanged
-        if (checkboxNombre.isSelected()) {
-            campoNombre.setEditable(true);
-        } else {
-            campoNombre.setEditable(false);
-        }
-    }//GEN-LAST:event_checkboxNombreItemStateChanged
-
-    private void checkboxApellidosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxApellidosStateChanged
-        if (checkboxApellidos.isSelected()) {
-            campoApellidos.setEditable(true);
-        } else {
-            campoApellidos.setEditable(false);
-        }
-    }//GEN-LAST:event_checkboxApellidosStateChanged
-
-    private void checkboxTelefonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxTelefonoStateChanged
-        if (checkboxTelefono.isSelected()) {
-            campoTelefono.setEditable(true);
-        } else {
-            campoTelefono.setEditable(false);
-        }
-    }//GEN-LAST:event_checkboxTelefonoStateChanged
-
-    private void checkboxEmailStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxEmailStateChanged
-        if (checkboxEmail.isSelected()) {
-            campoEmail.setEditable(true);
-        } else {
-            campoEmail.setEditable(false);
-        }
-    }//GEN-LAST:event_checkboxEmailStateChanged
-
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         String Nombre = this.nombre,
-                Apellido = this.apellido,
-                Telefono = this.telefono,
-                Email = this.email;
+        Apellido = this.apellido,
+        Telefono = this.telefono,
+        Email = this.email;
 
         String nuevoNombre = campoNombre.getText(),
-                nuevoApellido = campoApellidos.getText(),
-                nuevoTelefono = campoTelefono.getText(),
-                nuevoEmail = campoEmail.getText();
+        nuevoApellido = campoApellidos.getText(),
+        nuevoTelefono = campoTelefono.getText(),
+        nuevoEmail = campoEmail.getText();
 
         if (JOptionPane.showConfirmDialog(this, "Nuevo nombre introducido: " + nuevoNombre + "\n"
-                + "Nuevo apellido introducido: " + nuevoApellido + "\n"
-                + "\n" + "Nuevo telefono introducido: " + nuevoTelefono + "\n" + "Nuevo email introducido: " + nuevoEmail) == 0) {
-            
+            + "Nuevo apellido introducido: " + nuevoApellido + "\n"
+            + "\n" + "Nuevo telefono introducido: " + nuevoTelefono + "\n" + "Nuevo email introducido: " + nuevoEmail) == 0) {
+
         if (campoNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
             evt.consume();
@@ -504,7 +592,7 @@ public class panelUsuario extends javax.swing.JFrame {
         } else if (UsuarioDAO.comprobarCorreoRepetidoExcepto(nuevoEmail, Nombre)) {
             JOptionPane.showMessageDialog(this, "El email ya existe.", "Error: El Email ya existe.", WARNING_MESSAGE);
             evt.consume();
-           
+
         } else {
             UsuarioDAO.actualizarEmailUsuario(this.getNif(),nuevoEmail, Email, this.contrasena);
             evt.consume();
@@ -513,8 +601,7 @@ public class panelUsuario extends javax.swing.JFrame {
             p.setVisible(true);
             this.setVisible(false);
         }
-}
-
+        }
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -522,6 +609,54 @@ public class panelUsuario extends javax.swing.JFrame {
         ccu.setLocationRelativeTo(this);
         ccu.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoEmailActionPerformed
+
+    private void campoNifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNifActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNifActionPerformed
+
+    private void checkboxEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxEmailMouseClicked
+
+    }//GEN-LAST:event_checkboxEmailMouseClicked
+
+    private void checkboxEmailStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxEmailStateChanged
+        if (checkboxEmail.isSelected()) {
+            campoEmail.setEditable(true);
+        } else {
+            campoEmail.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxEmailStateChanged
+
+    private void checkboxTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxTelefonoMouseClicked
+
+    }//GEN-LAST:event_checkboxTelefonoMouseClicked
+
+    private void checkboxTelefonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxTelefonoStateChanged
+        if (checkboxTelefono.isSelected()) {
+            campoTelefono.setEditable(true);
+        } else {
+            campoTelefono.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxTelefonoStateChanged
+
+    private void checkboxApellidosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxApellidosStateChanged
+        if (checkboxApellidos.isSelected()) {
+            campoApellidos.setEditable(true);
+        } else {
+            campoApellidos.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxApellidosStateChanged
+
+    private void checkboxNombreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkboxNombreItemStateChanged
+        if (checkboxNombre.isSelected()) {
+            campoNombre.setEditable(true);
+        } else {
+            campoNombre.setEditable(false);
+        }
+    }//GEN-LAST:event_checkboxNombreItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -559,7 +694,11 @@ public class panelUsuario extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton botonContrareembolso;
+    private javax.swing.JRadioButton botonTarjetaCredito;
+    private javax.swing.JRadioButton botonTransferenciaBancaria;
     private javax.swing.JButton btnModificar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField campoApellidos;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoNif;
@@ -570,21 +709,35 @@ public class panelUsuario extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkboxNombre;
     private javax.swing.JCheckBox checkboxTelefono;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tablaBonos;
     // End of variables declaration//GEN-END:variables
 
 }
