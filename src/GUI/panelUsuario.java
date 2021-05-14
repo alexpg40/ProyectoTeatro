@@ -6,6 +6,7 @@
 package GUI;
 
 import DAO.UsuarioDAO;
+import DAO.FranquiciaDAO;
 import Entidades.Usuario;
 import Entidades.Utilidades;
 import java.util.regex.Matcher;
@@ -112,7 +113,6 @@ public class panelUsuario extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("teatro?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -394,6 +394,7 @@ public class panelUsuario extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Ver mis bonos");
 
+        tablaBonos.setAutoCreateRowSorter(true);
         tablaBonos.setModel(new javax.swing.table.DefaultTableModel(
 
             UsuarioDAO.seleccionarBonosUsuario(this.getEmail()),
@@ -476,20 +477,15 @@ public class panelUsuario extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Bonos", jPanel5);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+            FranquiciaDAO.seleccionarFranquicias(),
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Ubicacion", "Cuenta con facilidades para la movilidad reducida"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -502,9 +498,7 @@ public class panelUsuario extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Ver franquicias", jPanel1);
@@ -705,7 +699,6 @@ public class panelUsuario extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkboxEmail;
     private javax.swing.JCheckBox checkboxNombre;
     private javax.swing.JCheckBox checkboxTelefono;
-    private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
