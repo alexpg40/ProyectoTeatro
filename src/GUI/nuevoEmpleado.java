@@ -260,7 +260,13 @@ public class nuevoEmpleado extends javax.swing.JFrame {
                          "Confirmar", JOptionPane.OK_CANCEL_OPTION);
                 if (create == 0) {
                     if (this.jCheckBox1.isSelected()) {
-                        EmpleadoDAO.insertarEmpleado(e);
+                        e.setId(EmpleadoDAO.getNextID());
+                        EmpleadoDAO.insertarEmpleadoConID(e);
+                        JOptionPane.showMessageDialog(this, "Se ha creado el empleado con exito","Exito!" , JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
+                        EmpleadosGUI eg = new EmpleadosGUI();
+                        eg.setLocationRelativeTo(this);
+                        eg.setVisible(true);
                     } else {
                         EmpleadoDAO.insertarEmpleadoConID(e);
                     }
