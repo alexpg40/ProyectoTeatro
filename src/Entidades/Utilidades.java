@@ -283,7 +283,29 @@ public class Utilidades {
             System.out.println(t);
         }
     }
-    
+
+    /**
+     * Este metodo devuelve un String[][] con los datos de los objetos de un array
+     * ¡¡PARA QUE FUNCIONE HAY QUE PONER EL METODO TOSTRING COMO EL METODO TO DATA!!
+     * @param <T>
+     * @param array coleccion de objetos que quieres obtener el String [][]
+     * @param cols número de columnas que quieres usar
+     * @return String[][]
+     */
+    public static <T> String[][] modeloTablas(ArrayList<T> array, int cols) {
+        int rows = array.size();
+        String[][] ret = new String[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            String[] splited = new String[cols];
+            String data = array.get(i).toString();
+            splited = data.split("\\|");
+            for (int j = 0; j < cols; j++) {
+                ret[i][j] = splited[j];
+            }
+        }
+        return ret;
+    }
+
     public static String getMD5(String text) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
