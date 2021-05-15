@@ -76,7 +76,7 @@ public class EmpleadoDAO {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                pstmt = conn.prepareStatement("INSERT INTO Empleado (nombre, apellido, nif, direccion, telefono, idFranquicia, idNonima) VALUES (?, ?, ?, ?, ?, ?, ?);");
+                pstmt = conn.prepareStatement("INSERT INTO Empleado (nombre, apellido, nif, direccion, telefono, idFranquicia, idNonima, password) VALUES (?, ?, ?, ?, ?, ?, ?, 'abc123.');");
                 String nombre = e.getNombre();
                 String apellido = e.getApellidos();
                 String nif = e.getNif();
@@ -426,7 +426,7 @@ public class EmpleadoDAO {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                pstmt = conn.prepareStatement("INSERT INTO Empleado VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+                pstmt = conn.prepareStatement("INSERT INTO Empleado VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'abc123');");
                 long idEmpleado = e.getId();
                 String nombre = e.getNombre();
                 String apellido = e.getApellidos();
