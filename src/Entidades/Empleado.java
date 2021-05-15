@@ -478,7 +478,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: ";
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono + "|" + this.idfranquicia + "|" +  this.idnomina;
     }
 
     /**
@@ -536,7 +536,7 @@ public class Empleado implements Serializable {
      * @return un string que se escribe en el fichero
      */
     public String data() {
-        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono;
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono; 
     }
 
     /**
@@ -897,7 +897,10 @@ public class Empleado implements Serializable {
     
     public int validarEmpleado(){
         ArrayList<Empleado> empleados = EmpleadoDAO.todosEmpleados();
-        if (!this.validarNombre(this.nombre)){
+        if(this.validarIdEmpleado()){
+            return 1;
+        }
+        else if (!this.validarNombre(this.nombre)){
             return 2;
         } else if (!this.validarApellidos(this.apellidos)){
             return 3;
