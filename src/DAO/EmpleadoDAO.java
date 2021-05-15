@@ -384,4 +384,81 @@ public class EmpleadoDAO {
     return false;
     }
     
+    public static int getNextID(){
+        int ret = 0;
+        PreparedStatement pstmt = null;
+        ResultSet prs = null;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME ='Empleado' AND TABLE_SCHEMA='Teatro'");
+                prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    ret = prs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (prs != null) {
+                    prs.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return ret;}
+    
+    public static int insertarEmpleadoConID(Empleado e) {
+        PreparedStatement pstmt = null;
+        int n = 0;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                pstmt = conn.prepareStatement("INSERT INTO Empleado VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+                long idEmpleado = e.getId();
+                String nombre = e.getNombre();
+                String apellido = e.getApellidos();
+                String nif = e.getNif();
+                String direccion = e.getDireccion();
+                String telefono = e.getTelefono();
+                long idFranquicia = e.getIdfranquicia();
+                long idNomina = e.getIdnomina();
+                pstmt.setLong(1, idEmpleado);
+                pstmt.setString(2, nombre);
+                pstmt.setString(3, apellido);
+                pstmt.setString(4, nif);
+                pstmt.setString(5, direccion);
+                pstmt.setString(6, telefono);
+                pstmt.setLong(7, idFranquicia);
+                pstmt.setLong(8, idNomina);
+                n = pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return n;}
+    
 }
