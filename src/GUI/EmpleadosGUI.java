@@ -178,13 +178,17 @@ public class EmpleadosGUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int row = this.jTable2.getSelectedRow();
-        long idEmpleado = Long.valueOf((String) this.jTable2.getValueAt(row, 0));
-        Entidades.Empleado e = EmpleadoDAO.getEmpleadoById(idEmpleado);
-        this.setVisible(false);
-        editarEmpleado ee = new editarEmpleado(e);
-        ee.setLocationRelativeTo(this);
-        ee.setVisible(true);
-        
+        if (row != -1) {
+            long idEmpleado = Long.valueOf((String) this.jTable2.getValueAt(row, 0));
+            Entidades.Empleado e = EmpleadoDAO.getEmpleadoById(idEmpleado);
+            this.setVisible(false);
+            editarEmpleado ee = new editarEmpleado(e);
+            ee.setLocationRelativeTo(this);
+            ee.setVisible(true);
+        } else{
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un empleado para poder editarlo", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
