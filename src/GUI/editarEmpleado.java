@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import DAO.EmpleadoDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DarkB
@@ -12,7 +15,7 @@ package GUI;
 public class editarEmpleado extends javax.swing.JFrame {
 
     public Entidades.Empleado empleado = new Entidades.Empleado();
-    
+
     public editarEmpleado() {
         initComponents();
     }
@@ -21,11 +24,11 @@ public class editarEmpleado extends javax.swing.JFrame {
         this.empleado = e;
         initComponents();
     }
-    
+
     public void setEmpleaado(Entidades.Empleado e) {
         this.empleado = e;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,16 +42,16 @@ public class editarEmpleado extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        jTextFieldidNomina = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldidFranquicia = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jTextFieldNIF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -66,33 +69,33 @@ public class editarEmpleado extends javax.swing.JFrame {
         );
         jTextField1.setEnabled(false);
 
-        jTextField6.setText(String.valueOf(empleado.getIdnomina())
+        jTextFieldidNomina.setText(String.valueOf(empleado.getIdnomina())
         );
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Nombre: ");
 
-        jTextField7.setText(String.valueOf(empleado.getIdfranquicia())
+        jTextFieldidFranquicia.setText(String.valueOf(empleado.getIdfranquicia())
         );
 
-        jTextField2.setText((String) empleado.getNombre());
+        jTextFieldNombre.setText((String) empleado.getNombre());
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Apellido:");
 
-        jTextField3.setText((String) empleado.getApellidos()
+        jTextFieldApellido.setText((String) empleado.getApellidos()
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("NIF:");
 
-        jTextField4.setText((String) empleado.getTelefono()
+        jTextFieldTelefono.setText((String) empleado.getTelefono()
         );
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Telefono:");
 
-        jTextField5.setText((String) empleado.getNif());
+        jTextFieldNIF.setText((String) empleado.getNif());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("EDITAR EMPLEADO");
@@ -101,6 +104,11 @@ public class editarEmpleado extends javax.swing.JFrame {
         jLabel7.setText("idFranquicia:");
 
         jButton1.setText("ACEPTAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("CANCELAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,24 +138,24 @@ public class editarEmpleado extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                            .addComponent(jTextFieldApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
+                        .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(80, 80, 80)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addComponent(jTextFieldNIF, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                            .addComponent(jTextFieldidNomina, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(jTextFieldidFranquicia, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -176,21 +184,21 @@ public class editarEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldidNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldidFranquicia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -218,6 +226,52 @@ public class editarEmpleado extends javax.swing.JFrame {
         eg.setLocationRelativeTo(this);
         eg.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        long idEmpleado = empleado.getId();
+        String nombre = this.jTextFieldNombre.getText();
+        String apellido = this.jTextFieldApellido.getText();
+        String NIF = this.jTextFieldNIF.getText();
+        String direccion = this.jTextFieldNIF.getText();
+        String telefono = this.jTextFieldTelefono.getText();
+        long idFranquicia = Long.parseLong(this.jTextFieldidFranquicia.getText());
+        long idNomina = Long.parseLong(this.jTextFieldidNomina.getText());
+        Entidades.Empleado e = new Entidades.Empleado(idEmpleado, nombre, apellido, NIF, direccion, telefono, idFranquicia, idNomina);
+        int val = e.validarEmpleadoSinID();
+        switch (val) {
+            case 0:
+                int update = JOptionPane.showConfirmDialog(this, "Estas seguro que quieres actualizar el empleado a: " + "\n"
+                        + "ID: " + String.valueOf(idEmpleado) + ", Nombre: " + nombre
+                        + ", Apellido: " + apellido + ", NIF: " + NIF
+                        + ", Dirección: " + direccion + ", Telefono: " + telefono
+                        + ", idFranquicia: " + String.valueOf(idFranquicia) + "y idNomina: " + String.valueOf(idNomina),
+                        "Confirmar", JOptionPane.OK_CANCEL_OPTION);
+                if (update == 0) {
+                    EmpleadoDAO.actualizarEmpleado(e);
+                    JOptionPane.showMessageDialog(this, "Se ha actualizado el empleado con exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    EmpleadosGUI eg = new EmpleadosGUI();
+                    eg.setLocationRelativeTo(this);
+                    eg.setVisible(true);
+                }
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(this, "El nombre no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(this, "El apellido no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(this, "El NIF no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 5:
+                JOptionPane.showMessageDialog(this, "El direccion no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 6:
+                JOptionPane.showMessageDialog(this, "El telefono no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,11 +321,11 @@ public class editarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextFieldApellido;
+    private javax.swing.JTextField jTextFieldNIF;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JTextField jTextFieldidFranquicia;
+    private javax.swing.JTextField jTextFieldidNomina;
     // End of variables declaration//GEN-END:variables
 }
