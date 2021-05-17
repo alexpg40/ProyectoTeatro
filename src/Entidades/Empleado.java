@@ -223,7 +223,7 @@ public class Empleado implements Serializable {
      * @param empleados para saber si esta repetido
      * @return boolean
      */
-    public boolean validarNIF(String nif, ArrayList<Empleado> empleados) {
+    public boolean validarNIF(long id, String nif, ArrayList<Empleado> empleados) {
         //Comprueba si el String esta vacio
         if (nif.isEmpty()) {
             System.out.println("No puede estar vacio.");
@@ -239,7 +239,7 @@ public class Empleado implements Serializable {
         } else {
             //Recorre el array y comprueba no este ya registrado
             for (int i = 0; i < empleados.size(); i++) {
-                if (empleados.get(i).nif.equals(nif)) {
+                if (empleados.get(i).id != id && empleados.get(i).nif.equals(nif)) {
                     System.out.println("No puede repertirse el nif.");
                     break;
                 } else if (!empleados.get(i).nif.equals(nif) && i == (empleados.size() - 1)) {
@@ -318,6 +318,7 @@ public class Empleado implements Serializable {
         Empleado e = new Empleado();
         Scanner in;
         e.setId(e.generarId(empleados));
+        long id = e.getId();
         System.out.println("Introduce el nombre");
         String us;
         do {
@@ -344,7 +345,7 @@ public class Empleado implements Serializable {
             e.setNif(" ");
             in = new Scanner(System.in);
             n = in.nextLine();
-            if (e.validarNIF(n, empleados)) {
+            if (e.validarNIF(id, n, empleados)) {
                 e.setNif(n);
             }
         } while (!e.getNif().equals(n));
@@ -478,7 +479,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return this.id + ". " + this.nombre + " " + this.apellidos + " Nif: " + this.nif + " Telefono: " + this.telefono + " (" + this.getClass().getSimpleName() + ")" + "trabaja en la franquicia con la id: ";
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono + "|" + this.idfranquicia + "|" +  this.idnomina;
     }
 
     /**
@@ -536,7 +537,7 @@ public class Empleado implements Serializable {
      * @return un string que se escribe en el fichero
      */
     public String data() {
-        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono;
+        return this.id + "|" + this.nombre + "|" + this.apellidos + "|" + this.nif + "|" + this.direccion + "|" + this.telefono; 
     }
 
     /**
@@ -897,11 +898,14 @@ public class Empleado implements Serializable {
     
     public int validarEmpleado(){
         ArrayList<Empleado> empleados = EmpleadoDAO.todosEmpleados();
-        if (!this.validarNombre(this.nombre)){
+        if(this.validarIdEmpleado()){
+            return 1;
+        }
+        else if (!this.validarNombre(this.nombre)){
             return 2;
         } else if (!this.validarApellidos(this.apellidos)){
             return 3;
-        } else if (!this.validarNIF(this.nif, empleados)){
+        } else if (!this.validarNIF(this.id, this.nif, empleados)){
             return 4;
         } else if (!this.validarDireccion(this.direccion)){
             return 5;
@@ -910,4 +914,18 @@ public class Empleado implements Serializable {
         }
     return 0;}
     
+    public int validarEmpleadoSinID(){
+        ArrayList<Empleado> empleados = EmpleadoDAO.todosEmpleados();
+        if (!this.validarNombre(this.nombre)){
+            return 2;
+        } else if (!this.validarApellidos(this.apellidos)){
+            return 3;
+        } else if (!this.validarNIF(this.id, this.nif, empleados)){
+            return 4;
+        } else if (!this.validarDireccion(this.direccion)){
+            return 5;
+        } else if (!this.validarTelefono(this.telefono)){
+            return 6;
+        }
+    return 0;}    
 }

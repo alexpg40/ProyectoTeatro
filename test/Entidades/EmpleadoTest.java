@@ -282,8 +282,8 @@ public class EmpleadoTest {
         ArrayList<Empleado> empleados = null;
         Empleado instance = new Empleado();
         boolean expResult = false;
-        boolean result = instance.validarNIF(nif, empleados);
-        assertEquals(expResult, result);
+        //boolean result = instance.validarNIF(nif, empleados);
+       // assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
