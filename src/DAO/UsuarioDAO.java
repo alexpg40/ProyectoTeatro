@@ -698,38 +698,6 @@ public class UsuarioDAO {
         return bonos;
     }
     
-    public static int seleccionarIdUsuario (String correo) {
-        int id;
-        try {
-            if (conn == null || conn.isClosed()) {
-                conn = ConexionBD.establecerConexion();
-            }
-            try {
-                int idRecuperada = -1;
-                PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT bono FROM Usuario WHERE email='" + correo + "'");
-                ResultSet prs = pstmt.executeQuery();
-                while (prs.next()){
-                    idRecuperada = prs.getInt("idUsuario");
-                    id = idRecuperada;
-                    return id;
-                }
-                prs.close();
-                pstmt.close();
-            } catch (SQLException ex) {
-                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                if (conn != null) {
-                    ConexionBD.cerrarConexion();
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
-    }
-    
     public static boolean comprobarRepetidoNIFExcepto (String Email, String NIF) {
         try {
             if (conn == null || conn.isClosed()) {
