@@ -741,7 +741,6 @@ public class UsuarioDAO {
                 pstmt.setString(1, String.valueOf(usu.getEmail()));
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
-
                     if (usu.getPassword().equals(prs.getString("password"))){
                         usu.setNombre(prs.getString("nombre"));
                         usu.setApellidos(prs.getString("apellido"));
