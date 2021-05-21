@@ -668,15 +668,6 @@ public class UsuarioDAO {
                 
                 bonos = new String[mes.size()][2];
                 
-                // Iterator it = mes.iterator();   
-                
-                // int iterador = 0;
-                // while (it.hasNext()){
-                //    bonos[iterador][0] = mesArray[iterador];
-                //    bonos[iterador][1] = tipoArray[iterador];
-                //    iterador++;
-                // }
-                
                 for (int i = 0; i < mes.size();i++){
                     bonos[i][0] = mesArray[i];
                     bonos[i][1] = tipoArray[i];
@@ -838,4 +829,37 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+     
+         public static int seleccionarIdUsuario(String correo) {
+        int id;
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                int idRecuperada = -1;
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("SELECT idUsuario FROM Usuario WHERE email='" + correo + "'");
+                ResultSet prs = pstmt.executeQuery();
+                while (prs.next()) {
+                    idRecuperada = prs.getInt("idUsuario");
+                    id = idRecuperada;
+                    return id;
+                }
+                prs.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+     
 }
