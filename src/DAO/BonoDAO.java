@@ -21,21 +21,22 @@ public class BonoDAO {
     private Bono bono;
     private static Connection conn;
 
-    public static int seleccionarIdUsuario(String correo) {
-        int id;
+    
+    public static boolean comprobarBono (int mes, int idUsuario) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = ConexionBD.establecerConexion();
             }
             try {
-                int idRecuperada = -1;
+                int mesRecuperado = 0;
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT idUsuario FROM Usuario WHERE email='" + correo + "'");
+                pstmt = conn.prepareStatement("SELECT DISTINCT b.mes FROM Bono as b WHERE b.idUsuario = " + idUsuario);
                 ResultSet prs = pstmt.executeQuery();
-                while (prs.next()) {
-                    idRecuperada = prs.getInt("idUsuario");
-                    id = idRecuperada;
-                    return id;
+                while (prs.next()){
+                    mesRecuperado = prs.getInt("mes");
+                    if (mesRecuperado == mes){
+                        return true;
+                    }
                 }
                 prs.close();
                 pstmt.close();
@@ -50,9 +51,9 @@ public class BonoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return -1;
+        return false;
     }
-
+    
     public static void insertarBono(String correo, String tipo) {
         try {
             if (conn == null || conn.isClosed()) {
@@ -61,7 +62,7 @@ public class BonoDAO {
             try {
                 
                 int mes = LocalDate.now().getMonthValue();
-                int idUsuarioRecuperado = BonoDAO.seleccionarIdUsuario(correo);
+                int idUsuarioRecuperado = UsuarioDAO.seleccionarIdUsuario(correo);
 
                 PreparedStatement pstmt = null;
 
