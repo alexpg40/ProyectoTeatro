@@ -5,10 +5,12 @@
  */
 package GUI;
 
+import DAO.BonoDAO;
 import DAO.UsuarioDAO;
 import DAO.FranquiciaDAO;
 import Entidades.Usuario;
 import Entidades.Utilidades;
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -532,70 +534,70 @@ public class panelUsuario extends javax.swing.JFrame {
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         String Nombre = this.nombre,
-        Apellido = this.apellido,
-        Telefono = this.telefono,
-        Email = this.email;
+                Apellido = this.apellido,
+                Telefono = this.telefono,
+                Email = this.email;
 
         String nuevoNombre = campoNombre.getText(),
-        nuevoApellido = campoApellidos.getText(),
-        nuevoTelefono = campoTelefono.getText(),
-        nuevoEmail = campoEmail.getText();
+                nuevoApellido = campoApellidos.getText(),
+                nuevoTelefono = campoTelefono.getText(),
+                nuevoEmail = campoEmail.getText();
 
         if (JOptionPane.showConfirmDialog(this, "Nuevo nombre introducido: " + nuevoNombre + "\n"
-            + "Nuevo apellido introducido: " + nuevoApellido + "\n"
-            + "\n" + "Nuevo telefono introducido: " + nuevoTelefono + "\n" + "Nuevo email introducido: " + nuevoEmail) == 0) {
+                + "Nuevo apellido introducido: " + nuevoApellido + "\n"
+                + "\n" + "Nuevo telefono introducido: " + nuevoTelefono + "\n" + "Nuevo email introducido: " + nuevoEmail) == 0) {
 
-        if (campoNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (campoNombre.getText().length() > 45) {
-            JOptionPane.showMessageDialog(this, "El campo Nombre es mayor de 45 carácteres.", "Error: El Nombre es muy largo.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (campoNombre.getText().matches(".*\\d.*")) {
-            JOptionPane.showMessageDialog(this, "El campo Nombre no puede tener numeros.", "Error: El nombre tiene letras.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (!nuevoNombre.equals(Nombre)) {
-            UsuarioDAO.actualizarNombreUsuario(nuevoNombre, this.nif, this.email, this.contrasena);
-        }
+            if (campoNombre.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo Nombre está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (campoNombre.getText().length() > 45) {
+                JOptionPane.showMessageDialog(this, "El campo Nombre es mayor de 45 carácteres.", "Error: El Nombre es muy largo.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (campoNombre.getText().matches(".*\\d.*")) {
+                JOptionPane.showMessageDialog(this, "El campo Nombre no puede tener numeros.", "Error: El nombre tiene letras.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (!nuevoNombre.equals(Nombre)) {
+                UsuarioDAO.actualizarNombreUsuario(nuevoNombre, this.nif, this.email, this.contrasena);
+            }
 
-        if (campoApellidos.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Apellido está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (campoApellidos.getText().length() > 45) {
-            JOptionPane.showMessageDialog(this, "El campo Apellido es mayor de 45 carácteres.", "Error: El apellido es muy largo.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (campoApellidos.getText().matches(".*\\d.*")) {
-            JOptionPane.showMessageDialog(this, "El campo Apellido no puede tener numeros.", "Error: El apellido tiene numeros.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (!nuevoApellido.equals(Apellido)) {
-            UsuarioDAO.actualizarApellidoUsuario(nuevoApellido, this.nif, this.email, this.contrasena);
-        }
+            if (campoApellidos.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo Apellido está sin rellenar.", "Error: Introduzca los datos necesarios.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (campoApellidos.getText().length() > 45) {
+                JOptionPane.showMessageDialog(this, "El campo Apellido es mayor de 45 carácteres.", "Error: El apellido es muy largo.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (campoApellidos.getText().matches(".*\\d.*")) {
+                JOptionPane.showMessageDialog(this, "El campo Apellido no puede tener numeros.", "Error: El apellido tiene numeros.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (!nuevoApellido.equals(Apellido)) {
+                UsuarioDAO.actualizarApellidoUsuario(nuevoApellido, this.nif, this.email, this.contrasena);
+            }
 
-        if (campoTelefono.getText().length() != 9) {
-            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que tener una longitud de 9 carácteres.", "Error: El NIF no tiene una longitud adecuada..", WARNING_MESSAGE);
-            evt.consume();
-        } else if (!Utilidades.isNumeric(campoTelefono.getText().substring(0, 8))) {
-            JOptionPane.showMessageDialog(this, "El campo Telefono tiene que ser solo numeros.", "Error: El Telefono tiene letras.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (!nuevoTelefono.equals(Telefono)) {
-            UsuarioDAO.actualizarTelefonoUsuario(nuevoTelefono, this.nif, this.email, this.contrasena);
-        }
+            if (campoTelefono.getText().length() != 9) {
+                JOptionPane.showMessageDialog(this, "El campo Telefono tiene que tener una longitud de 9 carácteres.", "Error: El NIF no tiene una longitud adecuada..", WARNING_MESSAGE);
+                evt.consume();
+            } else if (!Utilidades.isNumeric(campoTelefono.getText().substring(0, 8))) {
+                JOptionPane.showMessageDialog(this, "El campo Telefono tiene que ser solo numeros.", "Error: El Telefono tiene letras.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (!nuevoTelefono.equals(Telefono)) {
+                UsuarioDAO.actualizarTelefonoUsuario(nuevoTelefono, this.nif, this.email, this.contrasena);
+            }
 
-        if (campoEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Email no está introducido", "Error: El Email está vacío.", WARNING_MESSAGE);
-            evt.consume();
-        } else if (UsuarioDAO.comprobarCorreoRepetidoExcepto(nuevoEmail, Nombre)) {
-            JOptionPane.showMessageDialog(this, "El email ya existe.", "Error: El Email ya existe.", WARNING_MESSAGE);
-            evt.consume();
+            if (campoEmail.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo Email no está introducido", "Error: El Email está vacío.", WARNING_MESSAGE);
+                evt.consume();
+            } else if (UsuarioDAO.comprobarCorreoRepetidoExcepto(nuevoEmail, Nombre)) {
+                JOptionPane.showMessageDialog(this, "El email ya existe.", "Error: El Email ya existe.", WARNING_MESSAGE);
+                evt.consume();
 
-        } else {
-            UsuarioDAO.actualizarEmailUsuario(this.getNif(),nuevoEmail, Email, this.contrasena);
-            evt.consume();
-            Principal p = new Principal();
-            JOptionPane.showMessageDialog(this, "El cambio se ha realizado con exito, vuelva a iniciar sesion por favor.", "Exito", INFORMATION_MESSAGE);
-            p.setVisible(true);
-            this.setVisible(false);
-        }
+            } else {
+                UsuarioDAO.actualizarEmailUsuario(this.getNif(), nuevoEmail, Email, this.contrasena);
+                evt.consume();
+                Principal p = new Principal();
+                JOptionPane.showMessageDialog(this, "El cambio se ha realizado con exito, vuelva a iniciar sesion por favor.", "Exito", INFORMATION_MESSAGE);
+                p.setVisible(true);
+                this.setVisible(false);
+            }
         }
     }//GEN-LAST:event_btnModificarMouseClicked
 
@@ -654,21 +656,25 @@ public class panelUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_checkboxNombreItemStateChanged
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       String metodoPago = "";
-       String tipo = "";
-        if (!botonTransferenciaBancaria.isSelected() && !botonTarjetaCredito.isSelected()){
-           JOptionPane.showMessageDialog(this, "Seleccione un metodo de pago.", "Error: Seleccione un metodo de pago.", WARNING_MESSAGE);
-       } else if (botonTarjetaCredito.isSelected()){
-           metodoPago = "tc";
-           if (comboboxTipos.getSelectedIndex() == 0){
-               tipo = "C";
-           } else if (comboboxTipos.getSelectedIndex() == 1){
-               tipo = "P";
-           }
-           CompraBonoTarjeta cb = new CompraBonoTarjeta(this, true, this.email, tipo);
-           cb.setVisible(true);
-       } else if (botonTransferenciaBancaria.isSelected()){
-       }
+        String metodoPago = "";
+        String tipo = "";
+        if (!botonTransferenciaBancaria.isSelected() && !botonTarjetaCredito.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un metodo de pago.", "Error: Seleccione un metodo de pago.", WARNING_MESSAGE);
+        } else if (botonTarjetaCredito.isSelected()) {
+            metodoPago = "tc";
+            int idUsuario = UsuarioDAO.seleccionarIdUsuario(this.getEmail());
+            int mesActual = LocalDate.now().getMonthValue();
+            if (BonoDAO.comprobarBono(mesActual, idUsuario) == false) {
+                if (comboboxTipos.getSelectedIndex() == 0) {
+                    tipo = "C";
+                } else if (comboboxTipos.getSelectedIndex() == 1) {
+                    tipo = "P";
+                }
+                CompraBonoTarjeta cb = new CompraBonoTarjeta(this, true, this.email, tipo);
+                cb.setVisible(true);
+            } else if (botonTransferenciaBancaria.isSelected()) {
+            }
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -755,5 +761,4 @@ public class panelUsuario extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable tablaBonos;
     // End of variables declaration//GEN-END:variables
-
 }
