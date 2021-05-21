@@ -628,7 +628,6 @@ public class panelUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_checkboxEmailStateChanged
 
     private void checkboxTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkboxTelefonoMouseClicked
-
     }//GEN-LAST:event_checkboxTelefonoMouseClicked
 
     private void checkboxTelefonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxTelefonoStateChanged
