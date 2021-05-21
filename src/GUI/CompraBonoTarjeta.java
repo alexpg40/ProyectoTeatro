@@ -6,6 +6,7 @@
 package GUI;
 
 import DAO.BonoDAO;
+import java.time.LocalDate;
 import javax.swing.JFrame;
 
 /**
@@ -17,6 +18,7 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
     
     private String emailUsuario;
     private String tipoBonoSeleccionado;
+    private int mes;
     
     /**
      * Creates new form compraBono
@@ -24,6 +26,7 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
     
     public CompraBonoTarjeta(java.awt.Frame parent, boolean modal, String email, String tipoBono) {
         super(parent, modal);
+        this.mes = LocalDate.now().getMonthValue();
         initComponents();
         this.emailUsuario = email;
         this.tipoBonoSeleccionado = tipoBono;
@@ -32,6 +35,7 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
 
     private CompraBonoTarjeta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.mes = LocalDate.now().getMonthValue();
         initComponents();
     }
 
@@ -42,7 +46,7 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
     public void setEmailUsuario(String emailUsuario) {
         this.emailUsuario = emailUsuario;
     }
-
+    
     public String getTipoBonoSeleccionado() {
         return tipoBonoSeleccionado;
     }
@@ -51,7 +55,13 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
         this.tipoBonoSeleccionado = tipoBonoSeleccionado;
     }
 
-    
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        mes = LocalDate.now().getMonthValue();
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +76,7 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Comprar bono");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -77,17 +87,17 @@ public class CompraBonoTarjeta extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jButton1)
-                .addContainerGap(171, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
