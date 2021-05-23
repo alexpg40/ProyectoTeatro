@@ -94,7 +94,7 @@ public class EmpleadosGUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Filtrar por:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Dirección", "idFranquicia", "idNómina" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Direccion", "idFranquicia", "idNomina" }));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -208,6 +208,7 @@ public class EmpleadosGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyPressed
 
+    @SuppressWarnings("empty-statement")
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         if (this.jComboBox1.getSelectedItem().equals("Nombre")) {
             ArrayList<Empleado> todosEmpleados = EmpleadoDAO.todosEmpleados();
@@ -226,6 +227,47 @@ public class EmpleadosGUI extends javax.swing.JFrame {
             this.jTable2.setModel(new javax.swing.table.DefaultTableModel(modeloTablas, new String[]{
                 "id", "nombre", "apellido", "nif", "direccion", "telefono", "idFranquicia", "idNomina"
             }));
+        }
+        if (this.jComboBox1.getSelectedItem().equals("Direccion")) {
+            ArrayList<Empleado> todosEmpleados = EmpleadoDAO.todosEmpleados();
+            String direccion = this.jTextField1.getText();
+            ArrayList<Empleado> empleadobyDireccion = Empleado.getEmpleadobyDireccion(direccion, todosEmpleados);
+            String[][] modeloTablas = Utilidades.modeloTablas(empleadobyDireccion, 8);
+            this.jTable2.setModel(new javax.swing.table.DefaultTableModel(modeloTablas, new String[]{
+                "id", "nombre", "apellido", "nif", "direccion", "telefono", "idFranquicia", "idNomina"
+            }));
+        }
+        if (this.jComboBox1.getSelectedItem().equals("idFranquicia")) {
+            String idFranquicia = this.jTextField1.getText();
+            ArrayList<Empleado> todosEmpleados = EmpleadoDAO.todosEmpleados();
+            if (Utilidades.isNumeric(idFranquicia)) {
+                long id = Long.parseLong(idFranquicia);
+                ArrayList<Empleado> empleadobyIdFranquicia = Empleado.getEmpleadobyIdFranquicia(id, todosEmpleados);
+                String[][] modeloTablas = Utilidades.modeloTablas(empleadobyIdFranquicia, 8);
+                this.jTable2.setModel(new javax.swing.table.DefaultTableModel(modeloTablas, new String[]{
+                    "id", "nombre", "apellido", "nif", "direccion", "telefono", "idFranquicia", "idNomina"
+                }));
+            } else{  
+                this.jTable2.setModel(new javax.swing.table.DefaultTableModel(Utilidades.modeloTablas(todosEmpleados, 8), new String[]{
+                    "id", "nombre", "apellido", "nif", "direccion", "telefono", "idFranquicia", "idNomina"
+                }));
+            }
+        }
+        if (this.jComboBox1.getSelectedItem().equals("idNomina")) {
+            String idNomina = this.jTextField1.getText();
+            ArrayList<Empleado> todosEmpleados = EmpleadoDAO.todosEmpleados();
+            if (Utilidades.isNumeric(idNomina)) {
+                long id = Long.parseLong(idNomina);
+                ArrayList<Empleado> empleadobyIdFranquicia = Empleado.getEmpleadobyIdNomina(id, todosEmpleados);
+                String[][] modeloTablas = Utilidades.modeloTablas(empleadobyIdFranquicia, 8);
+                this.jTable2.setModel(new javax.swing.table.DefaultTableModel(modeloTablas, new String[]{
+                    "id", "nombre", "apellido", "nif", "direccion", "telefono", "idFranquicia", "idNomina"
+                }));
+            } else{  
+                this.jTable2.setModel(new javax.swing.table.DefaultTableModel(Utilidades.modeloTablas(todosEmpleados, 8), new String[]{
+                    "id", "nombre", "apellido", "nif", "direccion", "telefono", "idFranquicia", "idNomina"
+                }));
+            }
         }
     }//GEN-LAST:event_jTextField1KeyReleased
 
