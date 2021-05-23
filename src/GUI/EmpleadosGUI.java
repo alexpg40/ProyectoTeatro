@@ -45,6 +45,7 @@ public class EmpleadosGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
@@ -90,6 +91,14 @@ public class EmpleadosGUI extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton3);
+
+        jButton4.setText("Detalles");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Filtrar por:");
@@ -271,6 +280,20 @@ public class EmpleadosGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int row = this.jTable2.getSelectedRow();
+        if (row != -1) {
+            long idEmpleado = Long.valueOf((String) this.jTable2.getValueAt(row, 0));
+            Entidades.Empleado e = EmpleadoDAO.getEmpleadoById(idEmpleado);
+            this.dispose();
+            detallesEmpleado ee = new detallesEmpleado(e);
+            ee.setLocationRelativeTo(this);
+            ee.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un empleado para poder editarlo", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,6 +333,7 @@ public class EmpleadosGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
