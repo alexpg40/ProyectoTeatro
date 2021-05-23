@@ -451,9 +451,9 @@ public class Empleado implements Serializable {
      */
     public static ArrayList<Empleado> getEmpleadobyApellidos(String apellidos, ArrayList<Empleado> array) {
         ArrayList<Empleado> ret = new ArrayList<>();
-        for (int i = 0; i < array.size(); i++) {
-            if (apellidos.toLowerCase().contains(array.get(i).apellidos.toLowerCase())) {
-                ret.add(array.get(i));
+        for (Empleado e : array) {
+            if (e.getApellidos().toLowerCase().contains(apellidos.toLowerCase())) {
+                ret.add(e);
             }
         }
         return ret;
@@ -476,6 +476,24 @@ public class Empleado implements Serializable {
         }
         return ret;
     }
+    
+    public static ArrayList<Empleado> getEmpleadobyIdFranquicia(long idFranquicia, ArrayList<Empleado> array){
+        ArrayList<Empleado> ret = new ArrayList<>();
+        for (Empleado e : array) {
+            if (e.getIdfranquicia() == idFranquicia) {
+                ret.add(e);
+            }
+        }
+    return ret;}
+    
+        public static ArrayList<Empleado> getEmpleadobyIdNomina(long idNomina, ArrayList<Empleado> array){
+        ArrayList<Empleado> ret = new ArrayList<>();
+        for (Empleado e : array) {
+            if (e.getIdnomina()== idNomina) {
+                ret.add(e);
+            }
+        }
+    return ret;}
 
     @Override
     public String toString() {
